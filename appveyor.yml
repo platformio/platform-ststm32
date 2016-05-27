@@ -2,10 +2,6 @@ build: off
 environment:
 
   matrix:
-    - PLATFORMIO_PROJECT_DIR: "examples/mbed-blink"
-    - PLATFORMIO_PROJECT_DIR: "examples/mbed-dsp"
-    - PLATFORMIO_PROJECT_DIR: "examples/mbed-serial"
-
     - PLATFORMIO_PROJECT_DIR: "examples/cmsis-blink"
     - PLATFORMIO_PROJECT_DIR: "examples/libopencm3-blink"
     - PLATFORMIO_PROJECT_DIR: "examples/mbed-blink"
