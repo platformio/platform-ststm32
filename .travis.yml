@@ -1,0 +1,19 @@
+language: python
+python:
+    - "2.7"
+
+env:
+    - PLATFORMIO_PROJECT_DIR=examples/cmsis-blink
+    - PLATFORMIO_PROJECT_DIR=examples/libopencm3-blink
+    - PLATFORMIO_PROJECT_DIR=examples/mbed-blink
+    - PLATFORMIO_PROJECT_DIR=examples/mbed-dsp
+    - PLATFORMIO_PROJECT_DIR=examples/mbed-rtos
+    - PLATFORMIO_PROJECT_DIR=examples/mbed-serial
+    - PLATFORMIO_PROJECT_DIR=examples/spl-blink
+
+install:
+    - pip install -U https://github.com/platformio/platformio/archive/feature/platformio-30.zip
+    - platformio platform install file://.
+
+script:
+    - platformio run -d $PLATFORMIO_PROJECT_DIR

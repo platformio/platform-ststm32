@@ -1,0 +1,18 @@
+{
+  "build": {
+    "cpu": "cortex-m4", 
+    "f_cpu": "72000000L", 
+    "mcu": "stm32f334c8t6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST 32F3348DISCOVERY", 
+  "upload": {
+    "maximum_ram_size": 12288, 
+    "maximum_size": 65536, 
+    "protocol": "stlink"
+  }, 
+  "url": "http://www.st.com/web/en/catalog/tools/PF260318", 
+  "vendor": "ST"
+}

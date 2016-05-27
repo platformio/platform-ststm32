@@ -1,0 +1,25 @@
+{
+  "build": {
+    "core": "stm32", 
+    "cpu": "cortex-m4", 
+    "extra_flags": "-DSTM32F3 -DSTM32F303xC", 
+    "f_cpu": "72000000L", 
+    "ldscript": "stm32f30xx.ld", 
+    "mcu": "stm32f303vct6", 
+    "variant": "stm32f303xc"
+  }, 
+  "frameworks": [
+    "mbed", 
+    "cmsis", 
+    "spl", 
+    "libopencm3"
+  ], 
+  "name": "ST STM32F3DISCOVERY", 
+  "upload": {
+    "maximum_ram_size": 49152, 
+    "maximum_size": 262144, 
+    "protocol": "stlink"
+  }, 
+  "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF254044", 
+  "vendor": "ST"
+}

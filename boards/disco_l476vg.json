@@ -1,0 +1,18 @@
+{
+  "build": {
+    "cpu": "cortex-m4", 
+    "f_cpu": "80000000L", 
+    "mcu": "stm32l476vgt6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST 32L476GDISCOVERY", 
+  "upload": {
+    "maximum_ram_size": 131072, 
+    "maximum_size": 1048576, 
+    "protocol": "stlink"
+  }, 
+  "url": "http://www.st.com/web/catalog/tools/FM116/CL1620/SC959/SS1532/LN1848/PF261635", 
+  "vendor": "ST"
+}

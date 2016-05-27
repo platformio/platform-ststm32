@@ -1,0 +1,22 @@
+{
+  "build": {
+    "core": "stm32", 
+    "cpu": "cortex-m4", 
+    "extra_flags": "-DSTM32F40_41xxx", 
+    "f_cpu": "168000000L", 
+    "ldscript": "armstrap_eagle_1024.ld", 
+    "mcu": "stm32f417vgt6", 
+    "variant": "stm32f4"
+  }, 
+  "frameworks": [
+    "cmsis", 
+    "spl"
+  ], 
+  "name": "Armstrap Eagle 1024", 
+  "upload": {
+    "maximum_ram_size": 196608, 
+    "maximum_size": 1048576
+  }, 
+  "url": "http://docs.armstrap.org/en/latest/hardware-overview.html", 
+  "vendor": "Armstrap"
+}

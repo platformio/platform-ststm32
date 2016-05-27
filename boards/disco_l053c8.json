@@ -1,0 +1,18 @@
+{
+  "build": {
+    "cpu": "cortex-m0plus", 
+    "f_cpu": "32000000L", 
+    "mcu": "stm32l053c8t6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST 32L0538DISCOVERY", 
+  "upload": {
+    "maximum_ram_size": 8192, 
+    "maximum_size": 65536, 
+    "protocol": "stlink"
+  }, 
+  "url": "http://www.st.com/web/en/catalog/tools/PF260319", 
+  "vendor": "ST"
+}
