@@ -68,7 +68,7 @@
     "tool-stlink": {
       "type": "uploader",
       "optional": true,
-      "version": "~1.1.0"
+      "version": "~1.10200.0"
     }
   }
 }
