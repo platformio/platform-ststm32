@@ -164,7 +164,7 @@ AlwaysBuild(target_size)
 # Target: Upload by default .bin file
 #
 
-if "mbed" in env.subst("$FRAMEWORK") and not env.subst("$UPLOAD_PROTOCOL"):
+if "mbed" in env.subst("$PIOFRAMEWORK") and not env.subst("$UPLOAD_PROTOCOL"):
     upload = env.Alias(["upload", "uploadlazy"], target_firm, env.UploadToDisk)
 else:
     upload = env.Alias(["upload", "uploadlazy"], target_firm, "$UPLOADCMD")
