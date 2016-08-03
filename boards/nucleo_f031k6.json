@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m0", 
+    "f_cpu": "48000000L", 
+    "mcu": "stm32f031k6t6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST Nucleo F031K6", 
+  "upload": {
+    "maximum_ram_size": 4096, 
+    "maximum_size": 32768
+  }, 
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F031K6/", 
+  "vendor": "ST"
+}

@@ -1,0 +1,24 @@
+{
+  "build": {
+    "core": "stm32", 
+    "cpu": "cortex-m3", 
+    "extra_flags": "-DSTM32L1 -DSTM32L152xB -DSTM32L1XX_MD", 
+    "f_cpu": "32000000L", 
+    "ldscript": "stm32l15xx6.ld", 
+    "mcu": "stm32l152rbt6", 
+    "variant": "stm32l152xb"
+  }, 
+  "frameworks": [
+    "cmsis", 
+    "spl", 
+    "libopencm3"
+  ], 
+  "name": "ST STM32LDISCOVERY", 
+  "upload": {
+    "maximum_ram_size": 16384, 
+    "maximum_size": 131072, 
+    "protocol": "stlink"
+  }, 
+  "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF258515", 
+  "vendor": "ST"
+}

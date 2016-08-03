@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m3", 
+    "f_cpu": "32000000L", 
+    "mcu": "stm32l152ret6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST Nucleo L152RE", 
+  "upload": {
+    "maximum_ram_size": 81920, 
+    "maximum_size": 524288
+  }, 
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L152RE/", 
+  "vendor": "ST"
+}

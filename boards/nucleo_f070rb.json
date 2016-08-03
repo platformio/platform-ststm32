@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m0", 
+    "f_cpu": "48000000L", 
+    "mcu": "stm32f070rbt6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST Nucleo F070RB", 
+  "upload": {
+    "maximum_ram_size": 16384, 
+    "maximum_size": 131072
+  }, 
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F070RB/", 
+  "vendor": "ST"
+}

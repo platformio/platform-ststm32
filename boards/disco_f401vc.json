@@ -1,0 +1,18 @@
+{
+  "build": {
+    "cpu": "cortex-m4", 
+    "f_cpu": "84000000L", 
+    "mcu": "stm32f401vct6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST 32F401CDISCOVERY", 
+  "upload": {
+    "maximum_ram_size": 65536, 
+    "maximum_size": 262144, 
+    "protocol": "stlink"
+  }, 
+  "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF259098", 
+  "vendor": "ST"
+}

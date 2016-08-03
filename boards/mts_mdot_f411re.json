@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m4", 
+    "f_cpu": "100000000L", 
+    "mcu": "stm32f411ret6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "MultiTech mDot F411", 
+  "upload": {
+    "maximum_ram_size": 131072, 
+    "maximum_size": 524288
+  }, 
+  "url": "https://developer.mbed.org/platforms/MTS-mDot-F411/", 
+  "vendor": "MultiTech"
+}

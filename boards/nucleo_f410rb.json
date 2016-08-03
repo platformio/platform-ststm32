@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m4", 
+    "f_cpu": "100000000L", 
+    "mcu": "stm32f410rbt6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST Nucleo F410RB", 
+  "upload": {
+    "maximum_ram_size": 32768, 
+    "maximum_size": 131072
+  }, 
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F410RB/", 
+  "vendor": "ST"
+}

@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m0plus", 
+    "f_cpu": "32000000L", 
+    "mcu": "stm32l073rz"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST Nucleo L073RZ", 
+  "upload": {
+    "maximum_ram_size": 20480, 
+    "maximum_size": 196608
+  }, 
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L073RZ/", 
+  "vendor": "ST"
+}

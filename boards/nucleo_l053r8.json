@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m0", 
+    "f_cpu": "48000000L", 
+    "mcu": "stm32l053r8t6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST Nucleo L053R8", 
+  "upload": {
+    "maximum_ram_size": 8192, 
+    "maximum_size": 65536
+  }, 
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L053R8/", 
+  "vendor": "ST"
+}

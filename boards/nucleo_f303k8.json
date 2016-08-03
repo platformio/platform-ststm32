@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m4", 
+    "f_cpu": "72000000L", 
+    "mcu": "stm32f303k8t6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST Nucleo F303K8", 
+  "upload": {
+    "maximum_ram_size": 16384, 
+    "maximum_size": 65536
+  }, 
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F303K8/", 
+  "vendor": "ST"
+}
