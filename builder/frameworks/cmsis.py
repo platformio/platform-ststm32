@@ -31,7 +31,7 @@ from os.path import isdir, isfile, join
 from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()
-platform = env.DevPlatform()
+platform = env.PioPlatform()
 
 FRAMEWORK_DIR = platform.get_package_dir("framework-cmsis")
 assert isdir(FRAMEWORK_DIR)
