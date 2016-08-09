@@ -12,7 +12,7 @@ env:
     - PLATFORMIO_PROJECT_DIR=examples/spl-blink
 
 install:
-    - pip install -U https://github.com/platformio/platformio/archive/feature/platformio-30.zip
+    - pip install -U https://github.com/platformio/platformio/archive/develop.zip
     - platformio platform install file://.
 
 script:
