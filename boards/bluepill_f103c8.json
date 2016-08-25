@@ -17,5 +17,5 @@
     "protocol": "stlink"
   }, 
   "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103c8.html", 
-  "vendor": "generic"
+  "vendor": "Generic"
 }
