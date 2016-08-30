@@ -33,34 +33,22 @@ platform = env.PioPlatform()
 FRAMEWORK_DIR = platform.get_package_dir("framework-spl")
 assert isdir(FRAMEWORK_DIR)
 
-env.VariantDirWrap(
-    join("$BUILD_DIR", "FrameworkCMSIS"),
-    join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"),
-         "cmsis", "cores", env.BoardConfig().get("build.core"))
-)
-
-env.VariantDirWrap(
-    join("$BUILD_DIR", "FrameworkSPLInc"),
-    join(
-        FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "spl",
-        "variants", env.BoardConfig().get("build.variant")[0:7],
-        "inc"
-    )
-)
-
 env.Append(
     CPPPATH=[
-        join("$BUILD_DIR", "FrameworkCMSIS"),
-        join("$BUILD_DIR", "FrameworkCMSISVariant"),
-        join("$BUILD_DIR", "FrameworkSPLInc"),
-        join("$BUILD_DIR", "FrameworkSPL")
+        join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"),
+             "cmsis", "cores", env.BoardConfig().get("build.core")),
+        join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "cmsis",
+             "variants", env.BoardConfig().get("build.variant")[0:7]),
+        join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "spl",
+             "variants", env.BoardConfig().get("build.variant")[0:7], "inc"),
+        join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "spl",
+             "variants", env.BoardConfig().get("build.variant")[0:7], "src")
     ]
 )
 
 envsafe = env.Clone()
 
 envsafe.Append(
-    CPPPATH=["$BUILDSRC_DIR"],
     CPPDEFINES=[
         "USE_STDPERIPH_DRIVER"
     ]

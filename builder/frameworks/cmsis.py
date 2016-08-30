@@ -36,16 +36,13 @@ platform = env.PioPlatform()
 FRAMEWORK_DIR = platform.get_package_dir("framework-cmsis")
 assert isdir(FRAMEWORK_DIR)
 
-env.VariantDirWrap(
-    join("$BUILD_DIR", "FrameworkCMSIS"),
-    join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core"))
-)
-
 env.Append(
     CPPPATH=[
-        join("$BUILD_DIR", "FrameworkCMSIS"),
-        join("$BUILD_DIR", "FrameworkCMSISCommon"),
-        join("$BUILD_DIR", "FrameworkCMSISVariant")
+        join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core")),
+        join(FRAMEWORK_DIR, "variants", env.BoardConfig().get(
+             "build.variant")[0:7], "common"),
+        join(FRAMEWORK_DIR, "variants", env.BoardConfig().get(
+             "build.variant")[0:7], env.BoardConfig().get("build.variant"))
     ]
 )
 
