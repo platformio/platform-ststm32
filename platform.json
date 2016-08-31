@@ -45,7 +45,7 @@
     "framework-mbed": {
       "type": "framework",
       "optional": true,
-      "version": "~2.123.0"
+      "version": "~3.124.0"
     },
     "framework-cmsis": {
       "type": "framework",
