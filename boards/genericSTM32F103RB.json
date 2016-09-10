@@ -9,7 +9,7 @@
     "mcu": "stm32f103rb", 
     "variant": "generic_stm32f103r8"
   }, 
-  "frameworks": ["stm32duino"], 
+  "frameworks": ["arduino"], 
   "name": "STM32F103RB (20k RAM. 128k Flash)", 
   "upload": {
     "disable_flushing": false, 
