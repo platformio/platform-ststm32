@@ -78,11 +78,11 @@ if env.subst("$UPLOAD_PROTOCOL") == "dfu":
         ld = "bootloader_20.ld"
     elif "stm32f103r" in env.BoardConfig().get("build.mcu", ""):
         ld = "bootloader.ld"
-    env.Replace(LDSCRIPT_PATH=ld)
     if "stm32f103rb_maple" in env.BoardConfig().get("build.mcu", ""):
         env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8005000", "SERIAL_USB"])
     else:
         env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8002000", "SERIAL_USB", "GENERIC_BOOTLOADER"])
+        env.Replace(LDSCRIPT_PATH=ld)
 else:
     env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8000000"])
 #
