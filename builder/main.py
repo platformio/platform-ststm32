@@ -136,7 +136,7 @@ if env.subst("$UPLOAD_PROTOCOL") == "gdb":
             join("$BUILD_DIR", "firmware.elf"),
             "-batch",
             "-x",
-            '"%s"' % join("$PROJECT_DIR", "upload.gdb")
+            join("$PROJECT_DIR", "upload.gdb")
         ],
 
         UPLOADCMD='$UPLOADER $UPLOADERFLAGS'
