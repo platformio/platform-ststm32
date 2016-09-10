@@ -13,9 +13,9 @@
 # limitations under the License.
 
 """
-STM32duino
+Arduino
 
-STM32 Arduino Wiring-based Framework allows writing cross-platform software to
+Arduino Wiring-based Framework allows writing cross-platform software to
 control devices attached to a wide range of Arduino boards to create all
 kinds of creative coding, interactive objects, spaces or physical experiences.
 
@@ -70,6 +70,10 @@ env.Append(
         join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"), "ld")
     ]
 )
+
+for item in ("-nostartfiles", "-nostdlib"):
+    if item in env['LINKFLAGS']:
+        env['LINKFLAGS'].remove(item)
 
 ld = env.BoardConfig().get("build.ldscript")
 

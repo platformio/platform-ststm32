@@ -21,6 +21,8 @@ from os.path import isfile, join
 from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
                           DefaultEnvironment)
 
+from platformio import util
+
 env = DefaultEnvironment()
 
 env.Replace(
@@ -58,7 +60,9 @@ env.Replace(
     LINKFLAGS=[
         "-Os",
         "-Wl,--gc-sections,--relax",
-        "-mthumb"
+        "-mthumb",
+        "-nostartfiles",
+        "-nostdlib"
     ],
 
     LIBS=["c", "gcc", "m", "stdc++", "nosys"],
@@ -76,14 +80,6 @@ env.Replace(
     PROGNAME="firmware",
     PROGSUFFIX=".elf"
 )
-
-if not "stm32duino" in env.subst("$PIOFRAMEWORK"):
-    env.Replace(
-        LINKFLAGS=[
-            "-nostartfiles",
-            "-nostdlib"
-        ]
-    )
 
 if "BOARD" in env:
     env.Append(
@@ -146,13 +142,12 @@ if env.subst("$UPLOAD_PROTOCOL") == "gdb":
         UPLOADCMD='$UPLOADER $UPLOADERFLAGS'
     )
 
-if "stm32duino" in env.subst("$PIOFRAMEWORK"):
+if "arduino" in env.subst("$PIOFRAMEWORK"):
     uploadProtocol = ""
     uploadParams = ""
-    from sys import platform as _platform
-    if _platform == "linux" or _platform == "linux2":
+    if "linux" in util.get_systype():
         uploadPlatform = "linux"
-    elif _platform == "darwin":
+    elif "darwin" in util.get_systype():
         uploadPlatform = "macosx"
     else:
         uploadPlatform = "win"
@@ -161,8 +156,8 @@ if "stm32duino" in env.subst("$PIOFRAMEWORK"):
         uploadParams = "{upload.altID} {upload.usbID} $PROJECT_DIR/$SOURCES"
     elif env.subst("$UPLOAD_PROTOCOL") == "dfu":
         uploadProtocol = "maple_upload"
-        usbids = env.BoardConfig().get("upload.usbid", "")
-        usbid = '2 %s:%s' % (usbids[0], usbids[1])
+        usbids = env.BoardConfig().get("build.hwids", "")
+        usbid = '2 %s:%s' % (usbids[0][0], usbids[0][1])
         env.Replace(UPLOADERFLAGS=usbid)
         uploadParams = usbid
     env.Replace(
@@ -206,7 +201,7 @@ if "mbed" in env.subst("$PIOFRAMEWORK") and not env.subst("$UPLOAD_PROTOCOL"):
         [env.VerboseAction(env.AutodetectUploadPort,
                            "Looking for upload disk..."),
          env.VerboseAction(env.UploadToDisk, "Uploading $SOURCE")])
-elif "stm32duino" in env.subst("$PIOFRAMEWORK"):
+elif "arduino" in env.subst("$PIOFRAMEWORK"):
     upload = env.Alias(
         ["upload", "uploadlazy"], target_firm,
         [env.VerboseAction(env.AutodetectUploadPort,

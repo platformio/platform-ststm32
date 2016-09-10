@@ -4,7 +4,10 @@
     "cpu": "cortex-m3", 
     "extra_flags": "-DMCU_STM32F103RB", 
     "f_cpu": "72000000L", 
-    "hwids": [["0x1EAF", "0x0004"]], 
+    "hwids": [
+        ["0x1EAF", "0x0003"],
+        ["0x1EAF", "0x0004"]
+    ],
     "ldscript": "flash.ld", 
     "mcu": "stm32f103rb_maple", 
     "variant": "maple"
@@ -18,8 +21,7 @@
     "protocol": "dfu", 
     "require_upload_port": true, 
     "use_1200bps_touch": false, 
-    "wait_for_upload_port": false,
-    "usbid": ["0x1EAF", "0x0003"]
+    "wait_for_upload_port": false
   }, 
   "url": "https://www.olimex.com/Products/Duino/STM32/OLIMEXINO-STM32/", 
   "vendor": "Olimex"
