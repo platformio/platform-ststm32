@@ -9,7 +9,7 @@
     "mcu": "stm32f103re", 
     "variant": "generic_stm32f103r"
   }, 
-  "frameworks": ["stm32duino"], 
+  "frameworks": ["arduino"], 
   "name": "STM32F103RE (64k RAM. 512k Flash)", 
   "upload": {
     "disable_flushing": false, 
