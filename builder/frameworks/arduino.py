@@ -1,4 +1,4 @@
-# Copyright 2014-present Ivan Kravets <me@ikravets.com>
+# Copyright 2014-present PlatformIO <contact@platformio.org>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,8 +22,7 @@ kinds of creative coding, interactive objects, spaces or physical experiences.
 http://www.stm32duino.com
 """
 
-from os import walk
-from os.path import isdir, isfile, join
+from os.path import isdir, join
 
 from SCons.Script import DefaultEnvironment
 
@@ -31,7 +30,8 @@ env = DefaultEnvironment()
 platform = env.PioPlatform()
 
 if "stm32f103" in env.BoardConfig().get("build.mcu", ""):
-    FRAMEWORK_DIR = join(platform.get_package_dir("framework-arduinoststm32"), "STM32F1")
+    FRAMEWORK_DIR = join(platform.get_package_dir(
+        "framework-arduinoststm32"), "STM32F1")
     env.Append(
         CPPDEFINES=[
             "ERROR_LED_PORT=GPIOB",
@@ -39,12 +39,17 @@ if "stm32f103" in env.BoardConfig().get("build.mcu", ""):
             "ARDUINO_ARCH_STM32F1"
         ]
     )
-    if "stm32f103r8" or "stm32f103rb" in env.BoardConfig().get("build.mcu", ""):
-        env.Append(CPPDEFINES=["BOARD_generic_stm32f103r8", "ARDUINO_GENERIC_STM32F103R"])
-    elif "stm32f103rc" or "stm32f103re" in env.BoardConfig().get("build.mcu", ""):
-        env.Append(CPPDEFINES=["BOARD_generic_stm32f103r", "ARDUINO_GENERIC_STM32F103R"])
+    if "stm32f103r8" or "stm32f103rb" in env.BoardConfig().get(
+            "build.mcu", ""):
+        env.Append(CPPDEFINES=[
+            "BOARD_generic_stm32f103r8", "ARDUINO_GENERIC_STM32F103R"])
+    elif "stm32f103rc" or "stm32f103re" in env.BoardConfig().get(
+            "build.mcu", ""):
+        env.Append(CPPDEFINES=[
+            "BOARD_generic_stm32f103r", "ARDUINO_GENERIC_STM32F103R"])
     elif "stm32f103c" in env.BoardConfig().get("build.mcu", ""):
-        env.Append(CPPDEFINES=["BOARD_generic_stm32f103c", "ARDUINO_GENERIC_STM32F103C"])
+        env.Append(CPPDEFINES=[
+            "BOARD_generic_stm32f103c", "ARDUINO_GENERIC_STM32F103C"])
     elif "stm32f103rb_maple" in env.BoardConfig().get("build.mcu", ""):
         env.Append(CPPDEFINES=["BOARD_maple", "ARDUINO_MAPLE_REV3"])
 
@@ -67,7 +72,8 @@ env.Append(
     ],
 
     LIBPATH=[
-        join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"), "ld")
+        join(FRAMEWORK_DIR, "variants",
+             env.BoardConfig().get("build.variant"), "ld")
     ]
 )
 
@@ -85,7 +91,8 @@ if env.subst("$UPLOAD_PROTOCOL") == "dfu":
     if "stm32f103rb_maple" in env.BoardConfig().get("build.mcu", ""):
         env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8005000", "SERIAL_USB"])
     else:
-        env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8002000", "SERIAL_USB", "GENERIC_BOOTLOADER"])
+        env.Append(CPPDEFINES=[
+            "VECT_TAB_ADDR=0x8002000", "SERIAL_USB", "GENERIC_BOOTLOADER"])
         env.Replace(LDSCRIPT_PATH=ld)
 else:
     env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8000000"])
@@ -110,7 +117,8 @@ libs = []
 if "build.variant" in env.BoardConfig():
     env.Append(
         CPPPATH=[
-            join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"))
+            join(FRAMEWORK_DIR, "variants",
+                 env.BoardConfig().get("build.variant"))
         ]
     )
     libs.append(env.BuildLibrary(

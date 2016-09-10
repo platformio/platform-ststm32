@@ -22,7 +22,7 @@
       "framework-arduinoststm32": [
         {
           "url": "https://github.com/ubis/Arduino_STM32/archive/v1.0.0.tar.gz",
-          "sha1": "36F26069B70EF6B7CEAE2A91E3C23BE74CC79337",
+          "sha1": "36f26069b70ef6b7ceae2a91e3c23be74cc79337",
           "version": "1.0.0",
           "system": "*"
         }
