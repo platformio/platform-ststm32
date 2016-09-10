@@ -161,7 +161,7 @@ if "arduino" in env.subst("$PIOFRAMEWORK"):
         env.Replace(UPLOADERFLAGS=usbid)
         uploadParams = usbid
     env.Replace(
-        UPLOADER=join(env.PioPlatform().get_package_dir("framework-stm32duino") or "", "tools", uploadPlatform, uploadProtocol), 
+        UPLOADER=join(env.PioPlatform().get_package_dir("framework-arduinoststm32") or "", "tools", uploadPlatform, uploadProtocol), 
         UPLOADERFLAGS=["$UPLOAD_PORT"],
         UPLOADERPARAMS=uploadParams,
         UPLOADCMD='$UPLOADER $UPLOADERFLAGS $UPLOADERPARAMS $PROJECT_DIR/$SOURCES'

@@ -31,7 +31,7 @@ env = DefaultEnvironment()
 platform = env.PioPlatform()
 
 if "stm32f103" in env.BoardConfig().get("build.mcu", ""):
-    FRAMEWORK_DIR = join(platform.get_package_dir("framework-stm32duino"), "STM32F1")
+    FRAMEWORK_DIR = join(platform.get_package_dir("framework-arduinoststm32"), "STM32F1")
     env.Append(
         CPPDEFINES=[
             "ERROR_LED_PORT=GPIOB",
@@ -48,7 +48,7 @@ if "stm32f103" in env.BoardConfig().get("build.mcu", ""):
     elif "stm32f103rb_maple" in env.BoardConfig().get("build.mcu", ""):
         env.Append(CPPDEFINES=["BOARD_maple", "ARDUINO_MAPLE_REV3"])
 
-FRAMEWORK_VERSION = platform.get_package_version("framework-stm32duino")
+FRAMEWORK_VERSION = platform.get_package_version("framework-arduinoststm32")
 assert isdir(FRAMEWORK_DIR)
 
 ARDUINO_VERSION = int(FRAMEWORK_VERSION.replace(".", "").strip())
