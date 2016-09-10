@@ -21,6 +21,6 @@
     "wait_for_upload_port": false,
     "usbid": ["0x1EAF", "0x0003"]
   }, 
-  "url": "http://www.stm32duino.com", 
-  "vendor": "STM32duino"
+  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103re.html", 
+  "vendor": "Generic"
 }

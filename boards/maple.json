@@ -21,6 +21,6 @@
     "wait_for_upload_port": false,
     "usbid": ["0x1EAF", "0x0003"]
   }, 
-  "url": "http://www.stm32duino.com", 
-  "vendor": "STM32duino"
+  "url": "https://www.olimex.com/Products/Duino/STM32/OLIMEXINO-STM32/", 
+  "vendor": "Olimex"
 }
