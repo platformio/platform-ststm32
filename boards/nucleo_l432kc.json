@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m4", 
+    "f_cpu": "80000000L", 
+    "mcu": "stm32l432kcu6"
+  }, 
+  "frameworks": [
+    "mbed"
+  ], 
+  "name": "ST Nucleo L432KC", 
+  "upload": {
+    "maximum_ram_size": 65536, 
+    "maximum_size": 262144
+  }, 
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L432KC/", 
+  "vendor": "ST"
+}
