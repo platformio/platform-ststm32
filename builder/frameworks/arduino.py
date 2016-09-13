@@ -28,8 +28,14 @@ from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()
 platform = env.PioPlatform()
+board = env.BoardConfig()
 
-if "stm32f103" in env.BoardConfig().get("build.mcu", ""):
+if board.id == "bluepill_f103c8":
+    board = env.BoardConfig("genericSTM32F103C8")
+    env['LDSCRIPT_PATH'] = board.get("build.ldscript")
+    env.ProcessFlags(board.get("build.extra_flags"))
+
+if "stm32f103" in board.get("build.mcu", ""):
     FRAMEWORK_DIR = join(platform.get_package_dir(
         "framework-arduinoststm32"), "STM32F1")
     env.Append(
@@ -39,18 +45,18 @@ if "stm32f103" in env.BoardConfig().get("build.mcu", ""):
             "ARDUINO_ARCH_STM32F1"
         ]
     )
-    if "stm32f103r8" or "stm32f103rb" in env.BoardConfig().get(
+    if "stm32f103r8" or "stm32f103rb" in board.get(
             "build.mcu", ""):
         env.Append(CPPDEFINES=[
             "BOARD_generic_stm32f103r8", "ARDUINO_GENERIC_STM32F103R"])
-    elif "stm32f103rc" or "stm32f103re" in env.BoardConfig().get(
+    elif "stm32f103rc" or "stm32f103re" in board.get(
             "build.mcu", ""):
         env.Append(CPPDEFINES=[
             "BOARD_generic_stm32f103r", "ARDUINO_GENERIC_STM32F103R"])
-    elif "stm32f103c" in env.BoardConfig().get("build.mcu", ""):
+    elif "stm32f103c" in board.get("build.mcu", ""):
         env.Append(CPPDEFINES=[
             "BOARD_generic_stm32f103c", "ARDUINO_GENERIC_STM32F103C"])
-    elif "stm32f103rb_maple" in env.BoardConfig().get("build.mcu", ""):
+    elif "stm32f103rb_maple" in board.get("build.mcu", ""):
         env.Append(CPPDEFINES=["BOARD_maple", "ARDUINO_MAPLE_REV3"])
 
 FRAMEWORK_VERSION = platform.get_package_version("framework-arduinoststm32")
@@ -64,7 +70,7 @@ env.Append(
     ],
 
     CPPPATH=[
-        join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core")),
+        join(FRAMEWORK_DIR, "cores", board.get("build.core")),
         join(FRAMEWORK_DIR, "system", "libmaple"),
         join(FRAMEWORK_DIR, "system", "libmaple", "include"),
         join(FRAMEWORK_DIR, "system", "libmaple", "usb", "stm32f1"),
@@ -73,7 +79,7 @@ env.Append(
 
     LIBPATH=[
         join(FRAMEWORK_DIR, "variants",
-             env.BoardConfig().get("build.variant"), "ld")
+             board.get("build.variant"), "ld")
     ]
 )
 
@@ -81,14 +87,14 @@ for item in ("-nostartfiles", "-nostdlib"):
     if item in env['LINKFLAGS']:
         env['LINKFLAGS'].remove(item)
 
-ld = env.BoardConfig().get("build.ldscript")
+ld = board.get("build.ldscript")
 
 if env.subst("$UPLOAD_PROTOCOL") == "dfu":
-    if "stm32f103c" in env.BoardConfig().get("build.mcu", ""):
+    if "stm32f103c" in board.get("build.mcu", ""):
         ld = "bootloader_20.ld"
-    elif "stm32f103r" in env.BoardConfig().get("build.mcu", ""):
+    elif "stm32f103r" in board.get("build.mcu", ""):
         ld = "bootloader.ld"
-    if "stm32f103rb_maple" in env.BoardConfig().get("build.mcu", ""):
+    if "stm32f103rb_maple" in board.get("build.mcu", ""):
         env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8005000", "SERIAL_USB"])
     else:
         env.Append(CPPDEFINES=[
@@ -96,11 +102,12 @@ if env.subst("$UPLOAD_PROTOCOL") == "dfu":
         env.Replace(LDSCRIPT_PATH=ld)
 else:
     env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8000000"])
+
 #
 # Lookup for specific core's libraries
 #
 
-BOARD_CORELIBDIRNAME = env.BoardConfig().get("build.core", "")
+BOARD_CORELIBDIRNAME = board.get("build.core", "")
 env.Append(
     LIBSOURCE_DIRS=[
         join(FRAMEWORK_DIR, "libraries", "__cores__", BOARD_CORELIBDIRNAME),
@@ -114,29 +121,21 @@ env.Append(
 
 libs = []
 
-if "build.variant" in env.BoardConfig():
+if "build.variant" in board:
     env.Append(
         CPPPATH=[
             join(FRAMEWORK_DIR, "variants",
-                 env.BoardConfig().get("build.variant"))
+                 board.get("build.variant"))
         ]
     )
     libs.append(env.BuildLibrary(
         join("$BUILD_DIR", "FrameworkArduinoVariant"),
-        join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"))
+        join(FRAMEWORK_DIR, "variants", board.get("build.variant"))
     ))
 
-envsafe = env.Clone()
-
-libs.append(envsafe.BuildLibrary(
+libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkArduino"),
-    join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core"))
+    join(FRAMEWORK_DIR, "cores", board.get("build.core"))
 ))
-
-env.Append(
-    LIBPATH=[
-        join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"))
-    ]
-)
 
 env.Prepend(LIBS=libs)

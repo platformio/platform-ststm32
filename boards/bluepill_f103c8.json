@@ -1,21 +1,22 @@
 {
   "build": {
-    "core": "stm32", 
-    "cpu": "cortex-m3", 
-    "f_cpu": "72000000L", 
-    "ldscript": "stm32f103xb.ld", 
-    "mcu": "stm32f103c8t6", 
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "f_cpu": "72000000L",
+    "ldscript": "stm32f103xb.ld",
+    "mcu": "stm32f103c8t6",
     "variant": "stm32f1"
-  }, 
+  },
   "frameworks": [
-    "mbed"
-  ], 
-  "name": "BluePill F103C8", 
+    "mbed",
+    "arduino"
+  ],
+  "name": "BluePill F103C8",
   "upload": {
-    "maximum_ram_size": 20480, 
+    "maximum_ram_size": 20480,
     "maximum_size": 65536,
     "protocol": "stlink"
-  }, 
-  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103c8.html", 
+  },
+  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103c8.html",
   "vendor": "Generic"
 }
