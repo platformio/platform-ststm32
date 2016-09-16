@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m0plus",
+    "f_cpu": "32000000L",
+    "mcu": "stm32l011k4t6"
+  },
+  "frameworks": [
+    "mbed"
+  ],
+  "name": "ST Nucleo L011K4",
+  "upload": {
+    "maximum_ram_size": 2048,
+    "maximum_size": 16384
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L011K4/",
+  "vendor": "ST"
+}

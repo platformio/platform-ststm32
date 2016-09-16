@@ -21,6 +21,8 @@ from os.path import isfile, join
 from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
                           DefaultEnvironment)
 
+from platformio import util
+
 env = DefaultEnvironment()
 
 env.Replace(
@@ -134,11 +136,39 @@ if env.subst("$UPLOAD_PROTOCOL") == "gdb":
             join("$BUILD_DIR", "firmware.elf"),
             "-batch",
             "-x",
-            '"%s"' % join("$PROJECT_DIR", "upload.gdb")
+            join("$PROJECT_DIR", "upload.gdb")
         ],
 
         UPLOADCMD='$UPLOADER $UPLOADERFLAGS'
     )
+
+if "arduino" in env.subst("$PIOFRAMEWORK"):
+    uploadProtocol = ""
+    uploadParams = ""
+    if "linux" in util.get_systype():
+        uploadPlatform = "linux"
+    elif "darwin" in util.get_systype():
+        uploadPlatform = "macosx"
+    else:
+        uploadPlatform = "win"
+    if env.subst("$UPLOAD_PROTOCOL") == "serial":
+        uploadProtocol = "serial_upload"
+        uploadParams = "{upload.altID} {upload.usbID} $PROJECT_DIR/$SOURCES"
+    elif env.subst("$UPLOAD_PROTOCOL") == "dfu":
+        uploadProtocol = "maple_upload"
+        usbids = env.BoardConfig().get("build.hwids")
+        usbid = '2 %s:%s' % (usbids[0][0], usbids[0][1])
+        env.Replace(UPLOADERFLAGS=usbid)
+        uploadParams = usbid
+    env.Replace(
+        UPLOADER=join(
+            env.PioPlatform().get_package_dir(
+                "framework-arduinoststm32") or "",
+            "tools", uploadPlatform, uploadProtocol),
+        UPLOADERFLAGS=["$UPLOAD_PORT"],
+        UPLOADERPARAMS=uploadParams,
+        UPLOADCMD=(
+            '$UPLOADER $UPLOADERFLAGS $UPLOADERPARAMS $PROJECT_DIR/$SOURCES'))
 
 #
 # Target: Build executable and linkable firmware
@@ -174,6 +204,12 @@ if "mbed" in env.subst("$PIOFRAMEWORK") and not env.subst("$UPLOAD_PROTOCOL"):
         [env.VerboseAction(env.AutodetectUploadPort,
                            "Looking for upload disk..."),
          env.VerboseAction(env.UploadToDisk, "Uploading $SOURCE")])
+elif "arduino" in env.subst("$PIOFRAMEWORK"):
+    upload = env.Alias(
+        ["upload", "uploadlazy"], target_firm,
+        [env.VerboseAction(env.AutodetectUploadPort,
+                           "Looking for upload disk..."),
+         env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")])
 else:
     upload = env.Alias(["upload", "uploadlazy"], target_firm,
                        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE"))

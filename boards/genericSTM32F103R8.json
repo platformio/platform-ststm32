@@ -1,0 +1,28 @@
+{
+  "build": {
+    "core": "maple", 
+    "cpu": "cortex-m3", 
+    "extra_flags": "-DMCU_STM32F103R8", 
+    "f_cpu": "72000000L", 
+    "hwids": [
+        ["0x1EAF", "0x0003"],
+        ["0x1EAF", "0x0004"]
+    ],
+    "ldscript": "stm32f103r8.ld", 
+    "mcu": "stm32f103r8", 
+    "variant": "generic_stm32f103r8"
+  }, 
+  "frameworks": ["arduino"], 
+  "name": "STM32F103R8 (20k RAM. 64 Flash)", 
+  "upload": {
+    "disable_flushing": false, 
+    "maximum_ram_size": 20480, 
+    "maximum_size": 65536, 
+    "protocol": "maple_serial", 
+    "require_upload_port": true, 
+    "use_1200bps_touch": false, 
+    "wait_for_upload_port": false
+  }, 
+  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103r8.html", 
+  "vendor": "Generic"
+}

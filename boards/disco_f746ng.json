@@ -1,0 +1,18 @@
+{
+  "build": {
+    "cpu": "cortex-m7",
+    "f_cpu": "216000000L",
+    "mcu": "stm32f746ngh6"
+  },
+  "frameworks": [
+    "mbed"
+  ],
+  "name": "ST 32F746GDISCOVERY",
+  "upload": {
+    "maximum_ram_size": 327680,
+    "maximum_size": 1048576,
+    "protocol": "stlink"
+  },
+  "url": "http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f746gdiscovery.html",
+  "vendor": "ST"
+}

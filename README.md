@@ -12,7 +12,7 @@ The STM32 family of 32-bit Flash MCUs based on the ARM Cortex-M processor is des
 1. [Install PlatformIO CLI](http://docs.platformio.org/en/latest/installation.html)
 2. Install ST STM32 development platform:
 ```bash
-# isntall the latest stable version
+# install the latest stable version
 > platformio platform install ststm32
 
 # install development version

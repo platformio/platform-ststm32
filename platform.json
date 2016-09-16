@@ -13,11 +13,21 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
-    "http://dl.platformio.org/packages/manifest.json"
+    "http://dl.platformio.org/packages/manifest.json",
+    {
+      "framework-arduinoststm32": [
+        {
+          "url": "https://github.com/ubis/Arduino_STM32/archive/v1.0.0.tar.gz",
+          "sha1": "36f26069b70ef6b7ceae2a91e3c23be74cc79337",
+          "version": "1.0.0",
+          "system": "*"
+        }
+      ]
+    }
   ],
   "frameworks": {
     "mbed": {
@@ -35,6 +45,10 @@
     "libopencm3": {
       "package": "framework-libopencm3",
       "script": "builder/frameworks/libopencm3/libopencm3.py"
+    },
+    "arduino": {
+      "package": "framework-arduinoststm32",
+      "script": "builder/frameworks/arduino.py"
     }
   },
   "packages": {
@@ -61,6 +75,11 @@
       "type": "framework",
       "optional": true,
       "version": "~1.1.0"
+    },
+    "framework-arduinoststm32": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.0.0"
     },
     "tool-stlink": {
       "type": "uploader",

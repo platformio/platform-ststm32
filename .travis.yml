@@ -3,6 +3,9 @@ python:
   - "2.7"
 
 env:
+  - PLATFORMIO_PROJECT_DIR=examples/arduino-blink
+  - PLATFORMIO_PROJECT_DIR=examples/arduino-external-libs
+  - PLATFORMIO_PROJECT_DIR=examples/arduino-internal-libs
   - PLATFORMIO_PROJECT_DIR=examples/cmsis-blink
   - PLATFORMIO_PROJECT_DIR=examples/libopencm3-blink
   - PLATFORMIO_PROJECT_DIR=examples/mbed-blink
