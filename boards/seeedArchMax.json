@@ -1,17 +1,17 @@
 {
   "build": {
-    "cpu": "cortex-m4", 
-    "f_cpu": "168000000L", 
+    "cpu": "cortex-m4",
+    "f_cpu": "168000000L",
     "mcu": "stm32f407vet6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "SeeedStudio Arch Max", 
+  ],
+  "name": "Seeed Arch Max",
   "upload": {
-    "maximum_ram_size": 196608, 
+    "maximum_ram_size": 196608,
     "maximum_size": 524288
-  }, 
-  "url": "https://developer.mbed.org/platforms/Seeed-Arch-Max/", 
+  },
+  "url": "https://developer.mbed.org/platforms/Seeed-Arch-Max/",
   "vendor": "SeeedStudio"
 }

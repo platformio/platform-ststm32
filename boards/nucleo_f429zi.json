@@ -1,0 +1,17 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "f_cpu": "180000000L",
+    "mcu": "stm32f429zit6"
+  },
+  "frameworks": [
+    "mbed"
+  ],
+  "name": "ST Nucleo F429ZI",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 2097152
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F429ZI/",
+  "vendor": "ST"
+}
