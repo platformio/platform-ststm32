@@ -145,6 +145,9 @@ if env.subst("$UPLOAD_PROTOCOL") == "gdb":
 if "arduino" in env.subst("$PIOFRAMEWORK"):
     uploadProtocol = ""
     uploadParams = ""
+    usbRev = 2
+    if env.subst("$UPLOAD_FLAGS") == "1":
+        usbRev = 1
     if "linux" in util.get_systype():
         uploadPlatform = "linux"
     elif "darwin" in util.get_systype():
@@ -157,9 +160,10 @@ if "arduino" in env.subst("$PIOFRAMEWORK"):
     elif env.subst("$UPLOAD_PROTOCOL") == "dfu":
         uploadProtocol = "maple_upload"
         usbids = env.BoardConfig().get("build.hwids")
-        usbid = '2 %s:%s' % (usbids[0][0], usbids[0][1])
+        usbid = '%d %s:%s' % (usbRev, usbids[0][0], usbids[0][1])
         env.Replace(UPLOADERFLAGS=usbid)
         uploadParams = usbid
+    print(uploadParams)
     env.Replace(
         UPLOADER=join(
             env.PioPlatform().get_package_dir(
