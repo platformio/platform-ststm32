@@ -20,7 +20,7 @@ How to build PlatformIO based project
 .. code-block:: bash
 
     # Change directory to example
-    > cd platform-ststm32/examples/spl-blink
+    > cd platform-ststm32/examples/arduino-internal-libs
 
     # Build project
     > platformio run
@@ -29,10 +29,10 @@ How to build PlatformIO based project
     > platformio run --target upload
 
     # Build specific environment
-    > platformio run -e disco_f407vg
+    > platformio run -e maple
 
     # Upload firmware for the specific environment
-    > platformio run -e disco_f407vg --target upload
+    > platformio run -e maple --target upload
 
     # Clean build files
     > platformio run --target clean

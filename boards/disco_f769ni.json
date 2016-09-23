@@ -1,0 +1,18 @@
+{
+  "build": {
+    "cpu": "cortex-m7",
+    "f_cpu": "80000000L",
+    "mcu": "stm32f769nih6"
+  },
+  "frameworks": [
+    "mbed"
+  ],
+  "name": "ST 32F769IDISCOVERY",
+  "upload": {
+    "maximum_ram_size": 524288,
+    "maximum_size": 1048576,
+    "protocol": "2097152"
+  },
+  "url": "http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f769idiscovery.html",
+  "vendor": "ST"
+}

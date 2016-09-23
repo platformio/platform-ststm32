@@ -136,7 +136,7 @@ if env.subst("$UPLOAD_PROTOCOL") == "gdb":
             join("$BUILD_DIR", "firmware.elf"),
             "-batch",
             "-x",
-            '"%s"' % join("$PROJECT_DIR", "upload.gdb")
+            join("$PROJECT_DIR", "upload.gdb")
         ],
 
         UPLOADCMD='$UPLOADER $UPLOADERFLAGS'
@@ -156,16 +156,19 @@ if "arduino" in env.subst("$PIOFRAMEWORK"):
         uploadParams = "{upload.altID} {upload.usbID} $PROJECT_DIR/$SOURCES"
     elif env.subst("$UPLOAD_PROTOCOL") == "dfu":
         uploadProtocol = "maple_upload"
-        usbids = env.BoardConfig().get("build.hwids", "")
+        usbids = env.BoardConfig().get("build.hwids")
         usbid = '2 %s:%s' % (usbids[0][0], usbids[0][1])
         env.Replace(UPLOADERFLAGS=usbid)
         uploadParams = usbid
     env.Replace(
-        UPLOADER=join(env.PioPlatform().get_package_dir("framework-arduinoststm32") or "", "tools", uploadPlatform, uploadProtocol), 
+        UPLOADER=join(
+            env.PioPlatform().get_package_dir(
+                "framework-arduinoststm32") or "",
+            "tools", uploadPlatform, uploadProtocol),
         UPLOADERFLAGS=["$UPLOAD_PORT"],
         UPLOADERPARAMS=uploadParams,
-        UPLOADCMD='$UPLOADER $UPLOADERFLAGS $UPLOADERPARAMS $PROJECT_DIR/$SOURCES'
-    )
+        UPLOADCMD=(
+            '$UPLOADER $UPLOADERFLAGS $UPLOADERPARAMS $PROJECT_DIR/$SOURCES'))
 
 #
 # Target: Build executable and linkable firmware
