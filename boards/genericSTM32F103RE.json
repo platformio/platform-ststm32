@@ -1,28 +1,28 @@
 {
   "build": {
-    "core": "maple", 
-    "cpu": "cortex-m3", 
-    "extra_flags": "-DMCU_STM32F103RE", 
-    "f_cpu": "72000000L", 
+    "core": "maple",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DARDUINO_GENERIC_STM32F103R -DMCU_STM32F103RE",
+    "f_cpu": "72000000L",
     "hwids": [
         ["0x1EAF", "0x0003"],
         ["0x1EAF", "0x0004"]
     ],
-    "ldscript": "stm32f103re.ld", 
-    "mcu": "stm32f103re", 
+    "ldscript": "stm32f103re.ld",
+    "mcu": "stm32f103re",
     "variant": "generic_stm32f103r"
-  }, 
-  "frameworks": ["arduino"], 
-  "name": "STM32F103RE (64k RAM. 512k Flash)", 
+  },
+  "frameworks": ["arduino"],
+  "name": "STM32F103RE (64k RAM. 512k Flash)",
   "upload": {
-    "disable_flushing": false, 
-    "maximum_ram_size": 65536, 
-    "maximum_size": 524288, 
-    "protocol": "maple_serial", 
-    "require_upload_port": true, 
-    "use_1200bps_touch": false, 
+    "disable_flushing": false,
+    "maximum_ram_size": 65536,
+    "maximum_size": 524288,
+    "protocol": "serial",
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
     "wait_for_upload_port": false
-  }, 
-  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103re.html", 
+  },
+  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103re.html",
   "vendor": "Generic"
 }

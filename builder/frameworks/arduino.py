@@ -35,38 +35,30 @@ if board.id == "bluepill_f103c8":
     env['LDSCRIPT_PATH'] = board.get("build.ldscript")
     env.ProcessFlags(board.get("build.extra_flags"))
 
-if "stm32f103" in board.get("build.mcu", ""):
-    FRAMEWORK_DIR = join(platform.get_package_dir(
-        "framework-arduinoststm32"), "STM32F1")
-    env.Append(
-        CPPDEFINES=[
-            "ERROR_LED_PORT=GPIOB",
-            "ERROR_LED_PIN=1",
-            "ARDUINO_ARCH_STM32F1"
-        ]
-    )
-    if "stm32f103r8" or "stm32f103rb" in board.get(
-            "build.mcu", ""):
-        env.Append(CPPDEFINES=[
-            "BOARD_generic_stm32f103r8", "ARDUINO_GENERIC_STM32F103R"])
-    elif "stm32f103rc" or "stm32f103re" in board.get(
-            "build.mcu", ""):
-        env.Append(CPPDEFINES=[
-            "BOARD_generic_stm32f103r", "ARDUINO_GENERIC_STM32F103R"])
-    elif "stm32f103c" in board.get("build.mcu", ""):
-        env.Append(CPPDEFINES=[
-            "BOARD_generic_stm32f103c", "ARDUINO_GENERIC_STM32F103C"])
-    elif "stm32f103rb_maple" in board.get("build.mcu", ""):
-        env.Append(CPPDEFINES=["BOARD_maple", "ARDUINO_MAPLE_REV3"])
 
+FRAMEWORK_DIR = join(platform.get_package_dir(
+    "framework-arduinoststm32"), "STM32F1")
 FRAMEWORK_VERSION = platform.get_package_version("framework-arduinoststm32")
 assert isdir(FRAMEWORK_DIR)
 
-ARDUINO_VERSION = int(FRAMEWORK_VERSION.replace(".", "").strip())
+env.Replace(
+    LIBS=["m", "gcc"]
+)
 
 env.Append(
+    CCFLAGS=[
+        "--param", "max-inline-insns-single=500",
+        "-march=armv7-m"
+    ],
+
     CPPDEFINES=[
-        "ARDUINO=%s" % FRAMEWORK_VERSION.split(".")[1]
+        "ARDUINO=10611",
+        "BOARD_%s" % board.get("build.variant"),
+        "ERROR_LED_PORT=GPIOB",
+        "ERROR_LED_PIN=1",
+        "DEBUG_LEVEL=DEBUG_NONE",
+        "__STM32F1__",
+        "ARDUINO_ARCH_STM32F1"
     ],
 
     CPPPATH=[
@@ -80,10 +72,7 @@ env.Append(
     LIBPATH=[
         join(FRAMEWORK_DIR, "variants",
              board.get("build.variant"), "ld")
-    ],
-
-    # hook for  https://github.com/platformio/platform-ststm32/issues/10
-    LIBS=["c"]
+    ]
 )
 
 for item in ("-nostartfiles", "-nostdlib"):
