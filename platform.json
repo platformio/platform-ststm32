@@ -21,9 +21,9 @@
     {
       "framework-arduinoststm32": [
         {
-          "url": "https://github.com/ubis/Arduino_STM32/archive/v1.0.0.tar.gz",
-          "sha1": "36f26069b70ef6b7ceae2a91e3c23be74cc79337",
-          "version": "1.0.0",
+          "url": "https://github.com/ubis/Arduino_STM32/archive/v1.0.1.tar.gz",
+          "sha1": "6bb70cdd3c94a3eaabea70b9d8f3b07b0801153a",
+          "version": "1.0.1",
           "system": "*"
         }
       ]
@@ -79,7 +79,7 @@
     "framework-arduinoststm32": {
       "type": "framework",
       "optional": true,
-      "version": "~1.0.0"
+      "version": "~1.0.1"
     },
     "tool-stlink": {
       "type": "uploader",
