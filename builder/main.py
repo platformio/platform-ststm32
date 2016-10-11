@@ -147,15 +147,17 @@ if "arduino" in env.subst("$PIOFRAMEWORK"):
         uploadPlatform = "macosx"
     else:
         uploadPlatform = "win"
-    if env.subst("$UPLOAD_PROTOCOL") == "serial":
-        uploadProtocol = "serial_upload"
-        uploadParams = "{upload.altID} {upload.usbID} $PROJECT_DIR/$SOURCES"
-    elif env.subst("$UPLOAD_PROTOCOL") == "dfu":
+
+    if env.subst("$UPLOAD_PROTOCOL") == "dfu":
         uploadProtocol = "maple_upload"
         usbids = env.BoardConfig().get("build.hwids")
         usbid = '2 %s:%s' % (usbids[0][0], usbids[0][1])
         env.Replace(UPLOADERFLAGS=usbid)
         uploadParams = usbid
+    else:
+        uploadProtocol = "serial_upload"
+        uploadParams = "{upload.altID} {upload.usbID} $PROJECT_DIR/$SOURCES"
+
     env.Replace(
         UPLOADER=join(
             env.PioPlatform().get_package_dir(
