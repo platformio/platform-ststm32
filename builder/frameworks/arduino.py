@@ -80,7 +80,10 @@ env.Append(
     LIBPATH=[
         join(FRAMEWORK_DIR, "variants",
              board.get("build.variant"), "ld")
-    ]
+    ],
+
+    # hook for  https://github.com/platformio/platform-ststm32/issues/10
+    LIBS=["c"]
 )
 
 for item in ("-nostartfiles", "-nostdlib"):
