@@ -13,7 +13,7 @@
     "variant": "maple"
   },
   "frameworks": ["arduino"],
-  "name": "Olimexino STM32",
+  "name": "Olimexino STM32 (Maple)",
   "upload": {
     "disable_flushing": false,
     "maximum_ram_size": 17000,
