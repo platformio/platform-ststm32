@@ -19,6 +19,7 @@
     "maximum_ram_size": 17000,
     "maximum_size": 108000,
     "protocol": "dfu",
+    "boot_version": 1,
     "require_upload_port": true,
     "use_1200bps_touch": false,
     "wait_for_upload_port": false

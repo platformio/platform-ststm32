@@ -143,7 +143,8 @@ if "arduino" in env.subst("$PIOFRAMEWORK"):
     if "dfu" in env.subst("$UPLOAD_PROTOCOL"):
         _upload_tool = "maple_upload"
         _usbids = env.BoardConfig().get("build.hwids")
-        _upload_flags = ["2", "%s:%s" % (_usbids[0][0][2:], _usbids[0][1][2:])]
+        _upload_flags = [env.BoardConfig().get("upload.boot_version", 2),
+                         "%s:%s" % (_usbids[0][0][2:], _usbids[0][1][2:])]
 
     env.Replace(
         UPLOADER=_upload_tool,
