@@ -12,12 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from os.path import isfile, join
+from os.path import basename, isfile, join
 
 from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
                           DefaultEnvironment)
 
-from platformio import util
 
 env = DefaultEnvironment()
 
@@ -139,32 +138,19 @@ if env.subst("$UPLOAD_PROTOCOL") == "gdb":
     )
 
 if "arduino" in env.subst("$PIOFRAMEWORK"):
-    uploadProtocol = ""
-    uploadParams = ""
-    if "linux" in util.get_systype():
-        uploadPlatform = "linux"
-    elif "darwin" in util.get_systype():
-        uploadPlatform = "macosx"
-    else:
-        uploadPlatform = "win"
-    if env.subst("$UPLOAD_PROTOCOL") == "serial":
-        uploadProtocol = "serial_upload"
-        uploadParams = "{upload.altID} {upload.usbID} $PROJECT_DIR/$SOURCES"
-    elif env.subst("$UPLOAD_PROTOCOL") == "dfu":
-        uploadProtocol = "maple_upload"
-        usbids = env.BoardConfig().get("build.hwids")
-        usbid = '2 %s:%s' % (usbids[0][0], usbids[0][1])
-        env.Replace(UPLOADERFLAGS=usbid)
-        uploadParams = usbid
+    _upload_tool = "serial_upload"
+    _upload_flags = ["{upload.altID}", "{upload.usbID}"]
+    if "dfu" in env.subst("$UPLOAD_PROTOCOL"):
+        _upload_tool = "maple_upload"
+        _usbids = env.BoardConfig().get("build.hwids")
+        _upload_flags = [env.BoardConfig().get("upload.boot_version", 2),
+                         "%s:%s" % (_usbids[0][0][2:], _usbids[0][1][2:])]
+
     env.Replace(
-        UPLOADER=join(
-            env.PioPlatform().get_package_dir(
-                "framework-arduinoststm32") or "",
-            "tools", uploadPlatform, uploadProtocol),
-        UPLOADERFLAGS=["$UPLOAD_PORT"],
-        UPLOADERPARAMS=uploadParams,
+        UPLOADER=_upload_tool,
+        UPLOADERFLAGS=["$UPLOAD_PORT"] + _upload_flags,
         UPLOADCMD=(
-            '$UPLOADER $UPLOADERFLAGS $UPLOADERPARAMS $PROJECT_DIR/$SOURCES'))
+            '$UPLOADER $UPLOADERFLAGS $PROJECT_DIR/$SOURCES'))
 
 #
 # Target: Build executable and linkable firmware
@@ -200,9 +186,14 @@ if "mbed" in env.subst("$PIOFRAMEWORK") and not env.subst("$UPLOAD_PROTOCOL"):
                            "Looking for upload disk..."),
          env.VerboseAction(env.UploadToDisk, "Uploading $SOURCE")])
 elif "arduino" in env.subst("$PIOFRAMEWORK"):
+
+    def BeforeUpload(target, source, env):
+        env.AutodetectUploadPort()
+        env.Replace(UPLOAD_PORT=basename(env.subst("$UPLOAD_PORT")))
+
     target_upload = env.Alias(
         "upload", target_firm,
-        [env.VerboseAction(env.AutodetectUploadPort,
+        [env.VerboseAction(BeforeUpload,
                            "Looking for upload disk..."),
          env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")])
 else:
