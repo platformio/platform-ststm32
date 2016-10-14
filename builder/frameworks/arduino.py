@@ -41,10 +41,6 @@ FRAMEWORK_DIR = join(platform.get_package_dir(
 FRAMEWORK_VERSION = platform.get_package_version("framework-arduinoststm32")
 assert isdir(FRAMEWORK_DIR)
 
-env.Replace(
-    LIBS=["m", "gcc"]
-)
-
 env.Append(
     CCFLAGS=[
         "--param", "max-inline-insns-single=500",
@@ -72,7 +68,9 @@ env.Append(
     LIBPATH=[
         join(FRAMEWORK_DIR, "variants",
              board.get("build.variant"), "ld")
-    ]
+    ],
+
+    LIBS=["c"]
 )
 
 for item in ("-nostartfiles", "-nostdlib"):
