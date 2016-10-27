@@ -165,7 +165,7 @@ else:
     target_firm = env.ElfToBin(join("$BUILD_DIR", "firmware"), target_elf)
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
-target_buildprog = env.Alias("buildprog", target_firm)
+target_buildprog = env.Alias("buildprog", target_firm, target_firm)
 
 #
 # Target: Print binary size
