@@ -2,7 +2,14 @@
 #include "unity.h"
 
 #ifdef UNIT_TEST
+
+#ifdef STM32F1
 DigitalOut myled(PC_13);
+#endif
+#ifdef STM32F0
+DigitalOut myled(PC_9);
+#endif
+
 
 void test_led_write_high(void)
 {
