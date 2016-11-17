@@ -137,10 +137,11 @@ if env.subst("$UPLOAD_PROTOCOL") == "gdb":
         UPLOADCMD='$UPLOADER $UPLOADERFLAGS'
     )
 
-if "arduino" in env.subst("$PIOFRAMEWORK"):
+elif env.subst("$UPLOAD_PROTOCOL") in ("serial", "dfu") \
+        and "arduino" in env.subst("$PIOFRAMEWORK"):
     _upload_tool = "serial_upload"
     _upload_flags = ["{upload.altID}", "{upload.usbID}"]
-    if "dfu" in env.subst("$UPLOAD_PROTOCOL"):
+    if env.subst("$UPLOAD_PROTOCOL") == "dfu":
         _upload_tool = "maple_upload"
         _usbids = env.BoardConfig().get("build.hwids")
         _upload_flags = [env.BoardConfig().get("upload.boot_version", 2),
@@ -164,7 +165,7 @@ else:
     target_firm = env.ElfToBin(join("$BUILD_DIR", "firmware"), target_elf)
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
-target_buildprog = env.Alias("buildprog", target_firm)
+target_buildprog = env.Alias("buildprog", target_firm, target_firm)
 
 #
 # Target: Print binary size
