@@ -77,19 +77,18 @@ for item in ("-nostartfiles", "-nostdlib"):
     if item in env['LINKFLAGS']:
         env['LINKFLAGS'].remove(item)
 
-ld = board.get("build.ldscript")
 
 if env.subst("$UPLOAD_PROTOCOL") == "dfu":
-    if "stm32f103c" in board.get("build.mcu", ""):
-        ld = "bootloader_20.ld"
-    elif "stm32f103r" in board.get("build.mcu", ""):
-        ld = "bootloader.ld"
-    if "stm32f103rb_maple" in board.get("build.mcu", ""):
+    if board.id in ("maple", "maple_mini_origin"):
         env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8005000", "SERIAL_USB"])
     else:
         env.Append(CPPDEFINES=[
             "VECT_TAB_ADDR=0x8002000", "SERIAL_USB", "GENERIC_BOOTLOADER"])
-        env.Replace(LDSCRIPT_PATH=ld)
+
+        if "stm32f103r" in board.get("build.mcu", ""):
+            env.Replace(LDSCRIPT_PATH="bootloader.ld")
+        elif board.get("upload.boot_version", 0) == 2:
+            env.Replace(LDSCRIPT_PATH="bootloader_20.ld")
 else:
     env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8000000"])
 
