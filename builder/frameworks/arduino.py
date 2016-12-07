@@ -48,11 +48,11 @@ env.Append(
     ],
 
     CPPDEFINES=[
-        "ARDUINO=10611",
+        ("ARDUINO", 10610),
         "BOARD_%s" % board.get("build.variant"),
-        "ERROR_LED_PORT=GPIOB",
-        "ERROR_LED_PIN=1",
-        "DEBUG_LEVEL=DEBUG_NONE",
+        ("ERROR_LED_PORT", "GPIOB"),
+        ("ERROR_LED_PIN", 1),
+        ("DEBUG_LEVEL", "DEBUG_NONE"),
         "__STM32F1__",
         "ARDUINO_ARCH_STM32F1"
     ],
@@ -77,21 +77,20 @@ for item in ("-nostartfiles", "-nostdlib"):
     if item in env['LINKFLAGS']:
         env['LINKFLAGS'].remove(item)
 
-ld = board.get("build.ldscript")
 
 if env.subst("$UPLOAD_PROTOCOL") == "dfu":
-    if "stm32f103c" in board.get("build.mcu", ""):
-        ld = "bootloader_20.ld"
-    elif "stm32f103r" in board.get("build.mcu", ""):
-        ld = "bootloader.ld"
-    if "stm32f103rb_maple" in board.get("build.mcu", ""):
-        env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8005000", "SERIAL_USB"])
+    if board.id in ("maple", "maple_mini_origin"):
+        env.Append(CPPDEFINES=[("VECT_TAB_ADDR", 0x8005000), "SERIAL_USB"])
     else:
         env.Append(CPPDEFINES=[
-            "VECT_TAB_ADDR=0x8002000", "SERIAL_USB", "GENERIC_BOOTLOADER"])
-        env.Replace(LDSCRIPT_PATH=ld)
+            ("VECT_TAB_ADDR", 0x8002000), "SERIAL_USB", "GENERIC_BOOTLOADER"])
+
+        if "stm32f103r" in board.get("build.mcu", ""):
+            env.Replace(LDSCRIPT_PATH="bootloader.ld")
+        elif board.get("upload.boot_version", 0) == 2:
+            env.Replace(LDSCRIPT_PATH="bootloader_20.ld")
 else:
-    env.Append(CPPDEFINES=["VECT_TAB_ADDR=0x8000000"])
+    env.Append(CPPDEFINES=[("VECT_TAB_ADDR", 0x8000000)])
 
 #
 # Lookup for specific core's libraries

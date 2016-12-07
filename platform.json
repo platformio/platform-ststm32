@@ -6,14 +6,13 @@
   "homepage": "http://platformio.org/platforms/ststm32",
   "license": "Apache-2.0",
   "engines": {
-    "platformio": "^3.0.0",
-    "scons": ">=2.3.0,<2.6.0"
+    "platformio": "^3.0.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "1.4.0",
+  "version": "1.5.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
@@ -49,7 +48,7 @@
     "framework-mbed": {
       "type": "framework",
       "optional": true,
-      "version": "~3.127.0"
+      "version": "~3.126.0"
     },
     "framework-cmsis": {
       "type": "framework",
