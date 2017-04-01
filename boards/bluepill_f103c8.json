@@ -33,7 +33,8 @@
           "attach 1",
           "set mem inaccessible-by-default off",
           "file $PROG_PATH",
-          "load $PROG_PATH"
+          "load $PROG_PATH",
+          "b main"
         ]
       }
     }

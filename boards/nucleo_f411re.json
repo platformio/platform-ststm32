@@ -25,7 +25,8 @@
           "monitor init",
           "monitor reset halt",
           "file $PROG_PATH",
-          "load $PROG_PATH"
+          "load $PROG_PATH",
+          "b main"
         ]
       }
     }
