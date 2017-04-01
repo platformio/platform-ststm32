@@ -1,17 +1,41 @@
 {
   "build": {
-    "cpu": "cortex-m4", 
-    "f_cpu": "80000000L", 
+    "cpu": "cortex-m4",
+    "f_cpu": "80000000L",
     "mcu": "stm32l432kcu6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "ST Nucleo L432KC", 
+  ],
+  "name": "ST Nucleo L432KC",
   "upload": {
-    "maximum_ram_size": 65536, 
+    "maximum_ram_size": 65536,
     "maximum_size": 262144
-  }, 
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L432KC/", 
+  },
+  "debug": {
+    "tools": {
+      "stlink": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-s", "share/openocd/scripts",
+            "-f", "interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "target/stm32l4x.cfg",
+            "-c", "reset_config srst_only"
+          ]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "monitor init",
+          "monitor reset halt",
+          "file $PROG_PATH",
+          "load $PROG_PATH"
+        ]
+      }
+    }
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L432KC/",
   "vendor": "ST"
 }

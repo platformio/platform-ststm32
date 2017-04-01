@@ -12,6 +12,24 @@
     "maximum_ram_size": 32768,
     "maximum_size": 262144
   },
+  "debug": {
+    "tools": {
+      "stlink": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_l1.cfg"]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "monitor init",
+          "monitor reset halt",
+          "file $PROG_PATH",
+          "load $PROG_PATH"
+        ]
+      }
+    }
+  },
   "url": "https://developer.mbed.org/platforms/NAMote-72/",
   "vendor": "Semtech"
 }

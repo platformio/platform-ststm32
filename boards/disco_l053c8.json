@@ -1,18 +1,36 @@
 {
   "build": {
-    "cpu": "cortex-m0plus", 
-    "f_cpu": "32000000L", 
+    "cpu": "cortex-m0plus",
+    "f_cpu": "32000000L",
     "mcu": "stm32l053c8t6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "ST 32L0538DISCOVERY", 
+  ],
+  "name": "ST 32L0538DISCOVERY",
   "upload": {
-    "maximum_ram_size": 8192, 
-    "maximum_size": 65536, 
+    "maximum_ram_size": 8192,
+    "maximum_size": 65536,
     "protocol": "stlink"
-  }, 
-  "url": "http://www.st.com/web/en/catalog/tools/PF260319", 
+  },
+  "debug": {
+    "tools": {
+      "stlink": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/stm32l0discovery.cfg"]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "monitor init",
+          "monitor reset halt",
+          "file $PROG_PATH",
+          "load $PROG_PATH"
+        ]
+      }
+    }
+  },
+  "url": "http://www.st.com/web/en/catalog/tools/PF260319",
   "vendor": "ST"
 }

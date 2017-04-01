@@ -12,6 +12,24 @@
     "maximum_ram_size": 262144,
     "maximum_size": 2097152
   },
+  "debug": {
+    "tools": {
+      "stlink": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "monitor init",
+          "monitor reset halt",
+          "file $PROG_PATH",
+          "load $PROG_PATH"
+        ]
+      }
+    }
+  },
   "url": "https://developer.mbed.org/platforms/ublox-EVK-ODIN-W2/",
   "vendor": "u-blox"
 }

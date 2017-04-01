@@ -1,17 +1,41 @@
 {
   "build": {
-    "cpu": "cortex-m0plus", 
-    "f_cpu": "32000000L", 
+    "cpu": "cortex-m0plus",
+    "f_cpu": "32000000L",
     "mcu": "stm32l031k6t6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "ST Nucleo L031K6", 
+  ],
+  "name": "ST Nucleo L031K6",
   "upload": {
-    "maximum_ram_size": 8192, 
+    "maximum_ram_size": 8192,
     "maximum_size": 32768
-  }, 
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L031K6/", 
+  },
+  "debug": {
+    "tools": {
+      "stlink": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-s", "share/openocd/scripts",
+            "-f", "interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "target/stm32l0.cfg",
+            "-c", "reset_config srst_only"
+          ]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "monitor init",
+          "monitor reset halt",
+          "file $PROG_PATH",
+          "load $PROG_PATH"
+        ]
+      }
+    }
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L031K6/",
   "vendor": "ST"
 }

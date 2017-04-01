@@ -1,18 +1,36 @@
 {
   "build": {
-    "cpu": "cortex-m4", 
-    "f_cpu": "180000000L", 
+    "cpu": "cortex-m4",
+    "f_cpu": "180000000L",
     "mcu": "stm32f469nih6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "ST 32F469IDISCOVERY", 
+  ],
+  "name": "ST 32F469IDISCOVERY",
   "upload": {
-    "maximum_ram_size": 393216, 
-    "maximum_size": 1048576, 
+    "maximum_ram_size": 393216,
+    "maximum_size": 1048576,
     "protocol": "stlink"
-  }, 
-  "url": "http://www.st.com/web/catalog/tools/FM116/CL1620/SC959/SS1532/LN1848/PF262395", 
+  },
+  "debug": {
+    "tools": {
+      "stlink": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/stm32f469discovery.cfg"]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "monitor init",
+          "monitor reset halt",
+          "file $PROG_PATH",
+          "load $PROG_PATH"
+        ]
+      }
+    }
+  },
+  "url": "http://www.st.com/web/catalog/tools/FM116/CL1620/SC959/SS1532/LN1848/PF262395",
   "vendor": "ST"
 }

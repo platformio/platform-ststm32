@@ -17,6 +17,27 @@
     "maximum_size": 65536,
     "protocol": "stlink"
   },
+  "debug": {
+    "tools": {
+      "bmp": {
+        "hwids": [
+          [
+            "0x1d50",
+            "0x6018"
+          ]
+        ],
+        "require_debug_port": true,
+        "gdbinit": [
+          "target extended-remote $DEBUG_PORT",
+          "monitor swdp_scan",
+          "attach 1",
+          "set mem inaccessible-by-default off",
+          "file $PROG_PATH",
+          "load $PROG_PATH"
+        ]
+      }
+    }
+  },
   "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103c8.html",
   "vendor": "Generic"
 }
