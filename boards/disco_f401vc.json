@@ -23,10 +23,10 @@
         },
         "gdbinit": [
           "target remote :3333",
-          "monitor init",
-          "monitor reset halt",
           "file $PROG_PATH",
           "load $PROG_PATH",
+          "monitor reset halt",
+          "monitor reset init",
           "b main"
         ]
       }
