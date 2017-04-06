@@ -24,10 +24,9 @@
           "package": "tool-openocd",
           "executable": "bin/openocd",
           "arguments": [
-            "-s", "share/openocd/scripts",
-            "-f", "interface/stlink-v2-1.cfg",
+            "-f", "scripts/interface/stlink-v2-1.cfg",
             "-c", "transport select hla_swd",
-            "-f", "target/stm32f1x.cfg",
+            "-f", "scripts/target/stm32f1x.cfg",
             "-c", "reset_config srst_only"
           ]
         },
