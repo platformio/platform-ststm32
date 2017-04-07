@@ -12,28 +12,17 @@
     "mcu": "stm32f103rc",
     "variant": "generic_stm32f103r"
   },
-  "frameworks": ["arduino"],
-  "name": "STM32F103RC (48k RAM. 256k Flash)",
-  "upload": {
-    "disable_flushing": false,
-    "maximum_ram_size": 49152,
-    "maximum_size": 262144,
-    "protocol": "serial",
-    "require_upload_port": true,
-    "use_1200bps_touch": false,
-    "wait_for_upload_port": false
-  },
   "debug": {
     "tools": {
-      "stlink": {
+      "stlink-v2": {
         "server": {
           "package": "tool-openocd",
           "executable": "bin/openocd",
           "arguments": [
-            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-f", "scripts/interface/stlink-v2.cfg",
             "-c", "transport select hla_swd",
             "-f", "scripts/target/stm32f1x.cfg",
-            "-c", "reset_config srst_only"
+            "-c", "reset_config srst_nogate"
           ]
         },
         "gdbinit": [
@@ -45,7 +34,7 @@
           "b main"
         ]
       },
-      "bmp": {
+      "blackmagic": {
         "hwids": [
           [
             "0x1d50",
@@ -63,7 +52,19 @@
           "b main"
         ]
       }
-    }
+    },
+    "default_tool": "stlink-v2"
+  },
+  "frameworks": ["arduino"],
+  "name": "STM32F103RC (48k RAM. 256k Flash)",
+  "upload": {
+    "disable_flushing": false,
+    "maximum_ram_size": 49152,
+    "maximum_size": 262144,
+    "protocol": "serial",
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
   },
   "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103rc.html",
   "vendor": "Generic"

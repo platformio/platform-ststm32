@@ -20,7 +20,7 @@
   },
   "debug": {
     "tools": {
-      "stlink": {
+      "stlink-v2-1": {
         "server": {
           "package": "tool-openocd",
           "executable": "bin/openocd",
@@ -33,7 +33,8 @@
           "monitor reset halt",
           "monitor reset init",
           "b main"
-        ]
+        ],
+        "onboard": true
       }
     }
   },
