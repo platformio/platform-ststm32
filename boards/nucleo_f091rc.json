@@ -24,9 +24,9 @@
           "target remote :3333",
           "file $PROG_PATH",
           "load $PROG_PATH",
+          "monitor init",
           "monitor reset halt",
-          "monitor reset init",
-          "b main"
+          "tb main"
         ],
         "onboard": true
       }
