@@ -1,0 +1,38 @@
+{
+  "build": {
+    "cpu": "cortex-m0",
+    "f_cpu": "48000000L",
+    "mcu": "stm32f030r8t6"
+  },
+  "frameworks": [
+    "mbed"
+  ],
+  "name": "ST STM32F0308DISCOVERY",
+  "upload": {
+    "maximum_ram_size": 8192,
+    "maximum_size": 65536,
+    "protocol": "stlink"
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/stm32f0discovery.cfg"]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ],
+        "onboard": true
+      }
+    }
+  },
+  "url": "http://www.st.com/en/evaluation-tools/32f0308discovery.html",
+  "vendor": "ST"
+}
