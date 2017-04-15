@@ -38,7 +38,12 @@
         "server": {
           "package": "tool-openocd",
           "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_f103rb.cfg"]
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f1x.cfg",
+            "-c", "reset_config srst_nogate"
+          ]
         },
         "gdbinit": [
           "target remote :3333",
