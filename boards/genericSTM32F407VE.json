@@ -1,0 +1,89 @@
+{
+  "build": {
+    "core": "maple",
+    "cpu": "cortex-m4",
+    "extra_flags": "-v -Wl,-Map,firmware.map -DSTM32F4 -DSTM32_HIGH_DENSITY",
+    "f_cpu": "168000000L",
+    "ldscript": "jtag.ld",
+    "mcu": "stm32f407vet6",
+    "variant": "generic_f407v",
+    "error_led_port": "GPIOA",
+    "error_led_pin": "7"
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f1x.cfg",
+            "-c", "reset_config srst_nogate"
+          ]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ]
+      },
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f1x.cfg",
+            "-c", "reset_config srst_nogate"
+          ]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ]
+      },
+      "blackmagic": {
+        "hwids": [
+          [
+            "0x1d50",
+            "0x6018"
+          ]
+        ],
+        "require_debug_port": true,
+        "gdbinit": [
+          "target extended-remote $DEBUG_PORT",
+          "monitor swdp_scan",
+          "attach 1",
+          "set mem inaccessible-by-default off",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "tb main"
+        ]
+      }
+    },
+    "default_tool": "stlink-v2"
+  },
+  "frameworks": ["arduino"],
+  "name": "Generic STM32F407V",
+  "upload": {
+    "disable_flushing": true,
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "require_upload_port": false,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
+  },
+  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103cb.html",
+  "vendor": "Generic"
+}
