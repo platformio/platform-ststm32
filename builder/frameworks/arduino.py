@@ -47,8 +47,7 @@ assert isdir(FRAMEWORK_DIR)
 #common build options for F1 and F4
 env.Append(
 	CCFLAGS=[
-		"--param", "max-inline-insns-single=500",
-		"-MMD", "-fno-threadsafe-statics"
+		"--param", "max-inline-insns-single=500"
 	],
 	
 	CPPDEFINES=[
