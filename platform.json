@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "1.8.1",
+  "version": "2.0.0-alpha.1",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
@@ -79,6 +79,11 @@
       "type": "uploader",
       "optional": true,
       "version": "~1.0.0"
+    },
+    "tool-openocd": {
+      "type": "debug",
+      "optional": true,
+      "version": "~1.1000.0"
     }
   }
 }

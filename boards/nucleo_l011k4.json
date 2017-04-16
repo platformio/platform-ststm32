@@ -12,6 +12,31 @@
     "maximum_ram_size": 2048,
     "maximum_size": 16384
   },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32l0.cfg",
+            "-c", "reset_config srst_only"
+          ]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ],
+        "onboard": true
+      }
+    }
+  },
   "url": "https://developer.mbed.org/platforms/ST-Nucleo-L011K4/",
   "vendor": "ST"
 }

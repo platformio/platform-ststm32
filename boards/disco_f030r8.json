@@ -1,24 +1,25 @@
 {
   "build": {
-    "cpu": "cortex-m4",
-    "f_cpu": "100000000L",
-    "mcu": "stm32f411ret6"
+    "cpu": "cortex-m0",
+    "f_cpu": "48000000L",
+    "mcu": "stm32f030r8t6"
   },
   "frameworks": [
     "mbed"
   ],
-  "name": "Espotel LoRa Module",
+  "name": "ST STM32F0308DISCOVERY",
   "upload": {
-    "maximum_ram_size": 131072,
-    "maximum_size": 524288
+    "maximum_ram_size": 8192,
+    "maximum_size": 65536,
+    "protocol": "stlink"
   },
   "debug": {
     "tools": {
-      "stlink-v2-1": {
+      "stlink-v2": {
         "server": {
           "package": "tool-openocd",
           "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
+          "arguments": ["-f", "scripts/board/stm32f0discovery.cfg"]
         },
         "gdbinit": [
           "target remote :3333",
@@ -27,10 +28,11 @@
           "monitor init",
           "monitor reset halt",
           "tb main"
-        ]
+        ],
+        "onboard": true
       }
     }
   },
-  "url": "https://developer.mbed.org/platforms/Espotel-ELMO/",
-  "vendor": "Espotel"
+  "url": "http://www.st.com/en/evaluation-tools/32f0308discovery.html",
+  "vendor": "ST"
 }

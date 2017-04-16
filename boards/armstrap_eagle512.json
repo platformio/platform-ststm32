@@ -1,22 +1,42 @@
 {
   "build": {
-    "core": "stm32", 
-    "cpu": "cortex-m4", 
-    "extra_flags": "-DSTM32F40_41xxx", 
-    "f_cpu": "168000000L", 
-    "ldscript": "armstrap_eagle_512.ld", 
-    "mcu": "stm32f407vet6", 
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F40_41xxx",
+    "f_cpu": "168000000L",
+    "ldscript": "armstrap_eagle_512.ld",
+    "mcu": "stm32f407vet6",
     "variant": "stm32f4"
-  }, 
+  },
   "frameworks": [
-    "cmsis", 
+    "cmsis",
     "spl"
-  ], 
-  "name": "Armstrap Eagle 512", 
+  ],
+  "name": "Armstrap Eagle 512",
   "upload": {
-    "maximum_ram_size": 196608, 
+    "maximum_ram_size": 196608,
     "maximum_size": 524288
-  }, 
-  "url": "http://docs.armstrap.org/en/latest/hardware-overview.html", 
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ],
+        "onboard": true
+      }
+    }
+  },
+  "url": "http://docs.armstrap.org/en/latest/hardware-overview.html",
   "vendor": "Armstrap"
 }

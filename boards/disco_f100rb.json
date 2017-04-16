@@ -1,18 +1,43 @@
 {
   "build": {
-    "cpu": "cortex-m3", 
-    "f_cpu": "24000000L", 
+    "cpu": "cortex-m3",
+    "f_cpu": "24000000L",
     "mcu": "stm32f100rbt6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "ST STM32VLDISCOVERY", 
+  ],
+  "name": "ST STM32VLDISCOVERY",
   "upload": {
-    "maximum_ram_size": 8192, 
-    "maximum_size": 131072, 
+    "maximum_ram_size": 8192,
+    "maximum_size": 131072,
     "protocol": "stlink"
-  }, 
-  "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF250863", 
+  },
+  "debug": {
+    "tools": {
+      "stlink-v1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f1x.cfg",
+            "-c", "reset_config srst_only"
+          ]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ],
+        "onboard": true
+      }
+    }
+  },
+  "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF250863",
   "vendor": "ST"
 }

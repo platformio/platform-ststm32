@@ -1,17 +1,37 @@
 {
   "build": {
-    "cpu": "cortex-m0", 
-    "f_cpu": "48000000L", 
+    "cpu": "cortex-m0",
+    "f_cpu": "48000000L",
     "mcu": "stm32f072rbt6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "ST Nucleo F072RB", 
+  ],
+  "name": "ST Nucleo F072RB",
   "upload": {
-    "maximum_ram_size": 16384, 
+    "maximum_ram_size": 16384,
     "maximum_size": 131072
-  }, 
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F072RB/", 
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_f0.cfg"]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ],
+        "onboard": true
+      }
+    }
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F072RB/",
   "vendor": "ST"
 }

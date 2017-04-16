@@ -1,17 +1,37 @@
 {
   "build": {
-    "cpu": "cortex-m4", 
-    "f_cpu": "100000000L", 
+    "cpu": "cortex-m4",
+    "f_cpu": "100000000L",
     "mcu": "stm32f411ret6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "ST Nucleo F411RE", 
+  ],
+  "name": "ST Nucleo F411RE",
   "upload": {
-    "maximum_ram_size": 131072, 
+    "maximum_ram_size": 131072,
     "maximum_size": 524288
-  }, 
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F411RE/", 
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ],
+        "onboard": true
+      }
+    }
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F411RE/",
   "vendor": "ST"
 }

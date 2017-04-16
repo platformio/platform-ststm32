@@ -1,25 +1,45 @@
 {
   "build": {
-    "core": "stm32", 
-    "cpu": "cortex-m4", 
-    "extra_flags": "-DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx", 
-    "f_cpu": "168000000L", 
-    "ldscript": "stm32f405x6.ld", 
-    "mcu": "stm32f407vgt6", 
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx",
+    "f_cpu": "168000000L",
+    "ldscript": "stm32f405x6.ld",
+    "mcu": "stm32f407vgt6",
     "variant": "stm32f407xx"
-  }, 
+  },
   "frameworks": [
-    "mbed", 
-    "cmsis", 
-    "spl", 
+    "mbed",
+    "cmsis",
+    "spl",
     "libopencm3"
-  ], 
-  "name": "ST STM32F4DISCOVERY", 
+  ],
+  "name": "ST STM32F4DISCOVERY",
   "upload": {
-    "maximum_ram_size": 131072, 
-    "maximum_size": 1048576, 
+    "maximum_ram_size": 131072,
+    "maximum_size": 1048576,
     "protocol": "stlink"
-  }, 
-  "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF252419", 
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/stm32f4discovery.cfg"]
+        },
+        "gdbinit": [
+          "target remote :3333",
+          "file $PROG_PATH",
+          "load $PROG_PATH",
+          "monitor init",
+          "monitor reset halt",
+          "tb main"
+        ],
+        "onboard": true
+      }
+    }
+  },
+  "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF252419",
   "vendor": "ST"
 }
