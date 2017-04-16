@@ -39,6 +39,7 @@ env.Replace(
         "-Os",  # optimize for size
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
+		"-Wall",
         "-mthumb",
         "-nostdlib"
     ],
