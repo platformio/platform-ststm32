@@ -25,14 +25,7 @@
             "-c", "reset_config srst_nogate"
           ]
         },
-        "gdbinit": [
-          "target remote :3333",
-          "file $PROG_PATH",
-          "load $PROG_PATH",
-          "monitor init",
-          "monitor reset halt",
-          "tb main"
-        ]
+        "default": true
       },
       "stlink-v2-1": {
         "server": {
@@ -44,15 +37,7 @@
             "-f", "scripts/target/stm32f1x.cfg",
             "-c", "reset_config srst_nogate"
           ]
-        },
-        "gdbinit": [
-          "target remote :3333",
-          "file $PROG_PATH",
-          "load $PROG_PATH",
-          "monitor init",
-          "monitor reset halt",
-          "tb main"
-        ]
+        }
       },
       "blackmagic": {
         "hwids": [
@@ -61,19 +46,9 @@
             "0x6018"
           ]
         ],
-        "require_debug_port": true,
-        "gdbinit": [
-          "target extended-remote $DEBUG_PORT",
-          "monitor swdp_scan",
-          "attach 1",
-          "set mem inaccessible-by-default off",
-          "file $PROG_PATH",
-          "load $PROG_PATH",
-          "tb main"
-        ]
+        "require_debug_port": true
       }
-    },
-    "default_tool": "stlink-v2"
+    }
   },
   "frameworks": ["arduino"],
   "name": "STM32F103CB (20k RAM. 128k Flash)",
