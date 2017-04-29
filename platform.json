@@ -73,7 +73,7 @@
     "tool-stlink": {
       "type": "uploader",
       "optional": true,
-      "version": "~1.10200.0"
+      "version": "~1.10301.0"
     },
     "tool-stm32duino": {
       "type": "uploader",
