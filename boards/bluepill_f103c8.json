@@ -16,8 +16,7 @@
           "arguments": [
             "-f", "scripts/interface/stlink-v2.cfg",
             "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32f1x.cfg",
-            "-c", "reset_config srst_nogate"
+            "-f", "scripts/target/stm32f1x.cfg"
           ]
         },
         "default": true
@@ -29,8 +28,7 @@
           "arguments": [
             "-f", "scripts/interface/stlink-v2-1.cfg",
             "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32f1x.cfg",
-            "-c", "reset_config srst_nogate"
+            "-f", "scripts/target/stm32f1x.cfg"
           ]
         }
       },

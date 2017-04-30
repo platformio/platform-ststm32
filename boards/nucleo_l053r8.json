@@ -21,8 +21,7 @@
           "arguments": [
             "-f", "scripts/interface/stlink-v2-1.cfg",
             "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32l0.cfg",
-            "-c", "reset_config srst_only"
+            "-f", "scripts/target/stm32l0.cfg"
           ]
         },
         "onboard": true
