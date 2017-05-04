@@ -12,6 +12,18 @@
     "maximum_ram_size": 196608,
     "maximum_size": 524288
   },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
+        },
+        "onboard": true
+      }
+    }
+  },
   "url": "https://developer.mbed.org/platforms/Seeed-Arch-Max/",
   "vendor": "SeeedStudio"
 }

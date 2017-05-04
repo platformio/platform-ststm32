@@ -1,24 +1,36 @@
 {
   "build": {
-    "core": "stm32", 
-    "cpu": "cortex-m3", 
-    "extra_flags": "-DSTM32L1 -DSTM32L152xB -DSTM32L1XX_MD", 
-    "f_cpu": "32000000L", 
-    "ldscript": "stm32l15xx6.ld", 
-    "mcu": "stm32l152rbt6", 
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32L1 -DSTM32L152xB -DSTM32L1XX_MD",
+    "f_cpu": "32000000L",
+    "ldscript": "stm32l15xx6.ld",
+    "mcu": "stm32l152rbt6",
     "variant": "stm32l152xb"
-  }, 
+  },
   "frameworks": [
-    "cmsis", 
-    "spl", 
+    "cmsis",
+    "spl",
     "libopencm3"
-  ], 
-  "name": "ST STM32LDISCOVERY", 
+  ],
+  "name": "ST STM32LDISCOVERY",
   "upload": {
-    "maximum_ram_size": 16384, 
-    "maximum_size": 131072, 
+    "maximum_ram_size": 16384,
+    "maximum_size": 131072,
     "protocol": "stlink"
-  }, 
-  "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF258515", 
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_l1.cfg"]
+        },
+        "onboard": true
+      }
+    }
+  },
+  "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF258515",
   "vendor": "ST"
 }

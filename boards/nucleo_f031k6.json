@@ -1,17 +1,29 @@
 {
   "build": {
-    "cpu": "cortex-m0", 
-    "f_cpu": "48000000L", 
+    "cpu": "cortex-m0",
+    "f_cpu": "48000000L",
     "mcu": "stm32f031k6t6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "ST Nucleo F031K6", 
+  ],
+  "name": "ST Nucleo F031K6",
   "upload": {
-    "maximum_ram_size": 4096, 
+    "maximum_ram_size": 4096,
     "maximum_size": 32768
-  }, 
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F031K6/", 
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_f0.cfg"]
+        },
+        "onboard": true
+      }
+    }
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F031K6/",
   "vendor": "ST"
 }

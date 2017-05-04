@@ -1,17 +1,29 @@
 {
   "build": {
-    "cpu": "cortex-m0", 
-    "f_cpu": "48000000L", 
+    "cpu": "cortex-m0",
+    "f_cpu": "48000000L",
     "mcu": "stm32f091rct6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "ST Nucleo F091RC", 
+  ],
+  "name": "ST Nucleo F091RC",
   "upload": {
-    "maximum_ram_size": 32768, 
+    "maximum_ram_size": 32768,
     "maximum_size": 262144
-  }, 
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F091RC/", 
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_f0.cfg"]
+        },
+        "onboard": true
+      }
+    }
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F091RC/",
   "vendor": "ST"
 }

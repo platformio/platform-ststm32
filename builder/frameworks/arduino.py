@@ -24,7 +24,7 @@ http://www.stm32duino.com
 
 from os.path import isdir, join
 
-from SCons.Script import DefaultEnvironment
+from SCons.Script import COMMAND_LINE_TARGETS, DefaultEnvironment
 
 env = DefaultEnvironment()
 platform = env.PioPlatform()
@@ -91,6 +91,13 @@ if env.subst("$UPLOAD_PROTOCOL") == "dfu":
             env.Replace(LDSCRIPT_PATH="bootloader_20.ld")
 else:
     env.Append(CPPDEFINES=[("VECT_TAB_ADDR", 0x8000000)])
+
+
+if "__debug" in COMMAND_LINE_TARGETS:
+    env.Append(CPPDEFINES=[
+        "SERIAL_USB", "GENERIC_BOOTLOADER",
+        ("CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG", "1")
+    ])
 
 #
 # Lookup for specific core's libraries

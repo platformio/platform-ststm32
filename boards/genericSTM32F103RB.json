@@ -12,6 +12,42 @@
     "mcu": "stm32f103rb",
     "variant": "generic_stm32f103r8"
   },
+  "debug": {
+    "tools": {
+      "stlink-v2": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f1x.cfg"
+          ]
+        },
+        "default": true
+      },
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f1x.cfg"
+          ]
+        }
+      },
+      "blackmagic": {
+        "hwids": [
+          [
+            "0x1d50",
+            "0x6018"
+          ]
+        ],
+        "require_debug_port": true
+      }
+    }
+  },
   "frameworks": ["arduino"],
   "name": "STM32F103RB (20k RAM. 128k Flash)",
   "upload": {

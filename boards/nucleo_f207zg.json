@@ -13,6 +13,22 @@
     "maximum_ram_size": 131072,
     "maximum_size": 1048576
   },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f2x.cfg"
+          ]
+        },
+        "onboard": true
+      }
+    }
+  },
   "url": "https://developer.mbed.org/platforms/ST-Nucleo-F207ZG/",
   "vendor": "ST"
 }

@@ -1,17 +1,29 @@
 {
   "build": {
-    "cpu": "cortex-m4", 
-    "f_cpu": "80000000L", 
+    "cpu": "cortex-m4",
+    "f_cpu": "80000000L",
     "mcu": "stm32l476rgt6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "ST Nucleo L476RG", 
+  ],
+  "name": "ST Nucleo L476RG",
   "upload": {
-    "maximum_ram_size": 131072, 
+    "maximum_ram_size": 131072,
     "maximum_size": 1048576
-  }, 
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L476RG/", 
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_l476rg.cfg"]
+        },
+        "onboard": true
+      }
+    }
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L476RG/",
   "vendor": "ST"
 }

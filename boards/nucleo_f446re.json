@@ -1,17 +1,29 @@
 {
   "build": {
-    "cpu": "cortex-m4", 
-    "f_cpu": "180000000L", 
+    "cpu": "cortex-m4",
+    "f_cpu": "180000000L",
     "mcu": "stm32f446ret6"
-  }, 
+  },
   "frameworks": [
     "mbed"
-  ], 
-  "name": "ST Nucleo F446RE", 
+  ],
+  "name": "ST Nucleo F446RE",
   "upload": {
-    "maximum_ram_size": 131072, 
+    "maximum_ram_size": 131072,
     "maximum_size": 524288
-  }, 
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F446RE/", 
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
+        },
+        "onboard": true
+      }
+    }
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F446RE/",
   "vendor": "ST"
 }
