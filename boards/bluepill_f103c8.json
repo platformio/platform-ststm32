@@ -2,6 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
     "ldscript": "stm32f103xb.ld",
     "mcu": "stm32f103c8t6",
@@ -45,7 +46,8 @@
   },
   "frameworks": [
     "arduino",
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "BluePill F103C8",
   "upload": {

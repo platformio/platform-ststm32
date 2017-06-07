@@ -1,11 +1,13 @@
 {
   "build": {
     "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F429xx",
     "f_cpu": "180000000L",
     "mcu": "stm32f429zit6"
   },
   "frameworks": [
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "ST 32F429IDISCOVERY",
   "upload": {

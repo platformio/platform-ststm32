@@ -1,11 +1,13 @@
 {
   "build": {
     "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32L053xx",
     "f_cpu": "32000000L",
     "mcu": "stm32l053c8t6"
   },
   "frameworks": [
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "ST 32L0538DISCOVERY",
   "upload": {

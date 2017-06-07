@@ -11,7 +11,8 @@
   "frameworks": [
     "mbed",
     "cmsis",
-    "spl"
+    "spl",
+    "stm32cube"
   ],
   "name": "ST Nucleo F401RE",
   "upload": {
