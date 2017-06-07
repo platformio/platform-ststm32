@@ -13,6 +13,7 @@ env:
   - PLATFORMIO_PROJECT_DIR=examples/mbed-rtos
   - PLATFORMIO_PROJECT_DIR=examples/mbed-serial
   - PLATFORMIO_PROJECT_DIR=examples/spl-blink
+  - PLATFORMIO_PROJECT_DIR=examples/stm32cube-hal-blink
 
 install:
   - pip install -U https://github.com/platformio/platformio/archive/develop.zip
