@@ -126,6 +126,7 @@ def generate_hal_config_file(mcu):
 
 
 env.Replace(
+    AS="$CC", ASCOM="$ASPPCOM",
     LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu")),
     LINKFLAGS=[
         "-Os",
