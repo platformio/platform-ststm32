@@ -2,11 +2,13 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F207xx",
     "f_cpu": "120000000L",
     "mcu": "stm32f207zgt6"
   },
   "frameworks": [
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "ST Nucleo F207ZG",
   "upload": {

@@ -2,6 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
     "ldscript": "stm32f103xb.ld",
     "mcu": "stm32f103rbt6",
@@ -9,7 +10,8 @@
   },
   "frameworks": [
     "mbed",
-    "libopencm3"
+    "libopencm3",
+    "stm32cube"
   ],
   "name": "ST Nucleo F103RB",
   "upload": {

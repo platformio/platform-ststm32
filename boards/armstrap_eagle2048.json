@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F427_437xx",
+    "extra_flags": "-DSTM32F427_437xx -DSTM32F427xx",
     "f_cpu": "168000000L",
     "ldscript": "armstrap_eagle_2048.ld",
     "mcu": "stm32f427vit6",
@@ -10,7 +10,8 @@
   },
   "frameworks": [
     "cmsis",
-    "spl"
+    "spl",
+    "stm32cube"
   ],
   "name": "Armstrap Eagle 2048",
   "upload": {

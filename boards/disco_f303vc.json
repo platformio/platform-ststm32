@@ -12,7 +12,8 @@
     "mbed",
     "cmsis",
     "spl",
-    "libopencm3"
+    "libopencm3",
+    "stm32cube"
   ],
   "name": "ST STM32F3DISCOVERY",
   "upload": {
