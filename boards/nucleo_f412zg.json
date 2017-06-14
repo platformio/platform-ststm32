@@ -1,0 +1,31 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F412Zx",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f412zgt6"
+  },
+  "frameworks": [
+    "mbed",
+    "stm32cube"
+  ],
+  "name": "ST Nucleo F412ZG",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 1048576
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
+        },
+        "onboard": true
+      }
+    }
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F411RE/",
+  "vendor": "ST"
+}
