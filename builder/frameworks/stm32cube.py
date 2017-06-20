@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-SPL
+STM32Cube HAL
 
 STM32Cube embedded software libraries, including:
 The HAL hardware abstraction layer, enabling portability between different STM32 devices via standardized API calls
