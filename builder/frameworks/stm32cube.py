@@ -128,12 +128,14 @@ def generate_hal_config_file(mcu):
 env.Replace(
     AS="$CC", ASCOM="$ASPPCOM",
     LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu")),
-    CPPDEFINES=["USE_HAL_DRIVER"],
+    CPPDEFINES=["USE_HAL_DRIVER"], 
     LINKFLAGS=[
         "-Os",
         "-Wl,--gc-sections,--relax",
         "-mthumb",
-        "-mcpu=%s" % env.BoardConfig().get("build.cpu")
+        "-mcpu=%s" % env.BoardConfig().get("build.cpu"),
+        "--specs=nano.specs",
+        "--specs=nosys.specs"
     ]
 )
 
