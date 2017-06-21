@@ -128,7 +128,7 @@ def generate_hal_config_file(mcu):
 env.Replace(
     AS="$CC", ASCOM="$ASPPCOM",
     LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu")),
-    CPPFLAGS=["USE_HAL_DRIVER"],
+    CPPDEFINES=["USE_HAL_DRIVER"],
     LINKFLAGS=[
         "-Os",
         "-Wl,--gc-sections,--relax",
