@@ -60,9 +60,9 @@ if not isfile(join(platform.get_dir(), "ldscripts", ldscript)):
             LINKFLAGS=[
                 '-Wl,-T"%s"' %
                 join(
-                    platform.get_package_dir("framework-mbed"), "variant",
-                    env.subst("$BOARD").upper(), "mbed",
-                    "TARGET_%s" % env.subst("$BOARD").upper(),
+                    platform.get_package_dir("framework-mbed"), "targets",
+                    "TARGET_STM", "TARGET_%s" % env.BoardConfig().get("build.variant").upper()[:7],
+                    "TARGET_%s" % env.subst("$BOARD").upper(), "device",
                     "TOOLCHAIN_GCC_ARM", "%s.ld" % ldscript.upper()[:-3]
                 )
             ]

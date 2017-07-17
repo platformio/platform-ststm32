@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F4 -DSTM32F401xE -DSTM32F40_41xxx",
+    "f_cpu": "84000000L",
+    "ldscript": "stm32f401xe.ld",
+    "mcu": "stm32f401ret6",
+    "variant": "stm32f401xe"
+  },
+  "frameworks": [
+    "mbed",
+    "cmsis",
+    "spl",
+    "stm32cube"
+  ],
+  "name": "RushUp Cloud-JAM",
+  "upload": {
+    "maximum_ram_size": 98304,
+    "maximum_size": 524288
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
+        },
+        "onboard": true
+      }
+    }
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F401RE/",
+  "vendor": "RushUp"
+}

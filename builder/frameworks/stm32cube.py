@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-SPL
+STM32Cube HAL
 
 STM32Cube embedded software libraries, including:
 The HAL hardware abstraction layer, enabling portability between different STM32 devices via standardized API calls
@@ -128,11 +128,14 @@ def generate_hal_config_file(mcu):
 env.Replace(
     AS="$CC", ASCOM="$ASPPCOM",
     LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu")),
+    CPPDEFINES=["USE_HAL_DRIVER"], 
     LINKFLAGS=[
         "-Os",
         "-Wl,--gc-sections,--relax",
         "-mthumb",
-        "-mcpu=%s" % env.BoardConfig().get("build.cpu")
+        "-mcpu=%s" % env.BoardConfig().get("build.cpu"),
+        "--specs=nano.specs",
+        "--specs=nosys.specs"
     ]
 )
 

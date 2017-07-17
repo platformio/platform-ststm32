@@ -1,0 +1,34 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F411xE",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f411vet6"
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "ST 32F411EDISCOVERY",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f4x.cfg"
+          ]
+        },
+        "onboard": true
+      }
+    }
+  },
+  "url": "http://www.st.com/en/evaluation-tools/32f411ediscovery.html",
+  "vendor": "ST"
+}
