@@ -87,7 +87,8 @@ if env.subst("$UPLOAD_PROTOCOL") == "dfu":
 
         if "stm32f103r" in board.get("build.mcu", ""):
             env.Replace(LDSCRIPT_PATH="bootloader.ld")
-        elif board.get("upload.boot_version", 0) == 2:
+        elif ("stm32f103c" in board.get("build.mcu", "") or
+                board.get("upload.boot_version", 0) == 2):
             env.Replace(LDSCRIPT_PATH="bootloader_20.ld")
 else:
     env.Append(CPPDEFINES=[("VECT_TAB_ADDR", 0x8000000)])
