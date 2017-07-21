@@ -26,6 +26,8 @@ class Ststm32Platform(PlatformBase):
 
         if board == "mxchip_az3166":
             self.frameworks['arduino'][
+                'package'] = "framework-arduinostm32mxchip"
+            self.frameworks['arduino'][
                 'script'] = "builder/frameworks/arduino/mxchip.py"
 
             self.packages['tool-openocd']['type'] = "uploader"
