@@ -124,6 +124,7 @@ env.Append(
 
     CPPPATH=[
         join(FRAMEWORK_DIR, "system"),
+        join(FRAMEWORK_DIR, "system", "drivers"),
         join(FRAMEWORK_DIR, "system", "cmsis"),
         join(FRAMEWORK_DIR, "system", "hal"),
         join(FRAMEWORK_DIR, "system", "rtos"),
@@ -153,6 +154,10 @@ env.Append(
         join(FRAMEWORK_DIR, "system", "emw10xx-driver", "libraries", "drivers",
              "display", "VGM128064"),
         join(FRAMEWORK_DIR, "system", "features"),
+        join(FRAMEWORK_DIR, "system", "features", "filesystem"),
+        join(FRAMEWORK_DIR, "system", "features", "filesystem", "bd"),
+        join(FRAMEWORK_DIR, "system", "features", "filesystem", "fat"),
+        join(FRAMEWORK_DIR, "system", "features", "filesystem", "fat", "ChaN"),
         join(FRAMEWORK_DIR, "system", "features", "netsocket"),
         join(FRAMEWORK_DIR, "system", "features", "mbedtls"),
         join(FRAMEWORK_DIR, "system", "features", "mbedtls", "inc"),

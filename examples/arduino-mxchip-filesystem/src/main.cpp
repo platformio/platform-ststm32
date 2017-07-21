@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "mbed.h"
 #include "FATFileSystem.h"
 #include "SFlashBlockDevice.h"
