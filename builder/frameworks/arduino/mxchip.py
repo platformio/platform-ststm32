@@ -89,7 +89,7 @@ env.Append(
         ("DEVICE_I2C", 1),
         ("TRANSACTION_QUEUE_SIZE_SPI", 2),
         "__CORTEX_M4",
-        ("HSE_VALUE", "((uint32_t)26000000)"),
+        ("HSE_VALUE", '\"((uint32_t)26000000)\"'),
         "TARGET_FF_MORPHO",
         ("__FPU_PRESENT", 1),
         "TARGET_FF_ARDUINO",
