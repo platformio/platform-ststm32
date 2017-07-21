@@ -18,8 +18,19 @@ from platformio.managers.platform import PlatformBase
 class Ststm32Platform(PlatformBase):
 
     def configure_default_packages(self, variables, targets):
-        if "mbed" in variables.get("pioframework", []):
-            self.packages["toolchain-gccarmnoneeabi"][
+        board = variables.get("board")
+        if "mbed" in variables.get("pioframework",
+                                   []) or board == "mxchip_az3166":
+            self.packages['toolchain-gccarmnoneeabi'][
                 'version'] = ">=1.60301.0"
+
+        if board == "mxchip_az3166":
+            self.frameworks['arduino'][
+                'package'] = "framework-arduinostm32mxchip"
+            self.frameworks['arduino'][
+                'script'] = "builder/frameworks/arduino/mxchip.py"
+
+            self.packages['tool-openocd']['type'] = "uploader"
+
         return PlatformBase.configure_default_packages(self, variables,
                                                        targets)
