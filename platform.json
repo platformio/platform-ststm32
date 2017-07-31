@@ -15,7 +15,6 @@
   "version": "3.2.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
-    "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
     "http://dl.platformio.org/packages/manifest.json"
   ],
   "frameworks": {
