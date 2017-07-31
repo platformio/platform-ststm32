@@ -4,6 +4,12 @@
     "f_cpu": "168000000L",
     "mcu": "stm32f439ziy6"
   },
+  "connectivity": [
+    "bluetooth",
+    "can",
+    "ethernet",
+    "wifi"
+  ],
   "frameworks": [
     "mbed"
   ],

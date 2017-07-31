@@ -5,6 +5,9 @@
     "f_cpu": "168000000L",
     "mcu": "stm32f407vet6"
   },
+  "connectivity": [
+    "ethernet"
+  ],
   "frameworks": [
     "mbed",
     "stm32cube"

@@ -5,6 +5,9 @@
     "f_cpu": "48000000L",
     "mcu": "stm32f072rbt6"
   },
+  "connectivity": [
+    "can"
+  ],
   "frameworks": [
     "mbed",
     "stm32cube"

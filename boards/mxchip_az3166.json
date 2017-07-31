@@ -8,6 +8,10 @@
     "mcu": "stm32f412zgt6",
     "variant": "MXChip_AZ3166"
   },
+  "connectivity": [
+    "can",
+    "wifi"
+  ],
   "frameworks": [
     "arduino"
   ],
