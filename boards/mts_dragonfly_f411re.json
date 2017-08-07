@@ -4,6 +4,9 @@
     "f_cpu": "100000000L",
     "mcu": "stm32f411ret6"
   },
+  "connectivity": [
+    "cellular"
+  ],
   "frameworks": [
     "mbed"
   ],

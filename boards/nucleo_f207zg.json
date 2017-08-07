@@ -6,6 +6,10 @@
     "f_cpu": "120000000L",
     "mcu": "stm32f207zgt6"
   },
+  "connectivity": [
+    "can",
+    "ethernet"
+  ],
   "frameworks": [
     "mbed",
     "stm32cube"
