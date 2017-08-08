@@ -12,10 +12,9 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "2.0.0-alpha.1",
+  "version": "3.3.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
-    "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
     "http://dl.platformio.org/packages/manifest.json"
   ],
   "frameworks": {
@@ -37,7 +36,11 @@
     },
     "arduino": {
       "package": "framework-arduinoststm32",
-      "script": "builder/frameworks/arduino.py"
+      "script": "builder/frameworks/arduino/stm32duino.py"
+    },
+    "stm32cube": {
+      "package": "framework-stm32cube",
+      "script": "builder/frameworks/stm32cube.py"
     }
   },
   "packages": {
@@ -48,7 +51,7 @@
     "framework-mbed": {
       "type": "framework",
       "optional": true,
-      "version": "~3.137.0"
+      "version": "~4.146.0"
     },
     "framework-cmsis": {
       "type": "framework",
@@ -70,10 +73,20 @@
       "optional": true,
       "version": "~2.0.0"
     },
+    "framework-arduinostm32mxchip": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.0.0"
+    },
+    "framework-stm32cube": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.0.0"
+    },
     "tool-stlink": {
       "type": "uploader",
       "optional": true,
-      "version": "~1.10200.0"
+      "version": "~1.10301.0"
     },
     "tool-stm32duino": {
       "type": "uploader",
@@ -81,7 +94,7 @@
       "version": "~1.0.0"
     },
     "tool-openocd": {
-      "type": "debug",
+      "type": "debugger",
       "optional": true,
       "version": "~1.1000.0"
     }

@@ -1,6 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32L011xx",
     "f_cpu": "32000000L",
     "mcu": "stm32l011k4t6"
   },
@@ -21,18 +22,9 @@
           "arguments": [
             "-f", "scripts/interface/stlink-v2-1.cfg",
             "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32l0.cfg",
-            "-c", "reset_config srst_only"
+            "-f", "scripts/target/stm32l0.cfg"
           ]
         },
-        "gdbinit": [
-          "target remote :3333",
-          "file $PROG_PATH",
-          "load $PROG_PATH",
-          "monitor init",
-          "monitor reset halt",
-          "tb main"
-        ],
         "onboard": true
       }
     }

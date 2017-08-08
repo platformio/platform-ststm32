@@ -4,6 +4,12 @@
     "f_cpu": "168000000L",
     "mcu": "stm32f439ziy6"
   },
+  "connectivity": [
+    "bluetooth",
+    "can",
+    "ethernet",
+    "wifi"
+  ],
   "frameworks": [
     "mbed"
   ],
@@ -19,15 +25,7 @@
           "package": "tool-openocd",
           "executable": "bin/openocd",
           "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
-        },
-        "gdbinit": [
-          "target remote :3333",
-          "file $PROG_PATH",
-          "load $PROG_PATH",
-          "monitor init",
-          "monitor reset halt",
-          "tb main"
-        ]
+        }
       }
     }
   },

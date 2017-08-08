@@ -2,13 +2,27 @@ build: off
 environment:
 
   matrix:
+    - PLATFORMIO_PROJECT_DIR: "examples/arduino-blink"
+    - PLATFORMIO_PROJECT_DIR: "examples/arduino-external-libs"
+    - PLATFORMIO_PROJECT_DIR: "examples/arduino-internal-libs"
+    - PLATFORMIO_PROJECT_DIR: "examples/arduino-mxchip-azureiot"
+    - PLATFORMIO_PROJECT_DIR: "examples/arduino-mxchip-filesystem"
+    - PLATFORMIO_PROJECT_DIR: "examples/arduino-mxchip-sensors"
+    - PLATFORMIO_PROJECT_DIR: "examples/arduino-mxchip-wifiscan"
     - PLATFORMIO_PROJECT_DIR: "examples/cmsis-blink"
     - PLATFORMIO_PROJECT_DIR: "examples/libopencm3-blink"
     - PLATFORMIO_PROJECT_DIR: "examples/mbed-blink"
     - PLATFORMIO_PROJECT_DIR: "examples/mbed-dsp"
+    - PLATFORMIO_PROJECT_DIR: "examples/mbed-events"
+    - PLATFORMIO_PROJECT_DIR: "examples/mbed-filesystem"
     - PLATFORMIO_PROJECT_DIR: "examples/mbed-rtos"
+    - PLATFORMIO_PROJECT_DIR: "examples/mbed-rtos-ethernet"
+    - PLATFORMIO_PROJECT_DIR: "examples/mbed-rtos-ethernet-tls"
+    - PLATFORMIO_PROJECT_DIR: "examples/mbed-rtos-semaphore"
     - PLATFORMIO_PROJECT_DIR: "examples/mbed-serial"
     - PLATFORMIO_PROJECT_DIR: "examples/spl-blink"
+    - PLATFORMIO_PROJECT_DIR: "examples/stm32cube-hal-blink"
+    - PLATFORMIO_PROJECT_DIR: "examples/stm32cube-ll-blink"
 
 install:
   - cmd: git submodule update --init --recursive

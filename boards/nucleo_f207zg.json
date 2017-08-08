@@ -2,11 +2,17 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F207xx",
     "f_cpu": "120000000L",
     "mcu": "stm32f207zgt6"
   },
+  "connectivity": [
+    "can",
+    "ethernet"
+  ],
   "frameworks": [
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "ST Nucleo F207ZG",
   "upload": {
@@ -22,18 +28,9 @@
           "arguments": [
             "-f", "scripts/interface/stlink-v2-1.cfg",
             "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32f2x.cfg",
-            "-c", "reset_config srst_only"
+            "-f", "scripts/target/stm32f2x.cfg"
           ]
         },
-        "gdbinit": [
-          "target remote :3333",
-          "file $PROG_PATH",
-          "load $PROG_PATH",
-          "monitor init",
-          "monitor reset halt",
-          "tb main"
-        ],
         "onboard": true
       }
     }

@@ -12,7 +12,8 @@
     "mbed",
     "cmsis",
     "spl",
-    "libopencm3"
+    "libopencm3",
+    "stm32cube"
   ],
   "name": "ST STM32F3DISCOVERY",
   "upload": {
@@ -28,14 +29,6 @@
           "executable": "bin/openocd",
           "arguments": ["-f", "scripts/board/stm32f3discovery.cfg"]
         },
-        "gdbinit": [
-          "target remote :3333",
-          "file $PROG_PATH",
-          "load $PROG_PATH",
-          "monitor init",
-          "monitor reset halt",
-          "tb main"
-        ],
         "onboard": true
       }
     }

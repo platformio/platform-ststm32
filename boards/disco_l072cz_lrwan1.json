@@ -1,0 +1,36 @@
+{
+  "build": {
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32L072xx",
+    "f_cpu": "32000000L",
+    "mcu": "stm32l072cz"
+  },
+  "frameworks": [
+    "mbed",
+    "stm32cube"
+  ],
+  "name": "ST DISCO-L072CZ-LRWAN1",
+  "upload": {
+    "maximum_ram_size": 20480,
+    "maximum_size": 196608,
+    "protocol": "stlink"
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32l0.cfg"
+          ]
+        },
+        "onboard": true
+      }
+    }
+  },
+  "url": "https://developer.mbed.org/platforms/ST-Discovery-LRWAN1/",
+  "vendor": "ST"
+}

@@ -1,11 +1,16 @@
 {
   "build": {
     "cpu": "cortex-m0",
+    "extra_flags": "-DSTM32F042x6",
     "f_cpu": "48000000L",
     "mcu": "stm32f042k6t6"
   },
+  "connectivity": [
+    "can"
+  ],
   "frameworks": [
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "ST Nucleo F042K6",
   "upload": {
@@ -20,14 +25,6 @@
           "executable": "bin/openocd",
           "arguments": ["-f", "scripts/board/st_nucleo_f0.cfg"]
         },
-        "gdbinit": [
-          "target remote :3333",
-          "file $PROG_PATH",
-          "load $PROG_PATH",
-          "monitor init",
-          "monitor reset halt",
-          "tb main"
-        ],
         "onboard": true
       }
     }

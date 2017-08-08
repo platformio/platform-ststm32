@@ -68,7 +68,7 @@ env.Replace(
     UPLOADERFLAGS=[
         "write",        # write in flash
         "$SOURCES",     # firmware path to flash
-        "0x08000000"    # flash start adress
+        "0x08000000"    # flash start address
     ],
     UPLOADCMD='$UPLOADER $UPLOADERFLAGS',
 
@@ -188,7 +188,8 @@ if "mbed" in env.subst("$PIOFRAMEWORK") and not env.subst("$UPLOAD_PROTOCOL"):
         [env.VerboseAction(env.AutodetectUploadPort,
                            "Looking for upload disk..."),
          env.VerboseAction(env.UploadToDisk, "Uploading $SOURCE")])
-elif "arduino" in env.subst("$PIOFRAMEWORK"):
+elif "arduino" in env.subst("$PIOFRAMEWORK") and \
+        env.subst("$UPLOAD_PROTOCOL") != "stlink":
 
     def BeforeUpload(target, source, env):
         env.AutodetectUploadPort()

@@ -1,0 +1,40 @@
+{
+  "build": {
+    "core": "arduino",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F412Zx -DARDUINO_MXCHIP_AZ3166 -DARDUINO_ARCH_STM32F4",
+    "f_cpu": "100000000L",
+    "ldscript": "AZ3166.ld ",
+    "mcu": "stm32f412zgt6",
+    "variant": "MXChip_AZ3166"
+  },
+  "connectivity": [
+    "can",
+    "wifi"
+  ],
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Microsoft Azure IoT Development Kit (MXChip AZ3166)",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 1048576
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-f", "scripts/target/stm32f4x.cfg"
+          ]
+        },
+        "onboard": true
+      }
+    }
+  },
+  "url": "https://microsoft.github.io/azure-iot-developer-kit/",
+  "vendor": "MXChip"
+}
