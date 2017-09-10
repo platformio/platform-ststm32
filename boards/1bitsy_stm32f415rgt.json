@@ -1,0 +1,39 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F4 -DSTM32F415xx -DSTM32F40_41xxx",
+    "f_cpu": "168000000L",
+    "ldscript": "stm32f405x6.ld",
+    "mcu": "stm32f415rgt",
+    "variant": "stm32f415xx"
+  },
+  "frameworks": [
+    "mbed",
+    "cmsis",
+    "spl",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "1Bitsy",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 1048576,
+    "protocol": "gdb"
+  },
+  "debug": {
+    "tools": {
+      "blackmagic": {
+        "hwids": [
+          [
+            "0x1d50",
+            "0x6018"
+          ]
+        ],
+        "require_debug_port": true
+      }
+    }
+  },
+  "url": "http://1bitsy.org",
+  "vendor": "1BitSquared"
+}
