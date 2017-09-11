@@ -9,7 +9,6 @@
     "variant": "stm32f415xx"
   },
   "frameworks": [
-    "mbed",
     "cmsis",
     "spl",
     "libopencm3",
