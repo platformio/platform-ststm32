@@ -30,7 +30,7 @@ env.Replace(
     RANLIB="arm-none-eabi-ranlib",
     SIZETOOL="arm-none-eabi-size",
 
-    ARFLAGS=["rcs"],
+    ARFLAGS=["rc"],
 
     ASFLAGS=["-x", "assembler-with-cpp"],
 
