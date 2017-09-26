@@ -34,7 +34,15 @@ if board.id == "bluepill_f103c8":
     board = env.BoardConfig("genericSTM32F103C8")
     env['LDSCRIPT_PATH'] = board.get("build.ldscript")
     env.ProcessFlags(board.get("build.extra_flags"))
-
+else:
+    # Several STM boards require completely different board configuration to
+    # run correctly under stm32duino. These are in the `arduino` subfolder
+    try:
+        board = env.BoardConfig(join("arduino", board.id))
+        env['LDSCRIPT_PATH'] = board.get("build.ldscript")
+        env.ProcessFlags(board.get("build.extra_flags"))
+    except:
+        pass
 
 FRAMEWORK_DIR = join(platform.get_package_dir(
     "framework-arduinoststm32"), "STM32F1")
