@@ -9,7 +9,6 @@
     "variant": "stm32f1"
   },
   "frameworks": [
-    "arduino",
     "mbed",
     "libopencm3",
     "stm32cube"
