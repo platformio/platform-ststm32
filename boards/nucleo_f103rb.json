@@ -2,7 +2,7 @@
   "build": {
     "core": "maple",
     "cpu": "cortex-m3",
-    "extra_flags": "-DARDUINO_STM_NUCLEO_F103RB -DNUCLEO_HSE_CRYSTAL -DMCU_STM32F103RB",
+    "extra_flags": "-DARDUINO_STM_NUCLEO_F103RB -DNUCLEO_HSE_CRYSTAL -DMCU_STM32F103RB -DSTM32F103xB",
     "f_cpu": "72000000L",
     "ldscript": "jtag.ld",
     "mcu": "stm32f103rbt6",
