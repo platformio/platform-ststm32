@@ -39,7 +39,7 @@ env.Replace(
         "-Os",  # optimize for size
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
-        "-Wall",
+		"-Wall",
         "-mthumb",
         "-nostdlib"
     ],
@@ -56,6 +56,7 @@ env.Replace(
     LINKFLAGS=[
         "-Os",
         "-Wl,--gc-sections,--relax",
+        "-Wl,-Map,output.map",
         "-mthumb",
         "-nostartfiles",
         "-nostdlib"
