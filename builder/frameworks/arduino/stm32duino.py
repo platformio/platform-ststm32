@@ -91,8 +91,10 @@ if env.subst("$UPLOAD_PROTOCOL") == "dfu":
                 board.get("upload.boot_version", 0) == 2):
             env.Replace(LDSCRIPT_PATH="bootloader_20.ld")
 else:
-    env.Append(CPPDEFINES=[("VECT_TAB_ADDR", 0x8000000)])
-
+  if board.get("build.vec_tab_addr", "") :
+      env.Append(CPPDEFINES=[("VECT_TAB_ADDR", int(board.get("build.vec_tab_addr"), 16))])
+  else:
+      env.Append(CPPDEFINES=[("VECT_TAB_ADDR", 0x8000000)])
 
 if "__debug" in COMMAND_LINE_TARGETS:
     env.Append(CPPDEFINES=[
