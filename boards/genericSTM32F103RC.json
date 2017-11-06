@@ -36,15 +36,6 @@
             "-f", "scripts/target/stm32f1x.cfg"
           ]
         }
-      },
-      "blackmagic": {
-        "hwids": [
-          [
-            "0x1d50",
-            "0x6018"
-          ]
-        ],
-        "require_debug_port": true
       }
     }
   },
