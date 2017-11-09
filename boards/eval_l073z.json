@@ -6,7 +6,6 @@
     "mcu": "stm32l073vzt6"
   },
   "frameworks": [
-    "mbed",
     "stm32cube"
   ],
   "name": "ST STM32L073Z-EVAL",
@@ -21,9 +20,47 @@
         "server": {
           "package": "tool-openocd",
           "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/stm32l0discovery.cfg"]
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32l0.cfg"
+          ]
         },
         "onboard": true
+      },
+      "jlink": {
+        "server": [
+          {
+            "arguments": [
+              "-singlerun",
+              "-if", "SWD",
+              "-select", "USB",
+              "-device", "STM32L073VZ",
+              "-port", "2331"
+            ],
+            "executable": "JLinkGDBServerCL.exe",
+            "system": [
+              "windows",
+              "windows_amd64",
+              "windows_x86"
+            ]
+          },
+          {
+            "arguments": [
+              "-singlerun",
+              "-if", "SWD",
+              "-select", "USB",
+              "-device", "STM32L073VZ",
+              "-port", "2331"
+            ],
+            "executable": "JLinkGDBServer",
+            "system": [
+              "darwin_x86_64",
+              "linux_i686",
+              "linux_x86_64"
+            ]
+          }
+        ]
       }
     }
   },

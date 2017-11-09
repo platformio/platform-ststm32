@@ -27,40 +27,6 @@
           ]
         },
         "onboard": true
-      },
-      "jlink": {
-        "server": [
-          {
-            "arguments": [
-              "-singlerun",
-              "-if", "SWD",
-              "-select", "USB",
-              "-device", "STM32L073VZ",
-              "-port", "2331"
-            ],
-            "executable": "JLinkGDBServerCL.exe",
-            "system": [
-              "windows",
-              "windows_amd64",
-              "windows_x86"
-            ]
-          },
-          {
-            "arguments": [
-              "-singlerun",
-              "-if", "SWD",
-              "-select", "USB",
-              "-device", "STM32L073VZ",
-              "-port", "2331"
-            ],
-            "executable": "JLinkGDBServer",
-            "system": [
-              "darwin_x86_64",
-              "linux_i686",
-              "linux_x86_64"
-            ]
-          }
-        ]
       }
     }
   },
