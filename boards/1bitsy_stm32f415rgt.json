@@ -18,7 +18,7 @@
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,
-    "protocol": "gdb"
+    "protocol": "blackmagic"
   },
   "debug": {
     "tools": {
@@ -29,7 +29,8 @@
             "0x6018"
           ]
         ],
-        "require_debug_port": true
+        "require_debug_port": true,
+        "default": true
       }
     }
   },

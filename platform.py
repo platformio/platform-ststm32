@@ -40,9 +40,10 @@ class Ststm32Platform(PlatformBase):
         debug = config.manifest.get("debug", {})
         if "tools" not in debug:
             debug['tools'] = {}
-        debug['tools']['blackmagic'] = {
-            "hwids": [["0x1d50", "0x6018"]],
-            "require_debug_port": True
-        }
+        if "blackmagic" not in debug['tools']:
+            debug['tools']['blackmagic'] = {
+                "hwids": [["0x1d50", "0x6018"]],
+                "require_debug_port": True
+            }
         config.manifest['debug'] = debug
         return config
