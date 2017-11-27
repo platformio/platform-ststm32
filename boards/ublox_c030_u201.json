@@ -1,0 +1,32 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "f_cpu": "180000000L",
+    "mcu": "stm32f437vg"
+  },
+  "connectivity": [
+    "gps",
+    "cellular"
+  ],
+  "frameworks": [
+    "mbed"
+  ],
+  "name": "u-blox C030-U201 IoT Starter Kit",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 1048576
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
+        }
+      }
+    }
+  },
+  "url": "https://os.mbed.com/platforms/ublox-C030-N211/",
+  "vendor": "u-blox"
+}
