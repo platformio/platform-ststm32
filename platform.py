@@ -34,3 +34,26 @@ class Ststm32Platform(PlatformBase):
 
         return PlatformBase.configure_default_packages(self, variables,
                                                        targets)
+
+    def get_boards(self, id_=None):
+        result = PlatformBase.get_boards(self, id_)
+        if not result:
+            return result
+        if id_:
+            return self._add_default_debug_tools(result)
+        else:
+            for key, value in result.items():
+                result[key] = self._add_default_debug_tools(result[key])
+        return result
+
+    def _add_default_debug_tools(self, board):
+        debug = board.manifest.get("debug", {})
+        if "tools" not in debug:
+            debug['tools'] = {}
+        if "blackmagic" not in debug['tools']:
+            debug['tools']['blackmagic'] = {
+                "hwids": [["0x1d50", "0x6018"]],
+                "require_debug_port": True
+            }
+        board.manifest['debug'] = debug
+        return board

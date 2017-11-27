@@ -1,0 +1,69 @@
+{
+  "build": {
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32L073xx",
+    "f_cpu": "32000000L",
+    "mcu": "stm32l073vzt6"
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "ST STM32L073Z-EVAL",
+  "upload": {
+    "maximum_ram_size": 20480,
+    "maximum_size": 196608,
+    "protocol": "stlink"
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32l0.cfg"
+          ]
+        },
+        "onboard": true
+      },
+      "jlink": {
+        "server": [
+          {
+            "arguments": [
+              "-singlerun",
+              "-if", "SWD",
+              "-select", "USB",
+              "-device", "STM32L073VZ",
+              "-port", "2331"
+            ],
+            "executable": "JLinkGDBServerCL.exe",
+            "system": [
+              "windows",
+              "windows_amd64",
+              "windows_x86"
+            ]
+          },
+          {
+            "arguments": [
+              "-singlerun",
+              "-if", "SWD",
+              "-select", "USB",
+              "-device", "STM32L073VZ",
+              "-port", "2331"
+            ],
+            "executable": "JLinkGDBServer",
+            "system": [
+              "darwin_x86_64",
+              "linux_i686",
+              "linux_x86_64"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "url": "http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-eval-boards/stm32l073z-eval.html",
+  "vendor": "ST"
+}
