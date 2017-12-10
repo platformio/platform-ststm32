@@ -5,7 +5,8 @@
     "mcu": "stm32f411ret6"
   },
   "frameworks": [
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "MultiTech mDot",
   "upload": {

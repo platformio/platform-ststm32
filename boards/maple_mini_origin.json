@@ -12,7 +12,10 @@
     "mcu": "stm32f103cb",
     "variant": "maple_mini"
   },
-  "frameworks": ["arduino"],
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
   "name": "Maple Mini Original",
   "upload": {
     "maximum_ram_size": 17408,

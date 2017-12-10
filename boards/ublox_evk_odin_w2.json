@@ -11,7 +11,8 @@
     "wifi"
   ],
   "frameworks": [
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "u-blox EVK-ODIN-W2",
   "upload": {

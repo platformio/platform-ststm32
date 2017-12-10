@@ -10,7 +10,8 @@
     "cellular"
   ],
   "frameworks": [
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "u-blox C030-N211 IoT Starter Kit",
   "upload": {
