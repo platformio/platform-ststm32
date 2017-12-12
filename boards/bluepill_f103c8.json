@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F103xB",
+    "extra_flags": "-DSTM32F1 -DSTM32F103xB",
     "f_cpu": "72000000L",
     "hwids": [
         ["0x1EAF", "0x0003"],
@@ -10,7 +10,7 @@
     ],
     "ldscript": "stm32f103xb.ld",
     "mcu": "stm32f103c8t6",
-    "variant": "stm32f1"
+    "variant": "stm32f103xb"
   },
   "debug": {
     "tools": {
@@ -42,7 +42,8 @@
   "frameworks": [
     "arduino",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "cmsis"
   ],
   "name": "BluePill F103C8",
   "upload": {
