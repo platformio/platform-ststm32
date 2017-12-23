@@ -39,7 +39,10 @@
       }
     }
   },
-  "frameworks": ["arduino"],
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
   "name": "STM32F103R8 (20k RAM. 64 Flash)",
   "upload": {
     "disable_flushing": false,

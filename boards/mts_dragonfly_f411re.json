@@ -8,7 +8,8 @@
     "cellular"
   ],
   "frameworks": [
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "MTS Dragonfly",
   "upload": {

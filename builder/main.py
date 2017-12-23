@@ -168,7 +168,7 @@ elif upload_protocol in ("serial", "dfu") \
     env.Replace(
         UPLOADER=_upload_tool,
         UPLOADERFLAGS=["$UPLOAD_PORT"] + _upload_flags,
-        UPLOADCMD="'$UPLOADER' $UPLOADERFLAGS $PROJECT_DIR/$SOURCES")
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $PROJECT_DIR/$SOURCES")
 
 #
 # Target: Build executable and linkable firmware

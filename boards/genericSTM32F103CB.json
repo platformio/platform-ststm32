@@ -39,7 +39,10 @@
       }
     }
   },
-  "frameworks": ["arduino"],
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
   "name": "STM32F103CB (20k RAM. 128k Flash)",
   "upload": {
     "disable_flushing": false,

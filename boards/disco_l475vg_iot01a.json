@@ -11,7 +11,8 @@
     "wifi"
   ],
   "frameworks": [
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "ST DISCO-L475VG-IOT01A",
   "upload": {

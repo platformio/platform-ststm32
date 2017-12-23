@@ -98,7 +98,7 @@ def get_linker_script(mcu):
     with open(template_file) as fp:
         data = Template(fp.read())
         content = data.substitute(
-            stack="0x200" + str(hex(ram))[2:],
+            stack=hex(0x20000000 + ram), # 0x20000000 - start address for RAM 
             ram=str(int(ram/1024)) + "K",
             flash=str(int(flash/1024)) + "K"
         )

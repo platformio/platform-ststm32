@@ -12,7 +12,10 @@
     "mcu": "stm32f103cb",
     "variant": "maple_mini"
   },
-  "frameworks": ["arduino"],
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
   "name": "Maple Mini Bootloader 2.0",
   "upload": {
     "maximum_ram_size": 20480,

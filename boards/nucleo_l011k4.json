@@ -6,7 +6,8 @@
     "mcu": "stm32l011k4t6"
   },
   "frameworks": [
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
   "name": "ST Nucleo L011K4",
   "upload": {

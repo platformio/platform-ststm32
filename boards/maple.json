@@ -12,7 +12,10 @@
     "mcu": "stm32f103rb",
     "variant": "maple"
   },
-  "frameworks": ["arduino"],
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
   "name": "Maple",
   "upload": {
     "maximum_ram_size": 17408,
