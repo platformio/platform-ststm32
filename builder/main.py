@@ -74,7 +74,6 @@ env.Replace(
 
     SIZEPRINTCMD='$SIZETOOL -B -d $SOURCES',
 
-    PROGNAME="firmware",
     PROGSUFFIX=".elf"
 )
 
@@ -132,7 +131,7 @@ elif upload_protocol == "gdb":
     env.Replace(
         UPLOADER="$GDB",
         UPLOADERFLAGS=[
-            join("$BUILD_DIR", "firmware.elf"), "-batch", "-x",
+            join("$BUILD_DIR", "${PROGNAME}.elf"), "-batch", "-x",
             join("$PROJECT_DIR", "upload.gdb")
         ],
         UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
@@ -150,7 +149,7 @@ elif upload_protocol.startswith("blackmagic"):
             "-ex", "load",
             "-ex", "compare-sections",
             "-ex", "kill",
-            join("$BUILD_DIR", "firmware.elf"),
+            join("$BUILD_DIR", "${PROGNAME}.elf"),
         ],
         UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
 
@@ -176,10 +175,10 @@ elif upload_protocol in ("serial", "dfu") \
 
 target_elf = None
 if "nobuild" in COMMAND_LINE_TARGETS:
-    target_firm = join("$BUILD_DIR", "firmware.bin")
+    target_firm = join("$BUILD_DIR", "${PROGNAME}.bin")
 else:
     target_elf = env.BuildProgram()
-    target_firm = env.ElfToBin(join("$BUILD_DIR", "firmware"), target_elf)
+    target_firm = env.ElfToBin(target_elf)
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
 target_buildprog = env.Alias("buildprog", target_firm, target_firm)
