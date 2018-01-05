@@ -77,6 +77,10 @@ env.Replace(
     PROGSUFFIX=".elf"
 )
 
+# Allow user to override via pre:script
+if env.get("PROGNAME", "program") == "program":
+    env.Replace(PROGNAME="firmware")
+
 if "BOARD" in env:
     env.Append(
         CCFLAGS=[
