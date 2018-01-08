@@ -66,6 +66,7 @@ env.Replace(
 
     UPLOADER="st-flash",
     UPLOADERFLAGS=[
+        "--reset",
         "write",        # write in flash
         "$SOURCES",     # firmware path to flash
         "0x08000000"    # flash start address
