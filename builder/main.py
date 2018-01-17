@@ -209,7 +209,7 @@ if any([
 ]):
     upload_actions.insert(0,
                           env.VerboseAction(env.AutodetectUploadPort,
-                                            "Looking for upload disk..."))
+                                            "Looking for upload port/disk..."))
 
 elif "arduino" in env.subst("$PIOFRAMEWORK") and upload_protocol != "stlink":
 
