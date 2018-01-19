@@ -41,6 +41,7 @@
   },
   "frameworks": [
     "arduino",
+    "mbed",
     "libopencm3",
     "stm32cube"
   ],
