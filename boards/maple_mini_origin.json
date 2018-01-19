@@ -1,15 +1,15 @@
 {
   "build": {
-    "core": "maple",
+    "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DARDUINO_MAPLE_MINI -DMCU_STM32F103CB",
+    "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
     "hwids": [
         ["0x1EAF", "0x0003"],
         ["0x1EAF", "0x0004"]
     ],
-    "ldscript": "flash.ld",
-    "mcu": "stm32f103cb",
+    "ldscript": "stm32f103xb.ld",
+    "mcu": "stm32f103cbt6",
     "variant": "maple_mini"
   },
   "frameworks": [
