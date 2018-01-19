@@ -55,8 +55,8 @@ elif "f103rc" in mcu_type or "f103re" in mcu_type:
     variant = "generic_stm32f103r"
 
 # upload related configuration remap
-if not board.id in "maple":
-    # for all boards except maple ones
+# for all generic boards
+if "generic" in board.id:
     if env.subst("$UPLOAD_PROTOCOL") == "dfu":
         vector = 0x8002000
         env.Append(CPPDEFINES=["SERIAL_USB", "GENERIC_BOOTLOADER"])
@@ -76,17 +76,22 @@ if not board.id in "maple":
 
         if board.get("build.vec_tab_addr", "") :
             vector = int(board.get("build.vec_tab_addr"), 16)
-else:
-    # maple board related configuration remap
-    if board.id in "maple":
-        env.Append(CPPDEFINES=[("SERIAL_USB")])
-        variant = "maple_mini" if board.id in "maple_mini" else "maple"
-        vector = 0x8002000
-        ldscript = "bootloader_20"
+# maple board related configuration remap
+elif "maple" in board.id:
+    env.Append(CPPDEFINES=[("SERIAL_USB")])
+    variant = "maple_mini" if "maple_mini" in board.id else "maple"
+    vector = 0x8002000
+    ldscript = "bootloader_20"
 
-        if board.id in "maple_mini_origin" or board.id in "maple":
-            vector = 0x8005000
-            ldscript = "flash.ld"
+    if "maple_mini_origin" in board.id or "maple" in board.id:
+        vector = 0x8005000
+        ldscript = "flash.ld"
+# for nucleo f103rb board
+elif "nucleo_f103rb" in board.id:
+    variant = "nucleo_f103rb"
+    ldscript = "jtag.ld"
+    env.Append(CPPDEFINES=["NUCLEO_HSE_CRYSTAL"])
+    
 
 env.Append(
     CFLAGS=["-std=gnu11"],
@@ -106,7 +111,8 @@ env.Append(
         ("ERROR_LED_PORT", error_led_port),
         ("ERROR_LED_PIN", error_led_pin),
         ("ARDUINO", 10610),
-        ("ARDUINO_%s" % variant.upper()),
+        ("ARDUINO_%s" % variant.upper() 
+            if not "nucleo" in board.id else "STM_NUCLEO_F103RB"),
         ("ARDUINO_ARCH_STM32F1"),
         ("__STM32F1__"),
         ("MCU_%s" % mcu_type.upper())
