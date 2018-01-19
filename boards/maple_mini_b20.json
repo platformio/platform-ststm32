@@ -14,6 +14,7 @@
   },
   "frameworks": [
     "arduino",
+    "libopencm3",
     "stm32cube"
   ],
   "name": "Maple Mini Bootloader 2.0",

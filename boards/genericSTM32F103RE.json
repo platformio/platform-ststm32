@@ -41,6 +41,7 @@
   },
   "frameworks": [
     "arduino",
+    "libopencm3",
     "stm32cube"
   ],
   "name": "STM32F103RE (64k RAM. 512k Flash)",

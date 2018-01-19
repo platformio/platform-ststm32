@@ -41,6 +41,7 @@
   },
   "frameworks": [
     "arduino",
+    "libopencm3",
     "stm32cube"
   ],
   "name": "STM32F103C8 (20k RAM. 64k Flash)",
