@@ -10,7 +10,7 @@
     ],
     "ldscript": "stm32f103xb.ld",
     "mcu": "stm32f103cbt6",
-    "variant": "maple_mini"
+    "variant": "stm32f1"
   },
   "frameworks": [
     "arduino",
