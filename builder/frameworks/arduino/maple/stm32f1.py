@@ -69,8 +69,8 @@ if not board.id in "maple":
         env.Append(CPPDEFINES=[
             ("CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG", 1), 
             "SERIAL_USB", 
-            "GENERIC_BOOTLOADER"]
-        )
+            "GENERIC_BOOTLOADER"
+        ])
     else:
         env.Append(CPPDEFINES=[("CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG", 1)])
 
