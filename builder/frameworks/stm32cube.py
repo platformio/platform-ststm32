@@ -141,7 +141,14 @@ env.Replace(
 
 # restore external build flags
 if "build.extra_flags" in env.BoardConfig():
-    env.ProcessFlags(env.BoardConfig().get("build.extra_flags"))
+    _extra_flags = env.BoardConfig().get("build.extra_flags")
+
+    if "F103xC" in _extra_flags:
+        _extra_flags = "-DSTM32F103xE"
+    elif "F103x8" in _extra_flags:
+        _extra_flags = "-DSTM32F103xB"
+
+    env.ProcessFlags(_extra_flags)
 # remove base flags
 env.ProcessUnFlags(env.get("BUILD_UNFLAGS"))
 # apply user flags
