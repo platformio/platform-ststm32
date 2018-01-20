@@ -1,0 +1,55 @@
+{
+  "build": {
+    "core": "maple",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DARDUINO_GENERIC_STM32F103V -DMCU_STM32F103VC",
+    "f_cpu": "72000000L",
+    "hwids": [
+        ["0x1EAF", "0x0003"],
+        ["0x1EAF", "0x0004"]
+    ],
+    "ldscript": "stm32f103vc.ld",
+    "mcu": "stm32f103vc",
+    "variant": "generic_stm32f103v"
+  },
+  "debug": {
+    "tools": {
+      "stlink-v2": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f1x.cfg"
+          ]
+        },
+        "default": true
+      },
+      "stlink-v2-1": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/stlink-v2-1.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f1x.cfg"
+          ]
+        }
+      }
+    }
+  },
+  "frameworks": ["arduino"],
+  "name": "STM32F103VC (48k RAM. 256k Flash)",
+  "upload": {
+    "disable_flushing": false,
+    "maximum_ram_size": 49152,
+    "maximum_size": 262144,
+    "protocol": "serial",
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
+  },
+  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103ve.html",
+  "vendor": "Generic"
+}
