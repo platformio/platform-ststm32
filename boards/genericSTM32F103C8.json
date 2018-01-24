@@ -1,16 +1,16 @@
 {
   "build": {
-    "core": "maple",
+    "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DARDUINO_GENERIC_STM32F103C -DMCU_STM32F103C8",
+    "extra_flags": "-DSTM32F103x8",
     "f_cpu": "72000000L",
     "hwids": [
         ["0x1EAF", "0x0003"],
         ["0x1EAF", "0x0004"]
     ],
-    "ldscript": "jtag_c8.ld",
-    "mcu": "stm32f103c8",
-    "variant": "generic_stm32f103c"
+    "ldscript": "stm32f103x8.ld",
+    "mcu": "stm32f103c8t6",
+    "variant": "stm32f1"
   },
   "debug": {
     "tools": {
@@ -41,6 +41,8 @@
   },
   "frameworks": [
     "arduino",
+    "mbed",
+    "libopencm3",
     "stm32cube"
   ],
   "name": "STM32F103C8 (20k RAM. 64k Flash)",

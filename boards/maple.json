@@ -1,19 +1,20 @@
 {
   "build": {
-    "core": "maple",
+    "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DARDUINO_MAPLE_REV3 -DMCU_STM32F103RB",
+    "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
     "hwids": [
         ["0x1EAF", "0x0003"],
         ["0x1EAF", "0x0004"]
     ],
-    "ldscript": "flash.ld",
-    "mcu": "stm32f103rb",
-    "variant": "maple"
+    "ldscript": "stm32f103xb.ld",
+    "mcu": "stm32f103rbt6",
+    "variant": "stm32f1"
   },
   "frameworks": [
     "arduino",
+    "libopencm3",
     "stm32cube"
   ],
   "name": "Maple",
