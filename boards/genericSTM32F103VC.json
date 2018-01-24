@@ -1,16 +1,16 @@
 {
   "build": {
-    "core": "maple",
+    "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DARDUINO_GENERIC_STM32F103V -DMCU_STM32F103VC",
+    "extra_flags": "-DSTM32F103xC",
     "f_cpu": "72000000L",
     "hwids": [
         ["0x1EAF", "0x0003"],
         ["0x1EAF", "0x0004"]
     ],
-    "ldscript": "stm32f103vc.ld",
-    "mcu": "stm32f103vc",
-    "variant": "generic_stm32f103v"
+    "ldscript": "stm32f103xc.ld",
+    "mcu": "stm32f103vct6",
+    "variant": "stm32f1"
   },
   "debug": {
     "tools": {
@@ -39,7 +39,11 @@
       }
     }
   },
-  "frameworks": ["arduino"],
+  "frameworks": [
+    "arduino",
+    "libopencm3",
+    "stm32cube"
+  ],
   "name": "STM32F103VC (48k RAM. 256k Flash)",
   "upload": {
     "disable_flushing": false,
