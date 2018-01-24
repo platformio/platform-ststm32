@@ -53,6 +53,8 @@ elif "f103r8" in mcu_type or "f103rb" in mcu_type:
     variant = "generic_stm32f103r8"
 elif "f103rc" in mcu_type or "f103re" in mcu_type:
     variant = "generic_stm32f103r"
+elif "f103vc" in mcu_type or "f103ve" in mcu_type:
+    variant = "generic_stm32f103v"
 
 # upload related configuration remap
 # for all generic boards
@@ -65,6 +67,8 @@ if "generic" in board.id:
             ldscript = "bootloader_20.ld"
         elif "f103r" in mcu_type:
             ldscript = "bootloader.ld"
+        elif "f103v" in mcu_type:
+            ldscript = "stm32f103veDFU.ld"
     elif env.subst("$UPLOAD_PROTOCOL") == "stlink":
         env.Append(CPPDEFINES=[
             ("CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG", 1), 
