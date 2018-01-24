@@ -153,10 +153,9 @@ elif upload_protocol.startswith("blackmagic"):
             "-ex", "attach 1",
             "-ex", "load",
             "-ex", "compare-sections",
-            "-ex", "kill",
-            join("$BUILD_DIR", "${PROGNAME}.elf"),
+            "-ex", "kill"
         ],
-        UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $SOURCE")
 
 elif upload_protocol in ("serial", "dfu") \
         and "arduino" in env.subst("$PIOFRAMEWORK"):
