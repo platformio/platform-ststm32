@@ -155,7 +155,8 @@ elif upload_protocol.startswith("blackmagic"):
             "-ex", "compare-sections",
             "-ex", "kill"
         ],
-        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $SOURCE")
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $BUILD_DIR/${PROGNAME}.elf"
+    )
 
 elif upload_protocol in ("serial", "dfu") \
         and "arduino" in env.subst("$PIOFRAMEWORK"):
