@@ -30,7 +30,6 @@ board = env.BoardConfig()
 
 FRAMEWORK_DIR = join(platform.get_package_dir(
     "framework-arduinoststm32"), "STM32F1")
-FRAMEWORK_VERSION = platform.get_package_version("framework-arduinoststm32")
 assert isdir(FRAMEWORK_DIR)
 
 # default configuration values
@@ -71,8 +70,8 @@ if "generic" in board.id:
             ldscript = "stm32f103veDFU.ld"
     elif env.subst("$UPLOAD_PROTOCOL") == "stlink":
         env.Append(CPPDEFINES=[
-            ("CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG", 1), 
-            "SERIAL_USB", 
+            ("CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG", 1),
+            "SERIAL_USB",
             "GENERIC_BOOTLOADER"
         ])
     else:
@@ -95,7 +94,7 @@ elif "nucleo_f103rb" in board.id:
     variant = "nucleo_f103rb"
     ldscript = "jtag.ld"
     env.Append(CPPDEFINES=["NUCLEO_HSE_CRYSTAL"])
-    
+
 
 env.Append(
     CFLAGS=["-std=gnu11"],
@@ -115,7 +114,7 @@ env.Append(
         ("ERROR_LED_PORT", error_led_port),
         ("ERROR_LED_PIN", error_led_pin),
         ("ARDUINO", 10610),
-        ("ARDUINO_%s" % variant.upper() 
+        ("ARDUINO_%s" % variant.upper()
             if not "nucleo" in board.id else "STM_NUCLEO_F103RB"),
         ("ARDUINO_ARCH_STM32F1"),
         ("__STM32F1__"),
