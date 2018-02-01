@@ -24,8 +24,7 @@
       "jlink",
       "stlink",
       "blackmagic",
-      "mbed",
-      "cmsis-dap"
+      "mbed"
     ]
   },
   "debug": {
