@@ -21,14 +21,14 @@
   "upload": {
     "maximum_ram_size": 20480,
     "maximum_size": 122880,
-    // "protocol": "dfu",
     "boot_version": 2,
     "require_upload_port": true,
-     "protocol": "stlink",
+     "protocol": "dfu",
     "protocols": [
       "jlink",
       "stlink",
-      "blackmagic"
+      "blackmagic",
+      "dfu"
     ]
   },
   "url": "http://www.leaflabs.com/maple/",
