@@ -12,7 +12,14 @@
   "name": "ST Nucleo L152RE",
   "upload": {
     "maximum_ram_size": 81920,
-    "maximum_size": 524288
+    "maximum_size": 524288,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "debug": {
     "tools": {

@@ -16,7 +16,13 @@
   "name": "Armstrap Eagle 1024",
   "upload": {
     "maximum_ram_size": 196608,
-    "maximum_size": 1048576
+    "maximum_size": 1048576,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
   },
   "debug": {
     "tools": {

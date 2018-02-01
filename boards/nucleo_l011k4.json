@@ -12,7 +12,14 @@
   "name": "ST Nucleo L011K4",
   "upload": {
     "maximum_ram_size": 2048,
-    "maximum_size": 16384
+    "maximum_size": 16384,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "debug": {
     "tools": {

@@ -12,7 +12,14 @@
   "name": "ST Nucleo L031K6",
   "upload": {
     "maximum_ram_size": 8192,
-    "maximum_size": 32768
+    "maximum_size": 32768,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "debug": {
     "tools": {

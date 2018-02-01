@@ -17,7 +17,14 @@
   "name": "ST Nucleo F207ZG",
   "upload": {
     "maximum_ram_size": 131072,
-    "maximum_size": 1048576
+    "maximum_size": 1048576,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "debug": {
     "tools": {

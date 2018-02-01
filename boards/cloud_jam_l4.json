@@ -12,7 +12,14 @@
   "name": "RushUp Cloud-JAM L4",
   "upload": {
     "maximum_ram_size": 131072,
-    "maximum_size": 1048576
+    "maximum_size": 1048576,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "debug": {
     "tools": {

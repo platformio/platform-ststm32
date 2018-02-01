@@ -13,7 +13,12 @@
   "upload": {
     "maximum_ram_size": 8192,
     "maximum_size": 131072,
-    "protocol": "stlink"
+    "protocol": "stlink",
+     "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
   },
   "debug": {
     "tools": {

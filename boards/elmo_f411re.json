@@ -12,7 +12,13 @@
   "name": "Espotel LoRa Module",
   "upload": {
     "maximum_ram_size": 131072,
-    "maximum_size": 524288
+    "maximum_size": 524288,
+     "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
   },
   "debug": {
     "tools": {

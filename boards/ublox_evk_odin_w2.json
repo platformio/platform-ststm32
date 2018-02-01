@@ -17,7 +17,13 @@
   "name": "u-blox EVK-ODIN-W2",
   "upload": {
     "maximum_ram_size": 262144,
-    "maximum_size": 2097152
+    "maximum_size": 2097152,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
   },
   "debug": {
     "tools": {
