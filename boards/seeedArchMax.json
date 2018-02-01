@@ -15,7 +15,15 @@
   "name": "Seeed Arch Max",
   "upload": {
     "maximum_ram_size": 196608,
-    "maximum_size": 524288
+    "maximum_size": 524288,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed",
+      "cmsis-dap"
+    ]
   },
   "debug": {
     "tools": {

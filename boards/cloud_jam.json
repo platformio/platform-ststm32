@@ -17,7 +17,15 @@
   "name": "RushUp Cloud-JAM",
   "upload": {
     "maximum_ram_size": 98304,
-    "maximum_size": 524288
+    "maximum_size": 524288,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed",
+      "cmsis-dap"
+    ]
   },
   "debug": {
     "tools": {

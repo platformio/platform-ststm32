@@ -12,7 +12,15 @@
   "name": "ST Nucleo F303RE",
   "upload": {
     "maximum_ram_size": 65536,
-    "maximum_size": 524288
+    "maximum_size": 524288,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed",
+      "cmsis-dap"
+    ]
   },
   "debug": {
     "tools": {

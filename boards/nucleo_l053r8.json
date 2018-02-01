@@ -12,7 +12,15 @@
   "name": "ST Nucleo L053R8",
   "upload": {
     "maximum_ram_size": 8192,
-    "maximum_size": 65536
+    "maximum_size": 65536,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed",
+      "cmsis-dap"
+    ]
   },
   "debug": {
     "tools": {

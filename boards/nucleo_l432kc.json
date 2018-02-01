@@ -12,7 +12,15 @@
   "name": "ST Nucleo L432KC",
   "upload": {
     "maximum_ram_size": 65536,
-    "maximum_size": 262144
+    "maximum_size": 262144,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed",
+      "cmsis-dap"
+    ]
   },
   "debug": {
     "tools": {

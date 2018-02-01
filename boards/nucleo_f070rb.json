@@ -12,7 +12,15 @@
   "name": "ST Nucleo F070RB",
   "upload": {
     "maximum_ram_size": 16384,
-    "maximum_size": 131072
+    "maximum_size": 131072,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed",
+      "cmsis-dap"
+    ]
   },
   "debug": {
     "tools": {

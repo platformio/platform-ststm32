@@ -49,10 +49,16 @@
     "disable_flushing": false,
     "maximum_ram_size": 49152,
     "maximum_size": 262144,
-    "protocol": "serial",
+    // "protocol": "serial",
     "require_upload_port": true,
     "use_1200bps_touch": false,
-    "wait_for_upload_port": false
+    "wait_for_upload_port": false,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
   },
   "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103rc.html",
   "vendor": "Generic"
