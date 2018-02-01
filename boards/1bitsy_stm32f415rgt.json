@@ -19,6 +19,12 @@
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,
     "protocol": "blackmagic"
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "cmsis-dap"
+    ]
   },
   "debug": {
     "tools": {
