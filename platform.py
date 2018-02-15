@@ -19,10 +19,6 @@ class Ststm32Platform(PlatformBase):
 
     def configure_default_packages(self, variables, targets):
         board = variables.get("board")
-        if "mbed" in variables.get("pioframework",
-                                   []) or board == "mxchip_az3166":
-            self.packages['toolchain-gccarmnoneeabi'][
-                'version'] = ">=1.60301.0"
 
         if board == "mxchip_az3166":
             self.frameworks['arduino'][
