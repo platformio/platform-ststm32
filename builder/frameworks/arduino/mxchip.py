@@ -132,7 +132,7 @@ env.Append(
 
 inc_dirs = []
 for d in ("system", join("cores", env.BoardConfig().get("build.core"))):
-    for root, _, files in walk(join(FRAMEWORK_DIR, d)):
+    for root, _, files in sorted(walk(join(FRAMEWORK_DIR, d))):
         if any(f.endswith(".h") for f in files) or "inc" in root:
             if root not in inc_dirs:
                 inc_dirs.append(root)

@@ -28,6 +28,9 @@ class Ststm32Platform(PlatformBase):
 
             self.packages['tool-openocd']['type'] = "uploader"
 
+            self.packages['toolchain-gccarmnoneeabi'][
+                  'version'] = "~1.60301.0"
+
         return PlatformBase.configure_default_packages(self, variables,
                                                        targets)
 
