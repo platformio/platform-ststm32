@@ -21,6 +21,7 @@ kinds of creative coding, interactive objects, spaces or physical experiences.
 http://www.stm32duino.com
 """
 
+from os import walk
 from os.path import isdir, join
 
 from SCons.Script import DefaultEnvironment
@@ -111,7 +112,11 @@ env.Append(
         ("DEVICE_ERROR_RED", 1),
         "TARGET_AZ3166",
         "ARM_MATH_CM4",
-        ("LPS22HB_I2C_PORT", "MICO_I2C_1")
+        ("LPS22HB_I2C_PORT", "MICO_I2C_1"),
+        ("DEVICE_STDIO_MESSAGES", 1),
+        "DONT_USE_UPLOADTOBLOB",
+        "USE_MBED_TLS",
+        "USE_PROV_MODULE"
     ],
 
     LIBPATH=[
@@ -122,89 +127,27 @@ env.Append(
              board.get("build.variant"), "linker_scripts", "gcc")
     ],
 
-    CPPPATH=[
-        join(FRAMEWORK_DIR, "system"),
-        join(FRAMEWORK_DIR, "system", "drivers"),
-        join(FRAMEWORK_DIR, "system", "cmsis"),
-        join(FRAMEWORK_DIR, "system", "hal"),
-        join(FRAMEWORK_DIR, "system", "rtos"),
-        join(FRAMEWORK_DIR, "system", "events"),
-        join(FRAMEWORK_DIR, "system", "EEPROMInterface"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "TARGET_AZ3166"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "include"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "include",
-             "mico_drivers"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "platform"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "platform",
-             "include"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "platform",
-             "mbed"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "system"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "net", "LwIP",
-             "lwip-sys"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "net", "LwIP",
-             "lwip-ver1.4.0.rc1", "src", "include"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "net", "LwIP",
-             "lwip-ver1.4.0.rc1", "src", "include", "lwip"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "net", "LwIP",
-             "lwip-ver1.4.0.rc1", "src", "include", "ipv4"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "libraries",
-             "utilities"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "libraries", "drivers",
-             "display", "VGM128064"),
-        join(FRAMEWORK_DIR, "system", "features"),
-        join(FRAMEWORK_DIR, "system", "features", "filesystem"),
-        join(FRAMEWORK_DIR, "system", "features", "filesystem", "bd"),
-        join(FRAMEWORK_DIR, "system", "features", "filesystem", "fat"),
-        join(FRAMEWORK_DIR, "system", "features", "filesystem", "fat", "ChaN"),
-        join(FRAMEWORK_DIR, "system", "features", "netsocket"),
-        join(FRAMEWORK_DIR, "system", "features", "mbedtls"),
-        join(FRAMEWORK_DIR, "system", "features", "mbedtls", "inc"),
-        join(FRAMEWORK_DIR, "system", "features", "mbedtls", "inc", "mbedtls"),
-        join(FRAMEWORK_DIR, "system", "targets", "TARGET_STM"),
-        join(FRAMEWORK_DIR, "system", "targets", "TARGET_STM",
-             "TARGET_STM32F4"),
-        join(FRAMEWORK_DIR, "system", "targets", "TARGET_STM",
-             "TARGET_STM32F4", "device"),
-        join(FRAMEWORK_DIR, "system", "targets", "TARGET_MXCHIP",
-             "TARGET_AZ3166"),
-        join(FRAMEWORK_DIR, "system", "targets", "TARGET_MXCHIP",
-             "TARGET_AZ3166", "device"),
-        join(FRAMEWORK_DIR, "system", "rtos", "rtx", "TARGET_CORTEX_M"),
-        join(FRAMEWORK_DIR, "system", "platform"),
-        join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core")),
-        join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core"),
-             "cli"),
-        join(FRAMEWORK_DIR, "cores",
-             env.BoardConfig().get("build.core"), "NTPClient"),
-        join(FRAMEWORK_DIR, "cores",
-             env.BoardConfig().get("build.core"), "json-c"),
-        join(FRAMEWORK_DIR, "cores",
-             env.BoardConfig().get("build.core"), "az_iot", "c-utility",
-             "inc"),
-        join(FRAMEWORK_DIR, "cores",
-             env.BoardConfig().get("build.core"), "az_iot", "azure_umqtt_c",
-             "inc"),
-        join(FRAMEWORK_DIR, "cores",
-             env.BoardConfig().get("build.core"), "httpserver"),
-        join(FRAMEWORK_DIR, "cores",
-             env.BoardConfig().get("build.core"), "httpclient"),
-        join(FRAMEWORK_DIR, "cores",
-             env.BoardConfig().get("build.core"), "httpclient", "http_parser"),
-        join(FRAMEWORK_DIR, "cores",
-             env.BoardConfig().get("build.core"), "az_iot", "iothub_client",
-             "inc"),
-        join(FRAMEWORK_DIR, "cores",
-             env.BoardConfig().get("build.core"), "system"),
-        join(FRAMEWORK_DIR, "cores",
-             env.BoardConfig().get("build.core"), "az_iot")
-    ],
-
     LIBSOURCE_DIRS=[join(FRAMEWORK_DIR, "libraries")])
 
+
+inc_dirs = []
+for d in ("system", join("cores", env.BoardConfig().get("build.core"))):
+    for root, _, files in walk(join(FRAMEWORK_DIR, d)):
+        if any(f.endswith(".h") for f in files) or "inc" in root:
+            if root not in inc_dirs:
+                inc_dirs.append(root)
+
+inc_dirs.extend([
+    join(FRAMEWORK_DIR, "system"),
+    join(FRAMEWORK_DIR, "system", "features"),
+    join(FRAMEWORK_DIR, "system", "features", "mbedtls"),
+    join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "platform")
+])
+
+env.Append(CPPPATH=inc_dirs)
+            
 env.Replace(
-    LIBS=["m", "wlan", "wifi", "mbed-os", "stdc++", "gcc"],
+    LIBS=["az_iot", "m", "wlan", "wifi", "libstsafe", "mbed-os", "stdc++", "gcc"],
 
     LINKFLAGS=[
         "-mcpu=cortex-m4",
@@ -220,26 +163,9 @@ env.Replace(
         "-Wl,--wrap,_calloc_r",
         "-Wl,--start-group",
         "--specs=nano.specs",
-        "--specs=nosys.specs"
-    ],
-
-    UPLOADER="openocd",
-    UPLOADERFLAGS=[
-        "-s", join(platform.get_package_dir("tool-openocd") or "",
-                   "scripts"),
-        "-s", join(platform.get_package_dir("tool-openocd") or "",
-                   "scripts", "interface"),
-        "-f", "stlink-v2-1.cfg",
-
-        "-s", join(platform.get_package_dir("tool-openocd") or "",
-                   "scripts", "target"),
-        "-f", "stm32f4x.cfg",
-
-        "-c", "transport select hla_swd",
-        "-c", "program {{$SOURCES}} verify reset 0x8008000; shutdown"
-    ],
-
-    UPLOADCMD='"$UPLOADER" $UPLOADERFLAGS'
+        "--specs=nosys.specs",
+        "-u", "_printf_float"
+    ]
 )
 
 #
