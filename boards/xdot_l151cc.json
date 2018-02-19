@@ -5,6 +5,9 @@
     "f_cpu": "32000000L",
     "mcu": "stm32l151ccu6"
   },
+  "debug": {
+    "openocd_target": "stm32l1"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
