@@ -5,6 +5,13 @@
     "f_cpu": "100000000L",
     "mcu": "stm32f411ret6"
   },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_f4",
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -13,23 +20,12 @@
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 524288,
-     "protocol": "stlink",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",
       "blackmagic"
     ]
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
-        }
-      }
-    }
   },
   "url": "https://developer.mbed.org/platforms/Espotel-ELMO/",
   "vendor": "Espotel"

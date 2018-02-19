@@ -8,6 +8,16 @@
     "mcu": "stm32l152rbt6",
     "variant": "stm32l152xb"
   },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_l1",
+    "openocd_target": "stm32l1"
+  },
   "frameworks": [
     "cmsis",
     "spl",
@@ -24,18 +34,6 @@
       "stlink",
       "blackmagic"
     ]
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_l1.cfg"]
-        },
-        "onboard": true
-      }
-    }
   },
   "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF258515",
   "vendor": "ST"

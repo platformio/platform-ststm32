@@ -7,6 +7,9 @@
   "connectivity": [
     "cellular"
   ],
+  "debug": {
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -23,17 +26,6 @@
       "mbed"
     ]
 
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
-        }
-      }
-    }
   },
   "url": "https://developer.mbed.org/platforms/MTS-Dragonfly/",
   "vendor": "MultiTech"

@@ -12,6 +12,15 @@
     "can",
     "wifi"
   ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
     "arduino",
     "stm32cube"
@@ -20,27 +29,13 @@
   "upload": {
     "maximum_ram_size": 262144,
     "maximum_size": 1048576,
-     "protocol": "stlink",
+    "flash_start": "0x0800C000",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",
       "blackmagic"
     ]
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": [
-            "-f", "scripts/interface/stlink-v2-1.cfg",
-            "-f", "scripts/target/stm32f4x.cfg"
-          ]
-        },
-        "onboard": true
-      }
-    }
   },
   "url": "https://microsoft.github.io/azure-iot-developer-kit/",
   "vendor": "MXChip"

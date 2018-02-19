@@ -8,6 +8,15 @@
     "mcu": "stm32f407vet6",
     "variant": "stm32f4"
   },
+  "debug": {
+    "default_tools": [
+      "blackmagic"
+    ],
+    "onboard_tools": [
+      "blackmagic"
+    ],
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
     "cmsis",
     "spl",
@@ -17,24 +26,12 @@
   "upload": {
     "maximum_ram_size": 196608,
     "maximum_size": 524288,
-    "protocol": "stlink",
+    "protocol": "blackmagic",
     "protocols": [
       "jlink",
       "stlink",
       "blackmagic"
     ]
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
-        },
-        "onboard": true
-      }
-    }
   },
   "url": "http://docs.armstrap.org/en/latest/hardware-overview.html",
   "vendor": "Armstrap"

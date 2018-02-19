@@ -5,6 +5,16 @@
     "f_cpu": "84000000L",
     "mcu": "stm32f401vct6"
   },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "stm32f4discovery",
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -19,18 +29,6 @@
       "stlink",
       "blackmagic"
     ]
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/stm32f4discovery.cfg"]
-        },
-        "onboard": true
-      }
-    }
   },
   "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF259098",
   "vendor": "ST"

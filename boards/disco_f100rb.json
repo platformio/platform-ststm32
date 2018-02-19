@@ -5,6 +5,15 @@
     "f_cpu": "24000000L",
     "mcu": "stm32f100rbt6"
   },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32f1x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -14,27 +23,11 @@
     "maximum_ram_size": 8192,
     "maximum_size": 131072,
     "protocol": "stlink",
-     "protocols": [
+    "protocols": [
       "jlink",
       "stlink",
       "blackmagic"
     ]
-  },
-  "debug": {
-    "tools": {
-      "stlink-v1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": [
-            "-f", "scripts/interface/stlink-v1.cfg",
-            "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32f1x.cfg"
-          ]
-        },
-        "onboard": true
-      }
-    }
   },
   "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF250863",
   "vendor": "ST"

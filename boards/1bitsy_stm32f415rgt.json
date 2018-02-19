@@ -8,6 +8,12 @@
     "mcu": "stm32f415rgt",
     "variant": "stm32f415xx"
   },
+  "debug": {
+    "default_tools": [
+      "blackmagic"
+    ],
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
     "cmsis",
     "spl",
@@ -24,20 +30,6 @@
       "stlink",
       "blackmagic"
     ]
-  },
-  "debug": {
-    "tools": {
-      "blackmagic": {
-        "hwids": [
-          [
-            "0x1d50",
-            "0x6018"
-          ]
-        ],
-        "require_debug_port": true,
-        "default": true
-      }
-    }
   },
   "url": "http://1bitsy.org",
   "vendor": "1BitSquared"

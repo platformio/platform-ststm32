@@ -8,6 +8,16 @@
     "mcu": "stm32f407vgt6",
     "variant": "stm32f407xx"
   },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "stm32f4discovery",
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
     "mbed",
     "cmsis",
@@ -26,18 +36,6 @@
       "blackmagic",
       "mbed"
     ]
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/stm32f4discovery.cfg"]
-        },
-        "onboard": true
-      }
-    }
   },
   "url": "http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF252419",
   "vendor": "ST"

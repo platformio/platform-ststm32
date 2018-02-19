@@ -8,6 +8,16 @@
   "connectivity": [
     "can"
   ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_f3",
+    "openocd_target": "stm32f3x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -23,18 +33,6 @@
       "blackmagic",
       "mbed"
     ]
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_f3.cfg"]
-        },
-        "onboard": true
-      }
-    }
   },
   "url": "https://developer.mbed.org/platforms/ST-Nucleo-F334R8/",
   "vendor": "ST"

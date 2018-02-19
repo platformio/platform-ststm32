@@ -12,6 +12,9 @@
     "mcu": "stm32f103cbt6",
     "variant": "stm32f1"
   },
+  "debug": {
+    "openocd_target": "stm32f1x"
+  },
   "frameworks": [
     "arduino",
     "libopencm3",

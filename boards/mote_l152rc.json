@@ -5,6 +5,9 @@
     "f_cpu": "32000000L",
     "mcu": "stm32l152rc"
   },
+  "debug": {
+    "openocd_target": "stm32l1"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -20,17 +23,6 @@
       "blackmagic",
       "mbed"
     ]
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_l1.cfg"]
-        }
-      }
-    }
   },
   "url": "https://developer.mbed.org/platforms/NAMote-72/",
   "vendor": "Semtech"

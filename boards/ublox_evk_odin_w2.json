@@ -10,6 +10,9 @@
     "ethernet",
     "wifi"
   ],
+  "debug": {
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -24,17 +27,6 @@
       "stlink",
       "blackmagic"
     ]
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
-        }
-      }
-    }
   },
   "url": "https://developer.mbed.org/platforms/ublox-EVK-ODIN-W2/",
   "vendor": "u-blox"

@@ -9,6 +9,16 @@
     "can",
     "ethernet"
   ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "stm32f7discovery",
+    "openocd_target": "stm32f7x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -24,18 +34,6 @@
       "blackmagic",
       "mbed"
     ]
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/stm32f7discovery.cfg"]
-        },
-        "onboard": true
-      }
-    }
   },
   "url": "http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/32f746gdiscovery.html",
   "vendor": "ST"
