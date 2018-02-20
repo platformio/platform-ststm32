@@ -5,8 +5,14 @@
     "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
     "hwids": [
-        ["0x1EAF", "0x0003"],
-        ["0x1EAF", "0x0004"]
+      [
+        "0x1EAF",
+        "0x0003"
+      ],
+      [
+        "0x1EAF",
+        "0x0004"
+      ]
     ],
     "ldscript": "stm32f103xb.ld",
     "mcu": "stm32f103cbt6",
@@ -22,17 +28,17 @@
   ],
   "name": "Maple Mini Original",
   "upload": {
+    "boot_version": 1,
     "maximum_ram_size": 17408,
     "maximum_size": 110592,
-    "boot_version": 1,
-    "require_upload_port": true,
-     "protocol": "dfu",
+    "protocol": "dfu",
     "protocols": [
       "jlink",
       "stlink",
       "blackmagic",
       "dfu"
-    ]
+    ],
+    "require_upload_port": true
   },
   "url": "http://www.leaflabs.com/maple/",
   "vendor": "LeafLabs"

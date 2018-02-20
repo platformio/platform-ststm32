@@ -19,10 +19,14 @@
           {
             "arguments": [
               "-singlerun",
-              "-if", "SWD",
-              "-select", "USB",
-              "-device", "STM32L073VZ",
-              "-port", "2331"
+              "-if",
+              "SWD",
+              "-select",
+              "USB",
+              "-device",
+              "STM32L073VZ",
+              "-port",
+              "2331"
             ],
             "executable": "JLinkGDBServerCL.exe",
             "system": [
@@ -34,10 +38,14 @@
           {
             "arguments": [
               "-singlerun",
-              "-if", "SWD",
-              "-select", "USB",
-              "-device", "STM32L073VZ",
-              "-port", "2331"
+              "-if",
+              "SWD",
+              "-select",
+              "USB",
+              "-device",
+              "STM32L073VZ",
+              "-port",
+              "2331"
             ],
             "executable": "JLinkGDBServer",
             "system": [

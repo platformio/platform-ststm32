@@ -16,7 +16,7 @@
     "openocd_target": "stm32fl1"
   },
   "frameworks": [
-    "mbed", 
+    "mbed",
     "stm32cube"
   ],
   "name": "ST Nucleo L152RE",

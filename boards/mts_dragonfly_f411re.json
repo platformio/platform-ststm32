@@ -18,14 +18,13 @@
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 524288,
-     "protocol": "mbed",
+    "protocol": "mbed",
     "protocols": [
       "jlink",
       "stlink",
       "blackmagic",
       "mbed"
     ]
-
   },
   "url": "https://developer.mbed.org/platforms/MTS-Dragonfly/",
   "vendor": "MultiTech"

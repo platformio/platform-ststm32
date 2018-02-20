@@ -1,7 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m4",
-    "extra_flags":"-DSTM32F469xx",
+    "extra_flags": "-DSTM32F469xx",
     "f_cpu": "180000000L",
     "mcu": "stm32f469nih6"
   },

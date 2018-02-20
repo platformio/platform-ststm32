@@ -5,8 +5,14 @@
     "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
     "hwids": [
-        ["0x1EAF", "0x0003"],
-        ["0x1EAF", "0x0004"]
+      [
+        "0x1EAF",
+        "0x0003"
+      ],
+      [
+        "0x1EAF",
+        "0x0004"
+      ]
     ],
     "ldscript": "stm32f103xb.ld",
     "mcu": "stm32f103cbt6",
@@ -25,16 +31,16 @@
     "disable_flushing": false,
     "maximum_ram_size": 20480,
     "maximum_size": 131072,
-    "require_upload_port": true,
-    "use_1200bps_touch": false,
-    "wait_for_upload_port": false,
     "protocol": "serial",
     "protocols": [
       "jlink",
       "stlink",
       "blackmagic",
       "serial"
-    ]
+    ],
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
   },
   "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103cb.html",
   "vendor": "Generic"
