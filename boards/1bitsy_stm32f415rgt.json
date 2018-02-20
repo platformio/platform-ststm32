@@ -15,9 +15,9 @@
     "openocd_target": "stm32f4x"
   },
   "frameworks": [
+    "libopencm3",
     "cmsis",
     "spl",
-    "libopencm3",
     "stm32cube"
   ],
   "name": "1Bitsy",
