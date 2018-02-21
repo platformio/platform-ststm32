@@ -5,6 +5,9 @@
     "f_cpu": "32000000L",
     "mcu": "stm32l151ccu6"
   },
+  "debug": {
+    "openocd_target": "stm32l1"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -12,7 +15,13 @@
   "name": "MultiTech xDot",
   "upload": {
     "maximum_ram_size": 32768,
-    "maximum_size": 262144
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
   },
   "url": "https://developer.mbed.org/platforms/MTS-xDot-L151CC/",
   "vendor": "MultiTech"

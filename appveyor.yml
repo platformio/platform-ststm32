@@ -10,6 +10,7 @@ environment:
     - PLATFORMIO_PROJECT_DIR: "examples/arduino-mxchip-sensors"
     - PLATFORMIO_PROJECT_DIR: "examples/arduino-mxchip-wifiscan"
     - PLATFORMIO_PROJECT_DIR: "examples/cmsis-blink"
+    - PLATFORMIO_PROJECT_DIR: "examples/libopencm3-1bitsy"
     - PLATFORMIO_PROJECT_DIR: "examples/libopencm3-blink"
     - PLATFORMIO_PROJECT_DIR: "examples/mbed-blink"
     - PLATFORMIO_PROJECT_DIR: "examples/mbed-dsp"

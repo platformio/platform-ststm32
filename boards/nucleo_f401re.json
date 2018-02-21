@@ -8,6 +8,16 @@
     "mcu": "stm32f401ret6",
     "variant": "stm32f401xe"
   },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_f4",
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
     "mbed",
     "cmsis",
@@ -17,19 +27,14 @@
   "name": "ST Nucleo F401RE",
   "upload": {
     "maximum_ram_size": 98304,
-    "maximum_size": 524288
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
-        },
-        "onboard": true
-      }
-    }
+    "maximum_size": 524288,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "url": "https://developer.mbed.org/platforms/ST-Nucleo-F401RE/",
   "vendor": "ST"

@@ -8,6 +8,16 @@
   "connectivity": [
     "can"
   ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_f0",
+    "openocd_target": "stm32f0x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -15,19 +25,14 @@
   "name": "ST Nucleo F091RC",
   "upload": {
     "maximum_ram_size": 32768,
-    "maximum_size": 262144
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_f0.cfg"]
-        },
-        "onboard": true
-      }
-    }
+    "maximum_size": 262144,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "url": "https://developer.mbed.org/platforms/ST-Nucleo-F091RC/",
   "vendor": "ST"

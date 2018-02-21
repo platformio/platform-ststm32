@@ -1,27 +1,43 @@
 {
   "build": {
-    "core": "maple",
+    "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DARDUINO_MAPLE_MINI -DMCU_STM32F103CB",
+    "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
     "hwids": [
-        ["0x1EAF", "0x0003"],
-        ["0x1EAF", "0x0004"]
+      [
+        "0x1EAF",
+        "0x0003"
+      ],
+      [
+        "0x1EAF",
+        "0x0004"
+      ]
     ],
-    "ldscript": "flash.ld",
-    "mcu": "stm32f103cb",
-    "variant": "maple_mini"
+    "ldscript": "stm32f103xb.ld",
+    "mcu": "stm32f103cbt6",
+    "variant": "stm32f1"
+  },
+  "debug": {
+    "openocd_target": "stm32f1x"
   },
   "frameworks": [
     "arduino",
+    "libopencm3",
     "stm32cube"
   ],
   "name": "Maple Mini Bootloader 2.0",
   "upload": {
+    "boot_version": 2,
     "maximum_ram_size": 20480,
     "maximum_size": 122880,
     "protocol": "dfu",
-    "boot_version": 2,
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "dfu"
+    ],
     "require_upload_port": true
   },
   "url": "http://www.leaflabs.com/maple/",

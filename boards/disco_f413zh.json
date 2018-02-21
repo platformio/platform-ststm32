@@ -5,32 +5,32 @@
     "f_cpu": "100000000L",
     "mcu": "stm32f413zht6"
   },
-  "frameworks": [
-    "stm32cube"
-  ],
   "connectivity": [
     "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32f4x"
+  },
+  "frameworks": [
+    "stm32cube"
   ],
   "name": "ST 32F413HDISCOVERY",
   "upload": {
     "maximum_ram_size": 131072,
-    "maximum_size": 524288
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": [
-            "-f", "scripts/interface/stlink-v2-1.cfg",
-            "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32f4x.cfg"
-          ]
-        },
-        "onboard": true
-      }
-    }
+    "maximum_size": 524288,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "url": "https://os.mbed.com/platforms/ST-Discovery-F413H/",
   "vendor": "ST"

@@ -1,13 +1,23 @@
 {
   "build": {
     "cpu": "cortex-m4",
-    "extra_flags":"-DSTM32F469xx",
+    "extra_flags": "-DSTM32F469xx",
     "f_cpu": "180000000L",
     "mcu": "stm32f469nih6"
   },
   "connectivity": [
     "can"
   ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "stm32f469discovery",
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -16,19 +26,13 @@
   "upload": {
     "maximum_ram_size": 393216,
     "maximum_size": 1048576,
-    "protocol": "stlink"
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/stm32f469discovery.cfg"]
-        },
-        "onboard": true
-      }
-    }
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "url": "http://www.st.com/web/catalog/tools/FM116/CL1620/SC959/SS1532/LN1848/PF262395",
   "vendor": "ST"

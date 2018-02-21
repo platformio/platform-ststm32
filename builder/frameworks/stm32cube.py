@@ -42,7 +42,9 @@ MCU_FAMILY = env.BoardConfig().get("build.mcu")[0:7]
 STARTUP_FILE_EXCEPTIONS = {
     "stm32f103c8": "startup_stm32f103xb.s",
     "stm32f103r8": "startup_stm32f103xb.s",
-    "stm32f103rc": "startup_stm32f103xb.s"
+    "stm32f103rc": "startup_stm32f103xb.s",
+    "stm32f103vc": "startup_stm32f103xe.s",
+    "stm32f103ve": "startup_stm32f103xe.s"
 }
 
 
@@ -141,7 +143,14 @@ env.Replace(
 
 # restore external build flags
 if "build.extra_flags" in env.BoardConfig():
-    env.ProcessFlags(env.BoardConfig().get("build.extra_flags"))
+    _extra_flags = env.BoardConfig().get("build.extra_flags")
+
+    if "F103xC" in _extra_flags:
+        _extra_flags = "-DSTM32F103xE"
+    elif "F103x8" in _extra_flags:
+        _extra_flags = "-DSTM32F103xB"
+
+    env.ProcessFlags(_extra_flags)
 # remove base flags
 env.ProcessUnFlags(env.get("BUILD_UNFLAGS"))
 # apply user flags
