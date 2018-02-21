@@ -19,7 +19,8 @@
     "variant": "stm32f103xb"
   },
   "debug": {
-    "openocd_target": "stm32f1x"
+    "openocd_target": "stm32f1x",
+    "openocd_extra_args": ["-c", "reset_config none"]
   },
   "frameworks": [
     "arduino",

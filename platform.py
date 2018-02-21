@@ -28,8 +28,7 @@ class Ststm32Platform(PlatformBase):
 
             self.packages['tool-openocd']['type'] = "uploader"
 
-            self.packages['toolchain-gccarmnoneeabi'][
-                  'version'] = "~1.60301.0"
+            self.packages['toolchain-gccarmnoneeabi']['version'] = "~1.60301.0"
 
         return PlatformBase.configure_default_packages(self, variables,
                                                        targets)
@@ -64,8 +63,12 @@ class Ststm32Platform(PlatformBase):
                 continue
 
             server_args = []
-            if link in debug.get("onboard_tools", []) and debug.get("openocd_board"):
-                server_args = ["-f", "scripts/board/%s.cfg" % debug.get("openocd_board")]
+            if link in debug.get("onboard_tools",
+                                 []) and debug.get("openocd_board"):
+                server_args = [
+                    "-f",
+                    "scripts/board/%s.cfg" % debug.get("openocd_board")
+                ]
             else:
                 assert debug.get("openocd_target"), (
                     "Missed target configuration for %s" % board.id)
@@ -74,7 +77,13 @@ class Ststm32Platform(PlatformBase):
                 if link == "stlink":
                     server_args.extend(["-c", "transport select hla_swd"])
 
-                server_args.extend(["-f", "scripts/target/%s.cfg" % debug.get("openocd_target")])
+                server_args.extend([
+                    "-f",
+                    "scripts/target/%s.cfg" % debug.get("openocd_target")
+                ])
+
+            if debug.get("openocd_extra_args"):
+                server_args.extend(debug.get("openocd_extra_args"))
 
             debug['tools'][link] = {
                 "server": {
