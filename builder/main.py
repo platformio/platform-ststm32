@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import sys
-from os.path import basename, isfile, join
+from os.path import join
 
 from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
                           DefaultEnvironment)
@@ -206,7 +206,7 @@ elif upload_protocol in debug_tools:
             "program {{$SOURCE}} %s verify reset; shutdown;" % env.BoardConfig().get(
                 "upload").get("flash_start", "")],
         UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
-    
+
     if not env.BoardConfig().get("upload").get("flash_start"):
         upload_source = target_elf
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]

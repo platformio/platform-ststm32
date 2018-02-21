@@ -94,7 +94,7 @@
       "version": "~1.0.0"
     },
     "tool-openocd": {
-      "type": "debugger",
+      "type": "uploader",
       "optional": true,
       "version": "~1.1000.0"
     }
