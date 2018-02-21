@@ -1,46 +1,29 @@
 {
   "build": {
-    "core": "maple",
+    "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DARDUINO_GENERIC_STM32F103C -DMCU_STM32F103CB",
+    "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
     "hwids": [
-        ["0x1EAF", "0x0003"],
-        ["0x1EAF", "0x0004"]
+      [
+        "0x1EAF",
+        "0x0003"
+      ],
+      [
+        "0x1EAF",
+        "0x0004"
+      ]
     ],
-    "ldscript": "jtag.ld",
-    "mcu": "stm32f103cb",
-    "variant": "generic_stm32f103c"
+    "ldscript": "stm32f103xb.ld",
+    "mcu": "stm32f103cbt6",
+    "variant": "stm32f1"
   },
   "debug": {
-    "tools": {
-      "stlink-v2": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": [
-            "-f", "scripts/interface/stlink-v2.cfg",
-            "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32f1x.cfg"
-          ]
-        },
-        "default": true
-      },
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": [
-            "-f", "scripts/interface/stlink-v2-1.cfg",
-            "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32f1x.cfg"
-          ]
-        }
-      }
-    }
+    "openocd_target": "stm32f1x"
   },
   "frameworks": [
     "arduino",
+    "libopencm3",
     "stm32cube"
   ],
   "name": "STM32F103CB (20k RAM. 128k Flash)",
@@ -49,6 +32,12 @@
     "maximum_ram_size": 20480,
     "maximum_size": 131072,
     "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial"
+    ],
     "require_upload_port": true,
     "use_1200bps_touch": false,
     "wait_for_upload_port": false

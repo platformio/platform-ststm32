@@ -19,10 +19,6 @@ class Ststm32Platform(PlatformBase):
 
     def configure_default_packages(self, variables, targets):
         board = variables.get("board")
-        if "mbed" in variables.get("pioframework",
-                                   []) or board == "mxchip_az3166":
-            self.packages['toolchain-gccarmnoneeabi'][
-                'version'] = ">=1.60301.0"
 
         if board == "mxchip_az3166":
             self.frameworks['arduino'][
@@ -31,6 +27,9 @@ class Ststm32Platform(PlatformBase):
                 'script'] = "builder/frameworks/arduino/mxchip.py"
 
             self.packages['tool-openocd']['type'] = "uploader"
+
+            self.packages['toolchain-gccarmnoneeabi'][
+                  'version'] = "~1.60301.0"
 
         return PlatformBase.configure_default_packages(self, variables,
                                                        targets)
@@ -48,12 +47,44 @@ class Ststm32Platform(PlatformBase):
 
     def _add_default_debug_tools(self, board):
         debug = board.manifest.get("debug", {})
+        upload_protocols = board.manifest.get("upload", {}).get(
+            "protocols", [])
         if "tools" not in debug:
             debug['tools'] = {}
-        if "blackmagic" not in debug['tools']:
-            debug['tools']['blackmagic'] = {
-                "hwids": [["0x1d50", "0x6018"]],
-                "require_debug_port": True
+
+        # BlackMagic, J-Link, ST-Link  
+        for link in ("blackmagic", "jlink", "stlink"):            
+            if link not in upload_protocols or link in debug['tools']:
+                continue
+            if link == "blackmagic":
+                debug['tools']['blackmagic'] = {
+                    "hwids": [["0x1d50", "0x6018"]],
+                    "require_debug_port": True
+                }
+                continue
+
+            server_args = []
+            if link in debug.get("onboard_tools", []) and debug.get("openocd_board"):
+                server_args = ["-f", "scripts/board/%s.cfg" % debug.get("openocd_board")]            
+            else:
+                assert debug.get("openocd_target"), (
+                    "Missed target configuration for %s" % board.id)
+                
+                server_args = ["-f", "scripts/interface/%s.cfg" % link]
+                if link == "stlink":
+                    server_args.extend(["-c", "transport select hla_swd"])          
+                
+                server_args.extend(["-f", "scripts/target/%s.cfg" % debug.get("openocd_target")])
+
+            debug['tools'][link] = {
+                "server": {
+                    "package": "tool-openocd",
+                    "executable": "bin/openocd",
+                    "arguments": server_args
+                },
+                "onboard": link in debug.get("onboard_tools", []),
+                "default": link in debug.get("default_tools", [])
             }
+
         board.manifest['debug'] = debug
         return board

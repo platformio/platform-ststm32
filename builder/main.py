@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
 from os.path import basename, isfile, join
 
 from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
@@ -19,7 +20,7 @@ from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
 
 
 env = DefaultEnvironment()
-upload_protocol = env.subst("$UPLOAD_PROTOCOL")
+platform = env.PioPlatform()
 
 env.Replace(
     AR="arm-none-eabi-ar",
@@ -36,7 +37,6 @@ env.Replace(
     ASFLAGS=["-x", "assembler-with-cpp"],
 
     CCFLAGS=[
-        "-g",   # include debugging info (so errors include line numbers)
         "-Os",  # optimize for size
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
@@ -64,19 +64,14 @@ env.Replace(
 
     LIBS=["c", "gcc", "m", "stdc++", "nosys"],
 
-    UPLOADER="st-flash",
-    UPLOADERFLAGS=[
-        "write",        # write in flash
-        "$SOURCES",     # firmware path to flash
-        "0x08000000"    # flash start address
-    ],
-    UPLOADCMD='$UPLOADER $UPLOADERFLAGS',
-
     SIZEPRINTCMD='$SIZETOOL -B -d $SOURCES',
 
-    PROGNAME="firmware",
     PROGSUFFIX=".elf"
 )
+
+# Allow user to override via pre:script
+if env.get("PROGNAME", "program") == "program":
+    env.Replace(PROGNAME="firmware")
 
 if "BOARD" in env:
     env.Append(
@@ -120,66 +115,17 @@ env.Append(
     )
 )
 
-# Configure uploader
-if "mbed" in env.subst("$PIOFRAMEWORK") and not upload_protocol:
-    env.Replace(UPLOADCMD=env.UploadToDisk)
-
-elif upload_protocol == "gdb":
-    if not isfile(join(env.subst("$PROJECT_DIR"), "upload.gdb")):
-        env.Exit("Error: You are using GDB as firmware uploader. "
-                 "Please specify upload commands in upload.gdb "
-                 "file in project directory!")
-    env.Replace(
-        UPLOADER="$GDB",
-        UPLOADERFLAGS=[
-            join("$BUILD_DIR", "firmware.elf"), "-batch", "-x",
-            join("$PROJECT_DIR", "upload.gdb")
-        ],
-        UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
-
-elif upload_protocol.startswith("blackmagic"):
-    env.Replace(
-        UPLOADER="$GDB",
-        UPLOADERFLAGS=[
-            "-nx",
-            "--batch",
-            "-ex", "target extended-remote $UPLOAD_PORT",
-            "-ex", "monitor %s_scan" %
-            ("jtag" if upload_protocol == "blackmagic-jtag" else "swdp"),
-            "-ex", "attach 1",
-            "-ex", "load",
-            "-ex", "compare-sections",
-            "-ex", "kill",
-            join("$BUILD_DIR", "firmware.elf"),
-        ],
-        UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
-
-elif upload_protocol in ("serial", "dfu") \
-        and "arduino" in env.subst("$PIOFRAMEWORK"):
-    _upload_tool = "serial_upload"
-    _upload_flags = ["{upload.altID}", "{upload.usbID}"]
-    if upload_protocol == "dfu":
-        _upload_tool = "maple_upload"
-        _usbids = env.BoardConfig().get("build.hwids")
-        _upload_flags = [
-            env.BoardConfig().get("upload.boot_version", 2),
-            "%s:%s" % (_usbids[0][0][2:], _usbids[0][1][2:])
-        ]
-    env.Replace(
-        UPLOADER=_upload_tool,
-        UPLOADERFLAGS=["$UPLOAD_PORT"] + _upload_flags,
-        UPLOADCMD="'$UPLOADER' $UPLOADERFLAGS $PROJECT_DIR/$SOURCES")
-
 #
 # Target: Build executable and linkable firmware
 #
 
 target_elf = None
 if "nobuild" in COMMAND_LINE_TARGETS:
-    target_firm = join("$BUILD_DIR", "firmware.bin")
+    target_elf = join("$BUILD_DIR", "${PROGNAME}.elf")
+    target_firm = join("$BUILD_DIR", "${PROGNAME}.bin")
 else:
     target_elf = env.BuildProgram()
-    target_firm = env.ElfToBin(join("$BUILD_DIR", "firmware"), target_elf)
+    target_firm = env.ElfToBin(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
 target_buildprog = env.Alias("buildprog", target_firm, target_firm)
@@ -197,27 +143,82 @@ AlwaysBuild(target_size)
 # Target: Upload by default .bin file
 #
 
-upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+upload_protocol = env.subst("$UPLOAD_PROTOCOL")
+debug_tools = env.BoardConfig().get("debug.tools", {})
+upload_source = target_firm
+upload_actions = []
 
-if any([
-        upload_protocol.startswith("blackmagic"),
-        "mbed" in env.subst("$PIOFRAMEWORK") and not upload_protocol
-]):
-    upload_actions.insert(0,
-                          env.VerboseAction(env.AutodetectUploadPort,
-                                            "Looking for upload disk..."))
+if upload_protocol == "mbed":
+    upload_actions = [
+        env.VerboseAction(env.AutodetectUploadPort, "Looking for upload disk..."),
+        env.VerboseAction(env.UploadToDisk, "Uploading $SOURCE")
+    ]
 
-elif "arduino" in env.subst("$PIOFRAMEWORK") and upload_protocol != "stlink":
+elif upload_protocol.startswith("blackmagic"):
+    env.Replace(
+        UPLOADER="$GDB",
+        UPLOADERFLAGS=[
+            "-nx",
+            "--batch",
+            "-ex", "target extended-remote $UPLOAD_PORT",
+            "-ex", "monitor %s_scan" %
+            ("jtag" if upload_protocol == "blackmagic-jtag" else "swdp"),
+            "-ex", "attach 1",
+            "-ex", "load",
+            "-ex", "compare-sections",
+            "-ex", "kill"
+        ],
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $SOURCE"
+    )
+    upload_source = target_elf
+    upload_actions = [
+        env.VerboseAction(env.AutodetectUploadPort, "Looking for BlackMagic port..."),
+        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
+    ]
 
-    def BeforeUpload(target, source, env):
-        env.AutodetectUploadPort()
-        env.Replace(UPLOAD_PORT=basename(env.subst("$UPLOAD_PORT")))
+elif upload_protocol in ("serial", "dfu") \
+        and "arduino" in env.subst("$PIOFRAMEWORK"):
+    _upload_tool = "serial_upload"
+    _upload_flags = ["{upload.altID}", "{upload.usbID}"]
+    if upload_protocol == "dfu":
+        _upload_tool = "maple_upload"
+        _usbids = env.BoardConfig().get("build.hwids")
+        _upload_flags = [
+            env.BoardConfig().get("upload.boot_version", 2),
+            "%s:%s" % (_usbids[0][0][2:], _usbids[0][1][2:])
+        ]
+    env.Replace(
+        UPLOADER=_upload_tool,
+        UPLOADERFLAGS=["$UPLOAD_PORT"] + _upload_flags,
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $PROJECT_DIR/$SOURCES"
+    )
+    upload_actions = [
+        env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
+        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
+    ]
 
-    upload_actions.insert(0,
-                          env.VerboseAction(BeforeUpload,
-                                            "Looking for upload port..."))
+elif upload_protocol in debug_tools:
+    env.Replace(
+        UPLOADER="openocd",
+        UPLOADERFLAGS=["-s", platform.get_package_dir("tool-openocd") or ""] +
+        debug_tools.get(upload_protocol).get("server").get("arguments", []) +
+        ["-c",
+            "program {{$SOURCE}} %s verify reset; shutdown;" % env.BoardConfig().get(
+                "upload").get("flash_start", "")],
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
+    
+    if not env.BoardConfig().get("upload").get("flash_start"):
+        upload_source = target_elf
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
-AlwaysBuild(env.Alias("upload", target_firm, upload_actions))
+# custom upload tool
+elif "UPLOADCMD" in env:
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+
+else:
+    sys.stderr.write("Warning! Unknown upload protocol %s\n" % upload_protocol)
+
+AlwaysBuild(env.Alias("upload", upload_source, upload_actions))
 
 #
 # Default targets

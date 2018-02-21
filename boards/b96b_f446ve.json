@@ -8,6 +8,16 @@
   "connectivity": [
     "can"
   ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_f4",
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -15,19 +25,14 @@
   "name": "96Boards B96B-F446VE",
   "upload": {
     "maximum_ram_size": 131072,
-    "maximum_size": 524288
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/st_nucleo_f4.cfg"]
-        },
-        "onboard": true
-      }
-    }
+    "maximum_size": 524288,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "url": "https://developer.mbed.org/platforms/ST-B96B-F446VE/",
   "vendor": "96Boards"

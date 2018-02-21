@@ -3,7 +3,7 @@
 #include "config.h"
 #include "utility.h"
 #include "iothub_client_sample_mqtt.h"
-#include "telemetry.h"
+#include "Telemetry.h"
 
 static bool hasWifi = false;
 int messageCount = 1;

@@ -5,6 +5,16 @@
     "f_cpu": "72000000L",
     "mcu": "stm32f334c8t6"
   },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "stm32f334discovery",
+    "openocd_target": "stm32f3x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -13,19 +23,13 @@
   "upload": {
     "maximum_ram_size": 12288,
     "maximum_size": 65536,
-    "protocol": "stlink"
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": ["-f", "scripts/board/stm32f334discovery.cfg"]
-        },
-        "onboard": true
-      }
-    }
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "url": "http://www.st.com/web/en/catalog/tools/PF260318",
   "vendor": "ST"

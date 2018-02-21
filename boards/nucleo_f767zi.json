@@ -9,6 +9,16 @@
     "can",
     "ethernet"
   ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_f7",
+    "openocd_target": "stm32f7x"
+  },
   "frameworks": [
     "mbed",
     "stm32cube"
@@ -16,23 +26,14 @@
   "name": "ST Nucleo F767ZI",
   "upload": {
     "maximum_ram_size": 524288,
-    "maximum_size": 2097152
-  },
-  "debug": {
-    "tools": {
-      "stlink-v2-1": {
-        "server": {
-          "package": "tool-openocd",
-          "executable": "bin/openocd",
-          "arguments": [
-            "-f", "scripts/interface/stlink-v2-1.cfg",
-            "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32f7x.cfg"
-          ]
-        },
-        "onboard": true
-      }
-    }
+    "maximum_size": 2097152,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
   },
   "url": "https://developer.mbed.org/platforms/ST-Nucleo-F767ZI/",
   "vendor": "ST"

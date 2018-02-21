@@ -8,31 +8,28 @@
     "mcu": "stm32f415rgt",
     "variant": "stm32f415xx"
   },
+  "debug": {
+    "default_tools": [
+      "blackmagic"
+    ],
+    "openocd_target": "stm32f4x"
+  },
   "frameworks": [
+    "libopencm3",
     "cmsis",
     "spl",
-    "libopencm3",
     "stm32cube"
   ],
   "name": "1Bitsy",
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,
-    "protocol": "blackmagic"
-  },
-  "debug": {
-    "tools": {
-      "blackmagic": {
-        "hwids": [
-          [
-            "0x1d50",
-            "0x6018"
-          ]
-        ],
-        "require_debug_port": true,
-        "default": true
-      }
-    }
+    "protocol": "blackmagic",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
   },
   "url": "http://1bitsy.org",
   "vendor": "1BitSquared"
