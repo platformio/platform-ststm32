@@ -82,9 +82,6 @@ class Ststm32Platform(PlatformBase):
                     "scripts/target/%s.cfg" % debug.get("openocd_target")
                 ])
 
-            if debug.get("openocd_extra_args"):
-                server_args.extend(debug.get("openocd_extra_args"))
-
             debug['tools'][link] = {
                 "server": {
                     "package": "tool-openocd",
