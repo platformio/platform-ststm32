@@ -25,7 +25,7 @@
     "arduino",
     "mbed",
     "stm32cube",
-    "cmsis"
+    "cmsis",
     "libopencm3",
     "stm32cube"
   ],
