@@ -19,7 +19,21 @@
     "variant": "stm32f103xb"
   },
   "debug": {
-    "openocd_target": "stm32f1x"
+    "openocd_target": "stm32f1x",
+    "tools": {
+      "stlink": {
+        "server": {
+          "arguments": [
+            "-f", "scripts/interface/stlink.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f1x.cfg",
+            "-c", "reset_config none"
+          ],
+          "executable": "bin/openocd",
+          "package": "tool-openocd"
+        }
+      }
+    }
   },
   "frameworks": [
     "arduino",

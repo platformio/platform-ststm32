@@ -57,8 +57,17 @@ elif "f103vc" in mcu_type or "f103ve" in mcu_type:
 
 # upload related configuration remap
 # for all generic boards
+upload_protocol = env.subst("$UPLOAD_PROTOCOL")
+
+if upload_protocol not in ("dfu", "serial"):
+    env.Append(CPPDEFINES=[
+        ("CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG", 1),
+        "SERIAL_USB",
+        "GENERIC_BOOTLOADER"
+    ])
+
 if "generic" in board.id:
-    if env.subst("$UPLOAD_PROTOCOL") == "dfu":
+    if upload_protocol == "dfu":
         vector = 0x8002000
         env.Append(CPPDEFINES=["SERIAL_USB", "GENERIC_BOOTLOADER"])
 
@@ -68,17 +77,10 @@ if "generic" in board.id:
             ldscript = "bootloader.ld"
         elif "f103v" in mcu_type:
             ldscript = "stm32f103veDFU.ld"
-    elif env.subst("$UPLOAD_PROTOCOL") == "stlink":
-        env.Append(CPPDEFINES=[
-            ("CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG", 1),
-            "SERIAL_USB",
-            "GENERIC_BOOTLOADER"
-        ])
-    else:
-        env.Append(CPPDEFINES=[("CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG", 1)])
 
-        if board.get("build.vec_tab_addr", "") :
-            vector = int(board.get("build.vec_tab_addr"), 16)
+    elif board.get("build.vec_tab_addr", ""):
+        vector = int(board.get("build.vec_tab_addr"), 16)
+
 # maple board related configuration remap
 elif "maple" in board.id:
     env.Append(CPPDEFINES=[("SERIAL_USB")])
@@ -89,6 +91,7 @@ elif "maple" in board.id:
     if "maple_mini_origin" in board.id or "maple" in board.id:
         vector = 0x8005000
         ldscript = "flash.ld"
+
 # for nucleo f103rb board
 elif "nucleo_f103rb" in board.id:
     variant = "nucleo_f103rb"
@@ -133,7 +136,7 @@ env.Append(
 )
 
 # remap ldscript
-env.Replace(LDSCRIPT_PATH=[ldscript])
+env.Replace(LDSCRIPT_PATH=ldscript)
 
 # remove unused linker flags
 for item in ("-nostartfiles", "-nostdlib"):

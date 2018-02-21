@@ -31,7 +31,7 @@
     "disable_flushing": false,
     "maximum_ram_size": 65536,
     "maximum_size": 524288,
-    "protocol": "serial",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",
