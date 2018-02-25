@@ -66,7 +66,7 @@ if upload_protocol not in ("dfu", "serial"):
         "GENERIC_BOOTLOADER"
     ])
 
-if "generic" in board.id:
+if "generic" in board.id or "bluepill" in board.id:
     if upload_protocol == "dfu":
         vector = 0x8002000
         env.Append(CPPDEFINES=["SERIAL_USB", "GENERIC_BOOTLOADER"])
