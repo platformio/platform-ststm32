@@ -33,7 +33,7 @@ FRAMEWORK_DIR = join(platform.get_package_dir(
 assert isdir(FRAMEWORK_DIR)
 
 # default configuration values
-vector = 0x8000000
+vector = int(board.get("build.vec_tab_addr", "0x8000000"), 16)
 error_led_port = "GPIOB"
 error_led_pin = 1
 
@@ -66,37 +66,31 @@ if upload_protocol not in ("dfu", "serial"):
         "GENERIC_BOOTLOADER"
     ])
 
-if "generic" in board.id:
-    if upload_protocol == "dfu":
-        vector = 0x8002000
-        env.Append(CPPDEFINES=["SERIAL_USB", "GENERIC_BOOTLOADER"])
-
-        if "f103c" in mcu_type:
-            ldscript = "bootloader_20.ld"
-        elif "f103r" in mcu_type:
-            ldscript = "bootloader.ld"
-        elif "f103v" in mcu_type:
-            ldscript = "stm32f103veDFU.ld"
-
-    elif board.get("build.vec_tab_addr", ""):
-        vector = int(board.get("build.vec_tab_addr"), 16)
-
 # maple board related configuration remap
-elif "maple" in board.id:
+if "maple" in board.id:
     env.Append(CPPDEFINES=[("SERIAL_USB")])
     variant = "maple_mini" if "maple_mini" in board.id else "maple"
-    vector = 0x8002000
-    ldscript = "bootloader_20"
-
-    if "maple_mini_origin" in board.id or "maple" in board.id:
-        vector = 0x8005000
-        ldscript = "flash.ld"
+    vector = 0x8005000
+    ldscript = "flash.ld"
+    if board.id == "maple_mini_b20":
+        vector = 0x8002000
+        ldscript = "bootloader_20"
 
 # for nucleo f103rb board
 elif "nucleo_f103rb" in board.id:
     variant = "nucleo_f103rb"
     ldscript = "jtag.ld"
     env.Append(CPPDEFINES=["NUCLEO_HSE_CRYSTAL"])
+
+elif upload_protocol == "dfu":
+    env.Append(CPPDEFINES=["SERIAL_USB", "GENERIC_BOOTLOADER"])
+    vector = 0x8002000
+    if "f103c" in mcu_type:
+        ldscript = "bootloader_20.ld"
+    elif "f103r" in mcu_type:
+        ldscript = "bootloader.ld"
+    elif "f103v" in mcu_type:
+        ldscript = "stm32f103veDFU.ld"
 
 
 env.Append(
@@ -132,7 +126,9 @@ env.Append(
         join(FRAMEWORK_DIR, "system", "libmaple", "usb", "usb_lib")
     ],
 
-    LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")]
+    LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")],
+
+    LIBS=["c"]
 )
 
 # remap ldscript
@@ -144,7 +140,7 @@ for item in ("-nostartfiles", "-nostdlib"):
         env['LINKFLAGS'].remove(item)
 
 # remove unused libraries
-for item in ("c", "stdc++", "nosys"):
+for item in ("stdc++", "nosys"):
     if item in env['LIBS']:
         env['LIBS'].remove(item)
 
