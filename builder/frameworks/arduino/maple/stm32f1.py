@@ -126,7 +126,9 @@ env.Append(
         join(FRAMEWORK_DIR, "system", "libmaple", "usb", "usb_lib")
     ],
 
-    LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")]
+    LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")],
+
+    LIBS=["c"]
 )
 
 # remap ldscript
@@ -138,7 +140,7 @@ for item in ("-nostartfiles", "-nostdlib"):
         env['LINKFLAGS'].remove(item)
 
 # remove unused libraries
-for item in ("c", "stdc++", "nosys"):
+for item in ("stdc++", "nosys"):
     if item in env['LIBS']:
         env['LIBS'].remove(item)
 
