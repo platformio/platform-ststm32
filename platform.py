@@ -73,14 +73,14 @@ class Ststm32Platform(PlatformBase):
                 assert debug.get("openocd_target"), (
                     "Missed target configuration for %s" % board.id)
 
-                server_args = ["-f", "scripts/interface/%s.cfg" % link]
-                if link == "stlink":
-                    server_args.extend(["-c", "transport select hla_swd"])
-
-                server_args.extend([
+                server_args = [
+                    "-f",
+                    "scripts/interface/%s.cfg" % link, "-c",
+                    "transport select %s" % ("hla_swd"
+                                             if link == "stlink" else "swd"),
                     "-f",
                     "scripts/target/%s.cfg" % debug.get("openocd_target")
-                ])
+                ]
 
             debug['tools'][link] = {
                 "server": {
