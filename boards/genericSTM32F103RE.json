@@ -36,7 +36,8 @@
       "jlink",
       "stlink",
       "blackmagic",
-      "serial"
+      "serial",
+      "dfu"
     ],
     "require_upload_port": true,
     "use_1200bps_touch": false,
