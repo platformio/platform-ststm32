@@ -21,7 +21,7 @@
     "stm32cube",
     "mbed"
   ],
-  "name": "ST 32F413HDISCOVERY",
+  "name": "ST Nucleo F413ZH",
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 524288,
@@ -33,6 +33,6 @@
       "mbed"
     ]
   },
-  "url": "https://os.mbed.com/platforms/ST-Discovery-F413H/",
+  "url": "https://os.mbed.com/platforms/ST-Nucleo-F413ZH/",
   "vendor": "ST"
 }

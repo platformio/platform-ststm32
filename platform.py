@@ -49,7 +49,7 @@ class Ststm32Platform(PlatformBase):
             debug['tools'] = {}
 
         # BlackMagic, J-Link, ST-Link
-        for link in ("blackmagic", "jlink", "stlink"):
+        for link in ("blackmagic", "jlink", "stlink", "cmsis-dap"):
             if link not in upload_protocols or link in debug['tools']:
                 continue
             if link == "blackmagic":
