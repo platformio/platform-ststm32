@@ -38,7 +38,6 @@
   "frameworks": [
     "arduino",
     "mbed",
-    "stm32cube",
     "cmsis",
     "libopencm3",
     "stm32cube"
