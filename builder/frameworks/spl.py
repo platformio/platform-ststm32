@@ -46,9 +46,7 @@ env.Append(
     ]
 )
 
-envsafe = env.Clone()
-
-envsafe.Append(
+env.Append(
     CPPDEFINES=[
         "USE_STDPERIPH_DRIVER"
     ]
@@ -87,7 +85,7 @@ elif "STM32L1XX_MD" in extra_flags:
 
 libs = []
 
-libs.append(envsafe.BuildLibrary(
+libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkCMSISVariant"),
     join(
         FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "cmsis",
@@ -95,7 +93,7 @@ libs.append(envsafe.BuildLibrary(
     )
 ))
 
-libs.append(envsafe.BuildLibrary(
+libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkSPL"),
     join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"),
          "spl", "variants",

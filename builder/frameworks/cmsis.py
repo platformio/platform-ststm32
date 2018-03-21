@@ -46,7 +46,6 @@ env.Append(
     ]
 )
 
-envsafe = env.Clone()
 
 #
 # Target: Build Core Library
@@ -69,7 +68,7 @@ if not isfile(join(platform.get_dir(), "ldscripts", ldscript)):
         )
 
 libs = []
-libs.append(envsafe.BuildLibrary(
+libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkCMSISVariant"),
     join(
         FRAMEWORK_DIR, "variants",
@@ -78,7 +77,7 @@ libs.append(envsafe.BuildLibrary(
     )
 ))
 
-libs.append(envsafe.BuildLibrary(
+libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkCMSISCommon"),
     join(
         FRAMEWORK_DIR, "variants",

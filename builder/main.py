@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import sys
-from os.path import join
+from os.path import basename, join
 
 from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
                           DefaultEnvironment)
@@ -187,9 +187,15 @@ elif upload_protocol in ("serial", "dfu") \
             env.BoardConfig().get("upload.boot_version", 2),
             "%s:%s" % (_usbids[0][0][2:], _usbids[0][1][2:])
         ]
+
+    def __configure_upload_port(env):
+        return (basename(env.subst("$UPLOAD_PORT"))
+                if _upload_tool == "maple_upload" else "$UPLOAD_PORT")
+
     env.Replace(
+        __configure_upload_port=__configure_upload_port,
         UPLOADER=_upload_tool,
-        UPLOADERFLAGS=["$UPLOAD_PORT"] + _upload_flags,
+        UPLOADERFLAGS=["${__configure_upload_port(__env__)}"] + _upload_flags,
         UPLOADCMD="$UPLOADER $UPLOADERFLAGS $PROJECT_DIR/$SOURCES"
     )
     upload_actions = [
