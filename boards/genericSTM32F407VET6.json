@@ -34,7 +34,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "STM32GenericF407VET6",
+  "name": "STM32F407VE (192k RAM. 512k Flash)",
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 514288,

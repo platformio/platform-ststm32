@@ -49,22 +49,18 @@ upload_protocol = env.subst("$UPLOAD_PROTOCOL")
 
 env.Append(
     CFLAGS=[
-        "-mthumb",
+        "-std=gnu11"
+    ],
+
+    CCFLAGS=[
         "-MMD",
-        "-std=gnu11",
-        "-nostdlib",
         "--param",
-        "max-inline-insns-single=500"],
+        "max-inline-insns-single=500"
+    ],
 
     CXXFLAGS=[
-        "-mthumb",
-        "-MMD",
-        "-std=gnu++11",
-        "-nostdlib",
-        "-fno-rtti",
-        "-fno-exceptions",
-        "--param",
-        "max-inline-insns-single=500"],
+        "-std=gnu++11"
+    ],
 
     CPPDEFINES=[
         ("DEBUG_LEVEL", "DEBUG_NONE"),
@@ -72,8 +68,7 @@ env.Append(
         ("ERROR_LED_PORT", error_led_port),
         ("ERROR_LED_PIN", error_led_pin),
         ("ARDUINO", 10610),
-        ("ARDUINO_%s" % variant.upper()
-            if not "nucleo" in board.id else "STM_NUCLEO_F103RB"),
+        ("ARDUINO_%s" % variant.upper()),
         ("ARDUINO_ARCH_STM32F4"),
         ("VECT_TAB_FLASH"),
         ("USER_ADDR_ROM=0x08000000"),
