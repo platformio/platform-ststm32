@@ -1,0 +1,48 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-mthumb -DSTM32F4 -DSTM32_HIGH_DENSITY",
+    "f_cpu": "168000000L",
+    "hwids": [
+      [
+        "0x0483",
+        "0x3748"
+      ]
+    ],
+    "ldscript": "jtag.ld",
+    "mcu": "stm32f407vet6",
+    "variant": "stm32f4"
+  },
+  "debug": {
+    "openocd_target": "stm32f4x",
+    "tools": {
+      "stlink": {
+        "server": {
+          "arguments": [
+            "-f", "scripts/interface/stlink.cfg",
+            "-c", "transport select hla_swd",
+            "-f", "scripts/target/stm32f4x.cfg",
+            "-c", "reset_config none"
+          ],
+          "executable": "bin/openocd",
+          "package": "tool-openocd"
+        }
+      }
+    }
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "STM32GenericF407VET6",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 514288,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink"
+    ]
+  },
+  "url": "http://www.st.com/en/microcontrollers/stm32f407ve.html",
+  "vendor": "Generic"
+}

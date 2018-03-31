@@ -28,3 +28,5 @@ env = DefaultEnvironment()
 
 if "stm32f1" in env.BoardConfig().get("build.variant"):
     env.SConscript('maple/stm32f1.py', exports="env")
+if "stm32f4" in env.BoardConfig().get("build.variant"):
+    env.SConscript('maple/stm32f4.py', exports="env")
