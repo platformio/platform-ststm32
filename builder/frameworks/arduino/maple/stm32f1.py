@@ -74,7 +74,7 @@ if "maple" in board.id:
     ldscript = "flash.ld"
     if board.id == "maple_mini_b20":
         vector = 0x8002000
-        ldscript = "bootloader_20"
+        ldscript = "bootloader_20.ld"
 
 # for nucleo f103rb board
 elif "nucleo_f103rb" in board.id:
