@@ -31,101 +31,61 @@ platform = env.PioPlatform()
 board = env.BoardConfig()
 
 FRAMEWORK_DIR = join(platform.get_package_dir(
-    "framework-arduinoststm32"), "STM32F1")
+    "framework-arduinoststm32"), "STM32F4")
 assert isdir(FRAMEWORK_DIR)
 
 # default configuration values
-vector = int(board.get("build.vec_tab_addr", "0x8000000"), 16)
-error_led_port = "GPIOB"
-error_led_pin = 1
+error_led_port = "GPIOA"
+error_led_pin = 7
 
 # remap board configuration values
 mcu_type = board.get("build.mcu")[:-2]
-if "f103c8" in mcu_type:
-    ldscript = "jtag_c8.ld"
-elif "f103cb" in mcu_type:
+if "stm32f407ve" in mcu_type:
     ldscript = "jtag.ld"
-else:
-    ldscript = "%s.ld" % mcu_type
+    variant = "generic_f407v"
 
-if "f103c" in mcu_type:
-    variant = "generic_stm32f103c"
-elif "f103r8" in mcu_type or "f103rb" in mcu_type:
-    variant = "generic_stm32f103r8"
-elif "f103rc" in mcu_type or "f103re" in mcu_type:
-    variant = "generic_stm32f103r"
-elif "f103vc" in mcu_type or "f103ve" in mcu_type:
-    variant = "generic_stm32f103v"
 
 # upload related configuration remap
 # for all generic boards
 upload_protocol = env.subst("$UPLOAD_PROTOCOL")
 
-if upload_protocol not in ("dfu", "serial"):
-    env.Append(CPPDEFINES=[
-        ("CONFIG_MAPLE_MINI_NO_DISABLE_DEBUG", 1),
-        "SERIAL_USB",
-        "GENERIC_BOOTLOADER"
-    ])
-
-# maple board related configuration remap
-if "maple" in board.id:
-    env.Append(CPPDEFINES=[("SERIAL_USB")])
-    variant = "maple_mini" if "maple_mini" in board.id else "maple"
-    vector = 0x8005000
-    ldscript = "flash.ld"
-    if board.id == "maple_mini_b20":
-        vector = 0x8002000
-        ldscript = "bootloader_20.ld"
-
-# for nucleo f103rb board
-elif "nucleo_f103rb" in board.id:
-    variant = "nucleo_f103rb"
-    ldscript = "jtag.ld"
-    env.Append(CPPDEFINES=["NUCLEO_HSE_CRYSTAL"])
-
-elif upload_protocol == "dfu":
-    env.Append(CPPDEFINES=["SERIAL_USB", "GENERIC_BOOTLOADER"])
-    vector = 0x8002000
-    if "f103c" in mcu_type:
-        ldscript = "bootloader_20.ld"
-    elif "f103r" in mcu_type:
-        ldscript = "bootloader.ld"
-    elif "f103v" in mcu_type:
-        ldscript = "stm32f103veDFU.ld"
-
-
 env.Append(
-    CFLAGS=["-std=gnu11"],
-
-    CXXFLAGS=["-std=gnu++11"],
+    CFLAGS=[
+        "-std=gnu11"
+    ],
 
     CCFLAGS=[
         "-MMD",
-        "--param", "max-inline-insns-single=500",
-        "-march=armv7-m"
+        "--param",
+        "max-inline-insns-single=500"
+    ],
+
+    CXXFLAGS=[
+        "-std=gnu++11"
     ],
 
     CPPDEFINES=[
         ("DEBUG_LEVEL", "DEBUG_NONE"),
         ("BOARD_%s" % variant),
-        ("VECT_TAB_ADDR", vector),
         ("ERROR_LED_PORT", error_led_port),
         ("ERROR_LED_PIN", error_led_pin),
         ("ARDUINO", 10610),
-        ("ARDUINO_%s" % variant.upper()
-            if "nucleo" not in board.id else "STM_NUCLEO_F103RB"),
-        ("ARDUINO_ARCH_STM32F1"),
-        ("__STM32F1__"),
-        ("MCU_%s" % mcu_type.upper())
+        ("ARDUINO_%s" % variant.upper()),
+        ("ARDUINO_ARCH_STM32F4"),
+        ("VECT_TAB_FLASH"),
+        ("USER_ADDR_ROM=0x08000000"),
+        ("__STM32F4__"),
+        ("MCU_%s" % mcu_type.upper()),
+        ("SERIAL_USB") # this is so that usb serial is connected when the board boots, use USB_MSC for having USB Mass Storage (MSC) instead
     ],
 
     CPPPATH=[
         join(FRAMEWORK_DIR, "cores", "maple"),
+        join(FRAMEWORK_DIR, "cores", "maple", "avr"),
+        join(FRAMEWORK_DIR, "cores", "maple", "libmaple"),
+        join(FRAMEWORK_DIR, "cores", "maple", "libmaple", "usbF4"),
+        join(FRAMEWORK_DIR, "cores", "maple", "libmaple", "usbF4", "VCP"),
         join(FRAMEWORK_DIR, "system", "libmaple"),
-        join(FRAMEWORK_DIR, "system", "libmaple", "include"),
-        join(FRAMEWORK_DIR, "system", "libmaple", "usb", "stm32f1"),
-        join(FRAMEWORK_DIR, "system", "libmaple", "usb", "usb_lib")
     ],
 
     LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")],

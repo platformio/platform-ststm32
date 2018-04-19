@@ -2,7 +2,7 @@
   "build": {
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32L053xx",
-    "f_cpu": "48000000L",
+    "f_cpu": "32000000L",
     "mcu": "stm32l053r8t6"
   },
   "debug": {
