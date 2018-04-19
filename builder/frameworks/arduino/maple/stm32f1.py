@@ -24,7 +24,9 @@ http://www.stm32duino.com
 
 from os.path import isdir, join
 
-Import("env")
+from SCons.Script import DefaultEnvironment
+
+env = DefaultEnvironment()
 platform = env.PioPlatform()
 board = env.BoardConfig()
 
@@ -112,7 +114,7 @@ env.Append(
         ("ERROR_LED_PIN", error_led_pin),
         ("ARDUINO", 10610),
         ("ARDUINO_%s" % variant.upper()
-            if not "nucleo" in board.id else "STM_NUCLEO_F103RB"),
+            if "nucleo" not in board.id else "STM_NUCLEO_F103RB"),
         ("ARDUINO_ARCH_STM32F1"),
         ("__STM32F1__"),
         ("MCU_%s" % mcu_type.upper())

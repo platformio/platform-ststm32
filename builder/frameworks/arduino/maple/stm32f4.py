@@ -24,7 +24,9 @@ http://www.stm32duino.com
 
 from os.path import isdir, join
 
-Import("env")
+from SCons.Script import DefaultEnvironment
+
+env = DefaultEnvironment()
 platform = env.PioPlatform()
 board = env.BoardConfig()
 
