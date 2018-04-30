@@ -13,6 +13,7 @@
       "stlink"
     ],
     "openocd_target": "stm32l0",
+    "svd_path": "STM32L07x.svd",
     "tools": {
       "jlink": {
         "server": [
