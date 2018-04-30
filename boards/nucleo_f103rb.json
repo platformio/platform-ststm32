@@ -16,7 +16,8 @@
       "stlink"
     ],
     "openocd_board": "st_nucleo_f103rb",
-    "openocd_target": "stm32f1x"
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
   },
   "frameworks": [
     "arduino",

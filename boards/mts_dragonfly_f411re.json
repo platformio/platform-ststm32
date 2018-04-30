@@ -8,7 +8,8 @@
     "cellular"
   ],
   "debug": {
-    "openocd_target": "stm32f4x"
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F411xx.svd"
   },
   "frameworks": [
     "mbed",

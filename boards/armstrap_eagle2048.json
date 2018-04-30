@@ -15,7 +15,8 @@
     "onboard_tools": [
       "blackmagic"
     ],
-    "openocd_target": "stm32f4x"
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F427x.svd"
   },
   "frameworks": [
     "cmsis",

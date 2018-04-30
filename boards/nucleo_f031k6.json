@@ -13,7 +13,8 @@
       "stlink"
     ],
     "openocd_board": "st_nucleo_f0",
-    "openocd_target": "stm32f0x"
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F031x.svd"
   },
   "frameworks": [
     "mbed",

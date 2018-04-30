@@ -19,7 +19,8 @@
     "variant": "stm32f1"
   },
   "debug": {
-    "openocd_target": "stm32f1x"
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
   },
   "frameworks": [
     "arduino",

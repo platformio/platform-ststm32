@@ -17,7 +17,8 @@
       "stlink"
     ],
     "openocd_board": "st_nucleo_f7",
-    "openocd_target": "stm32f7x"
+    "openocd_target": "stm32f7x",
+    "svd_path": "STM32F7x7.svd"
   },
   "frameworks": [
     "mbed",
