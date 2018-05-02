@@ -11,8 +11,11 @@
     "wifi"
   ],
   "debug": {
+    "onboard_tools": [
+      "cmsis-dap"
+    ],
     "openocd_target": "stm32f4x",
-    "onboard_tools": ["cmsis-dap"]
+    "svd_path": "STM32F439x.svd"
   },
   "frameworks": [
     "mbed",

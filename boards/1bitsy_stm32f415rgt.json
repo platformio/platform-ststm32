@@ -12,7 +12,8 @@
     "default_tools": [
       "blackmagic"
     ],
-    "openocd_target": "stm32f4x"
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F41x.svd"
   },
   "frameworks": [
     "libopencm3",

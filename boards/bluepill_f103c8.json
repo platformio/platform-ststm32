@@ -20,14 +20,19 @@
   },
   "debug": {
     "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd",
     "tools": {
       "stlink": {
         "server": {
           "arguments": [
-            "-f", "scripts/interface/stlink.cfg",
-            "-c", "transport select hla_swd",
-            "-f", "scripts/target/stm32f1x.cfg",
-            "-c", "reset_config none"
+            "-f",
+            "scripts/interface/stlink.cfg",
+            "-c",
+            "transport select hla_swd",
+            "-f",
+            "scripts/target/stm32f1x.cfg",
+            "-c",
+            "reset_config none"
           ],
           "executable": "bin/openocd",
           "package": "tool-openocd"

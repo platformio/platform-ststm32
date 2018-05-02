@@ -6,7 +6,8 @@
     "mcu": "stm32l152rc"
   },
   "debug": {
-    "openocd_target": "stm32l1"
+    "openocd_target": "stm32l1",
+    "svd_path": "STM32L1xx.svd"
   },
   "frameworks": [
     "mbed",

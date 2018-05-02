@@ -12,7 +12,8 @@
     "onboard_tools": [
       "stlink"
     ],
-    "openocd_target": "stm32f1x"
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F100xx.svd"
   },
   "frameworks": [
     "mbed",

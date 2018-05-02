@@ -13,7 +13,8 @@
       "stlink"
     ],
     "openocd_board": "st_nucleo_l1",
-    "openocd_target": "stm32fl1"
+    "openocd_target": "stm32fl1",
+    "svd_path": "STM32L15xxE.svd"
   },
   "frameworks": [
     "mbed",

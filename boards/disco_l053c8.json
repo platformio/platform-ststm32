@@ -13,7 +13,8 @@
       "stlink"
     ],
     "openocd_board": "stm32l0discovery",
-    "openocd_target": "stm32l0"
+    "openocd_target": "stm32l0",
+    "svd_path": "STM32L053x.svd"
   },
   "frameworks": [
     "mbed",

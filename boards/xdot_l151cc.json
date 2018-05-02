@@ -6,7 +6,8 @@
     "mcu": "stm32l151ccu6"
   },
   "debug": {
-    "openocd_target": "stm32l1"
+    "openocd_target": "stm32l1",
+    "svd_path": "STM32L15xC.svd"
   },
   "frameworks": [
     "mbed",

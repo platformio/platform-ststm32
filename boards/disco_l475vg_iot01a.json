@@ -18,7 +18,8 @@
       "stlink"
     ],
     "openocd_board": "stm32l4discovery",
-    "openocd_target": "stm32l4x"
+    "openocd_target": "stm32l4x",
+    "svd_path": "STM32L4x5.svd"
   },
   "frameworks": [
     "mbed",
