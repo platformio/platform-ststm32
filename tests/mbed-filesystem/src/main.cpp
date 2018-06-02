@@ -1,6 +1,6 @@
 #include <mbed.h>
 #include <filesystem/mbed_filesystem.h>
-#include <Debug.h>
+#include <debug.h>
 
 int main()
 {
