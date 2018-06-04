@@ -199,7 +199,7 @@ elif upload_protocol in ("serial", "dfu") \
         __configure_upload_port=__configure_upload_port,
         UPLOADER=_upload_tool,
         UPLOADERFLAGS=["${__configure_upload_port(__env__)}"] + _upload_flags,
-        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $PROJECT_DIR/$SOURCES"
+        UPLOADCMD='$UPLOADER $UPLOADERFLAGS "$PROJECT_DIR/$SOURCES"'
     )
     upload_actions = [
         env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
