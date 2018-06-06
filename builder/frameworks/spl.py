@@ -24,6 +24,7 @@ http://www.st.com/web/en/catalog/tools/FM147/CL1794/SC961/SS1743?sc=stm32embedde
 """
 
 from os.path import isdir, isfile, join
+from string import Template
 
 from SCons.Script import DefaultEnvironment
 
@@ -32,6 +33,40 @@ platform = env.PioPlatform()
 
 FRAMEWORK_DIR = platform.get_package_dir("framework-spl")
 assert isdir(FRAMEWORK_DIR)
+
+def get_linker_script(mcu):
+    ldscript = join(FRAMEWORK_DIR, "platformio",
+                    "ldscripts", mcu[0:11].upper() + "_FLASH.ld")
+
+    if isfile(ldscript):
+        return ldscript
+
+    default_ldscript = join(FRAMEWORK_DIR, "platformio",
+                            "ldscripts", mcu[0:11].upper() + "_DEFAULT.ld")
+
+    print("Warning! Cannot find a linker script for the required board! "
+          "Firmware will be linked with a default linker script!")
+
+    if isfile(default_ldscript):
+        return default_ldscript
+
+    ram = env.BoardConfig().get("upload.maximum_ram_size", 0)
+    flash = env.BoardConfig().get("upload.maximum_size", 0)
+    template_file = join(FRAMEWORK_DIR, "platformio",
+                         "ldscripts", "tpl", "linker.tpl")
+    content = ""
+    with open(template_file) as fp:
+        data = Template(fp.read())
+        content = data.substitute(
+            stack=hex(0x20000000 + ram), # 0x20000000 - start address for RAM 
+            ram=str(int(ram/1024)) + "K",
+            flash=str(int(flash/1024)) + "K"
+        )
+
+    with open(default_ldscript, "w") as fp:
+        fp.write(content)
+
+    return default_ldscript
 
 env.Append(
     CPPPATH=[
@@ -52,25 +87,13 @@ env.Append(
     ]
 )
 
+env.Replace(
+    LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu"))
+)
+
 #
 # Target: Build SPL Library
 #
-
-# use mbed ldscript with bootloader section
-ldscript = env.BoardConfig().get("build.ldscript")
-if not isfile(join(platform.get_dir(), "ldscripts", ldscript)):
-    if "mbed" in env.BoardConfig().get("frameworks", []):
-        env.Append(
-            LINKFLAGS=[
-                '-Wl,-T"%s"' %
-                join(
-                    platform.get_package_dir("framework-mbed"), "targets",
-                    "TARGET_STM", "TARGET_%s" % env.BoardConfig().get("build.variant")[:7],
-                    "TARGET_%s" % env.subst("$BOARD").upper(), "device",
-                    "TOOLCHAIN_GCC_ARM", "%s.ld" % ldscript.upper()[:-3]
-                )
-            ]
-        )
 
 extra_flags = env.BoardConfig().get("build.extra_flags", "")
 src_filter_patterns = ["+<*>"]
