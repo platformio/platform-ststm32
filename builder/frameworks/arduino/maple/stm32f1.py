@@ -77,6 +77,9 @@ if "maple" in board.id:
     if board.id == "maple_mini_b20":
         vector = 0x8002000
         ldscript = "bootloader_20.ld"
+    elif board.id == "maple_ret6":
+        variant = "maple_ret6"
+        ldscript = "stm32f103re-bootloader.ld"
 
 # for nucleo f103rb board
 elif "nucleo_f103rb" in board.id:
@@ -89,11 +92,16 @@ elif upload_protocol == "dfu":
     vector = 0x8002000
     if "f103c" in mcu_type:
         ldscript = "bootloader_20.ld"
-    elif "f103r" in mcu_type:
+    elif "f103r" in mcu_type and board.id != "maple_ret6":
         ldscript = "bootloader.ld"
     elif "f103v" in mcu_type:
         ldscript = "stm32f103veDFU.ld"
 
+board_type = variant
+if "nucleo_f103rb" in board.id:
+    board_type = "STM_NUCLEO_F103RB"
+elif "maple_ret6" in board.id:
+    board_type = "MAPLE_RET6"
 
 env.Append(
     CFLAGS=["-std=gnu11"],
@@ -113,8 +121,7 @@ env.Append(
         ("ERROR_LED_PORT", error_led_port),
         ("ERROR_LED_PIN", error_led_pin),
         ("ARDUINO", 10610),
-        ("ARDUINO_%s" % variant.upper()
-            if "nucleo" not in board.id else "STM_NUCLEO_F103RB"),
+        ("ARDUINO_%s" % board_type),
         ("ARDUINO_ARCH_STM32F1"),
         ("__STM32F1__"),
         ("MCU_%s" % mcu_type.upper())
@@ -124,6 +131,7 @@ env.Append(
         join(FRAMEWORK_DIR, "cores", "maple"),
         join(FRAMEWORK_DIR, "system", "libmaple"),
         join(FRAMEWORK_DIR, "system", "libmaple", "include"),
+        join(FRAMEWORK_DIR, "system", "libmaple", "stm32f1", "include"),
         join(FRAMEWORK_DIR, "system", "libmaple", "usb", "stm32f1"),
         join(FRAMEWORK_DIR, "system", "libmaple", "usb", "usb_lib")
     ],
