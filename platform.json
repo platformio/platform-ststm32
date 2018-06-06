@@ -61,7 +61,7 @@
     "framework-spl": {
       "type": "framework",
       "optional": true,
-      "version": "~1.10201.0"
+      "version": "~2.10201.0"
     },
     "framework-libopencm3": {
       "type": "framework",
