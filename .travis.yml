@@ -25,6 +25,7 @@ env:
   - PLATFORMIO_PROJECT_DIR=examples/spl-blink
   - PLATFORMIO_PROJECT_DIR=examples/stm32cube-hal-blink
   - PLATFORMIO_PROJECT_DIR=examples/stm32cube-ll-blink
+  - PLATFORMIO_PROJECT_DIR=tests/mbed-filesystem
 
 install:
   - pip install -U https://github.com/platformio/platformio/archive/develop.zip

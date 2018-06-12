@@ -24,6 +24,7 @@ environment:
     - PLATFORMIO_PROJECT_DIR: "examples/spl-blink"
     - PLATFORMIO_PROJECT_DIR: "examples/stm32cube-hal-blink"
     - PLATFORMIO_PROJECT_DIR: "examples/stm32cube-ll-blink"
+    - PLATFORMIO_PROJECT_DIR: "tests/mbed-filesystem"
 
 install:
   - cmd: git submodule update --init --recursive

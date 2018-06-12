@@ -35,48 +35,53 @@ FRAMEWORK_DIR = join(platform.get_package_dir(
 assert isdir(FRAMEWORK_DIR)
 
 # default configuration values
+vector = int(board.get("build.vec_tab_addr", "0x8000000"), 16)
 error_led_port = "GPIOA"
 error_led_pin = 7
+ldscript = "jtag.ld"
+board_type = "discovery_f4"
 
 # remap board configuration values
 mcu_type = board.get("build.mcu")[:-2]
-if "stm32f407ve" in mcu_type:
-    ldscript = "jtag.ld"
+if "f407ve" in mcu_type:
     variant = "generic_f407v"
-
+    board_type = "generic_f407v"
+elif "f407vg" in mcu_type:
+    error_led_port = "GPIOD"
+    error_led_pin = 14
+    variant = "discovery_f407"
 
 # upload related configuration remap
-# for all generic boards
 upload_protocol = env.subst("$UPLOAD_PROTOCOL")
 
+if upload_protocol == "dfu":
+    vector = 0x8004000
+    if "f407v" in mcu_type:
+        ldscript = "bootloader_8004000.ld"
+
 env.Append(
-    CFLAGS=[
-        "-std=gnu11"
-    ],
+    CFLAGS=["-std=gnu11"],
+
+    CXXFLAGS=["-std=gnu++11"],
 
     CCFLAGS=[
         "-MMD",
-        "--param",
-        "max-inline-insns-single=500"
-    ],
-
-    CXXFLAGS=[
-        "-std=gnu++11"
+        "--param", "max-inline-insns-single=500",
     ],
 
     CPPDEFINES=[
         ("DEBUG_LEVEL", "DEBUG_NONE"),
-        ("BOARD_%s" % variant),
+        ("BOARD_%s" % board_type),
         ("ERROR_LED_PORT", error_led_port),
         ("ERROR_LED_PIN", error_led_pin),
         ("ARDUINO", 10610),
         ("ARDUINO_%s" % variant.upper()),
         ("ARDUINO_ARCH_STM32F4"),
         ("VECT_TAB_FLASH"),
-        ("USER_ADDR_ROM=0x08000000"),
+        ("USER_ADDR_ROM", vector),
         ("__STM32F4__"),
-        ("MCU_%s" % mcu_type.upper()),
-        ("SERIAL_USB") # this is so that usb serial is connected when the board boots, use USB_MSC for having USB Mass Storage (MSC) instead
+        ("STM32_HIGH_DENSITY"),
+        ("USB_NC")
     ],
 
     CPPPATH=[
@@ -88,9 +93,7 @@ env.Append(
         join(FRAMEWORK_DIR, "system", "libmaple"),
     ],
 
-    LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")],
-
-    LIBS=["c"]
+    LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")]
 )
 
 # remap ldscript
@@ -102,9 +105,13 @@ for item in ("-nostartfiles", "-nostdlib"):
         env['LINKFLAGS'].remove(item)
 
 # remove unused libraries
-for item in ("stdc++", "nosys"):
+for item in ("c", "stdc++", "nosys"):
     if item in env['LIBS']:
         env['LIBS'].remove(item)
+
+# remove USB inactive serial flag if other flags are used
+if "SERIAL_USB" in env['CPPDEFINES'] or "USB_MSC" in env['CPPDEFINES']:
+    env['CPPDEFINES'].remove("USB_NC")
 
 #
 # Lookup for specific core's libraries

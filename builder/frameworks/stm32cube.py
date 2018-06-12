@@ -44,7 +44,8 @@ STARTUP_FILE_EXCEPTIONS = {
     "stm32f103r8": "startup_stm32f103xb.s",
     "stm32f103rc": "startup_stm32f103xb.s",
     "stm32f103vc": "startup_stm32f103xe.s",
-    "stm32f103ve": "startup_stm32f103xe.s"
+    "stm32f103ve": "startup_stm32f103xe.s",
+    "stm32f407ve": "startup_stm32f407xx.s"
 }
 
 
