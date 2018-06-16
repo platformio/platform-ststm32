@@ -29,6 +29,7 @@
   ],
   "name": "Microduino Core STM32 to Flash",
   "upload": {
+    "boot_version": 1,
     "disable_flushing": false,
     "maximum_ram_size": 17000,
     "maximum_size": 108000,
