@@ -68,12 +68,18 @@ if upload_protocol not in ("dfu", "serial"):
         "GENERIC_BOOTLOADER"
     ])
 
-# maple board related configuration remap
-if "maple" in board.id:
+# maple and microduino board related configuration remap
+if "maple" in board.id or "microduino" in board.id:
     env.Append(CPPDEFINES=[("SERIAL_USB")])
-    variant = "maple_mini" if "maple_mini" in board.id else "maple"
     vector = 0x8005000
     ldscript = "flash.ld"
+    if "microduino" in board.id:
+        variant = "microduino"
+    elif "maple_mini" in board.id:
+        variant = "maple_mini"
+    else:
+        variant = "maple"
+
     if board.id == "maple_mini_b20":
         vector = 0x8002000
         ldscript = "bootloader_20.ld"
@@ -102,6 +108,8 @@ if "nucleo_f103rb" in board.id:
     board_type = "STM_NUCLEO_F103RB"
 elif "maple_ret6" in board.id:
     board_type = "MAPLE_RET6"
+elif "microduino" in board.id:
+    board_type = "MICRODUINO_CORE_STM32"
 
 env.Append(
     CFLAGS=["-std=gnu11"],

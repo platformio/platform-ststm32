@@ -1,0 +1,48 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F103xB",
+    "f_cpu": "72000000L",
+    "hwids": [
+      [
+        "0x1EAF",
+        "0x0003"
+      ],
+      [
+        "0x1EAF",
+        "0x0004"
+      ]
+    ],
+    "ldscript": "stm32f103xb.ld",
+    "mcu": "stm32f103cbt6",
+    "variant": "stm32f1"
+  },
+  "debug": {
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "Microduino Core STM32 to Flash",
+  "upload": {
+    "disable_flushing": false,
+    "maximum_ram_size": 17000,
+    "maximum_size": 108000,
+    "protocol": "dfu",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "dfu"
+    ],
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
+  },
+  "url": "http://wiki.microduinoinc.com/Microduino-Module_CoreSTM32",
+  "vendor": "Microduino"
+}
