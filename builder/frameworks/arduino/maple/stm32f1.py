@@ -110,7 +110,7 @@ elif upload_protocol == "dfu":
     vector = 0x8002000
     if "f103c" in mcu_type or "f103t" in mcu_type:
         ldscript = "bootloader_20.ld"
-    elif "f103r" in mcu_type and board.id != "maple_ret6":
+    elif "f103r" in mcu_type:
         ldscript = "bootloader.ld"
     elif "f103v" in mcu_type:
         ldscript = "stm32f103veDFU.ld"
