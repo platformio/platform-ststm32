@@ -45,6 +45,7 @@ STARTUP_FILE_EXCEPTIONS = {
     "stm32f103rc": "startup_stm32f103xb.s",
     "stm32f103t8": "startup_stm32f103xb.s",
     "stm32f103vc": "startup_stm32f103xe.s",
+    "stm32f103vd": "startup_stm32f103xe.s",
     "stm32f103ve": "startup_stm32f103xe.s",
     "stm32f407ve": "startup_stm32f407xx.s"
 }
@@ -147,7 +148,7 @@ env.Replace(
 if "build.extra_flags" in env.BoardConfig():
     _extra_flags = env.BoardConfig().get("build.extra_flags")
 
-    if "F103xC" in _extra_flags:
+    if "F103xC" in _extra_flags or "F103xD" in _extra_flags:
         _extra_flags = "-DSTM32F103xE"
     elif "F103x8" in _extra_flags:
         _extra_flags = "-DSTM32F103xB"

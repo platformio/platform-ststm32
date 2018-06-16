@@ -58,8 +58,14 @@ elif "f103rc" in mcu_type or "f103re" in mcu_type:
     variant = "generic_stm32f103r"
 elif "f103t8" in mcu_type or "f103tb" in mcu_type:
     variant = "generic_stm32f103t"
-elif "f103vc" in mcu_type or "f103ve" in mcu_type:
+elif "f103vb" in mcu_type:
+    variant = "generic_stm32f103vb"
+elif "f103vc" in mcu_type or "f103ve" in mcu_type or "f103vd" in mcu_type:
     variant = "generic_stm32f103v"
+
+if "f103v" in mcu_type:
+    error_led_port = "GPIOE"
+    error_led_pin = 6
 
 # upload related configuration remap
 # for all generic boards
