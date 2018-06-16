@@ -150,7 +150,7 @@ env.Replace(
 if "build.extra_flags" in env.BoardConfig():
     _extra_flags = env.BoardConfig().get("build.extra_flags")
 
-    if "F103xC" in _extra_flags or "F103xD" in _extra_flags:
+    if "F103xC" in _extra_flags:
         _extra_flags = "-DSTM32F103xE"
     elif "F103x8" in _extra_flags:
         _extra_flags = "-DSTM32F103xB"
