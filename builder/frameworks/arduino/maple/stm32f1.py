@@ -43,8 +43,10 @@ error_led_pin = 1
 mcu_type = board.get("build.mcu")[:-2]
 if "f103c8" in mcu_type:
     ldscript = "jtag_c8.ld"
-elif "f103cb" in mcu_type:
+elif "f103cb" in mcu_type or "f103tb" in mcu_type:
     ldscript = "jtag.ld"
+elif "f103t8" in mcu_type:
+    ldscript = "jtag_t8.ld"
 else:
     ldscript = "%s.ld" % mcu_type
 
@@ -54,6 +56,8 @@ elif "f103r8" in mcu_type or "f103rb" in mcu_type:
     variant = "generic_stm32f103r8"
 elif "f103rc" in mcu_type or "f103re" in mcu_type:
     variant = "generic_stm32f103r"
+elif "f103t8" in mcu_type or "f103tb" in mcu_type:
+    variant = "generic_stm32f103t"
 elif "f103vc" in mcu_type or "f103ve" in mcu_type:
     variant = "generic_stm32f103v"
 
@@ -96,7 +100,7 @@ elif "nucleo_f103rb" in board.id:
 elif upload_protocol == "dfu":
     env.Append(CPPDEFINES=["SERIAL_USB", "GENERIC_BOOTLOADER"])
     vector = 0x8002000
-    if "f103c" in mcu_type:
+    if "f103c" in mcu_type or "f103t" in mcu_type:
         ldscript = "bootloader_20.ld"
     elif "f103r" in mcu_type and board.id != "maple_ret6":
         ldscript = "bootloader.ld"

@@ -1,0 +1,49 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F103x8",
+    "f_cpu": "72000000L",
+    "hwids": [
+      [
+        "0x1EAF",
+        "0x0003"
+      ],
+      [
+        "0x1EAF",
+        "0x0004"
+      ]
+    ],
+    "ldscript": "stm32f103x8.ld",
+    "mcu": "stm32f103t8t6",
+    "variant": "stm32f1"
+  },
+  "debug": {
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "STM32F103T8 (20k RAM. 64k Flash)",
+  "upload": {
+    "disable_flushing": false,
+    "maximum_ram_size": 65536,
+    "maximum_size": 20480,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial",
+      "dfu"
+    ],
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
+  },
+  "url": "http://www.st.com/en/microcontrollers/stm32f103t8.html",
+  "vendor": "Generic"
+}
