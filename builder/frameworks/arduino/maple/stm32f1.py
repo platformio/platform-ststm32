@@ -62,6 +62,8 @@ elif "f103vb" in mcu_type:
     variant = "generic_stm32f103vb"
 elif "f103vc" in mcu_type or "f103ve" in mcu_type or "f103vd" in mcu_type:
     variant = "generic_stm32f103v"
+elif "f103z" in mcu_type:
+    variant = "generic_stm32f103z"
 
 if "f103v" in mcu_type:
     error_led_port = "GPIOE"
@@ -112,6 +114,8 @@ elif upload_protocol == "dfu":
         ldscript = "bootloader.ld"
     elif "f103v" in mcu_type:
         ldscript = "stm32f103veDFU.ld"
+    elif "f103z" in mcu_type:
+        ldscript = "stm32f103z_dfu.ld"
 
 board_type = variant
 if "nucleo_f103rb" in board.id:
