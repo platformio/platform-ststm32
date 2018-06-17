@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F103xE",
+    "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
     "hwids": [
       [
@@ -14,8 +14,8 @@
         "0x0004"
       ]
     ],
-    "ldscript": "stm32f103xc.ld",
-    "mcu": "stm32f103rct6",
+    "ldscript": "stm32f103xb.ld",
+    "mcu": "stm32f103cbt6",
     "variant": "stm32f1"
   },
   "debug": {
@@ -27,23 +27,23 @@
     "libopencm3",
     "stm32cube"
   ],
-  "name": "STM32F103RC (48k RAM. 256k Flash)",
+  "name": "Microduino Core STM32 to Flash",
   "upload": {
+    "boot_version": 1,
     "disable_flushing": false,
-    "maximum_ram_size": 49152,
-    "maximum_size": 262144,
-    "protocol": "stlink",
+    "maximum_ram_size": 17000,
+    "maximum_size": 108000,
+    "protocol": "dfu",
     "protocols": [
       "jlink",
       "stlink",
       "blackmagic",
-      "serial",
       "dfu"
     ],
     "require_upload_port": true,
     "use_1200bps_touch": false,
     "wait_for_upload_port": false
   },
-  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103rc.html",
-  "vendor": "Generic"
+  "url": "http://wiki.microduinoinc.com/Microduino-Module_CoreSTM32",
+  "vendor": "Microduino"
 }
