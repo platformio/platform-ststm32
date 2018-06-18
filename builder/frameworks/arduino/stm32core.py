@@ -43,11 +43,15 @@ env.Append(CPPDEFINES=["HAL_UART_MODULE_ENABLED"])
 mcu_type = board.get("build.mcu")[:-2]
 variant = board.id.upper()
 series = mcu_type[:7].upper() + "xx"
-m = board.get("build.cpu")[7:].upper() + "l_math"
+m = board.get("build.cpu")[7:9].upper() + "l_math"
 library = "arm_" + board.get("build.cpu")[:6] + m
 
 # mcu's that require additional flags
-mcu_list = [ "f429", "l496", "f302", "f303re", "f401", "f411", "f446", "l476" ]
+mcu_list = [ 
+    "f429", "l496", "f302", "f303re",
+    "f401", "f411", "f446", "l476",
+    "l432"
+]
 
 for item in mcu_list:
     if item in mcu_type:
