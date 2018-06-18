@@ -3,7 +3,8 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F100xB",
     "f_cpu": "24000000L",
-    "mcu": "stm32f100rbt6"
+    "mcu": "stm32f100rbt6",
+    "variant": "stm32f1"
   },
   "debug": {
     "default_tools": [
@@ -16,6 +17,7 @@
     "svd_path": "STM32F100xx.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

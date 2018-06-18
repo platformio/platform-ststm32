@@ -50,7 +50,7 @@ library = "arm_" + board.get("build.cpu")[:6] + m
 mcu_list = [ 
     "f429", "l496", "f302", "f303re",
     "f401", "f411", "f446", "l476",
-    "l432"
+    "l432", "f407", "f746", "l475"
 ]
 
 for item in mcu_list:
@@ -79,7 +79,15 @@ elif "XSERIAL_DISABLED" in env['CPPDEFINES']:
     env['CPPDEFINES'].remove("HAL_UART_MODULE_ENABLED")
 
 # remove unused flags
-for item in ("STM32F1", "STM32F4", "STM32F40_41xxx", "STM32L053xx"):
+extra_flags = [
+    "STM32F1",
+    "STM32F4",
+    "STM32F40_41xxx",
+    "STM32L053xx",
+    "STM32L072xx"
+]
+
+for item in extra_flags:
     if item in env['CPPDEFINES']:
         env['CPPDEFINES'].remove(item)
 
