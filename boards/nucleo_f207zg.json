@@ -4,7 +4,8 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F207xx",
     "f_cpu": "120000000L",
-    "mcu": "stm32f207zgt6"
+    "mcu": "stm32f207zgt6",
+    "variant": "stm32f2"
   },
   "connectivity": [
     "can",
@@ -21,6 +22,7 @@
     "svd_path": "STM32F20x.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

@@ -46,6 +46,23 @@ series = mcu_type[:7].upper() + "xx"
 m = board.get("build.cpu")[7:].upper() + "l_math"
 library = "arm_" + board.get("build.cpu")[:6] + m
 
+# mcu's that require additional flags
+mcu_list = [ "f429", "l496" ]
+
+for item in mcu_list:
+    if item in mcu_type:
+        env.Append(
+            CCFLAGS=[
+                "-mfpu=fpv4-sp-d16",
+                "-mfloat-abi=hard"
+            ],
+
+            LINKFLAGS=[
+                "-mfpu=fpv4-sp-d16", 
+                "-mfloat-abi=hard"
+            ]
+        )
+
 if "DISCO_L475VG_IOT01A" in variant:
     variant = "DISCO_L475VG_IOT"
 elif "MAPLE_MINI" in variant:
