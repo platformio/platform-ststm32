@@ -3,7 +3,8 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32L152xE",
     "f_cpu": "32000000L",
-    "mcu": "stm32l152ret6"
+    "mcu": "stm32l152ret6",
+    "variant": "stm32l1"
   },
   "debug": {
     "default_tools": [
@@ -17,6 +18,7 @@
     "svd_path": "STM32L15xxE.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

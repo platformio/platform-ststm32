@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F446xx",
     "f_cpu": "180000000L",
-    "mcu": "stm32f446ret6"
+    "mcu": "stm32f446ret6",
+    "variant": "stm32f4"
   },
   "connectivity": [
     "can"
@@ -20,6 +21,7 @@
     "svd_path": "STM32F446x.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

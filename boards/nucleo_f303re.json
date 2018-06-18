@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F303xE",
     "f_cpu": "72000000L",
-    "mcu": "stm32f303ret6"
+    "mcu": "stm32f303ret6",
+    "variant": "stm32f3"
   },
   "debug": {
     "default_tools": [
@@ -17,6 +18,7 @@
     "svd_path": "STM32F303xE.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],
