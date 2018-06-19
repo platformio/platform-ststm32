@@ -30,6 +30,8 @@ env = DefaultEnvironment()
 platform = env.PioPlatform()
 board = env.BoardConfig()
 
+env.SConscript("../_bare.py")
+
 FRAMEWORK_DIR = platform.get_package_dir("framework-arduinostm32mxchip")
 FRAMEWORK_VERSION = platform.get_package_version(
     "framework-arduinostm32mxchip")
@@ -145,7 +147,7 @@ inc_dirs.extend([
 ])
 
 env.Append(CPPPATH=inc_dirs)
-            
+
 env.Replace(
     LIBS=["az_iot", "m", "wlan", "wifi", "libstsafe", "mbed-os", "stdc++", "gcc"],
 
