@@ -206,6 +206,15 @@ elif upload_protocol in ("serial", "dfu") \
         env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
     ]
 
+elif upload_protocol == "stlink" \
+        and env.BoardConfig().get("name") == "ST STM32VLDISCOVERY":
+    env.Replace(
+        UPLOADER="st-flash",
+        UPLOADERFLAGS=["write", "$SOURCE", "%s" % env.BoardConfig().get(
+                "upload").get("flash_start", "0x8000000")],
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+
 elif upload_protocol in debug_tools:
     env.Replace(
         UPLOADER="openocd",
