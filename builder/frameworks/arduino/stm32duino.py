@@ -26,8 +26,6 @@ from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()
 
-env.SConscript("../_bare.py")
-
 if "stm32f1" in env.BoardConfig().get("build.variant"):
     env.SConscript("maple/stm32f1.py")
 elif "stm32f4" in env.BoardConfig().get("build.variant"):

@@ -60,13 +60,26 @@ if upload_protocol == "dfu":
         ldscript = "bootloader_8004000.ld"
 
 env.Append(
+    ASFLAGS=["-x", "assembler-with-cpp"],
+
     CFLAGS=["-std=gnu11"],
 
-    CXXFLAGS=["-std=gnu++11"],
+    CXXFLAGS=[
+        "-std=gnu++11",
+        "-fno-rtti",
+        "-fno-exceptions"
+    ],
 
     CCFLAGS=[
         "-MMD",
         "--param", "max-inline-insns-single=500",
+        "-Os",  # optimize for size
+        "-ffunction-sections",  # place each function in its own section
+        "-fdata-sections",
+        "-Wall",
+        "-mthumb",
+        "-nostdlib",
+        "-mcpu=%s" % env.BoardConfig().get("build.cpu")
     ],
 
     CPPDEFINES=[
@@ -81,7 +94,9 @@ env.Append(
         ("USER_ADDR_ROM", vector),
         ("__STM32F4__"),
         ("STM32_HIGH_DENSITY"),
-        ("USB_NC")
+        ("USB_NC"),
+        ("F_CPU", "$BOARD_F_CPU"),
+        env.BoardConfig().get("build.variant", "").upper()
     ],
 
     CPPPATH=[
@@ -93,21 +108,23 @@ env.Append(
         join(FRAMEWORK_DIR, "system", "libmaple"),
     ],
 
-    LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")]
+    LINKFLAGS=[
+        "-Os",
+        "-Wl,--gc-sections,--relax",
+        "-mthumb",
+        "-mcpu=%s" % env.BoardConfig().get("build.cpu")
+    ],
+
+    LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")],
+
+    LIBS=["gcc", "m"]
 )
+
+# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
+env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 # remap ldscript
 env.Replace(LDSCRIPT_PATH=ldscript)
-
-# remove unused linker flags
-for item in ("-nostartfiles", "-nostdlib"):
-    if item in env['LINKFLAGS']:
-        env['LINKFLAGS'].remove(item)
-
-# remove unused libraries
-for item in ("c", "stdc++", "nosys"):
-    if item in env['LIBS']:
-        env['LIBS'].remove(item)
 
 # remove USB inactive serial flag if other flags are used
 if "SERIAL_USB" in env['CPPDEFINES'] or "USB_MSC" in env['CPPDEFINES']:
