@@ -126,14 +126,27 @@ elif "microduino" in board.id:
     board_type = "MICRODUINO_CORE_STM32"
 
 env.Append(
+    ASFLAGS=["-x", "assembler-with-cpp"],
+
     CFLAGS=["-std=gnu11"],
 
-    CXXFLAGS=["-std=gnu++11"],
+    CXXFLAGS=[
+        "-std=gnu++11",
+        "-fno-rtti",
+        "-fno-exceptions"
+    ],
 
     CCFLAGS=[
         "-MMD",
         "--param", "max-inline-insns-single=500",
-        "-march=armv7-m"
+        "-march=armv7-m",
+        "-Os",  # optimize for size
+        "-ffunction-sections",  # place each function in its own section
+        "-fdata-sections",
+        "-Wall",
+        "-mthumb",
+        "-nostdlib",
+        "-mcpu=%s" % env.BoardConfig().get("build.cpu")
     ],
 
     CPPDEFINES=[
@@ -146,7 +159,9 @@ env.Append(
         ("ARDUINO_%s" % board_type),
         ("ARDUINO_ARCH_STM32F1"),
         ("__STM32F1__"),
-        ("MCU_%s" % mcu_type.upper())
+        ("MCU_%s" % mcu_type.upper()),
+        ("F_CPU", "$BOARD_F_CPU"),
+        env.BoardConfig().get("build.variant", "").upper()
     ],
 
     CPPPATH=[
@@ -158,23 +173,23 @@ env.Append(
         join(FRAMEWORK_DIR, "system", "libmaple", "usb", "usb_lib")
     ],
 
+    LINKFLAGS=[
+        "-Os",
+        "-Wl,--gc-sections,--relax",
+        "-mthumb",
+        "-mcpu=%s" % env.BoardConfig().get("build.cpu")
+    ],
+
     LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")],
 
-    LIBS=["c"]
+    LIBS=["c", "gcc", "m"]
 )
+
+# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
+env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 # remap ldscript
 env.Replace(LDSCRIPT_PATH=ldscript)
-
-# remove unused linker flags
-for item in ("-nostartfiles", "-nostdlib"):
-    if item in env['LINKFLAGS']:
-        env['LINKFLAGS'].remove(item)
-
-# remove unused libraries
-for item in ("stdc++", "nosys"):
-    if item in env['LIBS']:
-        env['LIBS'].remove(item)
 
 #
 # Lookup for specific core's libraries
