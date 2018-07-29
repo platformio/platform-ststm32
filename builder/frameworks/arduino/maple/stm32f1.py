@@ -182,7 +182,7 @@ env.Append(
 
     LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")],
 
-    LIBS=["c", "gcc", "m"]
+    LIBS=["c", "gcc", "m", "c"]
 )
 
 # copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
