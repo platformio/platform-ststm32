@@ -43,7 +43,7 @@ supported = [
 mcu_type = env.BoardConfig().get("build.mcu")
 official = False
 
-if not "f103" in mcu_type or not "f407" in mcu_type:
+if not "f103" in mcu_type and not "f407" in mcu_type:
     official = True
 
 if "STM32_OFFICIAL_CORE" in env['CPPDEFINES']:
