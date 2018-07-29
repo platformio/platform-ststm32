@@ -31,8 +31,11 @@ from SCons.Script import DefaultEnvironment
 env = DefaultEnvironment()
 platform = env.PioPlatform()
 
+env.SConscript("_bare.py")
+
 FRAMEWORK_DIR = platform.get_package_dir("framework-spl")
 assert isdir(FRAMEWORK_DIR)
+
 
 def get_linker_script(mcu):
     ldscript = join(FRAMEWORK_DIR, "platformio",
@@ -58,7 +61,7 @@ def get_linker_script(mcu):
     with open(template_file) as fp:
         data = Template(fp.read())
         content = data.substitute(
-            stack=hex(0x20000000 + ram), # 0x20000000 - start address for RAM 
+            stack=hex(0x20000000 + ram), # 0x20000000 - start address for RAM
             ram=str(int(ram/1024)) + "K",
             flash=str(int(flash/1024)) + "K"
         )

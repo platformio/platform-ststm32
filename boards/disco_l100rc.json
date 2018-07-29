@@ -1,0 +1,35 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32L100xC",
+    "f_cpu": "32000000L",
+    "mcu": "stm32l100rct6"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_l1",
+    "svd_path": "STM32L1xx.svd"
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "ST 32L100DISCOVERY",
+  "platform": "ststm32",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/32l100cdiscovery.html",
+  "vendor": "ST"
+}

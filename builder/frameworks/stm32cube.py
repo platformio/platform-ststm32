@@ -43,8 +43,12 @@ STARTUP_FILE_EXCEPTIONS = {
     "stm32f103c8": "startup_stm32f103xb.s",
     "stm32f103r8": "startup_stm32f103xb.s",
     "stm32f103rc": "startup_stm32f103xb.s",
+    "stm32f103t8": "startup_stm32f103xb.s",
     "stm32f103vc": "startup_stm32f103xe.s",
+    "stm32f103vd": "startup_stm32f103xe.s",
     "stm32f103ve": "startup_stm32f103xe.s",
+    "stm32f103zc": "startup_stm32f103xe.s",
+    "stm32f103zd": "startup_stm32f103xe.s",
     "stm32f407ve": "startup_stm32f407xx.s"
 }
 
@@ -101,7 +105,7 @@ def get_linker_script(mcu):
     with open(template_file) as fp:
         data = Template(fp.read())
         content = data.substitute(
-            stack=hex(0x20000000 + ram), # 0x20000000 - start address for RAM 
+            stack=hex(0x20000000 + ram),  # 0x20000000 - start address for RAM
             ram=str(int(ram/1024)) + "K",
             flash=str(int(flash/1024)) + "K"
         )
@@ -129,9 +133,32 @@ def generate_hal_config_file(mcu):
 
 
 env.Replace(
-    AS="$CC", ASCOM="$ASPPCOM",
-    LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu")),
-    CPPDEFINES=["USE_HAL_DRIVER"], 
+    LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu"))
+)
+
+env.Append(
+    ASFLAGS=["-x", "assembler-with-cpp"],
+
+    CCFLAGS=[
+        "-Os",  # optimize for size
+        "-ffunction-sections",  # place each function in its own section
+        "-fdata-sections",
+        "-Wall",
+        "-mthumb",
+        "-mcpu=%s" % env.BoardConfig().get("build.cpu"),
+        "-nostdlib"
+    ],
+
+    CPPDEFINES=[
+        "USE_HAL_DRIVER",
+        ("F_CPU", "$BOARD_F_CPU")
+    ],
+
+    CXXFLAGS=[
+        "-fno-rtti",
+        "-fno-exceptions"
+    ],
+
     LINKFLAGS=[
         "-Os",
         "-Wl,--gc-sections,--relax",
@@ -139,23 +166,18 @@ env.Replace(
         "-mcpu=%s" % env.BoardConfig().get("build.cpu"),
         "--specs=nano.specs",
         "--specs=nosys.specs"
-    ]
+    ],
+
+    LIBS=["c", "gcc", "m", "stdc++", "nosys"]
 )
 
-# restore external build flags
-if "build.extra_flags" in env.BoardConfig():
-    _extra_flags = env.BoardConfig().get("build.extra_flags")
+cpp_flags = env.Flatten(env.get("CPPDEFINES", []))
 
-    if "F103xC" in _extra_flags:
-        _extra_flags = "-DSTM32F103xE"
-    elif "F103x8" in _extra_flags:
-        _extra_flags = "-DSTM32F103xB"
+if "F103xC" in cpp_flags:
+    env.Append(CPPDEFINES=["-DSTM32F103xE"])
+elif "F103x8" in cpp_flags:
+    env.Append(CPPDEFINES=["-DSTM32F103xB"])
 
-    env.ProcessFlags(_extra_flags)
-# remove base flags
-env.ProcessUnFlags(env.get("BUILD_UNFLAGS"))
-# apply user flags
-env.ProcessFlags(env.get("BUILD_FLAGS"))
 
 env.Append(
     CPPPATH=[

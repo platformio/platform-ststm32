@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F103xE",
+    "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
     "hwids": [
       [
@@ -14,8 +14,8 @@
         "0x0004"
       ]
     ],
-    "ldscript": "stm32f103xc.ld",
-    "mcu": "stm32f103rct6",
+    "ldscript": "stm32f103xb.ld",
+    "mcu": "stm32f103vbt6",
     "variant": "stm32f1"
   },
   "debug": {
@@ -27,11 +27,11 @@
     "libopencm3",
     "stm32cube"
   ],
-  "name": "STM32F103RC (48k RAM. 256k Flash)",
+  "name": "STM32F103VB (20k RAM. 128k Flash)",
   "upload": {
     "disable_flushing": false,
-    "maximum_ram_size": 49152,
-    "maximum_size": 262144,
+    "maximum_ram_size": 20480,
+    "maximum_size": 131072,
     "protocol": "stlink",
     "protocols": [
       "jlink",
@@ -44,6 +44,6 @@
     "use_1200bps_touch": false,
     "wait_for_upload_port": false
   },
-  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103rc.html",
+  "url": "http://www.st.com/en/microcontrollers/stm32f103vb.html",
   "vendor": "Generic"
 }
