@@ -91,24 +91,32 @@ for item in extra_flags:
     if item in env['CPPDEFINES']:
         env['CPPDEFINES'].remove(item)
 
-for item in env['CPPDEFINES']:
-    if "F_CPU" in item:
-        env['CPPDEFINES'].remove(item)
-
-for item in ("-nostartfiles", "-nostdlib"):
-    if item in env['LINKFLAGS']:
-        env['LINKFLAGS'].remove(item)
-
-for item in env['LIBS']:
-    if "nosys" in item:
-        env['LIBS'].remove(item)
-
 env.Append(
-    CFLAGS=["-std=gnu11", "-Dprintf=iprintf"],
+    ASFLAGS=["-x", "assembler-with-cpp"],
 
-    CXXFLAGS=["-std=gnu++14", "-fno-threadsafe-statics"],
+    CFLAGS=[
+        "-std=gnu11", 
+        "-Dprintf=iprintf"
+    ],
 
-    CCFLAGS=["-MMD", "--param", "max-inline-insns-single=500"],
+    CXXFLAGS=[
+        "-std=gnu++14", 
+        "-fno-threadsafe-statics",
+        "-fno-rtti", 
+        "-fno-exceptions"
+    ],
+
+    CCFLAGS=[
+        "-MMD", 
+        "--param", "max-inline-insns-single=500",
+        "-Os",  # optimize for size
+        "-ffunction-sections",  # place each function in its own section
+        "-fdata-sections",
+        "-Wall",
+        "-mthumb",
+        "-nostdlib",
+        "-mcpu=%s" % env.BoardConfig().get("build.cpu")
+    ],
 
     CPPDEFINES=[
         (series),
@@ -116,7 +124,8 @@ env.Append(
         ("ARDUINO_%s" % variant),
         ("ARDUINO_ARCH_STM32"),
         ("BOARD_NAME=\"%s\"" % variant),
-        (board.get("build.extra_flags"))
+        board.get("build.extra_flags"),
+        env.BoardConfig().get("build.variant", "").upper()
     ],
 
     CPPPATH=[
@@ -145,16 +154,23 @@ env.Append(
         "-Wl,--unresolved-symbols=report-all",
         "-Wl,--warn-common",
         "-Wl,--warn-section-align",
-        "--specs=nano.specs"
+        "--specs=nano.specs",
+        "-Os",
+        "-Wl,--gc-sections,--relax",
+        "-mthumb",
+        "-mcpu=%s" % env.BoardConfig().get("build.cpu")
     ],
 
-    LIBS=["c", library],
+    LIBS=["c", "gcc", "m", "stdc++", library],
 
     LIBPATH=[
         join(FRAMEWORK_DIR, "variants", variant),
         join(FRAMEWORK_DIR, CMSIS_DIR, "Lib", "GCC")
     ]
 )
+
+# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
+env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 # remap ldscript
 env.Replace(LDSCRIPT_PATH="ldscript.ld")
