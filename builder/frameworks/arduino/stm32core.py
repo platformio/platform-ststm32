@@ -131,6 +131,7 @@ env.Append(
     CPPPATH=[
         join(FRAMEWORK_DIR, "cores", "arduino", "avr"),
         join(FRAMEWORK_DIR, "cores", "arduino", "stm32"),
+        join(FRAMEWORK_DIR, "cores", "arduino", "stm32", "LL"),
         join(FRAMEWORK_DIR, "system", "Drivers", series + "_HAL_Driver", "Inc"),
         join(FRAMEWORK_DIR, "system", "Drivers", series + "_HAL_Driver", "Src"),
         join(FRAMEWORK_DIR, "system", series),
@@ -161,7 +162,7 @@ env.Append(
         "-mcpu=%s" % env.BoardConfig().get("build.cpu")
     ],
 
-    LIBS=["c", "gcc", "m", "stdc++", library],
+    LIBS=["c", "gcc", "m", "stdc++", library, "c"],
 
     LIBPATH=[
         join(FRAMEWORK_DIR, "variants", variant),
