@@ -25,6 +25,7 @@ http://www.stm32duino.com
 from os.path import isdir, join
 
 from SCons.Script import DefaultEnvironment
+from platformio import util
 
 env = DefaultEnvironment()
 platform = env.PioPlatform()
@@ -71,6 +72,13 @@ if "DISCO_L475VG_IOT01A" in variant:
     variant = "DISCO_L475VG_IOT"
 elif "MAPLE_MINI" in variant:
     variant = "BLUEPILL_F103C8"
+
+print("VARIANT: " + variant)
+avd = util.get_project_optional_dir("arduino_variants_dir")
+variant_dir = join(FRAMEWORK_DIR, "variants", variant)
+if avd and isdir(join(avd, variant)):
+    variant_dir = join(avd, variant)
+print("VARIANT_DIR: " + variant_dir)
 
 # remap serialx configuration
 if "XSERIAL_ENABLED" in env['CPPDEFINES']:
@@ -135,8 +143,8 @@ env.Append(
         join(FRAMEWORK_DIR, "system", "Drivers", series + "_HAL_Driver", "Inc"),
         join(FRAMEWORK_DIR, "system", "Drivers", series + "_HAL_Driver", "Src"),
         join(FRAMEWORK_DIR, "system", series),
-        join(FRAMEWORK_DIR, "variants", variant, "usb"),
-        join(FRAMEWORK_DIR, "system", "Middlewares", "ST", 
+        join(variant_dir, "usb"),
+        join(FRAMEWORK_DIR, "system", "Middlewares", "ST",
             "STM32_USB_Device_Library", "Core", "Inc"),
         join(FRAMEWORK_DIR, "system", "Middlewares", "ST", 
             "STM32_USB_Device_Library", "Core", "Src"),
@@ -146,7 +154,7 @@ env.Append(
         join(FRAMEWORK_DIR, "system", "Drivers", "CMSIS", 
             "Device", "ST", series, "Source", "Templates", "gcc"),
         join(FRAMEWORK_DIR, "cores", "arduino"),
-        join(FRAMEWORK_DIR, "variants", variant)
+        variant_dir
     ],
 
     LINKFLAGS=[
@@ -165,7 +173,7 @@ env.Append(
     LIBS=["c", "gcc", "m", "stdc++", library, "c"],
 
     LIBPATH=[
-        join(FRAMEWORK_DIR, "variants", variant),
+        variant_dir,
         join(FRAMEWORK_DIR, CMSIS_DIR, "Lib", "GCC")
     ]
 )
@@ -189,13 +197,18 @@ env.Append(
 
 libs = []
 
-if "build.variant" in board:
+#if "build.variant" in board:
+#    print("build.variant:", board.get("build.variant"))
+    # this section looks buggy to me, shouldn't board.build.variant be taken into account
+    # in order to set variant in the first place at the top of this script?
+    # also, isn't FrameworkArduinoVariant always required?
+if isdir(variant_dir):
     env.Append(
-        CPPPATH=[join(FRAMEWORK_DIR, "variants", variant)]
+        CPPPATH=[variant_dir]
     )
     libs.append(env.BuildLibrary(
         join("$BUILD_DIR", "FrameworkArduinoVariant"),
-        join(FRAMEWORK_DIR, "variants", variant)
+        variant_dir
     ))
 
 libs.append(env.BuildLibrary(
