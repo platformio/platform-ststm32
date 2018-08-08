@@ -1,0 +1,40 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F439xx",
+    "f_cpu": "180000000L",
+    "mcu": "stm32f439vi"
+  },
+  "connectivity": [
+    "can",
+    "ethernet"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_f4",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F439x.svd"
+  },
+  "frameworks": [
+    "mbed",
+    "stm32cube"
+  ],
+  "name": "Seeed Wio 3G",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 2097152,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "jlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://os.mbed.com/platforms/Seeed-Wio-3g/",
+  "vendor": "SeeedStudio"
+}

@@ -1,0 +1,40 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32L496xx",
+    "f_cpu": "80000000L",
+    "mcu": "stm32l496zgt6p"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_l476rg",
+    "openocd_target": "stm32l4x",
+    "svd_path": "STM32L4x6.svd"
+  },
+  "frameworks": [
+    "mbed",
+    "stm32cube"
+  ],
+  "name": "ST Nucleo L496ZG-P",
+  "upload": {
+    "maximum_ram_size": 327680,
+    "maximum_size": 1048576,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-l496zg-p.html",
+  "vendor": "ST"
+}
