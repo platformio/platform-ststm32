@@ -16,21 +16,19 @@
     "svd_path": "STM32L0x1.svd"
   },
   "frameworks": [
-    "mbed",
     "stm32cube"
   ],
   "name": "ST Nucleo L011K4",
   "upload": {
     "maximum_ram_size": 2048,
     "maximum_size": 16384,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",
-      "blackmagic",
-      "mbed"
+      "blackmagic"
     ]
   },
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L011K4/",
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-l011k4.html",
   "vendor": "ST"
 }
