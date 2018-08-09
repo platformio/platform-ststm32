@@ -33,6 +33,8 @@ from SCons.Script import DefaultEnvironment
 env = DefaultEnvironment()
 platform = env.PioPlatform()
 
+env.SConscript("_bare.py")
+
 FRAMEWORK_DIR = platform.get_package_dir("framework-cmsis")
 assert isdir(FRAMEWORK_DIR)
 

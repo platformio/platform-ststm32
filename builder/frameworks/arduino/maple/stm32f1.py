@@ -43,8 +43,10 @@ error_led_pin = 1
 mcu_type = board.get("build.mcu")[:-2]
 if "f103c8" in mcu_type:
     ldscript = "jtag_c8.ld"
-elif "f103cb" in mcu_type:
+elif "f103cb" in mcu_type or "f103tb" in mcu_type:
     ldscript = "jtag.ld"
+elif "f103t8" in mcu_type:
+    ldscript = "jtag_t8.ld"
 else:
     ldscript = "%s.ld" % mcu_type
 
@@ -54,8 +56,18 @@ elif "f103r8" in mcu_type or "f103rb" in mcu_type:
     variant = "generic_stm32f103r8"
 elif "f103rc" in mcu_type or "f103re" in mcu_type:
     variant = "generic_stm32f103r"
-elif "f103vc" in mcu_type or "f103ve" in mcu_type:
+elif "f103t8" in mcu_type or "f103tb" in mcu_type:
+    variant = "generic_stm32f103t"
+elif "f103vb" in mcu_type:
+    variant = "generic_stm32f103vb"
+elif "f103vc" in mcu_type or "f103ve" in mcu_type or "f103vd" in mcu_type:
     variant = "generic_stm32f103v"
+elif "f103z" in mcu_type:
+    variant = "generic_stm32f103z"
+
+if "f103v" in mcu_type:
+    error_led_port = "GPIOE"
+    error_led_pin = 6
 
 # upload related configuration remap
 # for all generic boards
@@ -68,15 +80,24 @@ if upload_protocol not in ("dfu", "serial"):
         "GENERIC_BOOTLOADER"
     ])
 
-# maple board related configuration remap
-if "maple" in board.id:
+# maple and microduino board related configuration remap
+if "maple" in board.id or "microduino" in board.id:
     env.Append(CPPDEFINES=[("SERIAL_USB")])
-    variant = "maple_mini" if "maple_mini" in board.id else "maple"
     vector = 0x8005000
     ldscript = "flash.ld"
+    if "microduino" in board.id:
+        variant = "microduino"
+    elif "maple_mini" in board.id:
+        variant = "maple_mini"
+    else:
+        variant = "maple"
+
     if board.id == "maple_mini_b20":
         vector = 0x8002000
         ldscript = "bootloader_20.ld"
+    elif board.id == "maple_ret6":
+        variant = "maple_ret6"
+        ldscript = "stm32f103re-bootloader.ld"
 
 # for nucleo f103rb board
 elif "nucleo_f103rb" in board.id:
@@ -87,23 +108,45 @@ elif "nucleo_f103rb" in board.id:
 elif upload_protocol == "dfu":
     env.Append(CPPDEFINES=["SERIAL_USB", "GENERIC_BOOTLOADER"])
     vector = 0x8002000
-    if "f103c" in mcu_type:
+    if "f103c" in mcu_type or "f103t" in mcu_type:
         ldscript = "bootloader_20.ld"
     elif "f103r" in mcu_type:
         ldscript = "bootloader.ld"
     elif "f103v" in mcu_type:
         ldscript = "stm32f103veDFU.ld"
+    elif "f103z" in mcu_type:
+        ldscript = "stm32f103z_dfu.ld"
 
+board_type = variant
+if "nucleo_f103rb" in board.id:
+    board_type = "STM_NUCLEO_F103RB"
+elif "maple_ret6" in board.id:
+    board_type = "MAPLE_RET6"
+elif "microduino" in board.id:
+    board_type = "MICRODUINO_CORE_STM32"
 
 env.Append(
+    ASFLAGS=["-x", "assembler-with-cpp"],
+
     CFLAGS=["-std=gnu11"],
 
-    CXXFLAGS=["-std=gnu++11"],
+    CXXFLAGS=[
+        "-std=gnu++11",
+        "-fno-rtti",
+        "-fno-exceptions"
+    ],
 
     CCFLAGS=[
         "-MMD",
         "--param", "max-inline-insns-single=500",
-        "-march=armv7-m"
+        "-march=armv7-m",
+        "-Os",  # optimize for size
+        "-ffunction-sections",  # place each function in its own section
+        "-fdata-sections",
+        "-Wall",
+        "-mthumb",
+        "-nostdlib",
+        "-mcpu=%s" % env.BoardConfig().get("build.cpu")
     ],
 
     CPPDEFINES=[
@@ -113,38 +156,40 @@ env.Append(
         ("ERROR_LED_PORT", error_led_port),
         ("ERROR_LED_PIN", error_led_pin),
         ("ARDUINO", 10610),
-        ("ARDUINO_%s" % variant.upper()
-            if "nucleo" not in board.id else "STM_NUCLEO_F103RB"),
+        ("ARDUINO_%s" % board_type),
         ("ARDUINO_ARCH_STM32F1"),
         ("__STM32F1__"),
-        ("MCU_%s" % mcu_type.upper())
+        ("MCU_%s" % mcu_type.upper()),
+        ("F_CPU", "$BOARD_F_CPU"),
+        env.BoardConfig().get("build.variant", "").upper()
     ],
 
     CPPPATH=[
         join(FRAMEWORK_DIR, "cores", "maple"),
         join(FRAMEWORK_DIR, "system", "libmaple"),
         join(FRAMEWORK_DIR, "system", "libmaple", "include"),
+        join(FRAMEWORK_DIR, "system", "libmaple", "stm32f1", "include"),
         join(FRAMEWORK_DIR, "system", "libmaple", "usb", "stm32f1"),
         join(FRAMEWORK_DIR, "system", "libmaple", "usb", "usb_lib")
     ],
 
+    LINKFLAGS=[
+        "-Os",
+        "-Wl,--gc-sections,--relax",
+        "-mthumb",
+        "-mcpu=%s" % env.BoardConfig().get("build.cpu")
+    ],
+
     LIBPATH=[join(FRAMEWORK_DIR, "variants", variant, "ld")],
 
-    LIBS=["c"]
+    LIBS=["c", "gcc", "m", "c"]
 )
+
+# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
+env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 # remap ldscript
 env.Replace(LDSCRIPT_PATH=ldscript)
-
-# remove unused linker flags
-for item in ("-nostartfiles", "-nostdlib"):
-    if item in env['LINKFLAGS']:
-        env['LINKFLAGS'].remove(item)
-
-# remove unused libraries
-for item in ("stdc++", "nosys"):
-    if item in env['LIBS']:
-        env['LIBS'].remove(item)
 
 #
 # Lookup for specific core's libraries

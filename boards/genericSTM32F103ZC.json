@@ -15,7 +15,7 @@
       ]
     ],
     "ldscript": "stm32f103xc.ld",
-    "mcu": "stm32f103rct6",
+    "mcu": "stm32f103zct6",
     "variant": "stm32f1"
   },
   "debug": {
@@ -27,7 +27,7 @@
     "libopencm3",
     "stm32cube"
   ],
-  "name": "STM32F103RC (48k RAM. 256k Flash)",
+  "name": "STM32F103ZC (48k RAM. 256k Flash)",
   "upload": {
     "disable_flushing": false,
     "maximum_ram_size": 49152,
@@ -44,6 +44,6 @@
     "use_1200bps_touch": false,
     "wait_for_upload_port": false
   },
-  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103rc.html",
+  "url": "http://www.st.com/en/microcontrollers/stm32f103zc.html",
   "vendor": "Generic"
 }

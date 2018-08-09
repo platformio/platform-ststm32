@@ -14,8 +14,8 @@
         "0x0004"
       ]
     ],
-    "ldscript": "stm32f103xc.ld",
-    "mcu": "stm32f103rct6",
+    "ldscript": "stm32f103xe.ld",
+    "mcu": "stm32f103ret6",
     "variant": "stm32f1"
   },
   "debug": {
@@ -27,23 +27,20 @@
     "libopencm3",
     "stm32cube"
   ],
-  "name": "STM32F103RC (48k RAM. 256k Flash)",
+  "name": "Maple (RET6)",
   "upload": {
-    "disable_flushing": false,
+    "boot_version": 1,
     "maximum_ram_size": 49152,
     "maximum_size": 262144,
-    "protocol": "stlink",
+    "protocol": "dfu",
     "protocols": [
       "jlink",
       "stlink",
       "blackmagic",
-      "serial",
       "dfu"
     ],
-    "require_upload_port": true,
-    "use_1200bps_touch": false,
-    "wait_for_upload_port": false
+    "require_upload_port": true
   },
-  "url": "http://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32f1-series/stm32f103/stm32f103rc.html",
-  "vendor": "Generic"
+  "url": "http://www.leaflabs.com/maple/",
+  "vendor": "LeafLabs"
 }
