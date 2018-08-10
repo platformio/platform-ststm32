@@ -133,6 +133,8 @@ def generate_hal_config_file(mcu):
 
 
 env.Replace(
+    AS="$CC",
+    ASCOM="$ASPPCOM",
     LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu"))
 )
 
@@ -170,6 +172,9 @@ env.Append(
 
     LIBS=["c", "gcc", "m", "stdc++", "nosys"]
 )
+
+# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
+env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 cpp_flags = env.Flatten(env.get("CPPDEFINES", []))
 
