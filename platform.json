@@ -20,7 +20,7 @@
   "frameworks": {
     "mbed": {
       "package": "framework-mbed",
-      "script": "builder/frameworks/mbed/mbed.py"
+      "script": "builder/frameworks/mbed.py"
     },
     "cmsis": {
       "package": "framework-cmsis",
@@ -51,7 +51,7 @@
     "framework-mbed": {
       "type": "framework",
       "optional": true,
-      "version": "~5.50904.0"
+      "version": "~5.51001.1"
     },
     "framework-cmsis": {
       "type": "framework",

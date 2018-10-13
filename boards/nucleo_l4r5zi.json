@@ -1,9 +1,9 @@
 {
   "build": {
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F413xE",
-    "f_cpu": "100000000L",
-    "mcu": "stm32f413zht6"
+    "extra_flags": "-DSTM32L4R5xx",
+    "f_cpu": "120000000L",
+    "mcu": "stm32l4r5zit6"
   },
   "connectivity": [
     "can"
@@ -15,17 +15,17 @@
     "onboard_tools": [
       "stlink"
     ],
-    "openocd_target": "stm32f4x",
-    "svd_path": "STM32F41x.svd"
+    "openocd_target": "stm32l4x",
+    "svd_path": "STM32L4x5.svd"
   },
   "frameworks": [
-    "stm32cube",
-    "mbed"
+    "mbed",
+    "stm32cube"
   ],
-  "name": "ST Nucleo F413ZH",
+  "name": "ST Nucleo L4R5ZI",
   "upload": {
-    "maximum_ram_size": 131072,
-    "maximum_size": 524288,
+    "maximum_ram_size": 655360,
+    "maximum_size": 2097152,
     "protocol": "mbed",
     "protocols": [
       "jlink",
@@ -34,6 +34,6 @@
       "mbed"
     ]
   },
-  "url": "https://os.mbed.com/platforms/ST-Nucleo-F413ZH/",
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-l4r5zi.html",
   "vendor": "ST"
 }
