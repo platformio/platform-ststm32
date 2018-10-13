@@ -48,7 +48,7 @@ m = board.get("build.cpu")[7:9].upper() + "l_math"
 library = "arm_" + board.get("build.cpu")[:6] + m
 
 # mcu's that require additional flags
-mcu_list = [ 
+mcu_list = [
     "f429", "l496", "f302", "f303re",
     "f401", "f411", "f446", "l476",
     "l432", "f407", "f746", "l475"
@@ -63,7 +63,7 @@ for item in mcu_list:
             ],
 
             LINKFLAGS=[
-                "-mfpu=fpv4-sp-d16", 
+                "-mfpu=fpv4-sp-d16",
                 "-mfloat-abi=hard"
             ]
         )
@@ -73,17 +73,16 @@ if "DISCO_L475VG_IOT01A" in variant:
 elif "MAPLE_MINI" in variant:
     variant = "BLUEPILL_F103C8"
 
-print("VARIANT: " + variant)
 avd = util.get_project_optional_dir("arduino_variants_dir")
 variant_dir = join(FRAMEWORK_DIR, "variants", variant)
+
 if avd and isdir(join(avd, variant)):
     variant_dir = join(avd, variant)
-print("VARIANT_DIR: " + variant_dir)
 
 # remap serialx configuration
 if "XSERIAL_ENABLED" in env['CPPDEFINES']:
     env.Append(CPPDEFINES=["HWSERIAL_NONE"])
-elif "XSERIAL_DISABLED" in env['CPPDEFINES']: 
+elif "XSERIAL_DISABLED" in env['CPPDEFINES']:
     env['CPPDEFINES'].remove("HAL_UART_MODULE_ENABLED")
 
 # remove unused flags
@@ -103,19 +102,19 @@ env.Append(
     ASFLAGS=["-x", "assembler-with-cpp"],
 
     CFLAGS=[
-        "-std=gnu11", 
+        "-std=gnu11",
         "-Dprintf=iprintf"
     ],
 
     CXXFLAGS=[
-        "-std=gnu++14", 
+        "-std=gnu++14",
         "-fno-threadsafe-statics",
-        "-fno-rtti", 
+        "-fno-rtti",
         "-fno-exceptions"
     ],
 
     CCFLAGS=[
-        "-MMD", 
+        "-MMD",
         "--param", "max-inline-insns-single=500",
         "-Os",  # optimize for size
         "-ffunction-sections",  # place each function in its own section
@@ -146,16 +145,16 @@ env.Append(
         join(variant_dir, "usb"),
         join(FRAMEWORK_DIR, "system", "Middlewares", "ST",
             "STM32_USB_Device_Library", "Core", "Inc"),
-        join(FRAMEWORK_DIR, "system", "Middlewares", "ST", 
+        join(FRAMEWORK_DIR, "system", "Middlewares", "ST",
             "STM32_USB_Device_Library", "Core", "Src"),
         join(FRAMEWORK_DIR, "system", "Middlewares", "ST",
             "STM32_USB_Device_Library", "Class", "CDC", "Inc"),
-        join(FRAMEWORK_DIR, "system", "Middlewares", "ST", 
-            "STM32_USB_Device_Library", "Class", "CDC", "Src"),            
+        join(FRAMEWORK_DIR, "system", "Middlewares", "ST",
+            "STM32_USB_Device_Library", "Class", "CDC", "Src"),
         join(FRAMEWORK_DIR, CMSIS_DIR, "Core", "Include"),
-        join(FRAMEWORK_DIR, "system", "Drivers", "CMSIS", 
+        join(FRAMEWORK_DIR, "system", "Drivers", "CMSIS",
             "Device", "ST", series, "Include"),
-        join(FRAMEWORK_DIR, "system", "Drivers", "CMSIS", 
+        join(FRAMEWORK_DIR, "system", "Drivers", "CMSIS",
             "Device", "ST", series, "Source", "Templates", "gcc"),
         join(FRAMEWORK_DIR, "cores", "arduino"),
         variant_dir
