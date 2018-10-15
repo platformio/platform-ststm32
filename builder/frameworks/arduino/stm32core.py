@@ -54,19 +54,18 @@ mcu_list = [
     "l432", "f407", "f746", "l475"
 ]
 
-for item in mcu_list:
-    if item in mcu_type:
-        env.Append(
-            CCFLAGS=[
-                "-mfpu=fpv4-sp-d16",
-                "-mfloat-abi=hard"
-            ],
+if any(item in mcu_type for item in mcu_list):
+    env.Append(
+        CCFLAGS=[
+            "-mfpu=fpv4-sp-d16",
+            "-mfloat-abi=hard"
+        ],
 
             LINKFLAGS=[
-                "-mfpu=fpv4-sp-d16",
-                "-mfloat-abi=hard"
-            ]
-        )
+            "-mfpu=fpv4-sp-d16",
+            "-mfloat-abi=hard"
+        ]
+    )
 
 if "DISCO_L475VG_IOT01A" in variant:
     variant = "DISCO_L475VG_IOT"
