@@ -36,7 +36,8 @@
           ],
           "executable": "bin/openocd",
           "package": "tool-openocd"
-        }
+        },
+        "default": true
       }
     }
   },
