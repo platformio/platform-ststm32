@@ -43,7 +43,7 @@ supported = [
 mcu_type = env.BoardConfig().get("build.mcu")
 official = False
 
-if not "f103" in mcu_type and not "f407" in mcu_type:
+if "f103" not in mcu_type and "f407" not in mcu_type:
     official = True
 
 if "PIO_FRAMEWORK_ARDUINO_OFFICIAL" in env['CPPDEFINES']:
@@ -53,7 +53,7 @@ if "PIO_FRAMEWORK_ARDUINO_OFFICIAL" in env['CPPDEFINES']:
             break
 
 if official:
-    env.SConscript("stm32core.py")
+    env.SConscript("stm32duino.py")
 elif "stm32f1" in env.BoardConfig().get("build.variant"):
     env.SConscript("maple/stm32f1.py")
 elif "stm32f4" in env.BoardConfig().get("build.variant"):

@@ -44,8 +44,6 @@ env.Append(CPPDEFINES=["HAL_UART_MODULE_ENABLED"])
 mcu_type = board.get("build.mcu")[:-2]
 variant = board.id.upper()
 series = mcu_type[:7].upper() + "xx"
-m = board.get("build.cpu")[7:9].upper() + "l_math"
-library = "arm_" + board.get("build.cpu")[:6] + m
 
 # mcu's that require additional flags
 mcu_list = [
@@ -138,8 +136,10 @@ env.Append(
         join(FRAMEWORK_DIR, "cores", "arduino", "avr"),
         join(FRAMEWORK_DIR, "cores", "arduino", "stm32"),
         join(FRAMEWORK_DIR, "cores", "arduino", "stm32", "LL"),
-        join(FRAMEWORK_DIR, "system", "Drivers", series + "_HAL_Driver", "Inc"),
-        join(FRAMEWORK_DIR, "system", "Drivers", series + "_HAL_Driver", "Src"),
+        join(FRAMEWORK_DIR, "system", "Drivers",
+             series + "_HAL_Driver", "Inc"),
+        join(FRAMEWORK_DIR, "system", "Drivers",
+             series + "_HAL_Driver", "Src"),
         join(FRAMEWORK_DIR, "system", series),
         join(variant_dir, "usb"),
         join(FRAMEWORK_DIR, "system", "Middlewares", "ST",
@@ -172,7 +172,12 @@ env.Append(
         "-mcpu=%s" % env.BoardConfig().get("build.cpu")
     ],
 
-    LIBS=["c", "gcc", "m", "stdc++", library, "c"],
+    LIBS=[
+        "c", "gcc", "m", "stdc++",
+        "arm_%s%sl_math" % (
+            board.get("build.cpu")[:6], board.get("build.cpu")[7:9].upper()),
+        "c"
+    ],
 
     LIBPATH=[
         variant_dir,
