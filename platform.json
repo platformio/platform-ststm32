@@ -71,7 +71,7 @@
     "framework-arduinoststm32": {
       "type": "framework",
       "optional": true,
-      "version": "~2.2.180809"
+      "version": "~3.10300.181019"
     },
     "framework-arduinostm32mxchip": {
       "type": "framework",
