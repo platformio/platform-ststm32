@@ -1,9 +1,10 @@
 {
   "build": {
     "cpu": "cortex-m0plus",
-    "extra_flags": "-DSTM32L072xx",
+    "extra_flags": "-DSTM32L072xx -D__CORTEX_SC=0",
     "f_cpu": "32000000L",
-    "mcu": "stm32l072cz"
+    "mcu": "stm32l072cz",
+    "variant": "stm32l0"
   },
   "debug": {
     "default_tools": [
@@ -16,6 +17,7 @@
     "svd_path": "STM32L07x.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

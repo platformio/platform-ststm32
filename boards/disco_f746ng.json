@@ -3,7 +3,8 @@
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F746xx",
     "f_cpu": "216000000L",
-    "mcu": "stm32f746ngh6"
+    "mcu": "stm32f746ngh6",
+    "variant": "stm32f7"
   },
   "connectivity": [
     "can",
@@ -21,6 +22,7 @@
     "svd_path": "STM32F7x6.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],
