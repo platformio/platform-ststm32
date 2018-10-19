@@ -36,7 +36,7 @@
     },
     "arduino": {
       "package": "framework-arduinoststm32",
-      "script": "builder/frameworks/arduino/arduino.py"
+      "script": "builder/frameworks/arduino.py"
     },
     "stm32cube": {
       "package": "framework-stm32cube",

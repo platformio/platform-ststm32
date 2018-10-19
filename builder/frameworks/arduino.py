@@ -53,8 +53,8 @@ if "PIO_FRAMEWORK_ARDUINO_OFFICIAL" in env['CPPDEFINES']:
             break
 
 if official:
-    env.SConscript("stm32duino.py")
+    env.SConscript("arduino/stm32duino.py")
 elif "stm32f1" in env.BoardConfig().get("build.variant"):
-    env.SConscript("maple/stm32f1.py")
+    env.SConscript("arduino/maple/stm32f1.py")
 elif "stm32f4" in env.BoardConfig().get("build.variant"):
-    env.SConscript("maple/stm32f4.py")
+    env.SConscript("arduino/maple/stm32f4.py")
