@@ -45,14 +45,14 @@ mcu_type = board.get("build.mcu")[:-2]
 variant = board.id.upper()
 series = mcu_type[:7].upper() + "xx"
 
-# mcu's that require additional flags
-mcu_list = [
+# mcus with a supprot for float point
+mcu_with_fp = [
     "f429", "l496", "f302", "f303re",
     "f401", "f411", "f446", "l476",
     "l432", "f407", "f746", "l475"
 ]
 
-if any(item in mcu_type for item in mcu_list):
+if any(item in mcu_type for item in mcu_with_fp):
     env.Append(
         CCFLAGS=[
             "-mfpu=fpv4-sp-d16",
@@ -127,8 +127,7 @@ env.Append(
         ("ARDUINO", 10805),
         ("ARDUINO_%s" % variant),
         ("ARDUINO_ARCH_STM32"),
-        ("BOARD_NAME=\"%s\"" % variant),
-        board.get("build.extra_flags"),
+        ("BOARD_NAME", variant),
         env.BoardConfig().get("build.variant", "").upper()
     ],
 
