@@ -25,36 +25,15 @@ http://www.stm32duino.com
 from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()
+mcu = env.BoardConfig().get("build.mcu")
 
-# supported mcu types by official STM32 Arduino core
-supported = [
-    "f030r8", "f091rc",
-    "f100rb",
-    "f103c", "f103rb",
-    "f207zg",
-    "f302r8", "f303k8", "f303re",
-    "f401re", "f411re", "f429zi", "f446re", "f407vg",
-    "f746ng",
-    "l031k6", "l053r8", "l072cz",
-    "l152re",
-    "l432kc", "l476rg", "l496zg", "l475vg"
-]
-
-mcu_type = env.BoardConfig().get("build.mcu")
-official = False
-
-if "f103" not in mcu_type and "f407" not in mcu_type:
-    official = True
-
-if "PIO_FRAMEWORK_ARDUINO_OFFICIAL" in env['CPPDEFINES']:
-    for mcu in supported:
-        if mcu in mcu_type:
-            official = True
-            break
-
-if official:
+if "PIO_FRAMEWORK_ARDUINO_LEGACY_CORE" not in env['CPPDEFINES']:
     env.SConscript("arduino/stm32duino.py")
-elif "stm32f1" in env.BoardConfig().get("build.variant"):
-    env.SConscript("arduino/maple/stm32f1.py")
-elif "stm32f4" in env.BoardConfig().get("build.variant"):
-    env.SConscript("arduino/maple/stm32f4.py")
+else:
+    # STM32 legacy core supported families
+    if "f1" in mcu:
+        env.SConscript("arduino/maple/stm32f1.py")
+    elif "f4" in mcu:
+        env.SConscript("arduino/maple/stm32f4.py")
+    else:
+        env.SConscript("arduino/stm32duino.py")
