@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "4.4.0",
+  "version": "4.5.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json"
@@ -20,7 +20,7 @@
   "frameworks": {
     "mbed": {
       "package": "framework-mbed",
-      "script": "builder/frameworks/mbed/mbed.py"
+      "script": "builder/frameworks/mbed.py"
     },
     "cmsis": {
       "package": "framework-cmsis",
@@ -36,7 +36,7 @@
     },
     "arduino": {
       "package": "framework-arduinoststm32",
-      "script": "builder/frameworks/arduino/stm32duino.py"
+      "script": "builder/frameworks/arduino.py"
     },
     "stm32cube": {
       "package": "framework-stm32cube",
@@ -55,7 +55,7 @@
     "framework-mbed": {
       "type": "framework",
       "optional": true,
-      "version": "~5.50904.0"
+      "version": "~5.51001.1"
     },
     "framework-cmsis": {
       "type": "framework",
@@ -75,7 +75,7 @@
     "framework-arduinoststm32": {
       "type": "framework",
       "optional": true,
-      "version": "~2.2.180809"
+      "version": "~3.10300.181019"
     },
     "framework-arduinostm32mxchip": {
       "type": "framework",
