@@ -23,7 +23,8 @@
   "frameworks": [
     "arduino",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "chibios"
   ],
   "name": "ST Nucleo F446RE",
   "upload": {
