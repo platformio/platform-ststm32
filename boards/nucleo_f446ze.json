@@ -3,7 +3,7 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F446xx",
     "f_cpu": "180000000L",
-    "mcu": "stm32f446zet6"
+    "mcu": "stm32f446ret6"
   },
   "connectivity": [
     "can"
@@ -21,9 +21,10 @@
   },
   "frameworks": [
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "chibios"
   ],
-  "name": "ST Nucleo F446ZE",
+  "name": "ST Nucleo F446RE",
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 524288,
@@ -35,6 +36,6 @@
       "mbed"
     ]
   },
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F446ZE/",
+  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F446RE/",
   "vendor": "ST"
 }
