@@ -52,8 +52,6 @@ STSTM32_PORTS = [
     "STM32L4xx"
 ]
 
-print(env.__dict__)
-
 def log_message(msg):
     print(msg)
 
