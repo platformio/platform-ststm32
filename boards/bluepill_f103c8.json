@@ -19,10 +19,12 @@
     "variant": "stm32f103xb"
   },
   "debug": {
+    "jlink_device": "STM32F103C8",
     "openocd_target": "stm32f1x",
     "svd_path": "STM32F103xx.svd",
     "tools": {
       "stlink": {
+        "default": true,
         "server": {
           "arguments": [
             "-f",
@@ -36,8 +38,7 @@
           ],
           "executable": "bin/openocd",
           "package": "tool-openocd"
-        },
-        "default": true
+        }
       }
     }
   },

@@ -12,6 +12,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F103RB",
     "onboard_tools": [
       "stlink"
     ],

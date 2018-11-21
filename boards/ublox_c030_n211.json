@@ -10,6 +10,7 @@
     "cellular"
   ],
   "debug": {
+    "jlink_device": "STM32F437VG",
     "openocd_target": "stm32f4x",
     "svd_path": "STM32F437x.svd"
   },

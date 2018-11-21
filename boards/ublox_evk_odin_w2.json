@@ -11,6 +11,7 @@
     "wifi"
   ],
   "debug": {
+    "jlink_device": "STM32F439ZI",
     "openocd_target": "stm32f4x",
     "svd_path": "STM32F439x.svd"
   },

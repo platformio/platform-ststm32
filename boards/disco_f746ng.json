@@ -14,6 +14,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F746NG",
     "onboard_tools": [
       "stlink"
     ],

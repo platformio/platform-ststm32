@@ -10,6 +10,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32L152RE",
     "onboard_tools": [
       "stlink"
     ],

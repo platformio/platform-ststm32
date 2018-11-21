@@ -97,6 +97,11 @@
       "type": "uploader",
       "optional": true,
       "version": "~1.1000.0"
+    },
+    "tool-jlink": {
+      "type": "uploader",
+      "optional": true,
+      "version": "^1.63208.0"
     }
   }
 }

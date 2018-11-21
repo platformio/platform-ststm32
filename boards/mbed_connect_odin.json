@@ -11,6 +11,7 @@
     "wifi"
   ],
   "debug": {
+    "jlink_device": "STM32F439ZI",
     "onboard_tools": [
       "cmsis-dap"
     ],

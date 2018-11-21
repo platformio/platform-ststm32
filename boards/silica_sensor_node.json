@@ -13,6 +13,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32L476JG",
     "onboard_tools": [
       "stlink"
     ],

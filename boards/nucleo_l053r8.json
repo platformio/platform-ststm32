@@ -10,6 +10,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32L053R8",
     "onboard_tools": [
       "stlink"
     ],

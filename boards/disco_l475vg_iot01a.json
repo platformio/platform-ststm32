@@ -15,6 +15,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32L475VG",
     "onboard_tools": [
       "stlink"
     ],
