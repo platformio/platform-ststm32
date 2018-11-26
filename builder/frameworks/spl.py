@@ -76,11 +76,11 @@ env.Append(
         join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"),
              "cmsis", "cores", env.BoardConfig().get("build.core")),
         join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "cmsis",
-             "variants", env.BoardConfig().get("build.variant")[0:7]),
+             "variants", env.BoardConfig().get("build.mcu")[0:7]),
         join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "spl",
-             "variants", env.BoardConfig().get("build.variant")[0:7], "inc"),
+             "variants", env.BoardConfig().get("build.mcu")[0:7], "inc"),
         join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "spl",
-             "variants", env.BoardConfig().get("build.variant")[0:7], "src")
+             "variants", env.BoardConfig().get("build.mcu")[0:7], "src")
     ]
 )
 
@@ -115,7 +115,7 @@ libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkCMSISVariant"),
     join(
         FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "cmsis",
-        "variants", env.BoardConfig().get("build.variant")[0:7]
+        "variants", env.BoardConfig().get("build.mcu")[0:7]
     )
 ))
 
@@ -123,7 +123,7 @@ libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkSPL"),
     join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"),
          "spl", "variants",
-         env.BoardConfig().get("build.variant")[0:7], "src"),
+         env.BoardConfig().get("build.mcu")[0:7], "src"),
     src_filter=" ".join(src_filter_patterns)
 ))
 
