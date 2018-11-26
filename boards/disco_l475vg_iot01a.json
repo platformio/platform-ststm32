@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32L475xx",
     "f_cpu": "80000000L",
     "mcu": "stm32l475vgt6",
-    "variant": "stm32l4"
+    "variant": "DISCO_L475VG_IOT"
   },
   "connectivity": [
     "bluetooth",

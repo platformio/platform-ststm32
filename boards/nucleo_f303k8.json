@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32F303x8",
     "f_cpu": "72000000L",
     "mcu": "stm32f303k8t6",
-    "variant": "stm32f3"
+    "variant": "NUCLEO_F303K8"
   },
   "connectivity": [
     "can"

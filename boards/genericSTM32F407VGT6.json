@@ -6,7 +6,7 @@
     "f_cpu": "168000000L",
     "ldscript": "stm32f407xg.ld",
     "mcu": "stm32f407vgt6",
-    "variant": "stm32f4"
+    "variant": "DISCO_F407VG"
   },
   "debug": {
     "jlink_device": "STM32F407VG",

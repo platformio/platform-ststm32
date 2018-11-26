@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32F030x8",
     "f_cpu": "48000000L",
     "mcu": "stm32f030r8t6",
-    "variant": "stm32f0"
+    "variant": "NUCLEO_F030R8"
   },
   "debug": {
     "default_tools": [

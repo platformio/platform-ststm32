@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32F411xE",
     "f_cpu": "100000000L",
     "mcu": "stm32f411ret6",
-    "variant": "stm32f4"
+    "variant": "NUCLEO_F411RE"
   },
   "debug": {
     "default_tools": [

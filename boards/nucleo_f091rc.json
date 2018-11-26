@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32F091xC",
     "f_cpu": "48000000L",
     "mcu": "stm32f091rct6",
-    "variant": "stm32f0"
+    "variant": "NUCLEO_F091RC"
   },
   "connectivity": [
     "can"

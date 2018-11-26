@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32F746xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f746ngh6",
-    "variant": "stm32f7"
+    "variant": "DISCO_F746NG"
   },
   "connectivity": [
     "can",

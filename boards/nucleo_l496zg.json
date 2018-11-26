@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32L496xx",
     "f_cpu": "80000000L",
     "mcu": "stm32l496zgt6",
-    "variant": "stm32l4"
+    "variant": "NUCLEO_L496ZG"
   },
   "connectivity": [
     "can"

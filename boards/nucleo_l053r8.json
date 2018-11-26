@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32L053xx -D__CORTEX_SC=0",
     "f_cpu": "32000000L",
     "mcu": "stm32l053r8t6",
-    "variant": "stm32l0"
+    "variant": "NUCLEO_L053R8"
   },
   "debug": {
     "default_tools": [

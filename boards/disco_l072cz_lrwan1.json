@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32L072xx -D__CORTEX_SC=0",
     "f_cpu": "32000000L",
     "mcu": "stm32l072cz",
-    "variant": "stm32l0"
+    "variant": "DISCO_L072CZ_LRWAN1"
   },
   "debug": {
     "default_tools": [

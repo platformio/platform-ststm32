@@ -16,7 +16,7 @@
     ],
     "ldscript": "stm32f103x8.ld",
     "mcu": "stm32f103c8t6",
-    "variant": "stm32f1"
+    "variant": "BLUEPILL_F103C8"
   },
   "debug": {
     "jlink_device": "STM32F103C8",

@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32F303xE",
     "f_cpu": "72000000L",
     "mcu": "stm32f303ret6",
-    "variant": "stm32f3"
+    "variant": "NUCLEO_F303RE"
   },
   "debug": {
     "default_tools": [

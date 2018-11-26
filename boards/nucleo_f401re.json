@@ -6,7 +6,7 @@
     "f_cpu": "84000000L",
     "ldscript": "stm32f401xe.ld",
     "mcu": "stm32f401ret6",
-    "variant": "stm32f401xe"
+    "variant": "NUCLEO_F401RE"
   },
   "debug": {
     "default_tools": [

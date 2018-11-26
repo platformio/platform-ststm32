@@ -16,7 +16,7 @@
     ],
     "ldscript": "stm32f103xb.ld",
     "mcu": "stm32f103cbt6",
-    "variant": "stm32f1"
+    "variant": "MAPLEMINI_F103CB"
   },
   "debug": {
     "jlink_device": "STM32F103CB",
