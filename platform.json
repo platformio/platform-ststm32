@@ -56,7 +56,7 @@
     "framework-cmsis": {
       "type": "framework",
       "optional": true,
-      "version": "~1.40300.0"
+      "version": "~2.50400.181126"
     },
     "framework-spl": {
       "type": "framework",
@@ -71,7 +71,7 @@
     "framework-arduinoststm32": {
       "type": "framework",
       "optional": true,
-      "version": "~3.10300.181019"
+      "version": "~3.10400.181126"
     },
     "framework-arduinostm32mxchip": {
       "type": "framework",
