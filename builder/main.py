@@ -164,8 +164,7 @@ elif upload_protocol.startswith("jlink"):
     )
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
-elif upload_protocol in ("serial", "dfu") \
-        and "arduino" in env.subst("$PIOFRAMEWORK"):
+elif upload_protocol in ("serial", "dfu"):
     _upload_tool = "serial_upload"
     _upload_flags = ["{upload.altID}", "{upload.usbID}"]
     if upload_protocol == "dfu":
