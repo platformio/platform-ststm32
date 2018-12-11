@@ -176,8 +176,7 @@ elif upload_protocol in ("serial", "dfu"):
         ]
 
     def __configure_upload_port(env):
-        return (basename(env.subst("$UPLOAD_PORT"))
-                if _upload_tool == "maple_upload" else "$UPLOAD_PORT")
+        return basename(env.subst("$UPLOAD_PORT"))
 
     env.Replace(
         __configure_upload_port=__configure_upload_port,
