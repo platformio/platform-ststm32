@@ -13,6 +13,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F746ZG",
     "onboard_tools": [
       "stlink"
     ],

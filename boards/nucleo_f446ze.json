@@ -12,6 +12,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F446ZE",
     "onboard_tools": [
       "stlink"
     ],

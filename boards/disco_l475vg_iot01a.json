@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L475xx",
     "f_cpu": "80000000L",
-    "mcu": "stm32l475vgt6"
+    "mcu": "stm32l475vgt6",
+    "variant": "DISCO_L475VG_IOT"
   },
   "connectivity": [
     "bluetooth",
@@ -14,6 +15,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32L475VG",
     "onboard_tools": [
       "stlink"
     ],
@@ -22,6 +24,7 @@
     "svd_path": "STM32L4x5.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

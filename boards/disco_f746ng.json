@@ -3,7 +3,8 @@
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F746xx",
     "f_cpu": "216000000L",
-    "mcu": "stm32f746ngh6"
+    "mcu": "stm32f746ngh6",
+    "variant": "DISCO_F746NG"
   },
   "connectivity": [
     "can",
@@ -13,6 +14,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F746NG",
     "onboard_tools": [
       "stlink"
     ],
@@ -21,6 +23,7 @@
     "svd_path": "STM32F7x6.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

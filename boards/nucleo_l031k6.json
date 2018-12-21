@@ -3,12 +3,14 @@
     "cpu": "cortex-m0plus",
     "extra_flags": "-DSTM32L031xx",
     "f_cpu": "32000000L",
-    "mcu": "stm32l031k6t6"
+    "mcu": "stm32l031k6t6",
+    "variant": "NUCLEO_L031K6"
   },
   "debug": {
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32L031K6",
     "onboard_tools": [
       "stlink"
     ],
@@ -16,6 +18,7 @@
     "svd_path": "STM32L0x1.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

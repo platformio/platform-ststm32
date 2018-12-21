@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L496xx",
     "f_cpu": "80000000L",
-    "mcu": "stm32l496zgt6"
+    "mcu": "stm32l496zgt6",
+    "variant": "NUCLEO_L496ZG"
   },
   "connectivity": [
     "can"
@@ -12,6 +13,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32L496ZG",
     "onboard_tools": [
       "stlink"
     ],
@@ -20,6 +22,7 @@
     "svd_path": "STM32L4x6.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

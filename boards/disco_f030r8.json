@@ -3,12 +3,14 @@
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32F030x8",
     "f_cpu": "48000000L",
-    "mcu": "stm32f030r8t6"
+    "mcu": "stm32f030r8t6",
+    "variant": "DISCO_F030R8"
   },
   "debug": {
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F030R8",
     "onboard_tools": [
       "stlink"
     ],
@@ -17,6 +19,7 @@
     "svd_path": "STM32F030.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

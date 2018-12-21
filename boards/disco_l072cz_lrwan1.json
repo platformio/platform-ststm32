@@ -1,14 +1,16 @@
 {
   "build": {
     "cpu": "cortex-m0plus",
-    "extra_flags": "-DSTM32L072xx",
+    "extra_flags": "-DSTM32L072xx -D__CORTEX_SC=0",
     "f_cpu": "32000000L",
-    "mcu": "stm32l072cz"
+    "mcu": "stm32l072cz",
+    "variant": "DISCO_L072CZ_LRWAN1"
   },
   "debug": {
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32L072CZ",
     "onboard_tools": [
       "stlink"
     ],
@@ -16,6 +18,7 @@
     "svd_path": "STM32L07x.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

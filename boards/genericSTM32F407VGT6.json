@@ -6,9 +6,10 @@
     "f_cpu": "168000000L",
     "ldscript": "stm32f407xg.ld",
     "mcu": "stm32f407vgt6",
-    "variant": "stm32f4"
+    "variant": "DISCO_F407VG"
   },
   "debug": {
+    "jlink_device": "STM32F407VG",
     "openocd_target": "stm32f4x",
     "svd_path": "STM32F40x.svd",
     "tools": {
@@ -42,7 +43,8 @@
     "protocol": "stlink",
     "protocols": [
       "stlink",
-      "dfu"
+      "dfu",
+      "jlink"
     ],
     "require_upload_port": true,
     "use_1200bps_touch": false,

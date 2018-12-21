@@ -12,6 +12,7 @@
     "default_tools": [
       "blackmagic"
     ],
+    "jlink_device": "STM32F417VG",
     "onboard_tools": [
       "blackmagic"
     ],

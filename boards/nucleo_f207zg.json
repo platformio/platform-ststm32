@@ -4,7 +4,8 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F207xx",
     "f_cpu": "120000000L",
-    "mcu": "stm32f207zgt6"
+    "mcu": "stm32f207zgt6",
+    "variant": "NUCLEO_F207ZG"
   },
   "connectivity": [
     "can",
@@ -14,6 +15,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F207ZG",
     "onboard_tools": [
       "stlink"
     ],
@@ -21,6 +23,7 @@
     "svd_path": "STM32F20x.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

@@ -3,7 +3,8 @@
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32F091xC",
     "f_cpu": "48000000L",
-    "mcu": "stm32f091rct6"
+    "mcu": "stm32f091rct6",
+    "variant": "NUCLEO_F091RC"
   },
   "connectivity": [
     "can"
@@ -12,6 +13,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F091RC",
     "onboard_tools": [
       "stlink"
     ],
@@ -20,6 +22,7 @@
     "svd_path": "STM32F091x.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

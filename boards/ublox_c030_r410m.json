@@ -13,6 +13,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F437VG",
     "onboard_tools": [
       "stlink"
     ],

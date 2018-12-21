@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F303x8",
     "f_cpu": "72000000L",
-    "mcu": "stm32f303k8t6"
+    "mcu": "stm32f303k8t6",
+    "variant": "NUCLEO_F303K8"
   },
   "connectivity": [
     "can"
@@ -12,6 +13,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F303K8",
     "onboard_tools": [
       "stlink"
     ],
@@ -20,6 +22,7 @@
     "svd_path": "STM32F30x.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],
