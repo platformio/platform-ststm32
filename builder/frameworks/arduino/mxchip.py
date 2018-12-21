@@ -149,8 +149,6 @@ inc_dirs.extend([
 env.Append(CPPPATH=inc_dirs)
 
 env.Replace(
-    LIBS=["az_iot", "m", "wlan", "wifi", "libstsafe", "mbed-os", "stdc++", "gcc"],
-
     LINKFLAGS=[
         "-mcpu=cortex-m4",
         "-mthumb",
@@ -169,6 +167,8 @@ env.Replace(
         "-u", "_printf_float"
     ]
 )
+
+env.Prepend(LIBS=["az_iot", "m", "wlan", "wifi", "libstsafe", "mbed-os", "stdc++", "gcc"])
 
 #
 # Target: Build Core Library
