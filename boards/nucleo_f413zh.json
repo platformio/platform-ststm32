@@ -1,7 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F413xE",
+    "extra_flags": "-DSTM32F413xx",
     "f_cpu": "100000000L",
     "mcu": "stm32f413zht6"
   },
@@ -12,6 +12,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F413ZH",
     "onboard_tools": [
       "stlink"
     ],

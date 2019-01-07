@@ -10,6 +10,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32L100RC",
     "onboard_tools": [
       "stlink"
     ],
@@ -27,7 +28,8 @@
     "protocol": "stlink",
     "protocols": [
       "stlink",
-      "blackmagic"
+      "blackmagic",
+      "jlink"
     ]
   },
   "url": "https://www.st.com/en/evaluation-tools/32l100cdiscovery.html",

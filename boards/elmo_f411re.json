@@ -9,6 +9,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F411RE",
     "openocd_board": "st_nucleo_f4",
     "openocd_target": "stm32f4x",
     "svd_path": "STM32F411xx.svd"

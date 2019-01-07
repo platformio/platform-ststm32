@@ -1,10 +1,12 @@
 {
   "build": {
     "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F411xE",
     "f_cpu": "100000000L",
     "mcu": "stm32f411ret6"
   },
   "debug": {
+    "jlink_device": "STM32F411RE",
     "openocd_target": "stm32f4x",
     "svd_path": "STM32F411xx.svd"
   },

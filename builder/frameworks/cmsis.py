@@ -26,6 +26,9 @@ and cutting the time-to-market for devices.
 http://www.arm.com/products/processors/cortex-m/cortex-microcontroller-software-interface-standard.php
 """
 
+import sys
+from glob import glob
+from string import Template
 from os.path import isdir, isfile, join
 
 from SCons.Script import DefaultEnvironment
@@ -35,56 +38,104 @@ platform = env.PioPlatform()
 
 env.SConscript("_bare.py")
 
+PLATFORM_NAME = env.get("PIOPLATFORM")
 FRAMEWORK_DIR = platform.get_package_dir("framework-cmsis")
 assert isdir(FRAMEWORK_DIR)
 
-env.Append(
-    CPPPATH=[
-        join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core")),
-        join(FRAMEWORK_DIR, "variants", env.BoardConfig().get(
-             "build.variant")[0:7], "common"),
-        join(FRAMEWORK_DIR, "variants", env.BoardConfig().get(
-             "build.variant")[0:7], env.BoardConfig().get("build.variant"))
-    ]
-)
+VARIANT_DIR_EXCEPTIONS = {
+    "stm32f103c8": "stm32f103xb",
+    "stm32f103r8": "stm32f103xb",
+    "stm32f103rc": "stm32f103xb",
+    "stm32f103t8": "stm32f103xb",
+    "stm32f103vc": "stm32f103xe",
+    "stm32f103vd": "stm32f103xe",
+    "stm32f103ve": "stm32f103xe",
+    "stm32f103zc": "stm32f103xe",
+    "stm32f103zd": "stm32f103xe",
+    "stm32f407ve": "stm32f407xx"
+}
 
+
+def get_variant_dir(mcu):
+    if len(mcu) > 12:
+        mcu = mcu[:-2]
+
+    mcu_family_path = join(FRAMEWORK_DIR, "variants", PLATFORM_NAME, mcu[0:7])
+    mcu_pattern = mcu[0:9] + "[" + mcu[9] + "|x]" + "[" + mcu[10] + "|x]"
+    variant_path = join(mcu_family_path, mcu_pattern)
+    variant_dirs = glob(variant_path)
+
+    if mcu in VARIANT_DIR_EXCEPTIONS:
+        return join(mcu_family_path, VARIANT_DIR_EXCEPTIONS[mcu])
+
+    if not variant_dirs:
+        sys.stderr.write(
+            """Error: There is no variant dir for %s MCU!
+            Please add initialization code to your project manually!""" % mcu)
+    return variant_dirs[0]
+
+
+def get_linker_script(mcu):
+    ldscript = join(FRAMEWORK_DIR, "platformio", "ldscripts", PLATFORM_NAME,
+                    mcu[0:11].upper() + "_FLASH.ld")
+
+    if isfile(ldscript):
+        return ldscript
+
+    default_ldscript = join(FRAMEWORK_DIR, "platformio", "ldscripts",
+                            PLATFORM_NAME, mcu[0:11].upper() + "_DEFAULT.ld")
+
+    print("Warning! Cannot find a linker script for the required board! "
+          "Firmware will be linked with a default linker script!")
+
+    if isfile(default_ldscript):
+        return default_ldscript
+
+    ram = env.BoardConfig().get("upload.maximum_ram_size", 0)
+    flash = env.BoardConfig().get("upload.maximum_size", 0)
+    template_file = join(FRAMEWORK_DIR, "platformio",
+                         "ldscripts", PLATFORM_NAME, "tpl", "linker.tpl")
+    content = ""
+    with open(template_file) as fp:
+        data = Template(fp.read())
+        content = data.substitute(
+            stack=hex(0x20000000 + ram),  # 0x20000000 - start address for RAM
+            ram=str(int(ram / 1024)) + "K",
+            flash=str(int(flash / 1024)) + "K")
+
+    with open(default_ldscript, "w") as fp:
+        fp.write(content)
+
+    return default_ldscript
+
+env.Append(CPPPATH=[
+    join(FRAMEWORK_DIR, "CMSIS", "Core", "Include"),
+    join(FRAMEWORK_DIR, "variants", PLATFORM_NAME,
+         env.BoardConfig().get("build.mcu")[0:7], "common"),
+    join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.mcu")[0:7],
+         env.BoardConfig().get("build.mcu"))
+])
+
+
+env.Replace(
+    LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu")))
 
 #
 # Target: Build Core Library
 #
 
-# use mbed ldscript with bootloader section
-ldscript = env.BoardConfig().get("build.ldscript")
-if not isfile(join(platform.get_dir(), "ldscripts", ldscript)):
-    if "mbed" in env.BoardConfig().get("frameworks", []):
-        env.Append(
-            LINKFLAGS=[
-                '-Wl,-T"%s"' %
-                join(
-                    platform.get_package_dir("framework-mbed") or "", "targets",
-                    "TARGET_STM", "TARGET_%s" % env.BoardConfig().get("build.variant").upper()[:7],
-                    "TARGET_%s" % env.subst("$BOARD").upper(), "device",
-                    "TOOLCHAIN_GCC_ARM", "%s.ld" % ldscript.upper()[:-3]
-                )
-            ]
-        )
-
 libs = []
+
 libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkCMSISVariant"),
-    join(
-        FRAMEWORK_DIR, "variants",
-        env.BoardConfig().get("build.variant")[0:7],
-        env.BoardConfig().get("build.variant")
-    )
+    get_variant_dir(env.BoardConfig().get("build.mcu"))
 ))
 
-libs.append(env.BuildLibrary(
-    join("$BUILD_DIR", "FrameworkCMSISCommon"),
-    join(
-        FRAMEWORK_DIR, "variants",
-        env.BoardConfig().get("build.variant")[0:7], "common"
-    )
-))
+libs.append(
+    env.BuildLibrary(
+        join("$BUILD_DIR", "FrameworkCMSISCommon"),
+        join(FRAMEWORK_DIR, "variants", PLATFORM_NAME,
+             env.BoardConfig().get("build.mcu")[0:7], "common"))
+)
 
 env.Append(LIBS=libs)

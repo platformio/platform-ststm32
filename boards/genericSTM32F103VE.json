@@ -19,6 +19,7 @@
     "variant": "stm32f1"
   },
   "debug": {
+    "jlink_device": "STM32F103VE",
     "openocd_target": "stm32f1x",
     "svd_path": "STM32F103xx.svd"
   },

@@ -6,6 +6,7 @@
     "mcu": "stm32l152rc"
   },
   "debug": {
+    "jlink_device": "STM32L152RC",
     "openocd_target": "stm32l1",
     "svd_path": "STM32L1xx.svd"
   },

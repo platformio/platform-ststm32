@@ -12,6 +12,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F303VC",
     "onboard_tools": [
       "stlink"
     ],

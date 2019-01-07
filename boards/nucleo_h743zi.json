@@ -1,9 +1,9 @@
 {
   "build": {
-    "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F439xx",
-    "f_cpu": "180000000L",
-    "mcu": "stm32f439zit6"
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32H743xx",
+    "f_cpu": "400000000L",
+    "mcu": "stm32h743zit6"
   },
   "connectivity": [
     "can",
@@ -13,21 +13,20 @@
     "default_tools": [
       "stlink"
     ],
-    "jlink_device": "STM32F439ZI",
+    "jlink_device": "STM32H743ZI",
     "onboard_tools": [
       "stlink"
     ],
-    "openocd_board": "st_nucleo_f4",
-    "openocd_target": "stm32f4x",
-    "svd_path": "STM32F439x.svd"
+    "openocd_board": "st_nucleo_h743zi",
+    "openocd_target": "stm32h7x",
+    "svd_path": "STM32H7x3.svd"
   },
   "frameworks": [
-    "mbed",
     "stm32cube"
   ],
-  "name": "ST Nucleo F439ZI",
+  "name": "ST Nucleo H743ZI",
   "upload": {
-    "maximum_ram_size": 262144,
+    "maximum_ram_size": 1048576,
     "maximum_size": 2097152,
     "protocol": "mbed",
     "protocols": [
@@ -37,6 +36,6 @@
       "mbed"
     ]
   },
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F439ZI/",
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-h743zi.html",
   "vendor": "ST"
 }

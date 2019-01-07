@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32F746xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f746ngh6",
-    "variant": "stm32f7"
+    "variant": "DISCO_F746NG"
   },
   "connectivity": [
     "can",
@@ -14,6 +14,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F746NG",
     "onboard_tools": [
       "stlink"
     ],

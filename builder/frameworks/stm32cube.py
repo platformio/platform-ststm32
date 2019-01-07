@@ -23,12 +23,16 @@ http://www.st.com/en/embedded-software/stm32cube-embedded-software.html?querycri
 """
 
 from glob import glob
+from os import listdir
 from os.path import basename, isdir, isfile, join
 from shutil import copy
 from string import Template
 import sys
 
 from SCons.Script import DefaultEnvironment
+
+from platformio import util
+from platformio.builder.tools.piolib import PlatformIOLibBuilder
 
 env = DefaultEnvironment()
 platform = env.PioPlatform()
@@ -51,6 +55,22 @@ STARTUP_FILE_EXCEPTIONS = {
     "stm32f103zd": "startup_stm32f103xe.s",
     "stm32f407ve": "startup_stm32f407xx.s"
 }
+
+
+class CustomLibBuilder(PlatformIOLibBuilder):
+
+    PARSE_SRC_BY_H_NAME = False
+
+    # Max depth of nested includes:
+    # -1 = unlimited
+    # 0 - disabled nesting
+    # >0 - number of allowed nested includes
+    CCONDITIONAL_SCANNER_DEPTH = 0
+
+    # For cases when sources located not only in "src" dir
+    @property
+    def src_dir(self):
+        return self.path
 
 
 def get_startup_file(mcu):
@@ -179,9 +199,9 @@ env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 cpp_flags = env.Flatten(env.get("CPPDEFINES", []))
 
 if "F103xC" in cpp_flags:
-    env.Append(CPPDEFINES=["-DSTM32F103xE"])
+    env.Append(CPPDEFINES=["STM32F103xE"])
 elif "F103x8" in cpp_flags:
-    env.Append(CPPDEFINES=["-DSTM32F103xB"])
+    env.Append(CPPDEFINES=["STM32F103xB"])
 
 
 env.Append(
@@ -191,7 +211,9 @@ env.Append(
              "ST", MCU_FAMILY.upper() + "xx", "Include"),
 
         join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers",
-             MCU_FAMILY.upper() + "xx_HAL_Driver", "Inc")
+             MCU_FAMILY.upper() + "xx_HAL_Driver", "Inc"),
+        join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers",
+             "BSP", "Components", "Common")
     ],
 
     LIBPATH=[
@@ -201,6 +223,12 @@ env.Append(
     ]
 )
 
+variants_remap = util.load_json(
+    join(FRAMEWORK_DIR, "platformio", "variants_remap.json"))
+board_type = env.subst("$BOARD")
+variant = variants_remap[
+    board_type] if board_type in variants_remap else board_type.upper()
+
 #
 # Generate framework specific files
 #
@@ -208,16 +236,36 @@ env.Append(
 generate_hal_config_file(env.BoardConfig().get("build.mcu"))
 
 #
+# Process BSP components
+#
+
+components_dir = join(
+    FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers", "BSP", "Components")
+for component in listdir(components_dir):
+    env.Append(EXTRA_LIB_BUILDERS=[
+        CustomLibBuilder(
+            env, join(components_dir, component),
+            {"name": "BSP-%s" % component}
+        )
+    ])
+
+
+#
 # Target: Build HAL Library
 #
 
 libs = []
 
+bsp_dir = join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers", "BSP", variant)
+if isdir(bsp_dir):
+    libs.append(env.BuildLibrary(join("$BUILD_DIR", "FrameworkBSP"), bsp_dir))
+    env.Append(CPPPATH=[bsp_dir])
+
 libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkHALDriver"),
     join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers",
          MCU_FAMILY.upper() + "xx_HAL_Driver"),
-    src_filter="+<*> -<Src/*_template.c>"
+    src_filter="+<*> -<Src/*_template.c> -<Src/Legacy>"
 ))
 
 libs.append(env.BuildLibrary(

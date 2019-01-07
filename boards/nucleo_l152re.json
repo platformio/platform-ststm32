@@ -4,12 +4,13 @@
     "extra_flags": "-DSTM32L152xE",
     "f_cpu": "32000000L",
     "mcu": "stm32l152ret6",
-    "variant": "stm32l1"
+    "variant": "NUCLEO_L152RE"
   },
   "debug": {
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32L152RE",
     "onboard_tools": [
       "stlink"
     ],

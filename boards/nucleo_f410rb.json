@@ -9,6 +9,7 @@
     "default_tools": [
       "stlink"
     ],
+    "jlink_device": "STM32F410RB",
     "onboard_tools": [
       "stlink"
     ],

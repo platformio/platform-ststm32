@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "4.5.0",
+  "version": "4.6.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json"
@@ -55,12 +55,12 @@
     "framework-mbed": {
       "type": "framework",
       "optional": true,
-      "version": "~5.51001.1"
+      "version": "~5.51100.181227"
     },
     "framework-cmsis": {
       "type": "framework",
       "optional": true,
-      "version": "~1.40300.0"
+      "version": "~2.50400.181126"
     },
     "framework-spl": {
       "type": "framework",
@@ -75,7 +75,7 @@
     "framework-arduinoststm32": {
       "type": "framework",
       "optional": true,
-      "version": "~3.10300.181019"
+      "version": "~3.10400.181126"
     },
     "framework-arduinostm32mxchip": {
       "type": "framework",
@@ -95,17 +95,22 @@
     "tool-stlink": {
       "type": "uploader",
       "optional": true,
-      "version": "~1.10400.0"
+      "version": "~2.0.181130"
     },
     "tool-stm32duino": {
       "type": "uploader",
       "optional": true,
-      "version": "~1.0.0"
+      "version": "~1.0.1"
     },
     "tool-openocd": {
       "type": "uploader",
       "optional": true,
       "version": "~1.1000.0"
+    },
+    "tool-jlink": {
+      "type": "uploader",
+      "optional": true,
+      "version": "^1.63208.0"
     }
   }
 }
