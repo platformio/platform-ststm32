@@ -23,7 +23,7 @@ http://www.st.com/en/embedded-software/stm32cube-embedded-software.html?querycri
 """
 
 from glob import glob
-from os import listdir
+from os import listdir, remove, walk
 from os.path import basename, isdir, isfile, join
 from shutil import copy
 from string import Template
@@ -152,6 +152,46 @@ def generate_hal_config_file(mcu):
          join(config_path, MCU_FAMILY + "xx_hal_conf.h"))
 
 
+def overwrite_hal_config_file(mcu, overwrite=False):
+    config_path = join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers",
+                        MCU_FAMILY.upper() + "xx_HAL_Driver", "Inc")
+
+    # Walk through the source directory to find the config file used to overwrite
+    for root, dirs, files in walk(join(env.get("PROJECTSRC_DIR"))):
+        for file in files:
+            if file in [MCU_FAMILY + "xx_hal_conf.h"]:
+                overwrite_hal_conf_path = join(root, file)
+    
+    hal_config_file = join(config_path, MCU_FAMILY + "xx_hal_conf.h")
+    hal_config_bck_file = join(config_path, MCU_FAMILY + "xx_hal_conf.bck")
+
+    if overwrite == False:
+        # Check if we should reset to original xx_hal_conf.h
+        if isfile(hal_config_bck_file):
+            if isfile(hal_config_file):
+                # Delete the current config file
+                remove(hal_config_file)
+            # Restore the backup config
+            copy(hal_config_bck_file, hal_config_file)
+
+            # Delete the backup config
+            remove(hal_config_bck_file)
+
+    else: # overwrite == True
+        if isfile(hal_config_file) and not isfile(hal_config_bck_file):
+            # Backup the current config file before overwrite
+            copy(hal_config_file, hal_config_bck_file)
+        
+        # Delete the current config file
+        remove(hal_config_file)
+
+        # Overwrite with the one defined in the src dir
+        copy(overwrite_hal_conf_path, hal_config_file)
+
+        # Overwrite local file
+        copy(join(overwrite_hal_conf_path),
+             join(hal_config_file))
+
 env.Replace(
     AS="$CC",
     ASCOM="$ASPPCOM",
@@ -235,6 +275,10 @@ variant = variants_remap[
 
 generate_hal_config_file(env.BoardConfig().get("build.mcu"))
 
+if "PIO_OVERWRITE_HAL_CONF" in cpp_flags:
+    overwrite_hal_config_file(env.BoardConfig().get("build.mcu"), True)
+else:
+    overwrite_hal_config_file(env.BoardConfig().get("build.mcu"), False)
 #
 # Process BSP components
 #
