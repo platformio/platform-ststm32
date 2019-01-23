@@ -173,7 +173,8 @@ if "PIO_FRAMEWORK_ARDUINO_NANOLIB_FLOAT_SCANF" in env.Flatten(
 env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 # remap ldscript
-env.Replace(LDSCRIPT_PATH="ldscript.ld")
+if variant != "BLUEPILL_F103C8":
+    env.Replace(LDSCRIPT_PATH="ldscript.ld")
 
 env.Append(
     LIBSOURCE_DIRS=[
