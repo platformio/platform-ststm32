@@ -1,0 +1,35 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32L412xx",
+    "f_cpu": "80000000L",
+    "mcu": "stm32l412kbu6"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32L412KB",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32l4x",
+    "svd_path": "STM32L4x2.svd"
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "ST Nucleo L412KB",
+  "upload": {
+    "maximum_ram_size": 40960,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-l412kb.html",
+  "vendor": "ST"
+}
