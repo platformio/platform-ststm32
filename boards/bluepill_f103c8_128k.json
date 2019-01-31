@@ -14,7 +14,7 @@
         "0x0004"
       ]
     ],
-    "ldscript": "ldscript.ld",
+    "ldscript": "ldscript_cb.ld",
     "mcu": "stm32f103c8t6",
     "variant": "BLUEPILL_F103C8"
   },
@@ -49,10 +49,10 @@
     "libopencm3",
     "stm32cube"
   ],
-  "name": "BluePill F103C8",
+  "name": "BluePill F103C8 (128k)",
   "upload": {
     "maximum_ram_size": 20480,
-    "maximum_size": 65536,
+    "maximum_size": 131072,
     "protocol": "stlink",
     "protocols": [
       "jlink",
