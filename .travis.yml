@@ -22,6 +22,7 @@ env:
   - PLATFORMIO_PROJECT_DIR=examples/mbed-rtos-ethernet
   - PLATFORMIO_PROJECT_DIR=examples/mbed-rtos-ethernet-tls
   - PLATFORMIO_PROJECT_DIR=examples/mbed-rtos-semaphore
+  - PLATFORMIO_PROJECT_DIR=examples/mbed-rtos-mesh-minimal
   - PLATFORMIO_PROJECT_DIR=examples/mbed-serial
   - PLATFORMIO_PROJECT_DIR=examples/spl-blink
   - PLATFORMIO_PROJECT_DIR=examples/stm32cube-hal-blink
