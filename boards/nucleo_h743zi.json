@@ -22,7 +22,8 @@
     "svd_path": "STM32H7x3.svd"
   },
   "frameworks": [
-    "stm32cube"
+    "stm32cube",
+    "mbed"
   ],
   "name": "ST Nucleo H743ZI",
   "upload": {
