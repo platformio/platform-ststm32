@@ -1,0 +1,47 @@
+{
+    "config": {
+        "enable-led-control-example": true,
+        "LED": "NC",
+        "BUTTON": "NC",
+        "BUTTON_MODE": "PullUp"
+    },
+    "target_overrides": {
+        "*": {
+            "nanostack.configuration": "lowpan_router",
+            "nsapi.default-mesh-type": "LOWPAN",
+            "mbed-mesh-api.6lowpan-nd-panid-filter": "0xffff",
+            "mbed-mesh-api.6lowpan-nd-channel-page": 0,
+            "mbed-mesh-api.6lowpan-nd-channel": 12,
+            "mbed-mesh-api.6lowpan-nd-channel-mask": "(1<<12)",
+            "mbed-mesh-api.heap-size": 14000,
+            "mbed-trace.enable": false,
+            "platform.stdio-convert-newlines": true,
+            "platform.stdio-baud-rate": 115200,
+            "atmel-rf.provide-default": true,
+            "mcr20a.provide-default": false,
+            "target.device_has_add": ["802_15_4_PHY"],
+            "target.network-default-interface-type": "MESH"
+        },
+        "K64F": {
+            "LED": "LED_RED",
+            "BUTTON": "SW2"
+        },
+        "K66F": {
+            "LED": "LED_RED",
+            "BUTTON": "SW2"
+        },
+        "NUCLEO_F401RE": {
+            "LED": "NC",
+            "BUTTON": "USER_BUTTON"
+        },
+        "NUCLEO_F429ZI":  {
+            "LED": "LED_RED",
+            "BUTTON": "USER_BUTTON",
+            "BUTTON_MODE": "PullDown"
+        },
+        "NUCLEO_F411RE": {
+            "LED": "NC",
+            "BUTTON": "USER_BUTTON"
+        }
+    }
+}
