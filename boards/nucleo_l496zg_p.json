@@ -17,7 +17,6 @@
       "stlink"
     ],
     "openocd_board": "st_nucleo_l476rg",
-    "openocd_target": "stm32l4x",
     "svd_path": "STM32L4x6.svd"
   },
   "frameworks": [

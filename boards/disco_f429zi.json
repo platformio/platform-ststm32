@@ -17,7 +17,6 @@
       "stlink"
     ],
     "openocd_board": "stm32f429discovery",
-    "openocd_target": "stm32f4x",
     "svd_path": "STM32F429x.svd"
   },
   "frameworks": [

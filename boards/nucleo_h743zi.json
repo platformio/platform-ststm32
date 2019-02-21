@@ -18,7 +18,6 @@
       "stlink"
     ],
     "openocd_board": "st_nucleo_h743zi",
-    "openocd_target": "stm32h7x",
     "svd_path": "STM32H7x3.svd"
   },
   "frameworks": [
