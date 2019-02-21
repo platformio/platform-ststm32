@@ -1,8 +1,11 @@
 {
   "build": {
     "cpu": "cortex-m0plus",
-    "extra_flags": "-DSTM32L072xx -D__CORTEX_SC=0",
+    "extra_flags": "-DSTM32L072xx",
     "f_cpu": "32000000L",
+    "framework_extra_flags": {
+      "arduino": "-D__CORTEX_SC=0"
+    },
     "mcu": "stm32l072cz",
     "variant": "DISCO_L072CZ_LRWAN1"
   },

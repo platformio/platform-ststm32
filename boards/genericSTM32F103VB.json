@@ -1,6 +1,6 @@
 {
   "build": {
-    "core": "stm32",
+    "core": "maple",
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",

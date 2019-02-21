@@ -21,6 +21,14 @@ class Ststm32Platform(PlatformBase):
 
     def configure_default_packages(self, variables, targets):
         board = variables.get("board")
+        build_core = variables.get(
+            "board_build.core", self.board_config(variables.get("board")).get(
+                "build.core", "arduino"))
+
+        if variables.get("pioframework") == "arduino" and build_core == "maple":
+            self.frameworks['arduino']['package'] = "framework-arduinoststm32-maple"
+            self.packages["framework-arduinoststm32-maple"]["optional"] = False
+            self.packages["framework-arduinoststm32"]["optional"] = True
 
         if board == "mxchip_az3166":
             self.frameworks['arduino'][

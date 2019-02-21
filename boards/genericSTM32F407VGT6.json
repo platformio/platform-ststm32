@@ -1,8 +1,8 @@
 {
   "build": {
-    "core": "stm32",
+    "core": "maple",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F407xx",
+    "extra_flags": "-DSTM32F407xx -DARDUINO_STM32GenericF407VET6",
     "f_cpu": "168000000L",
     "ldscript": "stm32f407xg.ld",
     "mcu": "stm32f407vgt6",

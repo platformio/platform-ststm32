@@ -4,6 +4,9 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
+    "framework_extra_flags": {
+      "arduino": "-DARDUINO_MAPLEMINI_F103CB"
+    },
     "hwids": [
       [
         "0x1EAF",
@@ -38,7 +41,8 @@
       "jlink",
       "stlink",
       "blackmagic",
-      "dfu"
+      "dfu",
+      "serial"
     ],
     "require_upload_port": true
   },

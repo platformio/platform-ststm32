@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L4R5xx",
     "f_cpu": "120000000L",
-    "mcu": "stm32l4r5zit6"
+    "mcu": "stm32l4r5zit6",
+    "variant": "NUCLEO_L4R5ZI"
   },
   "connectivity": [
     "can"
@@ -20,6 +21,7 @@
     "svd_path": "STM32L4x5.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],

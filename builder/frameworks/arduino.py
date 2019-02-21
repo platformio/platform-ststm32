@@ -22,25 +22,22 @@ kinds of creative coding, interactive objects, spaces or physical experiences.
 http://www.stm32duino.com
 """
 
-from os import listdir
 from os.path import join
 
-from SCons.Script import DefaultEnvironment
+from SCons.Script import DefaultEnvironment, SConscript
 
 env = DefaultEnvironment()
 mcu = env.BoardConfig().get("build.mcu")
-variant = env.BoardConfig().get("build.variant")
+core = env.BoardConfig().get("build.core", "")
 
-core_variant_dir = join(env.PioPlatform().get_package_dir(
-    "framework-arduinoststm32"), "STM32", "variants")
 
-if variant in listdir(core_variant_dir):
-    env.SConscript("arduino/stm32duino.py")
+if core == "maple":
+    SConscript(
+        join(env.PioPlatform().get_package_dir(
+            "framework-arduinoststm32-maple"),
+            "tools", "platformio-build-%s.py" % mcu[0:7]))
 else:
-    # STM32 legacy core supported families
-    if "f1" in mcu:
-        env.SConscript("arduino/maple/stm32f1.py")
-    elif "f4" in mcu:
-        env.SConscript("arduino/maple/stm32f4.py")
-    else:
-        env.SConscript("arduino/stm32duino.py")
+    SConscript(
+        join(env.PioPlatform().get_package_dir(
+            "framework-arduinoststm32"),
+            "tools", "platformio-build.py"))
