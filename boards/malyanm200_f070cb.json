@@ -1,0 +1,35 @@
+{
+  "build": {
+    "cpu": "cortex-m0",
+    "extra_flags": "-DSTM32F070xB",
+    "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-DVECT_TAB_OFFSET=0x2000"
+    },
+    "mcu": "stm32f070cbt6",
+    "variant": "MALYANM200_F070CB"
+  },
+  "debug": {
+    "jlink_device": "STM32F070CB",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F0xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "M200 V2",
+  "upload": {
+    "maximum_ram_size": 15168,
+    "maximum_size": 122880,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial"
+    ]
+  },
+  "url": "http://malyansys.com/en/product/fdm-series/m200-v2/",
+  "vendor": "Malyan"
+}

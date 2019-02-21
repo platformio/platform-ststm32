@@ -1,0 +1,41 @@
+{
+  "build": {
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32F765xx",
+    "f_cpu": "216000000L",
+    "mcu": "stm32f765vit6",
+    "variant": "REMRAM_V1"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32F765VI",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32f7x",
+    "svd_path": "STM32F7x5.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "3D printer controller",
+  "upload": {
+    "maximum_ram_size": 524288,
+    "maximum_size": 2097152,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial"
+    ]
+  },
+  "url": "https://github.com/hasenbanck/remram",
+  "vendor": "RemRam"
+}

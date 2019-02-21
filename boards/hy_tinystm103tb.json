@@ -1,0 +1,49 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F103xB",
+    "f_cpu": "72000000L",
+    "hwids": [
+      [
+        "0x1EAF",
+        "0x0003"
+      ],
+      [
+        "0x1EAF",
+        "0x0004"
+      ]
+    ],
+    "ldscript": "stm32f103xb.ld",
+    "mcu": "stm32f103tbu6",
+    "variant": "HY_TinySTM103T"
+  },
+  "debug": {
+    "jlink_device": "STM32F103TB",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "Tiny STM103T",
+  "upload": {
+    "disable_flushing": false,
+    "maximum_ram_size": 20480,
+    "maximum_size": 131072,
+    "protocol": "dfu",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial",
+      "dfu"
+    ],
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
+  },
+  "url": "http://www.hotmcu.com/stm32f103tb-arm-cortex-m3-development-board-p-222.html",
+  "vendor": "HY"
+}

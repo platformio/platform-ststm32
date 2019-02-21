@@ -1,0 +1,63 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F1 -DSTM32F103x6 -DARDUINO_BLUEPILL_F103C6",
+    "f_cpu": "72000000L",
+    "hwids": [
+      [
+        "0x1EAF",
+        "0x0003"
+      ],
+      [
+        "0x1EAF",
+        "0x0004"
+      ]
+    ],
+    "mcu": "stm32f103c6t6",
+    "variant": "BLUEPILL_F103XX"
+  },
+  "debug": {
+    "jlink_device": "STM32F103C6",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd",
+    "tools": {
+      "stlink": {
+        "default": true,
+        "server": {
+          "arguments": [
+            "-f",
+            "scripts/interface/stlink.cfg",
+            "-c",
+            "transport select hla_swd",
+            "-f",
+            "scripts/target/stm32f1x.cfg",
+            "-c",
+            "reset_config none"
+          ],
+          "executable": "bin/openocd",
+          "package": "tool-openocd"
+        }
+      }
+    }
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "BluePill F103C6",
+  "upload": {
+    "maximum_ram_size": 10240,
+    "maximum_size": 32768,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers/stm32f103c6.html",
+  "vendor": "Generic"
+}
