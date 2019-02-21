@@ -104,7 +104,6 @@ class Ststm32Platform(PlatformBase):
             else:
                 server_args = []
                 if debug.get("openocd_board"):
-                    assert not debug.get("openocd_target", None), board.id_
                     server_args = [
                         "-f",
                         "scripts/board/%s.cfg" % debug.get("openocd_board")
