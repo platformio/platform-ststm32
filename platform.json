@@ -91,7 +91,7 @@
     "tool-openocd": {
       "type": "uploader",
       "optional": true,
-      "version": "~1.1000.0"
+      "version": "~2.1000.0"
     },
     "tool-jlink": {
       "type": "uploader",

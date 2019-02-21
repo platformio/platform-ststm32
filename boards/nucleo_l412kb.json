@@ -13,7 +13,7 @@
     "onboard_tools": [
       "stlink"
     ],
-    "openocd_target": "stm32l4x",
+    "openocd_board": "st_nucleo_l4",
     "svd_path": "STM32L4x2.svd"
   },
   "frameworks": [

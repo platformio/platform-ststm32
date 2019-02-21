@@ -16,7 +16,7 @@
     "onboard_tools": [
       "stlink"
     ],
-    "openocd_target": "stm32f4x",
+    "openocd_board": "st_nucleo_f4",
     "svd_path": "STM32F41x.svd"
   },
   "frameworks": [

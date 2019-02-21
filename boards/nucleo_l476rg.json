@@ -17,7 +17,7 @@
     "onboard_tools": [
       "stlink"
     ],
-    "openocd_board": "st_nucleo_l476rg",
+    "openocd_board": "st_nucleo_l4",
     "svd_path": "STM32L4x6.svd"
   },
   "frameworks": [
