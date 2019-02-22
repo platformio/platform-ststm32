@@ -71,7 +71,7 @@
     "framework-arduinoststm32": {
       "type": "framework",
       "optional": true,
-      "version": "~3.10500.190220"
+      "version": "~3.10500.190222"
     },
     "framework-arduinoststm32-maple": {
       "type": "framework",
