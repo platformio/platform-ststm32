@@ -29,6 +29,7 @@ class Ststm32Platform(PlatformBase):
             self.frameworks['arduino']['package'] = "framework-arduinoststm32-maple"
             self.packages["framework-arduinoststm32-maple"]["optional"] = False
             self.packages["framework-arduinoststm32"]["optional"] = True
+            self.packages['toolchain-gccarmnoneeabi']['version'] = "<1.80000.0"
 
         if board == "mxchip_az3166":
             self.frameworks['arduino'][
