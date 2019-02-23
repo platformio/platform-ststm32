@@ -27,7 +27,7 @@
   "upload": {
     "maximum_ram_size": 6144,
     "maximum_size": 32768,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",
