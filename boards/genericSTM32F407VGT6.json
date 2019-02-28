@@ -4,6 +4,16 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F407xx -DARDUINO_STM32GenericF407VET6",
     "f_cpu": "168000000L",
+    "hwids": [
+      [
+        "0x1EAF",
+        "0x0003"
+      ],
+      [
+        "0x0483",
+        "0x3748"
+      ]
+    ],
     "ldscript": "stm32f407xg.ld",
     "mcu": "stm32f407vgt6",
     "variant": "DISCO_F407VG"
