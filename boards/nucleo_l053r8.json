@@ -1,8 +1,11 @@
 {
   "build": {
     "cpu": "cortex-m0",
-    "extra_flags": "-DSTM32L053xx -D__CORTEX_SC=0",
+    "extra_flags": "-DSTM32L053xx",
     "f_cpu": "32000000L",
+    "framework_extra_flags": {
+      "arduino": "-D__CORTEX_SC=0"
+    },
     "mcu": "stm32l053r8t6",
     "variant": "NUCLEO_L053R8"
   },
@@ -26,7 +29,7 @@
   "upload": {
     "maximum_ram_size": 8192,
     "maximum_size": 65536,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",

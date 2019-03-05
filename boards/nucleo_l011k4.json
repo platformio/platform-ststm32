@@ -17,8 +17,7 @@
     "svd_path": "STM32L0x1.svd"
   },
   "frameworks": [
-    "stm32cube",
-    "mbed"
+    "stm32cube"
   ],
   "name": "ST Nucleo L011K4",
   "upload": {

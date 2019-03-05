@@ -16,7 +16,7 @@
     ],
     "ldscript": "ldscript_cb.ld",
     "mcu": "stm32f103c8t6",
-    "variant": "BLUEPILL_F103C8"
+    "variant": "BLUEPILL_F103XX"
   },
   "debug": {
     "jlink_device": "STM32F103C8",
@@ -44,7 +44,6 @@
   },
   "frameworks": [
     "arduino",
-    "mbed",
     "cmsis",
     "libopencm3",
     "stm32cube"
@@ -58,7 +57,6 @@
       "jlink",
       "stlink",
       "blackmagic",
-      "mbed",
       "dfu"
     ]
   },

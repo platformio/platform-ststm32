@@ -3,6 +3,9 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L475xx",
     "f_cpu": "80000000L",
+    "framework_extra_flags": {
+      "arduino": "-DARDUINO_DISCO_L475VG_IOT"
+    },
     "mcu": "stm32l475vgt6",
     "variant": "DISCO_L475VG_IOT"
   },
@@ -20,7 +23,6 @@
       "stlink"
     ],
     "openocd_board": "stm32l4discovery",
-    "openocd_target": "stm32l4x",
     "svd_path": "STM32L4x5.svd"
   },
   "frameworks": [
@@ -32,7 +34,7 @@
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",

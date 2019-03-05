@@ -7,7 +7,7 @@
   },
   "debug": {
     "jlink_device": "STM32L151CC",
-    "openocd_target": "stm32l1",
+    "openocd_board": "st_nucleo_l1",
     "svd_path": "STM32L15xC.svd"
   },
   "frameworks": [

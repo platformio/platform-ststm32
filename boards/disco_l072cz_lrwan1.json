@@ -1,8 +1,11 @@
 {
   "build": {
     "cpu": "cortex-m0plus",
-    "extra_flags": "-DSTM32L072xx -D__CORTEX_SC=0",
+    "extra_flags": "-DSTM32L072xx",
     "f_cpu": "32000000L",
+    "framework_extra_flags": {
+      "arduino": "-D__CORTEX_SC=0"
+    },
     "mcu": "stm32l072cz",
     "variant": "DISCO_L072CZ_LRWAN1"
   },
@@ -14,7 +17,7 @@
     "onboard_tools": [
       "stlink"
     ],
-    "openocd_target": "stm32l0",
+    "openocd_board": "stm32l0discovery",
     "svd_path": "STM32L07x.svd"
   },
   "frameworks": [
@@ -26,7 +29,7 @@
   "upload": {
     "maximum_ram_size": 20480,
     "maximum_size": 196608,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",

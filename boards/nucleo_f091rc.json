@@ -18,7 +18,6 @@
       "stlink"
     ],
     "openocd_board": "st_nucleo_f0",
-    "openocd_target": "stm32f0x",
     "svd_path": "STM32F091x.svd"
   },
   "frameworks": [
@@ -30,7 +29,7 @@
   "upload": {
     "maximum_ram_size": 32768,
     "maximum_size": 262144,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",

@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L496xx",
     "f_cpu": "80000000L",
-    "mcu": "stm32l496zgt6p"
+    "mcu": "stm32l496zgt6p",
+    "variant": "NUCLEO_L496ZG"
   },
   "connectivity": [
     "can"
@@ -16,11 +17,11 @@
     "onboard_tools": [
       "stlink"
     ],
-    "openocd_board": "st_nucleo_l476rg",
-    "openocd_target": "stm32l4x",
+    "openocd_board": "st_nucleo_l4",
     "svd_path": "STM32L4x6.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],
@@ -28,7 +29,7 @@
   "upload": {
     "maximum_ram_size": 327680,
     "maximum_size": 1048576,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",

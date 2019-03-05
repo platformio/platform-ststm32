@@ -14,7 +14,6 @@
       "stlink"
     ],
     "openocd_board": "stm32l0discovery",
-    "openocd_target": "stm32l0",
     "svd_path": "STM32L053x.svd"
   },
   "frameworks": [
@@ -25,7 +24,7 @@
   "upload": {
     "maximum_ram_size": 8192,
     "maximum_size": 65536,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",

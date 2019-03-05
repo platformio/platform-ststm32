@@ -19,7 +19,6 @@
       "stlink"
     ],
     "openocd_board": "stm32f7discovery",
-    "openocd_target": "stm32f7x",
     "svd_path": "STM32F7x6.svd"
   },
   "frameworks": [
@@ -31,7 +30,7 @@
   "upload": {
     "maximum_ram_size": 327680,
     "maximum_size": 1048576,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",

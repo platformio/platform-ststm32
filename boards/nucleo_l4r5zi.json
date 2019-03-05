@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L4R5xx",
     "f_cpu": "120000000L",
-    "mcu": "stm32l4r5zit6"
+    "mcu": "stm32l4r5zit6",
+    "variant": "NUCLEO_L4R5ZI"
   },
   "connectivity": [
     "can"
@@ -16,10 +17,11 @@
     "onboard_tools": [
       "stlink"
     ],
-    "openocd_target": "stm32l4x",
+    "openocd_board": "st_nucleo_l4",
     "svd_path": "STM32L4x5.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],
@@ -27,7 +29,7 @@
   "upload": {
     "maximum_ram_size": 655360,
     "maximum_size": 2097152,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",

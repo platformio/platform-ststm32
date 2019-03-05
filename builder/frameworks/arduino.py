@@ -22,25 +22,29 @@ kinds of creative coding, interactive objects, spaces or physical experiences.
 http://www.stm32duino.com
 """
 
-from os import listdir
-from os.path import join
+import sys
+from os.path import join, isfile
 
-from SCons.Script import DefaultEnvironment
+from SCons.Script import DefaultEnvironment, SConscript
 
 env = DefaultEnvironment()
 mcu = env.BoardConfig().get("build.mcu")
-variant = env.BoardConfig().get("build.variant")
+core = env.BoardConfig().get("build.core", "")
 
-core_variant_dir = join(env.PioPlatform().get_package_dir(
-    "framework-arduinoststm32"), "STM32", "variants")
 
-if variant in listdir(core_variant_dir):
-    env.SConscript("arduino/stm32duino.py")
-else:
-    # STM32 legacy core supported families
-    if "f1" in mcu:
-        env.SConscript("arduino/maple/stm32f1.py")
-    elif "f4" in mcu:
-        env.SConscript("arduino/maple/stm32f4.py")
+if core == "maple":
+    build_script = join(
+        env.PioPlatform().get_package_dir("framework-arduinoststm32-maple"),
+        "tools", "platformio-build-%s.py" % mcu[0:7])
+    if isfile(build_script):
+        SConscript(build_script)
     else:
-        env.SConscript("arduino/stm32duino.py")
+        sys.stderr.write(
+            "Error: %s family is not supported by maple core\n" % mcu[0:7])
+        env.Exit(1)
+
+else:
+    SConscript(
+        join(env.PioPlatform().get_package_dir(
+            "framework-arduinoststm32"),
+            "tools", "platformio-build.py"))

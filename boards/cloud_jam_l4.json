@@ -13,8 +13,7 @@
     "onboard_tools": [
       "stlink"
     ],
-    "openocd_board": "st_nucleo_l476rg",
-    "openocd_target": "stm32l4x",
+    "openocd_board": "st_nucleo_l4",
     "svd_path": "STM32L4x6.svd"
   },
   "frameworks": [
@@ -25,7 +24,7 @@
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",

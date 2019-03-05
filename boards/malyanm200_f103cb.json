@@ -1,0 +1,51 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F103xB",
+    "f_cpu": "72000000L",
+    "framework_extra_flags": {
+      "arduino": "-DVECT_TAB_OFFSET=0x2000"
+    },
+    "hwids": [
+      [
+        "0x1EAF",
+        "0x0003"
+      ],
+      [
+        "0x1EAF",
+        "0x0004"
+      ]
+    ],
+    "ldscript": "stm32f103xb.ld",
+    "mcu": "stm32f103cbt6",
+    "variant": "MALYANM200_F103CB"
+  },
+  "debug": {
+    "jlink_device": "STM32F103CB",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "Malyan M200 V1",
+  "upload": {
+    "disable_flushing": false,
+    "maximum_ram_size": 20480,
+    "maximum_size": 122880,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial"
+    ],
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
+  },
+  "url": "http://malyansys.com/en/product/fdm-series/m200-v1/",
+  "vendor": "Malyan"
+}

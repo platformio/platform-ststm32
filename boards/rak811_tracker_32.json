@@ -1,0 +1,32 @@
+{
+  "build": {
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32L151xB",
+    "f_cpu": "32000000L",
+    "mcu": "stm32l151rbt6",
+    "variant": "RAK811_TRACKER"
+  },
+  "debug": {
+    "jlink_device": "STM32L151CC",
+    "openocd_target": "stm32l1",
+    "svd_path": "STM32L1xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "RAK811 LoRa Tracker",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial"
+    ]
+  },
+  "url": "https://github.com/RAKWireless/RAK811",
+  "vendor": "RAK"
+}

@@ -3,7 +3,8 @@
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F767xx",
     "f_cpu": "216000000L",
-    "mcu": "stm32f767zit6"
+    "mcu": "stm32f767zit6",
+    "variant": "NUCLEO_F767ZI"
   },
   "connectivity": [
     "can",
@@ -18,10 +19,10 @@
       "stlink"
     ],
     "openocd_board": "st_nucleo_f7",
-    "openocd_target": "stm32f7x",
     "svd_path": "STM32F7x7.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "stm32cube"
   ],
@@ -29,7 +30,7 @@
   "upload": {
     "maximum_ram_size": 524288,
     "maximum_size": 2097152,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
       "jlink",
       "stlink",
