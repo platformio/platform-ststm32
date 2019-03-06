@@ -46,7 +46,7 @@
   "packages": {
     "toolchain-gccarmnoneeabi": {
       "type": "toolchain",
-      "version": ">=1.60301.0"
+      "version": ">=1.60301.0,<1.80000.0"
     },
     "framework-mbed": {
       "type": "framework",
