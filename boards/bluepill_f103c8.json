@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F1 -DSTM32F103xB -DARDUINO_BLUEPILL_F103C8",
+    "extra_flags": "-DSTM32F1 -DSTM32F10X_MD -DSTM32F103xB -DARDUINO_BLUEPILL_F103C8",
     "f_cpu": "72000000L",
     "hwids": [
       [
@@ -47,7 +47,8 @@
     "mbed",
     "cmsis",
     "libopencm3",
-    "stm32cube"
+    "stm32cube",
+    "spl"
   ],
   "name": "BluePill F103C8",
   "upload": {
