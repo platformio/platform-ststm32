@@ -16,31 +16,26 @@
 static __IO uint32_t TimingDelay;
 
 /**
-  * @brief  Inserts a delay time.
-  * @param  nTime: specifies the delay time length, in milliseconds.
-  * @retval None
-  */
-void Delay(__IO uint32_t nTime)
-{
-  TimingDelay = nTime;
+ * @brief  Inserts a delay time.
+ * @param  nTime: specifies the delay time length, in milliseconds.
+ * @retval None
+ */
+void Delay(__IO uint32_t nTime) {
+	TimingDelay = nTime;
 
-  while(TimingDelay != 0);
+	while (TimingDelay != 0);
 }
 
-void TimingDelay_Decrement(void)
-{
-  if (TimingDelay != 0x00)
-  {
-    TimingDelay--;
-  }
+void TimingDelay_Decrement(void) {
+	if (TimingDelay != 0x00) {
+		TimingDelay--;
+	}
 }
 
 /* system entry point */
-int main(void)
-{
+int main(void) {
 	//setup SysTick for 1 millisecond interrupts
-	if (SysTick_Config(SystemCoreClock / 1000))
-	{
+	if (SysTick_Config(SystemCoreClock / 1000)) {
 		/* Capture error */
 		while (1);
 	}
@@ -75,56 +70,44 @@ int main(void)
 /*            Cortex-M3 Processor Exceptions Handlers                         */
 /******************************************************************************/
 
-void NMI_Handler(void)
-{
+void NMI_Handler(void) {
 }
 
-void HardFault_Handler(void)
-{
-  /* Go to infinite loop when Hard Fault exception occurs */
-  while (1)
-  {
-  }
+void HardFault_Handler(void) {
+	/* Go to infinite loop when Hard Fault exception occurs */
+	while (1) {
+	}
 }
 
-void MemManage_Handler(void)
-{
-  /* Go to infinite loop when Memory Manage exception occurs */
-  while (1)
-  {
-  }
+void MemManage_Handler(void) {
+	/* Go to infinite loop when Memory Manage exception occurs */
+	while (1) {
+	}
 }
 
-void BusFault_Handler(void)
-{
-  /* Go to infinite loop when Bus Fault exception occurs */
-  while (1)
-  {
-  }
+void BusFault_Handler(void) {
+	/* Go to infinite loop when Bus Fault exception occurs */
+	while (1) {
+	}
 }
 
-void UsageFault_Handler(void)
-{
-  /* Go to infinite loop when Usage Fault exception occurs */
-  while (1)
-  {
-  }
+void UsageFault_Handler(void) {
+	/* Go to infinite loop when Usage Fault exception occurs */
+	while (1) {
+	}
 }
 
-void SVC_Handler(void)
-{
+void SVC_Handler(void) {
 }
 
-void DebugMon_Handler(void)
-{
+void DebugMon_Handler(void) {
 }
 
-void PendSV_Handler(void)
-{
+void PendSV_Handler(void) {
 }
 
-void SysTick_Handler(void)
-{
+void SysTick_Handler(void) {
 	//decrement timing delay here
 	TimingDelay_Decrement();
 }
+
