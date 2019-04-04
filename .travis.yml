@@ -35,7 +35,7 @@ install:
   - platformio platform install file://.
 
 script:
-  - platformio run -d $PLATFORMIO_PROJECT_DIR
+  - platformio run -s -d $PLATFORMIO_PROJECT_DIR
 
 notifications:
   email: false
