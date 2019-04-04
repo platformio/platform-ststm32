@@ -44,6 +44,7 @@ FRAMEWORK_CORE = env.BoardConfig().get("build.mcu")[5:7].lower()
 MCU_FAMILY = env.BoardConfig().get("build.mcu")[0:7]
 
 STARTUP_FILE_EXCEPTIONS = {
+    "stm32f030f4": "startup_stm32f030x6.s",
     "stm32f103c8": "startup_stm32f103xb.s",
     "stm32f103r8": "startup_stm32f103xb.s",
     "stm32f103rc": "startup_stm32f103xb.s",
