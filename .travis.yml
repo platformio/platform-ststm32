@@ -15,7 +15,7 @@ env:
   - PLATFORMIO_PROJECT_DIR=examples/libopencm3-1bitsy
   - PLATFORMIO_PROJECT_DIR=examples/libopencm3-blink
   - PLATFORMIO_PROJECT_DIR=examples/mbed-blink
-  - PLATFORMIO_PROJECT_DIR=examples/mbed-dsp
+  - PLATFORMIO_PROJECT_DIR=examples/mbed-dsp PLATFORMIO_BUILD_FLAGS="-fno-strict-aliasing"
   - PLATFORMIO_PROJECT_DIR=examples/mbed-events
   - PLATFORMIO_PROJECT_DIR=examples/mbed-filesystem
   - PLATFORMIO_PROJECT_DIR=examples/mbed-rtos
