@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32F070xB",
     "f_cpu": "48000000L",
     "framework_extra_flags": {
-      "arduino": "-DVECT_TAB_OFFSET=0x2000"
+      "arduino": "-DVECT_TAB_OFFSET=0x2000 -DCUSTOM_STARTUP_FILE"
     },
     "mcu": "stm32f070cbt6",
     "variant": "MALYANM200_F070CB"
