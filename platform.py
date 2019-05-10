@@ -25,7 +25,7 @@ class Ststm32Platform(PlatformBase):
             "board_build.core", self.board_config(variables.get("board")).get(
                 "build.core", "arduino"))
 
-        if "arduino" in variables.get("pioframework") and build_core == "maple":
+        if "arduino" in variables.get("pioframework", []) and build_core == "maple":
             self.frameworks['arduino']['package'] = "framework-arduinoststm32-maple"
             self.packages["framework-arduinoststm32-maple"]["optional"] = False
             self.packages["framework-arduinoststm32"]["optional"] = True
