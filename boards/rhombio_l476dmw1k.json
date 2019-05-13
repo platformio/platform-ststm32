@@ -1,0 +1,40 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32L476xx",
+    "f_cpu": "80000000L",
+    "mcu": "stm32l476vgt6"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "cmsis-dap"
+    ],
+    "jlink_device": "STM32L476RG",
+    "onboard_tools": [
+      "cmsis-dap"
+    ],
+    "openocd_target": "stm32l4x",
+    "svd_path": "STM32L4x6.svd"
+  },
+  "frameworks": [
+    "mbed",
+    "stm32cube"
+  ],
+  "name": "L476DMW1K",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 1048576,
+    "protocol": "cmsis-dap",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "cmsis-dap"
+    ]
+  },
+  "url": "https://os.mbed.com/platforms/RHOMBIO-L476DMW1K/",
+  "vendor": "rhomb.io"
+}
