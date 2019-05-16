@@ -76,7 +76,7 @@
     "framework-arduinoststm32-maple": {
       "type": "framework",
       "optional": true,
-      "version": "~1.10000.190220"
+      "version": "~1.10000.190516"
     },
     "framework-arduinostm32mxchip": {
       "type": "framework",
