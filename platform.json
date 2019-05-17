@@ -51,7 +51,7 @@
     "framework-mbed": {
       "type": "framework",
       "optional": true,
-      "version": "~5.51203.190509"
+      "version": "git+ssh://git@github.com/blue-white-inc/mbed-os-internal.git#ce4f87081bcbe65b89f6b0b54d9c444d1eba6083"
     },
     "framework-cmsis": {
       "type": "framework",
