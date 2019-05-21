@@ -20,7 +20,7 @@
     "mbed",
     "stm32cube"
   ],
-  "name": "Evaluation Board",
+  "name": "sakura.io Evaluation Board",
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,
