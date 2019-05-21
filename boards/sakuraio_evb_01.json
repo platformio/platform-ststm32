@@ -1,0 +1,38 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F411xE",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f411ret6"
+  },
+  "debug": {
+    "default_tools": [
+      "cmsis-dap"
+    ],
+    "jlink_device": "STM32F411RE",
+    "onboard_tools": [
+      "cmsis-dap"
+    ],
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F411xx.svd"
+  },
+  "frameworks": [
+    "mbed",
+    "stm32cube"
+  ],
+  "name": "Evaluation Board",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 1048576,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "mbed",
+      "blackmagic",
+      "cmsis-dap"
+    ]
+  },
+  "url": "https://os.mbed.com/platforms/SAKURAIO_EVB_01/",
+  "vendor": "sakura.io"
+}
