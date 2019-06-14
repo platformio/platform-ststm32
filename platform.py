@@ -116,6 +116,7 @@ class Ststm32Platform(PlatformBase):
                             "hla_swd" if link == "stlink" else "swd"),
                         "-f", "target/%s.cfg" % debug.get("openocd_target")
                     ])
+                    server_args.extend(debug.get("openocd_extra_args", []))
 
                 debug['tools'][link] = {
                     "server": {

@@ -18,28 +18,16 @@
     "variant": "BLUEPILL_F103XX"
   },
   "debug": {
+    "default_tools": [
+      "stlink"
+    ],
     "jlink_device": "STM32F103C6",
+    "openocd_extra_args": [
+      "-c",
+      "reset_config none"
+    ],
     "openocd_target": "stm32f1x",
-    "svd_path": "STM32F103xx.svd",
-    "tools": {
-      "stlink": {
-        "default": true,
-        "server": {
-          "arguments": [
-            "-f",
-            "scripts/interface/stlink.cfg",
-            "-c",
-            "transport select hla_swd",
-            "-f",
-            "scripts/target/stm32f1x.cfg",
-            "-c",
-            "reset_config none"
-          ],
-          "executable": "bin/openocd",
-          "package": "tool-openocd"
-        }
-      }
-    }
+    "svd_path": "STM32F103xx.svd"
   },
   "frameworks": [
     "arduino",

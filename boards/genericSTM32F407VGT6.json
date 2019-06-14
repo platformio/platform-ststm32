@@ -19,27 +19,16 @@
     "variant": "DISCO_F407VG"
   },
   "debug": {
+    "default_tools": [
+      "stlink"
+    ],
     "jlink_device": "STM32F407VG",
+    "openocd_extra_args": [
+      "-c",
+      "reset_config none"
+    ],
     "openocd_target": "stm32f4x",
-    "svd_path": "STM32F40x.svd",
-    "tools": {
-      "stlink": {
-        "server": {
-          "arguments": [
-            "-f",
-            "scripts/interface/stlink.cfg",
-            "-c",
-            "transport select hla_swd",
-            "-f",
-            "scripts/target/stm32f4x.cfg",
-            "-c",
-            "reset_config none"
-          ],
-          "executable": "bin/openocd",
-          "package": "tool-openocd"
-        }
-      }
-    }
+    "svd_path": "STM32F40x.svd"
   },
   "frameworks": [
     "arduino",
