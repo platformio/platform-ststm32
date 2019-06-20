@@ -17,12 +17,13 @@ from platform import system
 from os import makedirs
 from os.path import basename, isdir, join
 
-from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
-                          DefaultEnvironment)
+from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS, AlwaysBuild,
+                          Builder, Default, DefaultEnvironment)
 
 
 env = DefaultEnvironment()
 platform = env.PioPlatform()
+board = env.BoardConfig()
 
 env.Replace(
     AR="arm-none-eabi-ar",
@@ -107,7 +108,7 @@ AlwaysBuild(target_size)
 #
 
 upload_protocol = env.subst("$UPLOAD_PROTOCOL")
-debug_tools = env.BoardConfig().get("debug.tools", {})
+debug_tools = board.get("debug.tools", {})
 upload_source = target_firm
 upload_actions = []
 
@@ -148,7 +149,7 @@ elif upload_protocol.startswith("jlink"):
         script_path = join(build_dir, "upload.jlink")
         commands = [
             "h",
-            "loadbin %s, %s" % (source, env.BoardConfig().get(
+            "loadbin %s, %s" % (source, board.get(
                 "upload.offset_address", "0x08000000")),
             "r",
             "q"
@@ -161,7 +162,7 @@ elif upload_protocol.startswith("jlink"):
         __jlink_cmd_script=_jlink_cmd_script,
         UPLOADER="JLink.exe" if system() == "Windows" else "JLinkExe",
         UPLOADERFLAGS=[
-            "-device", env.BoardConfig().get("debug", {}).get("jlink_device"),
+            "-device", board.get("debug", {}).get("jlink_device"),
             "-speed", "4000",
             "-if", ("jtag" if upload_protocol == "jlink-jtag" else "swd"),
             "-autoconnect", "1"
@@ -175,9 +176,9 @@ elif upload_protocol in ("serial", "dfu"):
     _upload_flags = ["{upload.altID}", "{upload.usbID}"]
     if upload_protocol == "dfu":
         _upload_tool = "maple_upload"
-        _usbids = env.BoardConfig().get("build.hwids")
+        _usbids = board.get("build.hwids")
         _upload_flags = [
-            env.BoardConfig().get("upload.boot_version", 2),
+            board.get("upload.boot_version", 2),
             "%s:%s" % (_usbids[0][0][2:], _usbids[0][1][2:])
         ]
 
@@ -196,17 +197,26 @@ elif upload_protocol in ("serial", "dfu"):
     ]
 
 elif upload_protocol in debug_tools:
+    openocd_args = [
+        "-d%d" % (2 if int(ARGUMENTS.get("PIOVERBOSE", 0)) else 1)
+    ]
+    openocd_args.extend(
+        debug_tools.get(upload_protocol).get("server").get("arguments", []))
+    openocd_args.extend([
+        "-c", "program {$SOURCE} %s verify reset; shutdown;" %
+        board.get("upload.offset_address", "")
+    ])
+    openocd_args = [
+        f.replace("$PACKAGE_DIR",
+                  platform.get_package_dir("tool-openocd") or "")
+        for f in openocd_args
+    ]
     env.Replace(
         UPLOADER="openocd",
-        UPLOADERFLAGS=["-s", platform.get_package_dir("tool-openocd") or ""] +
-        debug_tools.get(upload_protocol).get("server").get("arguments", []) + [
-            "-c",
-            "program {$SOURCE} verify reset %s; shutdown;" %
-            env.BoardConfig().get("upload.offset_address", "")
-        ],
+        UPLOADERFLAGS=openocd_args,
         UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
 
-    if not env.BoardConfig().get("upload").get("offset_address"):
+    if not board.get("upload").get("offset_address"):
         upload_source = target_elf
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
