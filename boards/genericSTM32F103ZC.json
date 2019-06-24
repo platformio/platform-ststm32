@@ -2,7 +2,7 @@
   "build": {
     "core": "maple",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F103xE",
+    "extra_flags": "-DSTM32F103xE -DSTM32F1",
     "f_cpu": "72000000L",
     "hwids": [
       [
@@ -25,6 +25,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "libopencm3",
     "stm32cube"
   ],
