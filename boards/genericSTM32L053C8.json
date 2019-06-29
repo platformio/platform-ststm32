@@ -23,7 +23,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "STM32L082KZ",
+  "name": "STM32L053C8",
   "upload": {
     "maximum_ram_size": 8192,
     "maximum_size": 65536,
@@ -36,6 +36,6 @@
       "dfu"
     ]
   },
-  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32l082kz.html",
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32l053c8.html",
   "vendor": "ST"
 }
