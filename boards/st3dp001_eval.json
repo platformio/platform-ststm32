@@ -1,0 +1,40 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F4 -DSTM32F401xE -DSTM32F40_41xxx",
+    "f_cpu": "84000000L",
+    "ldscript": "stm32f401xe.ld",
+    "mcu": "stm32f401vgt6",
+    "variant": "ST3DP001_EVAL"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32F401VG",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_f4",
+    "svd_path": "STM32F401xG.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "3DP001V1 Evaluation board for 3D printer",
+  "upload": {
+    "maximum_ram_size": 98304,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/steval-3dp001v1.html",
+  "vendor": "ST"
+}

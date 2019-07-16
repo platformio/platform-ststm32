@@ -171,25 +171,88 @@ elif upload_protocol.startswith("jlink"):
     )
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
-elif upload_protocol in ("serial", "dfu"):
-    _upload_tool = "serial_upload"
-    _upload_flags = ["{upload.altID}", "{upload.usbID}"]
-    if upload_protocol == "dfu":
+
+elif upload_protocol == "dfu":
+    hwids = board.get("build.hwids", [["0x0483", "0xDF11"]])
+    vid = hwids[0][0]
+    pid = hwids[0][1]
+
+    # default tool for all boards with embedded DFU bootloader over USB
+    _upload_tool = "dfu-util"
+    _upload_flags = [
+        "-d", "vid:pid,%s:%s" % (vid, pid),
+        "-a", "0", "-s",
+        "%s:leave" % board.get("upload.offset_address", "0x08000000"), "-D"
+    ]
+
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+
+    if board.get("build.mcu").startswith("stm32f103"):
+        # F103 series doesn't have embedded DFU over USB
+        # stm32duino bootloader (v1, v2) is used instead
+        def __configure_upload_port(env):
+            return basename(env.subst("$UPLOAD_PORT"))
+
         _upload_tool = "maple_upload"
-        _usbids = board.get("build.hwids")
         _upload_flags = [
+            "${__configure_upload_port(__env__)}",
             board.get("upload.boot_version", 2),
-            "%s:%s" % (_usbids[0][0][2:], _usbids[0][1][2:])
+            "%s:%s" % (vid[2:], pid[2:])
         ]
 
+        env.Replace(__configure_upload_port=__configure_upload_port)
+
+        upload_actions.insert(
+            0, env.VerboseAction(env.AutodetectUploadPort,
+                                 "Looking for upload port..."))
+
+    if _upload_tool == "dfu-util":
+        # Add special DFU header to the binary image
+        env.AddPostAction(
+            join("$BUILD_DIR", "${PROGNAME}.bin"),
+            env.VerboseAction(
+                " ".join([
+                    join(platform.get_package_dir("tool-dfuutil"),
+                         "bin", "dfu-suffix"),
+                    "-v %s" % vid,
+                    "-p %s" % pid,
+                    "-d 0xffff", "-a", "$TARGET"
+                ]), "Adding dfu suffix to ${PROGNAME}.bin"))
+
+    env.Replace(
+        UPLOADER=_upload_tool,
+        UPLOADERFLAGS=_upload_flags,
+        UPLOADCMD='$UPLOADER $UPLOADERFLAGS "$PROJECT_DIR/$SOURCES"')
+
+    upload_source = target_firm
+
+elif upload_protocol == "serial":
     def __configure_upload_port(env):
         return basename(env.subst("$UPLOAD_PORT"))
 
     env.Replace(
         __configure_upload_port=__configure_upload_port,
-        UPLOADER=_upload_tool,
-        UPLOADERFLAGS=["${__configure_upload_port(__env__)}"] + _upload_flags,
-        UPLOADCMD='$UPLOADER $UPLOADERFLAGS "$PROJECT_DIR/$SOURCES"'
+        UPLOADER="stm32flash",
+        UPLOADERFLAGS=[
+            "-g", board.get("upload.offset_address", "0x08000000"),
+            "-b", "115200", "-w"
+        ],
+        UPLOADCMD='$UPLOADER $UPLOADERFLAGS "$SOURCES" "${__configure_upload_port(__env__)}"'
+    )
+
+    upload_actions = [
+        env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
+        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
+    ]
+
+elif upload_protocol == "hid":
+    def __configure_upload_port(env):
+        return basename(env.subst("$UPLOAD_PORT"))
+
+    env.Replace(
+        __configure_upload_port=__configure_upload_port,
+        UPLOADER="hid-flash",
+        UPLOADCMD='$UPLOADER "$SOURCES" "${__configure_upload_port(__env__)}"'
     )
     upload_actions = [
         env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
