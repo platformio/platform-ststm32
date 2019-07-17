@@ -187,7 +187,8 @@ elif upload_protocol == "dfu":
 
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
-    if board.get("build.mcu").startswith("stm32f103"):
+    if board.get("build.mcu").startswith("stm32f103") and "arduino" in env.get(
+        "PIOFRAMEWORK"):
         # F103 series doesn't have embedded DFU over USB
         # stm32duino bootloader (v1, v2) is used instead
         def __configure_upload_port(env):
