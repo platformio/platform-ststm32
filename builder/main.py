@@ -223,7 +223,7 @@ elif upload_protocol == "dfu":
     env.Replace(
         UPLOADER=_upload_tool,
         UPLOADERFLAGS=_upload_flags,
-        UPLOADCMD='$UPLOADER $UPLOADERFLAGS "$PROJECT_DIR/$SOURCES"')
+        UPLOADCMD='$UPLOADER $UPLOADERFLAGS "${SOURCE.get_abspath()}"')
 
     upload_source = target_firm
 
@@ -238,7 +238,7 @@ elif upload_protocol == "serial":
             "-g", board.get("upload.offset_address", "0x08000000"),
             "-b", "115200", "-w"
         ],
-        UPLOADCMD='$UPLOADER $UPLOADERFLAGS "$SOURCES" "${__configure_upload_port(__env__)}"'
+        UPLOADCMD='$UPLOADER $UPLOADERFLAGS "$SOURCE" "${__configure_upload_port(__env__)}"'
     )
 
     upload_actions = [
