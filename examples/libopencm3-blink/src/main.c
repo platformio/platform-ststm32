@@ -25,6 +25,12 @@
 	#define RCCLEDPORT (RCC_GPIOB)
 	#define LEDPORT (GPIOB)
 	#define LEDPIN (GPIO6)
+#elif STM32F1
+	#define RCCLEDPORT (RCC_GPIOC)
+	#define LEDPORT (GPIOC)
+	#define LEDPIN (GPIO13)
+	#define GPIO_MODE_OUTPUT GPIO_MODE_OUTPUT_2_MHZ
+	#define GPIO_PUPD_NONE GPIO_CNF_OUTPUT_PUSHPULL
 #elif STM32F3
 	#define RCCLEDPORT (RCC_GPIOE)
 	#define LEDPORT (GPIOE)
@@ -33,6 +39,8 @@
 	#define RCCLEDPORT (RCC_GPIOD)
 	#define LEDPORT (GPIOD)
 	#define LEDPIN (GPIO12)
+#else
+    #error "This example doesn't support this target!"
 #endif
 
 static void gpio_setup(void)
@@ -42,7 +50,11 @@ static void gpio_setup(void)
 	rcc_periph_clock_enable(RCCLEDPORT);
 	/* Set pin to 'output push-pull'. */
 	/* Using API functions: */
+#ifdef STM32F1
+    gpio_set_mode(LEDPORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, LEDPIN);
+#else
 	gpio_mode_setup(LEDPORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, LEDPIN);
+#endif
 }
 
 int main(void)

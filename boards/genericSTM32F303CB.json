@@ -16,6 +16,7 @@
     "svd_path": "STM32F30x.svd"
   },
   "frameworks": [
+    "cmsis",
     "stm32cube"
   ],
   "name": "STM32F303CB (32k RAM. 128k Flash)",

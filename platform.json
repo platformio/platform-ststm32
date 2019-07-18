@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "5.4.3",
+  "version": "5.5.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json"
@@ -51,7 +51,7 @@
     "framework-mbed": {
       "type": "framework",
       "optional": true,
-      "version": "~5.51203.190509"
+      "version": "~5.51204.190524"
     },
     "framework-cmsis": {
       "type": "framework",
@@ -71,7 +71,7 @@
     "framework-arduinoststm32": {
       "type": "framework",
       "optional": true,
-      "version": "~3.10500.190222"
+      "version": "~3.10601.190716"
     },
     "framework-arduinoststm32-maple": {
       "type": "framework",
@@ -102,6 +102,11 @@
       "type": "uploader",
       "optional": true,
       "version": "^1.63208.0"
+    },
+    "tool-dfuutil": {
+      "type": "uploader",
+      "optional": true,
+      "version": "~1.9.190708"
     }
   }
 }
