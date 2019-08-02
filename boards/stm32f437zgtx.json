@@ -1,0 +1,56 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F437xx",
+      "startup_variant": "stm32f437xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F437ZG",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F437x.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 2,
+      "eth": 1,
+      "i2c": 3,
+      "i2s": 2,
+      "spi": 6,
+      "uart": 4,
+      "usart": 4,
+      "usb": 1
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "180000000",
+    "family": "stm32f4",
+    "mcu": "stm32f437zgtx",
+    "memory": {
+      "flash": 1048576,
+      "ram": 262144
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.7
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F437ZGTX",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 1048576,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-high-performance-mcus/stm32f4-series/stm32f427-437/stm32f437zg.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

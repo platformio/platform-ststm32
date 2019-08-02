@@ -1,0 +1,54 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32g484xx",
+      "startup_variant": "stm32g484xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32G483VE",
+    "openocd_target": "stm32g4x",
+    "svd_path": "STM32G483xx.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 4,
+      "i2s": 2,
+      "spi": 3,
+      "uart": 3,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "170000000",
+    "family": "stm32g4",
+    "mcu": "stm32g483vetx",
+    "memory": {
+      "flash": 524288,
+      "ram": 131072
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.71
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32G483VETX",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32g4-series/stm32g4x3/stm32g483ve.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

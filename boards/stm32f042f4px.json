@@ -1,0 +1,54 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F042x6",
+      "startup_variant": "stm32f042x6"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F042F4",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F0x2.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 1,
+      "i2c": 1,
+      "i2s": 1,
+      "spi": 1,
+      "usart": 2,
+      "usb": 1
+    },
+    "cpu": "cortex-m0",
+    "f_cpu": "48000000",
+    "family": "stm32f0",
+    "mcu": "stm32f042f4px",
+    "memory": {
+      "flash": 16384,
+      "ram": 6144
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.0
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F042F4PX",
+  "upload": {
+    "maximum_ram_size": 6144,
+    "maximum_size": 16384,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f0-series/stm32f0x2/stm32f042f4.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

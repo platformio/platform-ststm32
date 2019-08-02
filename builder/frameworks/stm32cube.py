@@ -26,7 +26,6 @@ from glob import glob
 from os import listdir
 from os.path import basename, isdir, isfile, join
 from shutil import copy
-from string import Template
 import sys
 
 from SCons.Script import DefaultEnvironment
@@ -37,26 +36,20 @@ from platformio.builder.tools.piolib import PlatformIOLibBuilder
 env = DefaultEnvironment()
 platform = env.PioPlatform()
 
-FRAMEWORK_DIR = platform.get_package_dir("framework-stm32cube")
+board = env.BoardConfig()
+
+if board.get("version", 0) == 2:
+    DEVICE_MCU = board.get("device.mcu")
+    DEVICE_CPU = board.get("device.cpu")
+else:
+    DEVICE_MCU = board.get("build.mcu")
+    DEVICE_CPU = board.get("build.cpu")
+
+MCU_FAMILY = DEVICE_MCU[0:7].lower()
+MCU_CORE = MCU_FAMILY[5:7]
+
+FRAMEWORK_DIR = platform.get_package_dir("framework-stm32cube%s" % MCU_CORE)
 assert isdir(FRAMEWORK_DIR)
-
-FRAMEWORK_CORE = env.BoardConfig().get("build.mcu")[5:7].lower()
-MCU_FAMILY = env.BoardConfig().get("build.mcu")[0:7]
-
-STARTUP_FILE_EXCEPTIONS = {
-    "stm32f030f4": "startup_stm32f030x6.s",
-    "stm32f103c8": "startup_stm32f103xb.s",
-    "stm32f103r8": "startup_stm32f103xb.s",
-    "stm32f103rc": "startup_stm32f103xb.s",
-    "stm32f103t8": "startup_stm32f103xb.s",
-    "stm32f103vc": "startup_stm32f103xe.s",
-    "stm32f103vd": "startup_stm32f103xe.s",
-    "stm32f103ve": "startup_stm32f103xe.s",
-    "stm32f103zc": "startup_stm32f103xe.s",
-    "stm32f103zd": "startup_stm32f103xe.s",
-    "stm32f303cb": "startup_stm32f303xc.s",
-    "stm32f407ve": "startup_stm32f407xx.s"
-}
 
 
 class CustomLibBuilder(PlatformIOLibBuilder):
@@ -75,12 +68,64 @@ class CustomLibBuilder(PlatformIOLibBuilder):
         return self.path
 
 
+def process_library(lib_name, lib_path, lib_config=None):
+    if not isdir(lib_path):
+        return
+
+    # usually there are config files in project folders
+    config = {
+        "name": "%s-lib" % lib_name,
+        "build": {
+            "flags": ["-I$PROJECTINCLUDE_DIR", "-I$PROJECTSRC_DIR"]
+        }
+    }
+    if lib_config is not None:
+        config["build"].update(lib_config.get("build", {}))
+
+    env.Append(
+        EXTRA_LIB_BUILDERS=[
+            CustomLibBuilder(env, lib_path, config)
+        ]
+    )
+
+
+def process_usb_lib(path, lib_name):
+    if not isdir(path):
+        return
+
+    lib_config = {
+        "build": {
+            "includeDir": "Inc",
+            "srcFilter": "+<*> -<Src/*_template.c>"
+        }
+    }
+
+    process_library(lib_name, path, lib_config)
+
+
+def process_usb_classes(usb_class_path, usb_lib):
+    if not isdir(usb_class_path):
+        return
+    for usb_class in listdir(usb_class_path):
+        if usb_class.startswith("Template"):
+            continue
+        process_usb_lib(
+            join(usb_class_path, usb_class),
+            "Middleware-%s-Class-%s" % (usb_lib, usb_class)
+        )
+
+
 def get_startup_file(mcu):
+
+    if board.get("build.stm32cube.startup_variant", ""):
+        return "startup_" + board.get(
+            "build.stm32cube.startup_variant") + ".[sS]"
+
     if len(mcu) > 12:
         mcu = mcu[:-2]
 
     search_path = join(
-        FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers", "CMSIS", "Device",
+        FRAMEWORK_DIR, "Drivers", "CMSIS", "Device",
         "ST", mcu[0:7].upper() + "xx", "Source", "Templates", "gcc"
     )
 
@@ -90,75 +135,82 @@ def get_startup_file(mcu):
         "[" + mcu[10] + "|x]" + ".[sS]"
     )
 
-    if mcu in STARTUP_FILE_EXCEPTIONS:
-        return STARTUP_FILE_EXCEPTIONS[mcu]
-
     startup_file = glob(search_path)
 
     if not startup_file:
-        sys.stderr.write(
-            """Error: There is no default startup file for %s MCU!
-            Please add initialization code to your project manually!""" % mcu)
-        env.Exit(1)
+        print(
+            "Warning: There is no default startup file. " \
+            "Add initialization code to your project manually!")
+
+        return "*"
+
     return basename(startup_file[0])
 
 
 def get_linker_script(mcu):
-    ldscript = join(FRAMEWORK_DIR, "platformio",
-                    "ldscripts", mcu[0:11].upper() + "_FLASH.ld")
+    ldscripts = (
+        mcu.upper() + "_FLASH.ld",  # new style
+        mcu[0:11].upper() + "_FLASH.ld",  # old style
+        board.get("build.ldscript", "")  # default from manifest
+    )
 
-    if isfile(ldscript):
-        return ldscript
+    for ldscript in ldscripts:
+        ldscript_path = join(
+            FRAMEWORK_DIR, "platformio", "ldscripts", ldscript)
+        if isfile(ldscript):
+            return ldscript_path
 
-    default_ldscript = join(FRAMEWORK_DIR, "platformio",
-                            "ldscripts", mcu[0:11].upper() + "_DEFAULT.ld")
+    # In case when ld script doesn't exist in framework then
+    # default ld script is configured during linking by
+    # specifying RAM/FLASH sizes as symbols
+    env.Append(
+        LINKFLAGS=[
+            ("-Wl,--defsym=DEVICE_MAX_RAM_SIZE=%s" %
+             hex(board.get("upload.maximum_ram_size", 0))),
+            ("-Wl,--defsym=DEVICE_FLASH_SIZE=%s" %
+             hex(board.get("upload.maximum_size", 0))),
+            ("-Wl,--defsym=DEVICE_FLASH_OFFSET=%s" %
+             board.get("upload.offset_address", "0x0"))
+        ]
+    )
 
-    print("Warning! Cannot find a linker script for the required board! "
-          "Firmware will be linked with a default linker script!")
-
-    if isfile(default_ldscript):
-        return default_ldscript
-
-    ram = env.BoardConfig().get("upload.maximum_ram_size", 0)
-    flash = env.BoardConfig().get("upload.maximum_size", 0)
-    template_file = join(FRAMEWORK_DIR, "platformio",
-                         "ldscripts", "tpl", "linker.tpl")
-    content = ""
-    with open(template_file) as fp:
-        data = Template(fp.read())
-        content = data.substitute(
-            stack=hex(0x20000000 + ram),  # 0x20000000 - start address for RAM
-            ram=str(int(ram/1024)) + "K",
-            flash=str(int(flash/1024)) + "K"
-        )
-
-    with open(default_ldscript, "w") as fp:
-        fp.write(content)
-
-    return default_ldscript
+    return "STM32_DEFAULT.ld"
 
 
 def generate_hal_config_file(mcu):
-    config_path = join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers",
+    config_path = join(FRAMEWORK_DIR, "Drivers",
                        MCU_FAMILY.upper() + "xx_HAL_Driver", "Inc")
 
-    if isfile(join(config_path, MCU_FAMILY + "xx_hal_conf.h")):
-        return
+    # search for user defines config
+    search_dirs = (
+        env.subst("$PROJECTINCLUDE_DIR"),
+        env.subst("$PROJECTSRC_DIR"),
+        config_path
+    )
 
-    if not isfile(join(config_path, MCU_FAMILY + "xx_hal_conf_template.h")):
+    config_name = MCU_FAMILY + "xx_hal_conf.h"
+
+    for d in search_dirs:
+        for f in listdir(d):
+            if f == config_name:
+                # Files from framework depend on this file
+                env.Append(CPPPATH=[d])
+                return
+
+    # There is no configuration in default paths, so template is used
+    if not isfile(join(config_path, "stm32f4xx_hal_conf_template.h")):
         sys.stderr.write(
             "Error: Cannot find template file to configure framework!\n")
         env.Exit(1)
 
-    copy(join(config_path, MCU_FAMILY + "xx_hal_conf_template.h"),
-         join(config_path, MCU_FAMILY + "xx_hal_conf.h"))
+    copy(join(config_path, "stm32f4xx_hal_conf_template.h"),
+         join(config_path, config_name))
 
 
 env.Replace(
     AS="$CC",
     ASCOM="$ASPPCOM",
-    LDSCRIPT_PATH=env.subst(
-        get_linker_script(env.BoardConfig().get("build.mcu")))
+    LDSCRIPT_PATH=env.subst(get_linker_script(DEVICE_MCU))
 )
 
 env.Append(
@@ -170,7 +222,7 @@ env.Append(
         "-fdata-sections",
         "-Wall",
         "-mthumb",
-        "-mcpu=%s" % env.BoardConfig().get("build.cpu"),
+        "-mcpu=%s" % DEVICE_CPU,
         "-nostdlib"
     ],
 
@@ -188,7 +240,7 @@ env.Append(
         "-Os",
         "-Wl,--gc-sections,--relax",
         "-mthumb",
-        "-mcpu=%s" % env.BoardConfig().get("build.cpu"),
+        "-mcpu=%s" % DEVICE_CPU,
         "--specs=nano.specs",
         "--specs=nosys.specs"
     ],
@@ -198,6 +250,8 @@ env.Append(
 
 # copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
 env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
+
+env.ProcessFlags(board.get("build.stm32cube.extra_flags", ""))
 
 cpp_flags = env.Flatten(env.get("CPPDEFINES", []))
 
@@ -209,18 +263,18 @@ elif "F103x8" in cpp_flags:
 
 env.Append(
     CPPPATH=[
-        join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers", "CMSIS", "Include"),
-        join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers", "CMSIS", "Device",
+        join(FRAMEWORK_DIR, "Drivers", "CMSIS", "Include"),
+        join(FRAMEWORK_DIR, "Drivers", "CMSIS", "Device",
              "ST", MCU_FAMILY.upper() + "xx", "Include"),
 
-        join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers",
+        join(FRAMEWORK_DIR, "Drivers",
              MCU_FAMILY.upper() + "xx_HAL_Driver", "Inc"),
-        join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers",
+        join(FRAMEWORK_DIR, "Drivers",
              "BSP", "Components", "Common")
     ],
 
     LIBPATH=[
-        join(FRAMEWORK_DIR, FRAMEWORK_CORE,
+        join(FRAMEWORK_DIR,
              "Drivers", "CMSIS", "Lib", "GCC"),
         join(FRAMEWORK_DIR, "platformio", "ldscripts")
     ]
@@ -232,26 +286,61 @@ board_type = env.subst("$BOARD")
 variant = variants_remap[
     board_type] if board_type in variants_remap else board_type.upper()
 
+variant_dir = join(FRAMEWORK_DIR, "Drivers", "BSP", variant)
+if isdir(variant_dir):
+    env.Append(CPPPATH=[variant_dir])
+    process_library("BSP-variant", variant_dir)
+
 #
-# Generate framework specific files
+# Generate framework specific file with enabled modules
 #
 
-generate_hal_config_file(env.BoardConfig().get("build.mcu"))
+generate_hal_config_file(DEVICE_MCU)
 
 #
 # Process BSP components
 #
 
 components_dir = join(
-    FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers", "BSP", "Components")
+    FRAMEWORK_DIR, "Drivers", "BSP", "Components")
 for component in listdir(components_dir):
-    env.Append(EXTRA_LIB_BUILDERS=[
-        CustomLibBuilder(
-            env, join(components_dir, component),
-            {"name": "BSP-%s" % component}
-        )
-    ])
+    process_library(component, join(components_dir, component))
 
+if isdir(join(FRAMEWORK_DIR, "Drivers", "BSP", "Adafruit_Shield")):
+    process_library(
+        "BSP-Adafruit_Shield",
+        join(FRAMEWORK_DIR, "Drivers", "BSP", "Adafruit_Shield")
+    )
+
+#
+# Process USB libraries
+#
+
+for usb_lib in ("STM32_USB_Device_Library", "STM32_USB_Host_Library"):
+    usblib_dir = join(FRAMEWORK_DIR, "Middlewares", "ST", usb_lib)
+    usblib_core_dir = join(usblib_dir, "Core")
+    process_usb_lib(usblib_core_dir, usb_lib)
+    process_usb_classes(join(usblib_dir, "Class"), usb_lib)
+
+#
+# Utility libraries
+#
+
+utilities_dir = join(FRAMEWORK_DIR, "Utilities")
+if isdir(utilities_dir):
+    for utility in listdir(utilities_dir):
+        process_library(utility, join(utilities_dir, utility))
+
+if isdir(join(FRAMEWORK_DIR, "Middlewares", "Third_Party", "FatFs")):
+    fatfs_config = dict()
+    fatfs_config["build"] = {
+        "srcFilter": "+<*> -<drivers> -<option> -<*_template.c>"
+    }
+    process_library(
+        "Third_Party-FatFs",
+        join(FRAMEWORK_DIR, "Middlewares", "Third_Party", "FatFs", "src"),
+        fatfs_config
+    )
 
 #
 # Target: Build HAL Library
@@ -259,25 +348,19 @@ for component in listdir(components_dir):
 
 libs = []
 
-bsp_dir = join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers", "BSP", variant)
-if isdir(bsp_dir):
-    libs.append(env.BuildLibrary(join("$BUILD_DIR", "FrameworkBSP"), bsp_dir))
-    env.Append(CPPPATH=[bsp_dir])
-
 libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkHALDriver"),
-    join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers",
+    join(FRAMEWORK_DIR, "Drivers",
          MCU_FAMILY.upper() + "xx_HAL_Driver"),
     src_filter="+<*> -<Src/*_template.c> -<Src/Legacy>"
 ))
 
-libs.append(env.BuildLibrary(
-    join("$BUILD_DIR", "FrameworkCMSISDevice"),
-    join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers", "CMSIS", "Device", "ST",
-         MCU_FAMILY.upper() + "xx", "Source", "Templates"),
-    src_filter="-<*> +<*.c> +<gcc/%s>" % get_startup_file(
-        env.BoardConfig().get("build.mcu"))
-))
+if "PIO_STM32CUBE_CUSTOM_STARTUP" not in cpp_flags:
+    libs.append(env.BuildLibrary(
+        join("$BUILD_DIR", "FrameworkCMSISDevice"),
+        join(FRAMEWORK_DIR, "Drivers", "CMSIS", "Device", "ST",
+             MCU_FAMILY.upper() + "xx", "Source", "Templates"),
+        src_filter="-<*> +<*.c> +<gcc/%s>" % get_startup_file(DEVICE_MCU)
+    ))
 
-
-env.Append(LIBS=libs)
+env.Prepend(LIBS=libs)

@@ -1,0 +1,52 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32L051xx",
+      "startup_variant": "stm32l051xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32L051R8",
+    "openocd_target": "stm32l0x",
+    "svd_path": "STM32L051x.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 2,
+      "i2s": 1,
+      "spi": 2,
+      "usart": 2
+    },
+    "cpu": "cortex-m0plus",
+    "f_cpu": "32000000",
+    "family": "stm32l0",
+    "mcu": "stm32l051r8tx",
+    "memory": {
+      "flash": 65536,
+      "ram": 8192
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.65
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32L051R8TX",
+  "upload": {
+    "maximum_ram_size": 8192,
+    "maximum_size": 65536,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l0-series/stm32l0x1/stm32l051r8.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

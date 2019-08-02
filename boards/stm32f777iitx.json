@@ -1,0 +1,56 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F777xx",
+      "startup_variant": "stm32f777xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F777II",
+    "openocd_target": "stm32f7x",
+    "svd_path": "STM32F7x7_v1r2.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 3,
+      "eth": 1,
+      "i2c": 4,
+      "i2s": 3,
+      "spi": 6,
+      "uart": 4,
+      "usart": 4,
+      "usb": 1
+    },
+    "cpu": "cortex-m7",
+    "f_cpu": "216000000",
+    "family": "stm32f7",
+    "mcu": "stm32f777iitx",
+    "memory": {
+      "flash": 2097152,
+      "ram": 524288
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.7
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F777IITX",
+  "upload": {
+    "maximum_ram_size": 524288,
+    "maximum_size": 2097152,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-high-performance-mcus/stm32f7-series/stm32f7x7/stm32f777ii.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

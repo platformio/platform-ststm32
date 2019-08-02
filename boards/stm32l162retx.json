@@ -1,0 +1,53 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32L162xE",
+      "startup_variant": "stm32l162xe"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32L162RE",
+    "openocd_target": "stm32l1x"
+  },
+  "device": {
+    "communication": {
+      "i2c": 2,
+      "i2s": 2,
+      "spi": 3,
+      "uart": 2,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m3",
+    "f_cpu": "32000000",
+    "family": "stm32l1",
+    "mcu": "stm32l162retx",
+    "memory": {
+      "flash": 524288,
+      "ram": 81920
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.65
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32L162RETX",
+  "upload": {
+    "maximum_ram_size": 81920,
+    "maximum_size": 524288,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l1-series/stm32l162/stm32l162re.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

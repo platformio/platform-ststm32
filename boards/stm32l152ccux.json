@@ -1,0 +1,53 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32L152xC",
+      "startup_variant": "stm32l152xc"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32L152CC",
+    "openocd_target": "stm32l1x",
+    "svd_path": "STM32L1xx.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 2,
+      "i2s": 2,
+      "spi": 3,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m3",
+    "f_cpu": "32000000",
+    "family": "stm32l1",
+    "mcu": "stm32l152ccux",
+    "memory": {
+      "flash": 262144,
+      "ram": 32768
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.65
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32L152CCUX",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 262144,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l1-series/stm32l151-152/stm32l152cc.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

@@ -1,0 +1,54 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32L476xx",
+      "startup_variant": "stm32l476xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32L476QE",
+    "openocd_target": "stm32l4x",
+    "svd_path": "STM32L4x6.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 1,
+      "i2c": 3,
+      "spi": 3,
+      "uart": 2,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "80000000",
+    "family": "stm32l4",
+    "mcu": "stm32l476qeix",
+    "memory": {
+      "flash": 524288,
+      "ram": 131072
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.71
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32L476QEIX",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l4-series/stm32l4x6/stm32l476qe.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

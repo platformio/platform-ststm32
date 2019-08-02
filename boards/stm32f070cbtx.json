@@ -1,0 +1,52 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F070xB",
+      "startup_variant": "stm32f070xb"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F070CB",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F0x0.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 2,
+      "spi": 2,
+      "usart": 4,
+      "usb": 1
+    },
+    "cpu": "cortex-m0",
+    "f_cpu": "48000000",
+    "family": "stm32f0",
+    "mcu": "stm32f070cbtx",
+    "memory": {
+      "flash": 131072,
+      "ram": 16384
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.4
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F070CBTX",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 131072,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f0-series/stm32f0x0-value-line/stm32f070cb.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

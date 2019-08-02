@@ -1,0 +1,53 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32L073xx",
+      "startup_variant": "stm32l073xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32L073VZ",
+    "openocd_target": "stm32l0x",
+    "svd_path": "STM32L07x.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 3,
+      "i2s": 1,
+      "spi": 2,
+      "usart": 4,
+      "usb": 1
+    },
+    "cpu": "cortex-m0plus",
+    "f_cpu": "32000000",
+    "family": "stm32l0",
+    "mcu": "stm32l073vztx",
+    "memory": {
+      "flash": 196608,
+      "ram": 20480
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.65
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32L073VZTX",
+  "upload": {
+    "maximum_ram_size": 20480,
+    "maximum_size": 196608,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l0-series/stm32l0x3/stm32l073vz.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

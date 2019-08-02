@@ -1,0 +1,52 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32L100xB",
+      "startup_variant": "stm32l100xb"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32L100RB",
+    "openocd_target": "stm32l1x",
+    "svd_path": "STM32L100.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 2,
+      "spi": 2,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m3",
+    "f_cpu": "32000000",
+    "family": "stm32l1",
+    "mcu": "stm32l100rbtxa",
+    "memory": {
+      "flash": 131072,
+      "ram": 16384
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.8
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32L100RBTXA",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 131072,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l1-series/stm32l100-value-line/stm32l100rb-a.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

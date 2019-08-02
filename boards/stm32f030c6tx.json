@@ -1,0 +1,51 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F030x6",
+      "startup_variant": "stm32f030x6"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F030C6",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F0x0.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 1,
+      "spi": 1,
+      "usart": 1
+    },
+    "cpu": "cortex-m0",
+    "f_cpu": "48000000",
+    "family": "stm32f0",
+    "mcu": "stm32f030c6tx",
+    "memory": {
+      "flash": 32768,
+      "ram": 4096
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.4
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F030C6TX",
+  "upload": {
+    "maximum_ram_size": 4096,
+    "maximum_size": 32768,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f0-series/stm32f0x0-value-line/stm32f030c6.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

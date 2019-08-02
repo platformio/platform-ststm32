@@ -1,0 +1,51 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32L010x4",
+      "startup_variant": "stm32l010x4"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32L010F4",
+    "openocd_target": "stm32l0x",
+    "svd_path": "STM32L0x0.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 1,
+      "spi": 1,
+      "usart": 1
+    },
+    "cpu": "cortex-m0plus",
+    "f_cpu": "32000000",
+    "family": "stm32l0",
+    "mcu": "stm32l010f4px",
+    "memory": {
+      "flash": 16384,
+      "ram": 2048
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.8
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32L010F4PX",
+  "upload": {
+    "maximum_ram_size": 2048,
+    "maximum_size": 16384,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l0-series/stm32l0x0-value-line/stm32l010f4.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

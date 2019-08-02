@@ -1,0 +1,54 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F373xC",
+      "startup_variant": "stm32f373xc"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F373V8",
+    "openocd_target": "stm32f3x",
+    "svd_path": "STM32F37x.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 1,
+      "i2c": 2,
+      "i2s": 3,
+      "spi": 3,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "72000000",
+    "family": "stm32f3",
+    "mcu": "stm32f373v8tx",
+    "memory": {
+      "flash": 65536,
+      "ram": 16384
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.0
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F373V8TX",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 65536,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f373/stm32f373v8.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

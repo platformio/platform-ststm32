@@ -1,0 +1,56 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F429xx",
+      "startup_variant": "stm32f429xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F429II",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F429x.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 2,
+      "eth": 1,
+      "i2c": 3,
+      "i2s": 2,
+      "spi": 6,
+      "uart": 4,
+      "usart": 4,
+      "usb": 1
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "180000000",
+    "family": "stm32f4",
+    "mcu": "stm32f429iitx",
+    "memory": {
+      "flash": 2097152,
+      "ram": 262144
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.8
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F429IITX",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 2097152,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-high-performance-mcus/stm32f4-series/stm32f429-439/stm32f429ii.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

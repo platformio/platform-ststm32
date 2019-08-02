@@ -1,0 +1,55 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32H745xx",
+      "startup_variant": "stm32h745xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32H745ZI",
+    "openocd_target": "stm32h7x",
+    "svd_path": "STM32H7x5_CM4.svd"
+  },
+  "device": {
+    "communication": {
+      "eth": 1,
+      "i2c": 4,
+      "i2s": 3,
+      "spi": 6,
+      "uart": 4,
+      "usart": 4,
+      "usb": 1
+    },
+    "cpu": "cortex-m7plusm4",
+    "f_cpu": "480000000",
+    "family": "stm32h7",
+    "mcu": "stm32h745zitx",
+    "memory": {
+      "flash": 2097152,
+      "ram": 1048576
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.62
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32H745ZITX",
+  "upload": {
+    "maximum_ram_size": 1048576,
+    "maximum_size": 2097152,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-high-performance-mcus/stm32h7-series/stm32h745-755/stm32h745zi.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

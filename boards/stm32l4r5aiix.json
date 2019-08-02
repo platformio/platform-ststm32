@@ -1,0 +1,54 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32L4R5xx",
+      "startup_variant": "stm32l4r5xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32L4R5AI",
+    "openocd_target": "stm32l4+x",
+    "svd_path": "STM32L4R5.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 1,
+      "i2c": 4,
+      "spi": 3,
+      "uart": 2,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "120000000",
+    "family": "stm32l4+",
+    "mcu": "stm32l4r5aiix",
+    "memory": {
+      "flash": 2097152,
+      "ram": 655360
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.71
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32L4R5AIIX",
+  "upload": {
+    "maximum_ram_size": 655360,
+    "maximum_size": 2097152,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l4-plus-series/stm32l4r5-s5/stm32l4r5ai.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

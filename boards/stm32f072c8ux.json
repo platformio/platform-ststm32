@@ -1,0 +1,54 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F072xB",
+      "startup_variant": "stm32f072xb"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F072C8",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F0x2.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 1,
+      "i2c": 2,
+      "i2s": 2,
+      "spi": 2,
+      "usart": 4,
+      "usb": 1
+    },
+    "cpu": "cortex-m0",
+    "f_cpu": "48000000",
+    "family": "stm32f0",
+    "mcu": "stm32f072c8ux",
+    "memory": {
+      "flash": 65536,
+      "ram": 16384
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.0
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F072C8UX",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 65536,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f0-series/stm32f0x2/stm32f072c8.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

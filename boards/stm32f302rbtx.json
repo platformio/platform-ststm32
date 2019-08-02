@@ -1,0 +1,55 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F302xC",
+      "startup_variant": "stm32f302xc"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F302RB",
+    "openocd_target": "stm32f3x",
+    "svd_path": "STM32F30x.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 1,
+      "i2c": 2,
+      "i2s": 2,
+      "spi": 3,
+      "uart": 2,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "72000000",
+    "family": "stm32f3",
+    "mcu": "stm32f302rbtx",
+    "memory": {
+      "flash": 131072,
+      "ram": 32768
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.0
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F302RBTX",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 131072,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f302/stm32f302rb.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

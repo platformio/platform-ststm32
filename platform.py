@@ -40,6 +40,20 @@ class Ststm32Platform(PlatformBase):
                 'script'] = "builder/frameworks/arduino/mxchip.py"
             self.packages['toolchain-gccarmnoneeabi']['version'] = "~1.60301.0"
 
+        # Handle stm32cube package selection
+        board_info = self.board_config(variables.get("board"))
+        if "stm32cube" in variables.get("pioframework", []):
+            family = ""
+            # manifests v2
+            if board_info.get("device.family", ""):
+                family = board_info.get("device.family")
+            else:
+                family = board_info.get("build.mcu", "")
+
+            assert(family and len(family) >= 7)
+            self.packages[
+                "framework-stm32cube%s" % family[5:7]]["optional"] = False
+
         # configure J-LINK tool
         jlink_conds = [
             "jlink" in variables.get(option, "")

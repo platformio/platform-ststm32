@@ -1,0 +1,52 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F410Tx",
+      "startup_variant": "stm32f410tx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F410T8",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F410xx.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 2,
+      "i2s": 1,
+      "spi": 1,
+      "usart": 2
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "100000000",
+    "family": "stm32f4",
+    "mcu": "stm32f410t8yx",
+    "memory": {
+      "flash": 65536,
+      "ram": 32768
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.7
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F410T8YX",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 65536,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-high-performance-mcus/stm32f4-series/stm32f410/stm32f410t8.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

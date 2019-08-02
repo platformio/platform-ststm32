@@ -1,0 +1,52 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F318xx",
+      "startup_variant": "stm32f318xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F318C8",
+    "openocd_target": "stm32f3x",
+    "svd_path": "STM32F301x.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 3,
+      "i2s": 2,
+      "spi": 2,
+      "usart": 3
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "72000000",
+    "family": "stm32f3",
+    "mcu": "stm32f318c8yx",
+    "memory": {
+      "flash": 65536,
+      "ram": 16384
+    },
+    "power": {
+      "vmax": 1.95,
+      "vmin": 1.65
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F318C8YX",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 65536,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f3x8/stm32f318c8.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

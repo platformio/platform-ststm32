@@ -1,0 +1,52 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F334x8",
+      "startup_variant": "stm32f334x8"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F334R6",
+    "openocd_target": "stm32f3x",
+    "svd_path": "STM32F334x.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 1,
+      "i2c": 1,
+      "spi": 1,
+      "usart": 3
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "72000000",
+    "family": "stm32f3",
+    "mcu": "stm32f334r6tx",
+    "memory": {
+      "flash": 32768,
+      "ram": 16384
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.0
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F334R6TX",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 32768,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f334/stm32f334r6.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

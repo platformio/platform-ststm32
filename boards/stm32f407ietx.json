@@ -1,0 +1,56 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F407xx",
+      "startup_variant": "stm32f407xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F407IE",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F40x.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 2,
+      "eth": 1,
+      "i2c": 3,
+      "i2s": 2,
+      "spi": 3,
+      "uart": 2,
+      "usart": 4,
+      "usb": 1
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "168000000",
+    "family": "stm32f4",
+    "mcu": "stm32f407ietx",
+    "memory": {
+      "flash": 524288,
+      "ram": 196608
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.8
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F407IETX",
+  "upload": {
+    "maximum_ram_size": 196608,
+    "maximum_size": 524288,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-high-performance-mcus/stm32f4-series/stm32f407-417/stm32f407ie.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

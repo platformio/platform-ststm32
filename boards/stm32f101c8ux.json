@@ -1,0 +1,51 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F101xB",
+      "startup_variant": "stm32f101xb"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F101C8",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F101xx.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 2,
+      "spi": 2,
+      "usart": 3
+    },
+    "cpu": "cortex-m3",
+    "f_cpu": "36000000",
+    "family": "stm32f1",
+    "mcu": "stm32f101c8ux",
+    "memory": {
+      "flash": 65536,
+      "ram": 10240
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.0
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F101C8UX",
+  "upload": {
+    "maximum_ram_size": 10240,
+    "maximum_size": 65536,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f1-series/stm32f101/stm32f101c8.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

@@ -1,0 +1,52 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F101xE",
+      "startup_variant": "stm32f101xe"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F101VE",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F101xx.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 2,
+      "spi": 3,
+      "uart": 2,
+      "usart": 3
+    },
+    "cpu": "cortex-m3",
+    "f_cpu": "36000000",
+    "family": "stm32f1",
+    "mcu": "stm32f101vetx",
+    "memory": {
+      "flash": 524288,
+      "ram": 49152
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.0
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F101VETX",
+  "upload": {
+    "maximum_ram_size": 49152,
+    "maximum_size": 524288,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f1-series/stm32f101/stm32f101ve.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

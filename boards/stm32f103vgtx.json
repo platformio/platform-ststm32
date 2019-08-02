@@ -1,0 +1,55 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F103xG",
+      "startup_variant": "stm32f103xg"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F103VG",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 1,
+      "i2c": 2,
+      "i2s": 2,
+      "spi": 3,
+      "uart": 2,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m3",
+    "f_cpu": "72000000",
+    "family": "stm32f1",
+    "mcu": "stm32f103vgtx",
+    "memory": {
+      "flash": 1048576,
+      "ram": 98304
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.0
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F103VGTX",
+  "upload": {
+    "maximum_ram_size": 98304,
+    "maximum_size": 1048576,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f1-series/stm32f103/stm32f103vg.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

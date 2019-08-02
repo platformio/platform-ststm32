@@ -88,6 +88,71 @@
       "optional": true,
       "version": "~2.0.181130"
     },
+    "framework-stm32cubef0": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.11001.0"
+    },
+    "framework-stm32cubef1": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.10800.0"
+    },
+    "framework-stm32cubef2": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.10800.0"
+    },
+    "framework-stm32cubef3": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.11000.0"
+    },
+    "framework-stm32cubef4": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.12401.0"
+    },
+    "framework-stm32cubef7": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.11500.0"
+    },
+    "framework-stm32cubeg0": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.10200.0"
+    },
+    "framework-stm32cubeg4": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.10000.0"
+    },
+    "framework-stm32cubeh7": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.10500.0"
+    },
+    "framework-stm32cubel0": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.11102.0"
+    },
+    "framework-stm32cubel1": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.10900.0"
+    },
+    "framework-stm32cubel4": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.11400.0"
+    },
+    "framework-stm32cubewb": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.10200.0"
+    },
     "tool-stm32duino": {
       "type": "uploader",
       "optional": true,

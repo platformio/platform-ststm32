@@ -1,0 +1,52 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F102x6",
+      "startup_variant": "stm32f102x6"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F102R4",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F102xx.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 1,
+      "spi": 1,
+      "usart": 2,
+      "usb": 1
+    },
+    "cpu": "cortex-m3",
+    "f_cpu": "48000000",
+    "family": "stm32f1",
+    "mcu": "stm32f102r4tx",
+    "memory": {
+      "flash": 16384,
+      "ram": 4096
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.0
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F102R4TX",
+  "upload": {
+    "maximum_ram_size": 4096,
+    "maximum_size": 16384,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f1-series/stm32f102/stm32f102r4.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

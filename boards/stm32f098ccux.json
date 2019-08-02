@@ -1,0 +1,53 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F098xx",
+      "startup_variant": "stm32f098xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F098CC",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F0x8.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 1,
+      "i2c": 2,
+      "i2s": 2,
+      "spi": 2,
+      "usart": 6
+    },
+    "cpu": "cortex-m0",
+    "f_cpu": "48000000",
+    "family": "stm32f0",
+    "mcu": "stm32f098ccux",
+    "memory": {
+      "flash": 262144,
+      "ram": 32768
+    },
+    "power": {
+      "vmax": 1.95,
+      "vmin": 1.65
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F098CCUX",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 262144,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f0-series/stm32f0x8/stm32f098cc.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

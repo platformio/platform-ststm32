@@ -1,0 +1,55 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F105xC",
+      "startup_variant": "stm32f105xc"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F105R8",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F105xx.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 2,
+      "i2c": 2,
+      "i2s": 2,
+      "spi": 3,
+      "uart": 2,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m3",
+    "f_cpu": "72000000",
+    "family": "stm32f1",
+    "mcu": "stm32f105r8tx",
+    "memory": {
+      "flash": 65536,
+      "ram": 65536
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 2.0
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F105R8TX",
+  "upload": {
+    "maximum_ram_size": 65536,
+    "maximum_size": 65536,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f1-series/stm32f105-107/stm32f105r8.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

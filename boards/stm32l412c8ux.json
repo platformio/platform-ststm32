@@ -1,0 +1,52 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32L412xx",
+      "startup_variant": "stm32l412xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32L412C8",
+    "openocd_target": "stm32l4x",
+    "svd_path": "STM32L412.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 3,
+      "spi": 2,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "80000000",
+    "family": "stm32l4",
+    "mcu": "stm32l412c8ux",
+    "memory": {
+      "flash": 65536,
+      "ram": 40960
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.71
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32L412C8UX",
+  "upload": {
+    "maximum_ram_size": 40960,
+    "maximum_size": 65536,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l4-series/stm32l4x2/stm32l412c8.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

@@ -1,0 +1,55 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F205xx",
+      "startup_variant": "stm32f205xx"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F205ZF",
+    "openocd_target": "stm32f2x",
+    "svd_path": "STM32F20x.svd"
+  },
+  "device": {
+    "communication": {
+      "can": 2,
+      "i2c": 3,
+      "i2s": 2,
+      "spi": 3,
+      "uart": 2,
+      "usart": 4,
+      "usb": 1
+    },
+    "cpu": "cortex-m3",
+    "f_cpu": "120000000",
+    "family": "stm32f2",
+    "mcu": "stm32f205zftx",
+    "memory": {
+      "flash": 786432,
+      "ram": 131072
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.8
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F205ZFTX",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 786432,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-high-performance-mcus/stm32f2-series/stm32f2x5/stm32f205zf.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}

@@ -1,0 +1,53 @@
+{
+  "build": {
+    "stm32cube": {
+      "extra_flags": "-DSTM32F401xC",
+      "startup_variant": "stm32f401xc"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F401CB",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F401x.svd"
+  },
+  "device": {
+    "communication": {
+      "i2c": 3,
+      "i2s": 2,
+      "spi": 3,
+      "usart": 3,
+      "usb": 1
+    },
+    "cpu": "cortex-m4",
+    "f_cpu": "84000000",
+    "family": "stm32f4",
+    "mcu": "stm32f401cbux",
+    "memory": {
+      "flash": 131072,
+      "ram": 65536
+    },
+    "power": {
+      "vmax": 3.6,
+      "vmin": 1.7
+    }
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F401CBUX",
+  "upload": {
+    "maximum_ram_size": 65536,
+    "maximum_size": 131072,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "serial",
+      "dfu",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-high-performance-mcus/stm32f4-series/stm32f401/stm32f401cb.html",
+  "vendor": "STMicroelectronics",
+  "version": 2
+}
