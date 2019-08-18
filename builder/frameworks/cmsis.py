@@ -52,6 +52,7 @@ VARIANT_DIR_EXCEPTIONS = {
     "stm32f103ve": "stm32f103xe",
     "stm32f103zc": "stm32f103xe",
     "stm32f103zd": "stm32f103xe",
+    "stm32f303cb": "stm32f303x8",
     "stm32f407ve": "stm32f407xx"
 }
 

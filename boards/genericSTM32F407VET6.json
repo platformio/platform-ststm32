@@ -2,7 +2,7 @@
   "build": {
     "core": "maple",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F407xx -DARDUINO_STM32GenericF407VET6",
+    "extra_flags": "-DSTM32F407xx -DARDUINO_STM32GenericF407VET6 -DSTM32F4",
     "f_cpu": "168000000L",
     "hwids": [
       [
@@ -24,14 +24,15 @@
     ],
     "jlink_device": "STM32F407VE",
     "openocd_extra_args": [
-      "-c",
-      "reset_config none"
-    ],
+            "-c",
+            "reset_config none"
+          ],
     "openocd_target": "stm32f4x",
     "svd_path": "STM32F40x.svd"
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "STM32F407VE (192k RAM. 512k Flash)",

@@ -1,0 +1,38 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32WB55xx",
+    "f_cpu": "64000000L",
+    "mcu": "stm32wb55rg",
+    "variant": "PNUCLEO_WB55RG"
+  },
+  "connectivity": [
+    "bluetooth"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32w55xx",
+    "jlink_device": "STM32WB55xx",
+    "onboard_tools": [
+      "stlink"
+    ]
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "P-Nucleo WB55RG",
+  "upload": {
+    "maximum_ram_size": 196604,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/p-nucleo-wb55.html",
+  "vendor": "ST"
+}

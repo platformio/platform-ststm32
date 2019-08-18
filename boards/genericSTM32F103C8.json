@@ -2,7 +2,7 @@
   "build": {
     "core": "maple",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F103xB",
+    "extra_flags": "-DSTM32F103xB -DSTM32F1",
     "f_cpu": "72000000L",
     "hwids": [
       [
@@ -16,7 +16,7 @@
     ],
     "ldscript": "stm32f103x8.ld",
     "mcu": "stm32f103c8t6",
-    "variant": "BLUEPILL_F103XX"
+    "variant": "PILL_F103XX"
   },
   "debug": {
     "jlink_device": "STM32F103C8",
@@ -25,6 +25,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "libopencm3",
     "stm32cube"
