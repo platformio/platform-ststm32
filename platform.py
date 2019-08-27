@@ -30,7 +30,9 @@ class Ststm32Platform(PlatformBase):
             self.packages["framework-arduinoststm32-maple"]["optional"] = False
             self.packages["framework-arduinoststm32"]["optional"] = True
 
-        if variables.get("upload_protocol", "") == "dfu":
+        default_protocol = self.board_config(variables.get(
+            "board")).get("upload.protocol") or ""
+        if variables.get("upload_protocol", default_protocol) == "dfu":
             self.packages["tool-dfuutil"]["optional"] = False
 
         if board == "mxchip_az3166":

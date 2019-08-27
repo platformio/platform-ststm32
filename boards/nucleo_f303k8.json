@@ -27,7 +27,7 @@
   ],
   "name": "ST Nucleo F303K8",
   "upload": {
-    "maximum_ram_size": 16384,
+    "maximum_ram_size": 12288,
     "maximum_size": 65536,
     "protocol": "stlink",
     "protocols": [
