@@ -29,7 +29,7 @@
   ],
   "name": "ST STM32F4DISCOVERY",
   "upload": {
-    "maximum_ram_size": 196608,
+    "maximum_ram_size": 131072,
     "maximum_size": 1048576,
     "protocol": "stlink",
     "protocols": [
