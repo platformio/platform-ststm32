@@ -23,6 +23,7 @@
   },
   "frameworks": [
     "arduino",
+    "mbed",
     "stm32cube"
   ],
   "name": "ST Nucleo H743ZI",
