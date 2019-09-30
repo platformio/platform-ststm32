@@ -1,0 +1,35 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F1xx -DSTM32F103xB",
+    "f_cpu": "72000000L",
+    "mcu": "stm32f103cbt6",
+    "variant": "AFROFLIGHT_F103CB"
+  },
+  "debug": {
+    "jlink_device": "STM32F103CB",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "AfroFlight Rev5 (8MHz)",
+  "upload": {
+    "maximum_ram_size": 20480,
+    "maximum_size": 131072,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "dfu",
+      "serial"
+    ]
+  },
+  "url": "https://www.dronetrest.com/t/naze-32-revision-6-flight-controller-guide/1605",
+  "vendor": "AfroFlight"
+}

@@ -1,7 +1,8 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m7",
-    "extra_flags": "-DSTM32H743xx",
+    "extra_flags": "-DSTM32H7xx -DSTM32H743xx",
     "f_cpu": "400000000L",
     "mcu": "stm32h743zit6",
     "variant": "NUCLEO_H743ZI"
@@ -23,12 +24,12 @@
   },
   "frameworks": [
     "arduino",
-    "mbed",
-    "stm32cube"
+    "stm32cube",
+    "mbed"
   ],
   "name": "ST Nucleo H743ZI",
   "upload": {
-    "maximum_ram_size": 1048576,
+    "maximum_ram_size": 524288,
     "maximum_size": 2097152,
     "protocol": "stlink",
     "protocols": [
