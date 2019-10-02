@@ -32,8 +32,8 @@
   "name": "STM32F103T8 (20k RAM. 64k Flash)",
   "upload": {
     "disable_flushing": false,
-    "maximum_ram_size": 65536,
-    "maximum_size": 20480,
+    "maximum_ram_size": 20480,
+    "maximum_size": 65536,
     "protocol": "stlink",
     "protocols": [
       "jlink",
