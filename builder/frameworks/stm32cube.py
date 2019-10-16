@@ -108,7 +108,7 @@ def get_linker_script(mcu):
                     "ldscripts", mcu[0:11].upper() + "_FLASH.ld")
 
     if isfile(ldscript):
-        return ldscript
+        return "\""+ldscript+"\""
 
     default_ldscript = join(FRAMEWORK_DIR, "platformio",
                             "ldscripts", mcu[0:11].upper() + "_DEFAULT.ld")
@@ -117,7 +117,7 @@ def get_linker_script(mcu):
           "Firmware will be linked with a default linker script!")
 
     if isfile(default_ldscript):
-        return default_ldscript
+        return "\""+default_ldscript+"\""
 
     ram = env.BoardConfig().get("upload.maximum_ram_size", 0)
     flash = env.BoardConfig().get("upload.maximum_size", 0)
