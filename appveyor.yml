@@ -36,7 +36,7 @@ install:
   - cmd: platformio platform install file://.
 
 test_script:
-  - cmd: platformio run -d %PLATFORMIO_PROJECT_DIR%
+  - cmd: platformio run -s -d %PLATFORMIO_PROJECT_DIR%
 
 notifications:
   - provider: Slack

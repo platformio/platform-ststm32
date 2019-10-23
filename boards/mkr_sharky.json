@@ -1,0 +1,35 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32WBxx -DSTM32WB55xx",
+    "f_cpu": "64000000L",
+    "mcu": "stm32wb55cg",
+    "variant": "MKR_SHARKY"
+  },
+  "connectivity": [
+    "bluetooth"
+  ],
+  "debug": {
+    "jlink_device": "STM32WB55xx",
+    "svd_path": "STM32WBxx.svd"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "MKR Sharky",
+  "upload": {
+    "maximum_ram_size": 196604,
+    "maximum_size": 524288,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "mbed",
+      "serial",
+      "dfu"
+    ]
+  },
+  "url": "https://midatronics.com/Development_Boards/MKR_Sharky_I",
+  "vendor": "Midatronics"
+}

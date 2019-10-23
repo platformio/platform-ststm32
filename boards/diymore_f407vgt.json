@@ -5,11 +5,11 @@
     "extra_flags": "-DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx",
     "f_cpu": "168000000L",
     "framework_extra_flags": {
-      "arduino": "-DARDUINO_DIYMROE_F407VGT"
+      "arduino": "-DARDUINO_DIYMORE_F407VGT"
     },
     "ldscript": "stm32f405x6.ld",
     "mcu": "stm32f407vgt6",
-    "variant": "DIYMROE_F407VGT"
+    "variant": "DIYMORE_F407VGT"
   },
   "debug": {
     "jlink_device": "STM32F407VG",

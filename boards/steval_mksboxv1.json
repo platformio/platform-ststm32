@@ -1,0 +1,39 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32L4xx -DSTM32L4R9xx",
+    "f_cpu": "120000000L",
+    "mcu": "stm32l4r9zi",
+    "variant": "STEVAL_MKSBOX1V1"
+  },
+  "connectivity": [
+    "bluetooth",
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32L4R9ZI",
+    "openocd_target": "stm32l4x",
+    "svd_path": "STM32L4R9.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "SensorTile.box",
+  "upload": {
+    "maximum_ram_size": 655360,
+    "maximum_size": 2097152,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "dfu"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/steval-mksbox1v1.html",
+  "vendor": "ST"
+}

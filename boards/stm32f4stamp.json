@@ -2,7 +2,7 @@
   "build": {
     "core": "maple",
     "cpu": "cortex-m4",
-    "extra_flags": "-DMCU_STM32F406VG -DBOARD_discovery_f4 -DARDUINO_STM32F4StampF405",
+    "extra_flags": "-DMCU_STM32F406VG -DBOARD_discovery_f4 -DARDUINO_STM32F4StampF405 -DSTM32F405xx",
     "f_cpu": "168000000L",
     "hwids": [
       [

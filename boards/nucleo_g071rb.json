@@ -1,5 +1,6 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m0plus",
     "extra_flags": "-DSTM32G0xx -DSTM32G071xx",
     "f_cpu": "24000000L",
@@ -10,14 +11,8 @@
     "variant": "NUCLEO_G071RB"
   },
   "debug": {
-    "default_tools": [
-      "stlink"
-    ],
-    "openocd_target": "stm32g0x",
     "jlink_device": "STM32G071RB",
-    "onboard_tools": [
-      "stlink"
-    ]
+    "svd_path": "STM32G071.svd"
   },
   "frameworks": [
     "arduino"
@@ -26,10 +21,9 @@
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 2097152,
-    "protocol": "stlink",
+    "protocol": "mbed",
     "protocols": [
       "jlink",
-      "stlink",
       "blackmagic",
       "mbed"
     ]
