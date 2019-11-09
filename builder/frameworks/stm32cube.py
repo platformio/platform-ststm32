@@ -156,10 +156,11 @@ def generate_hal_config_file(mcu):
 
 env.Replace(
     AS="$CC",
-    ASCOM="$ASPPCOM",
-    LDSCRIPT_PATH=env.subst(
-        get_linker_script(env.BoardConfig().get("build.mcu")))
+    ASCOM="$ASPPCOM"
 )
+
+if "LDSCRIPT_PATH" not in env:
+    env.Replace(LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu")))
 
 env.Append(
     ASFLAGS=["-x", "assembler-with-cpp"],
