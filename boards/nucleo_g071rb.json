@@ -15,7 +15,8 @@
     "svd_path": "STM32G071.svd"
   },
   "frameworks": [
-    "arduino"
+    "arduino",
+    "zephyr"
   ],
   "name": "Nucleo G071RB",
   "upload": {

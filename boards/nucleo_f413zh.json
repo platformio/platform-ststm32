@@ -21,7 +21,8 @@
   },
   "frameworks": [
     "stm32cube",
-    "mbed"
+    "mbed",
+    "zephyr"
   ],
   "name": "ST Nucleo F413ZH",
   "upload": {

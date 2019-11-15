@@ -3,7 +3,10 @@
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F769xx",
     "f_cpu": "216000000L",
-    "mcu": "stm32f769nih6"
+    "mcu": "stm32f769nih6",
+    "zephyr": {
+       "variant": "stm32f769i_disco"
+    }
   },
   "connectivity": [
     "can",
@@ -22,7 +25,8 @@
   },
   "frameworks": [
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST 32F769IDISCOVERY",
   "upload": {

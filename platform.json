@@ -41,6 +41,10 @@
     "stm32cube": {
       "package": "framework-stm32cube",
       "script": "builder/frameworks/stm32cube.py"
+    },
+    "zephyr": {
+      "package": "framework-zephyr",
+      "script": "builder/frameworks/zephyr.py"
     }
   },
   "packages": {
@@ -88,6 +92,15 @@
       "optional": true,
       "version": "~2.0.181130"
     },
+    "framework-zephyr": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.20000.0"
+    },
+    "framework-zephyr-hal-ststm32": {
+      "optional": true,
+      "version": "~0.0.190619"
+    },
     "tool-stm32duino": {
       "type": "uploader",
       "optional": true,
@@ -107,6 +120,22 @@
       "type": "uploader",
       "optional": true,
       "version": "~1.9.190708"
+    },
+    "tool-cmake": {
+      "optional": true,
+      "version": "~3.15.0"
+    },
+    "tool-dtc": {
+      "optional": true,
+      "version": "~1.4.7"
+    },
+    "tool-ninja": {
+      "optional": true,
+      "version": "~1.7.0"
+    },
+    "tool-gperf": {
+      "optional": true,
+      "version": "^3.0.0"
     }
   }
 }

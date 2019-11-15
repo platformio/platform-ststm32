@@ -23,7 +23,8 @@
     "arduino",
     "mbed",
     "libopencm3",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST Nucleo F103RB",
   "upload": {

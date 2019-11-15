@@ -1,9 +1,12 @@
 {
   "build": {
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F411xE",
+    "extra_flags": "-DSTM32F4 -DSTM32F411xE",
     "f_cpu": "100000000L",
-    "mcu": "stm32f411vet6"
+    "mcu": "stm32f411vet6",
+    "zephyr": {
+       "variant": "stm32f411e_disco"
+    }
   },
   "debug": {
     "default_tools": [
@@ -17,7 +20,9 @@
     "svd_path": "STM32F411xx.svd"
   },
   "frameworks": [
-    "stm32cube"
+    "cmsis",
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST 32F411EDISCOVERY",
   "upload": {
