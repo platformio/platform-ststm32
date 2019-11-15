@@ -1,0 +1,35 @@
+{
+  "build": {
+    "core": "maple",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F4 -DSTM32F405xx",
+    "f_cpu": "168000000L",
+    "ldscript": "stm32f405xg.ld",
+    "mcu": "stm32f405rgt6",
+    "zephyr": {
+       "variant": "olimex_stm32_p405"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F405RG",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F40x.svd"
+  },
+  "frameworks": [
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "Olimex STM32-P405",
+  "upload": {
+    "maximum_ram_size": 196608,
+    "maximum_size": 1048576,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://docs.zephyrproject.org/latest/boards/arm/olimex_stm32_p405/doc/index.html",
+  "vendor": "Olimex"
+}

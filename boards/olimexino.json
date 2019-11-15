@@ -1,0 +1,39 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F103xB",
+    "f_cpu": "72000000L",
+    "ldscript": "stm32f103xb.ld",
+    "mcu": "stm32f103rbt6",
+    "variant": "NUCLEO_F103RB",
+    "zephyr": {
+       "variant": "olimexino_stm32"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F103RB",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "mbed",
+    "libopencm3",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "OLIMEXINO-STM32",
+  "upload": {
+    "maximum_ram_size": 20480,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://docs.zephyrproject.org/latest/boards/arm/olimexino_stm32/doc/index.html",
+  "vendor": "Olimex"
+}

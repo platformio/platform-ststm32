@@ -1,0 +1,44 @@
+{
+  "build": {
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32H7xx -DSTM32H747xx",
+    "f_cpu": "400000000L",
+    "mcu": "stm32h747xih6",
+    "zephyr": {
+       "variant": "stm32h747i_disco_m7"
+    }
+  },
+  "connectivity": [
+    "can",
+    "ethernet"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32H747XI",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_h743zi",
+    "svd_path": "STM32H7x7.svd"
+  },
+  "frameworks": [
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "STM32H747I-DISCO",
+  "upload": {
+    "maximum_ram_size": 524288,
+    "maximum_size": 2097152,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/stm32h747i-disco.html",
+  "vendor": "ST"
+}

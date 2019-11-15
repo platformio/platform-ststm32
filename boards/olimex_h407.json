@@ -1,0 +1,44 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx",
+    "f_cpu": "168000000L",
+    "framework_extra_flags": {
+      "arduino": "-DARDUINO_BLACK_F407ZG"
+    },
+    "ldscript": "stm32f405x6.ld",
+    "mcu": "stm32f407zgt6",
+    "variant": "BLACK_F407XX",
+    "zephyr": {
+       "variant": "olimex_stm32_h407"
+    }
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32F407ZE",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F40x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "STM32-H407",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 1048576,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://docs.zephyrproject.org/latest/boards/arm/olimex_stm32_h407/doc/index.html",
+  "vendor": "Olimex"
+}

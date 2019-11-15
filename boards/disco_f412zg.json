@@ -1,0 +1,41 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F412Zx",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f412zgt6",
+    "zephyr": {
+       "variant": "stm32f412g_disco"
+    }
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32F412ZG",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_f4",
+    "svd_path": "STM32F41x.svd"
+  },
+  "frameworks": [
+    "mbed",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "32F412GDISCOVERY",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 1048576,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/32f412gdiscovery.html",
+  "vendor": "ST"
+}

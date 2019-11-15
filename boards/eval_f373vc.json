@@ -1,0 +1,37 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F3 -DSTM32F373xC",
+    "f_cpu": "72000000L",
+    "ldscript": "stm32f30xx.ld",
+    "mcu": "stm32f373vct6",
+    "zephyr": {
+       "variant": "stm32373c_eval"
+    }
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32F373VC",
+    "openocd_target": "stm32f3x",
+    "svd_path": "STM32F30x.svd"
+  },
+  "frameworks": [
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "STM32373C-EVAL",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/stm32373c-eval.html",
+  "vendor": "ST"
+}
