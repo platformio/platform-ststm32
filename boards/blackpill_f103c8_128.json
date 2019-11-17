@@ -14,7 +14,7 @@
         "0x0004"
       ]
     ],
-    "ldscript": "ldscript_cb.ld",
+    "ldscript": "stm32f103xb.ld",
     "mcu": "stm32f103c8t6",
     "variant": "PILL_F103XX",
     "zephyr": {
