@@ -97,7 +97,7 @@
       "optional": true,
       "version": "~1.20000.0"
     },
-    "framework-zephyr-hal-ststm32": {
+    "framework-zephyr-hal-stm32": {
       "optional": true,
       "version": "~0.0.190619"
     },
