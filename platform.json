@@ -131,7 +131,7 @@
     },
     "tool-ninja": {
       "optional": true,
-      "version": "~1.7.0"
+      "version": "^1.7.0"
     },
     "tool-gperf": {
       "optional": true,
