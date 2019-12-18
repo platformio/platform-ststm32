@@ -43,8 +43,10 @@ class Ststm32Platform(PlatformBase):
             self.packages['toolchain-gccarmnoneeabi']['version'] = "~1.60301.0"
 
         if "zephyr" in variables.get("pioframework", []):
-            for p in ("framework-zephyr-hal-stm32", "tool-cmake", "tool-dtc", "tool-ninja"):
-                self.packages[p]["optional"] = False
+            for p in self.packages:
+                if p.startswith("framework-zephyr-") or p in (
+                    "tool-cmake", "tool-dtc", "tool-ninja"):
+                    self.packages[p]["optional"] = False
             self.packages['toolchain-gccarmnoneeabi']['version'] = "~1.80201.0"
             if "windows" not in get_systype():
                 self.packages['tool-gperf']['optional'] = False

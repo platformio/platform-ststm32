@@ -46,6 +46,8 @@ jobs:
     - python: "2.7"
       env: PLATFORMIO_PROJECT_DIR=examples/zephyr-drivers-can
     - python: "2.7"
+      env: PLATFORMIO_PROJECT_DIR=examples/zephyr-modules
+    - python: "2.7"
       env: PLATFORMIO_PROJECT_DIR=examples/zephyr-subsys-usb-hid-mouse
   
 
