@@ -1,3 +1,0 @@
-zephyr_include_directories(inc)
-zephyr_compile_definitions(DEFINITION_FROM_CUSTOM_MODULE)
-zephyr_sources(src/module.c)

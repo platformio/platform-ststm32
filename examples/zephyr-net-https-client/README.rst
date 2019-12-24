@@ -20,7 +20,7 @@ How to build PlatformIO based project
 .. code-block:: bash
 
     # Change directory to example
-    > cd platform-ststm32/examples/zephyr-modules
+    > cd platform-ststm32/examples/zephyr-net-https-client
 
     # Build project
     > platformio run
