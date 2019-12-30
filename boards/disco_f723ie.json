@@ -3,7 +3,10 @@
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F723xx",
     "f_cpu": "216000000L",
-    "mcu": "stm32f723iek6"
+    "mcu": "stm32f723iek6",
+    "zephyr": {
+       "variant": "stm32f723e_disco"
+    }
   },
   "connectivity": [
     "can",
@@ -21,7 +24,8 @@
     "svd_path": "STM32F7x3.svd"
   },
   "frameworks": [
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "32F723EDISCOVERY",
   "upload": {

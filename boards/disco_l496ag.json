@@ -3,7 +3,10 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L496xx",
     "f_cpu": "80000000L",
-    "mcu": "stm32l496agi6"
+    "mcu": "stm32l496agi6",
+    "zephyr": {
+       "variant": "stm32l496g_disco"
+    }
   },
   "connectivity": [
     "can"
@@ -21,7 +24,8 @@
   },
   "frameworks": [
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST 32L496GDISCOVERY",
   "upload": {

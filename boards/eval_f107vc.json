@@ -1,0 +1,35 @@
+{
+  "build": {
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F107xC -DSTM32F1",
+    "f_cpu": "72000000L",
+    "ldscript": "stm32f107xe.ld",
+    "mcu": "stm32f107vct6",
+    "zephyr": {
+       "variant": "stm3210c_eval"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F107VC",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F107xx.svd"
+  },
+  "frameworks": [
+    "cmsis",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "STM3210C-EVAL",
+  "upload": {
+    "maximum_ram_size": 65536,
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/stm3210c-eval.html",
+  "vendor": "ST"
+}

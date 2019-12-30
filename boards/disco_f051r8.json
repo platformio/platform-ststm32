@@ -3,7 +3,10 @@
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32F051x8",
     "f_cpu": "48000000L",
-    "mcu": "stm32f051r8t6"
+    "mcu": "stm32f051r8t6",
+    "zephyr": {
+       "variant": "stm32f0_disco"
+    }
   },
   "debug": {
     "default_tools": [
@@ -18,7 +21,8 @@
   },
   "frameworks": [
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST STM32F0DISCOVERY",
   "upload": {

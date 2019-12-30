@@ -7,7 +7,10 @@
       "arduino": "-D__CORTEX_SC=0"
     },
     "mcu": "stm32l072cz",
-    "variant": "DISCO_L072CZ_LRWAN1"
+    "variant": "DISCO_L072CZ_LRWAN1",
+    "zephyr": {
+       "variant": "b_l072z_lrwan1"
+    }
   },
   "debug": {
     "default_tools": [
@@ -23,7 +26,8 @@
   "frameworks": [
     "arduino",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST DISCO-L072CZ-LRWAN1",
   "upload": {

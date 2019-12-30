@@ -1,9 +1,12 @@
 {
   "build": {
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F429xx",
+    "extra_flags": "-DSTM32F4 -DSTM32F429xx",
     "f_cpu": "180000000L",
-    "mcu": "stm32f429zit6"
+    "mcu": "stm32f429zit6",
+    "zephyr": {
+       "variant": "stm32f429i_disc1"
+    }
   },
   "connectivity": [
     "can"
@@ -20,8 +23,10 @@
     "svd_path": "STM32F429x.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST 32F429IDISCOVERY",
   "upload": {

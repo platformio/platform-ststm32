@@ -20,7 +20,8 @@
   "frameworks": [
     "arduino",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST Nucleo F411RE",
   "upload": {

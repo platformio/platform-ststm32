@@ -1,0 +1,36 @@
+{
+  "build": {
+    "cpu": "cortex-m0",
+    "extra_flags": "-DSTM32F072xB",
+    "f_cpu": "48000000L",
+    "mcu": "stm32f072vbt6",
+    "zephyr": {
+       "variant": "stm32f072_eval"
+    }
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32F072VB",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F072x.svd"
+  },
+  "frameworks": [
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "STM32F072-EVAL",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/stm32072b-eval.html",
+  "vendor": "ST"
+}

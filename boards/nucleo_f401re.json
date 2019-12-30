@@ -24,7 +24,8 @@
     "mbed",
     "cmsis",
     "spl",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST Nucleo F401RE",
   "upload": {

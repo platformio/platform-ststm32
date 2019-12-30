@@ -1,9 +1,12 @@
 {
   "build": {
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F469xx",
+    "extra_flags": "-DSTM32F4 -DSTM32F469xx",
     "f_cpu": "180000000L",
-    "mcu": "stm32f469nih6"
+    "mcu": "stm32f469nih6",
+    "zephyr": {
+       "variant": "stm32f469i_disco"
+    }
   },
   "connectivity": [
     "can"
@@ -20,8 +23,10 @@
     "svd_path": "STM32F46_79x.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST 32F469IDISCOVERY",
   "upload": {

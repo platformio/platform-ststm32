@@ -6,7 +6,10 @@
     "f_cpu": "168000000L",
     "ldscript": "stm32f405x6.ld",
     "mcu": "stm32f407vgt6",
-    "variant": "DISCO_F407VG"
+    "variant": "DISCO_F407VG",
+    "zephyr": {
+       "variant": "stm32f4_disco"
+    }
   },
   "debug": {
     "default_tools": [
@@ -25,7 +28,8 @@
     "cmsis",
     "spl",
     "libopencm3",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST STM32F4DISCOVERY",
   "upload": {

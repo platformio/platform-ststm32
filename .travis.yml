@@ -28,8 +28,28 @@ env:
   - PLATFORMIO_PROJECT_DIR=examples/spl-blink
   - PLATFORMIO_PROJECT_DIR=examples/stm32cube-hal-blink
   - PLATFORMIO_PROJECT_DIR=examples/stm32cube-ll-blink
+  - PLATFORMIO_PROJECT_DIR=examples/zephyr-blink
+  - PLATFORMIO_PROJECT_DIR=examples/zephyr-cpp-synchronization
+  - PLATFORMIO_PROJECT_DIR=examples/zephyr-drivers-can
+  - PLATFORMIO_PROJECT_DIR=examples/zephyr-net-https-client
+  - PLATFORMIO_PROJECT_DIR=examples/zephyr-subsys-usb-hid-mouse
   - PLATFORMIO_PROJECT_DIR=tests/arduino-blink-different-cores
   - PLATFORMIO_PROJECT_DIR=tests/mbed-filesystem
+
+# Zephyr framework doesn't support python 2
+jobs:
+  exclude:
+    - python: "2.7"
+      env: PLATFORMIO_PROJECT_DIR=examples/zephyr-blink
+    - python: "2.7"
+      env: PLATFORMIO_PROJECT_DIR=examples/zephyr-cpp-synchronization
+    - python: "2.7"
+      env: PLATFORMIO_PROJECT_DIR=examples/zephyr-drivers-can
+    - python: "2.7"
+      env: PLATFORMIO_PROJECT_DIR=examples/zephyr-net-https-client
+    - python: "2.7"
+      env: PLATFORMIO_PROJECT_DIR=examples/zephyr-subsys-usb-hid-mouse
+  
 
 install:
   - pip install -U https://github.com/platformio/platformio/archive/develop.zip

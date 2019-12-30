@@ -4,7 +4,10 @@
     "extra_flags": "-DSTM32F072xB",
     "f_cpu": "48000000L",
     "mcu": "stm32f072rbt6",
-    "variant": "DISCO_F072RB"
+    "variant": "DISCO_F072RB",
+    "zephyr": {
+       "variant": "stm32f072b_disco"
+    }
   },
   "connectivity": [
     "can"
@@ -24,7 +27,8 @@
   "frameworks": [
     "arduino",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST Discovery F072RB",
   "upload": {

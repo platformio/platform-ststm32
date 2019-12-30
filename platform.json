@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "5.7.0",
+  "version": "6.0.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json"
@@ -41,6 +41,10 @@
     "stm32cube": {
       "package": "framework-stm32cube",
       "script": "builder/frameworks/stm32cube.py"
+    },
+    "zephyr": {
+      "package": "framework-zephyr",
+      "script": "builder/frameworks/zephyr.py"
     }
   },
   "packages": {
@@ -88,6 +92,71 @@
       "optional": true,
       "version": "~2.0.181130"
     },
+    "framework-zephyr": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.20100.0"
+    },
+    "framework-zephyr-hal-stm32": {
+      "optional": true,
+      "version": "~0.20100.190619"
+    },
+    "framework-zephyr-hal-st": {
+      "optional": true,
+      "version": "~0.20100.190924"
+    },
+    "framework-zephyr-civetweb": {
+      "optional": true,
+      "version": "~0.20100.190807"
+    },
+    "framework-zephyr-fatfs": {
+      "optional": true,
+      "version": "~0.20100.190522"
+    },
+    "framework-zephyr-libmetal": {
+      "optional": true,
+      "version": "~0.20100.190530"
+    },
+    "framework-zephyr-lvgl": {
+      "optional": true,
+      "version": "~0.20100.190812"
+    },
+    "framework-zephyr-mbedtls": {
+      "optional": true,
+      "version": "~0.20100.191006"
+    },
+    "framework-zephyr-mcumgr": {
+      "optional": true,
+      "version": "~0.20100.190528"
+    },
+    "framework-zephyr-nffs": {
+      "optional": true,
+      "version": "~0.20100.190523"
+    },
+    "framework-zephyr-open-amp": {
+      "optional": true,
+      "version": "~0.20100.190612"
+    },
+    "framework-zephyr-openthread": {
+      "optional": true,
+      "version": "~0.20100.191024"
+    },
+    "framework-zephyr-segger": {
+      "optional": true,
+      "version": "~0.20100.190421"
+    },
+    "framework-zephyr-tinycbor": {
+      "optional": true,
+      "version": "~0.20100.191016"
+    },
+    "framework-zephyr-littlefs": {
+      "optional": true,
+      "version": "~0.20100.190811"
+    },
+    "framework-zephyr-mipi-sys-t": {
+      "optional": true,
+      "version": "~0.20100.191024"
+    },
     "tool-stm32duino": {
       "type": "uploader",
       "optional": true,
@@ -107,6 +176,22 @@
       "type": "uploader",
       "optional": true,
       "version": "~1.9.190708"
+    },
+    "tool-cmake": {
+      "optional": true,
+      "version": "~3.15.0"
+    },
+    "tool-dtc": {
+      "optional": true,
+      "version": "~1.4.7"
+    },
+    "tool-ninja": {
+      "optional": true,
+      "version": "^1.7.0"
+    },
+    "tool-gperf": {
+      "optional": true,
+      "version": "^3.0.0"
     }
   }
 }

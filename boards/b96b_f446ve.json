@@ -3,7 +3,10 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F446xx",
     "f_cpu": "168000000L",
-    "mcu": "stm32f446vet6"
+    "mcu": "stm32f446vet6",
+    "zephyr": {
+       "variant": "96b_stm32_sensor_mez"
+    }
   },
   "connectivity": [
     "can"
@@ -21,7 +24,8 @@
   },
   "frameworks": [
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "96Boards B96B-F446VE",
   "upload": {
