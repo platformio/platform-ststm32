@@ -3,7 +3,7 @@
     "core": "stm32",
     "cpu": "cortex-m0plus",
     "extra_flags": "-DSTM32G0xx -DSTM32G071xx",
-    "f_cpu": "24000000L",
+    "f_cpu": "64000000L",
     "framework_extra_flags": {
       "arduino": "-D__CORTEX_SC=0"
     },
@@ -20,8 +20,8 @@
   ],
   "name": "Nucleo G071RB",
   "upload": {
-    "maximum_ram_size": 131072,
-    "maximum_size": 2097152,
+    "maximum_ram_size": 36864,
+    "maximum_size": 131072,
     "protocol": "mbed",
     "protocols": [
       "jlink",
