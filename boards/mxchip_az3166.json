@@ -5,7 +5,7 @@
     "extra_flags": "-DSTM32F412Zx -DARDUINO_MXCHIP_AZ3166 -DARDUINO_ARCH_STM32F4",
     "f_cpu": "100000000L",
     "arduino": {
-      "ldscript": "AZ3166.ld",
+      "ldscript": "AZ3166.ld"
     },
     "mcu": "stm32f412zgt6",
     "variant": "MXChip_AZ3166"

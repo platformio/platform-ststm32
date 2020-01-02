@@ -18,7 +18,7 @@
       ]
     ],
     "libopencm3": {
-      "ldscript": "stm32f103xb.ld",
+      "ldscript": "stm32f103xb.ld"
     },
     "mcu": "stm32f103cbt6",
     "variant": "MAPLEMINI_F103CB"

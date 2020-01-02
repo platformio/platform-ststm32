@@ -15,7 +15,7 @@
       ]
     ],
     "libopencm3": {
-      "ldscript": "stm32f103xd.ld",
+      "ldscript": "stm32f103xd.ld"
     },
     "mcu": "stm32f103vdt6",
     "variant": "stm32f1"
