@@ -4,7 +4,6 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F4 -DSTM32F401xE -DSTM32F40_41xxx",
     "f_cpu": "84000000L",
-    "ldscript": "stm32f401xe.ld",
     "mcu": "stm32f401vgt6",
     "variant": "ST3DP001_EVAL"
   },

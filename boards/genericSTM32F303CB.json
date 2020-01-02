@@ -4,7 +4,6 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F3 -DSTM32F303xC",
     "f_cpu": "72000000L",
-    "ldscript": "stm32f30xx.ld",
     "mcu": "stm32f303cbt6"
   },
   "connectivity": [

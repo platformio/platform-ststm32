@@ -17,7 +17,6 @@
         "0x0004"
       ]
     ],
-    "ldscript": "stm32f103xb.ld",
     "mcu": "stm32f103cbt6",
     "variant": "MALYANM200_F103CB"
   },
