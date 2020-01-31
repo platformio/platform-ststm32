@@ -169,6 +169,8 @@ env.Replace(
 )
 
 env.Prepend(LIBS=["az_iot", "m", "wlan", "wifi", "libstsafe", "mbed-os", "stdc++", "gcc"])
+if not board.get("build.ldscript", ""):
+    env.Replace(LDSCRIPT_PATH=board.get("build.arduino.ldscript", ""))
 
 #
 # Target: Build Core Library

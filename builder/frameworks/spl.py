@@ -30,6 +30,7 @@ from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()
 platform = env.PioPlatform()
+board = env.BoardConfig()
 
 env.SConscript("_bare.py")
 
@@ -53,8 +54,8 @@ def get_linker_script(mcu):
     if isfile(default_ldscript):
         return default_ldscript
 
-    ram = env.BoardConfig().get("upload.maximum_ram_size", 0)
-    flash = env.BoardConfig().get("upload.maximum_size", 0)
+    ram = board.get("upload.maximum_ram_size", 0)
+    flash = board.get("upload.maximum_size", 0)
     template_file = join(FRAMEWORK_DIR, "platformio",
                          "ldscripts", "tpl", "linker.tpl")
     content = ""
@@ -73,14 +74,14 @@ def get_linker_script(mcu):
 
 env.Append(
     CPPPATH=[
-        join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"),
-             "cmsis", "cores", env.BoardConfig().get("build.core")),
-        join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "cmsis",
-             "variants", env.BoardConfig().get("build.mcu")[0:7]),
-        join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "spl",
-             "variants", env.BoardConfig().get("build.mcu")[0:7], "inc"),
-        join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "spl",
-             "variants", env.BoardConfig().get("build.mcu")[0:7], "src")
+        join(FRAMEWORK_DIR, board.get("build.core"),
+             "cmsis", "cores", board.get("build.core")),
+        join(FRAMEWORK_DIR, board.get("build.core"), "cmsis",
+             "variants", board.get("build.mcu")[0:7]),
+        join(FRAMEWORK_DIR, board.get("build.core"), "spl",
+             "variants", board.get("build.mcu")[0:7], "inc"),
+        join(FRAMEWORK_DIR, board.get("build.core"), "spl",
+             "variants", board.get("build.mcu")[0:7], "src")
     ]
 )
 
@@ -90,15 +91,15 @@ env.Append(
     ]
 )
 
-env.Replace(
-    LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu"))
-)
+if not board.get("build.ldscript", ""):
+    env.Replace(
+        LDSCRIPT_PATH=get_linker_script(board.get("build.mcu")))
 
 #
 # Target: Build SPL Library
 #
 
-extra_flags = env.BoardConfig().get("build.extra_flags", "")
+extra_flags = board.get("build.extra_flags", "")
 src_filter_patterns = ["+<*>"]
 if "STM32F40_41xxx" in extra_flags:
     src_filter_patterns += ["-<stm32f4xx_fmc.c>"]
@@ -114,16 +115,16 @@ libs = []
 libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkCMSISVariant"),
     join(
-        FRAMEWORK_DIR, env.BoardConfig().get("build.core"), "cmsis",
-        "variants", env.BoardConfig().get("build.mcu")[0:7]
+        FRAMEWORK_DIR, board.get("build.core"), "cmsis",
+        "variants", board.get("build.mcu")[0:7]
     )
 ))
 
 libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkSPL"),
-    join(FRAMEWORK_DIR, env.BoardConfig().get("build.core"),
+    join(FRAMEWORK_DIR, board.get("build.core"),
          "spl", "variants",
-         env.BoardConfig().get("build.mcu")[0:7], "src"),
+         board.get("build.mcu")[0:7], "src"),
     src_filter=" ".join(src_filter_patterns)
 ))
 

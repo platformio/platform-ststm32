@@ -7,7 +7,6 @@
     "framework_extra_flags": {
       "arduino": "-DARDUINO_BLACK_F407ZG"
     },
-    "ldscript": "stm32f405x6.ld",
     "mcu": "stm32f407zgt6",
     "variant": "BLACK_F407XX"
   },
