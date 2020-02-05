@@ -1,0 +1,49 @@
+{
+  "build": {
+    "core": "maple",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DMCU_STM32F406VG -DBOARD_discovery_f4 -DARDUINO_STM32F4StampF405 -DSTM32F405xx",
+    "f_cpu": "168000000L",
+    "hwids": [
+      [
+        "0x0483",
+        "0xDF11"
+      ]
+    ],
+    "mcu": "stm32f405rgt6",
+    "variant": "stm32f4"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32F405RG",
+    "openocd_extra_args": [
+      "-c",
+      "reset_config none"
+    ],
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F40x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "STM32F405 Feather Express",
+  "upload": {
+    "disable_flushing": false,
+    "maximum_ram_size": 196608,
+    "maximum_size": 1048576,
+    "protocol": "dfu",
+    "protocols": [
+      "stlink",
+      "dfu",
+      "jlink"
+    ],
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
+  },
+  "url": "https://learn.adafruit.com/adafruit-stm32f405-feather-express",
+  "vendor": "Adafruit"
+}
