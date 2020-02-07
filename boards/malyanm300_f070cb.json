@@ -19,12 +19,13 @@
     "cmsis",
     "stm32cube"
   ],
-  "name": "M200 V2",
+  "name": "M300",
   "upload": {
     "maximum_ram_size": 15168,
     "maximum_size": 122880,
     "protocol": "stlink",
     "protocols": [
+      "dfu",
       "jlink",
       "stlink",
       "blackmagic",
@@ -32,6 +33,6 @@
     ],
     "offset_address": "0x08002000"
   },
-  "url": "http://malyansys.com/en/product/fdm-series/m200-v2/",
+  "url": "http://malyansys.com/product/m300/",
   "vendor": "Malyan"
 }
