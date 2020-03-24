@@ -34,7 +34,7 @@
     "stm32cube",
     "zephyr"
   ],
-  "name": "ST DISCO-L475VG-IOT01A",
+  "name": "ST B-L475E-IOT01A Discovery kit",
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,
