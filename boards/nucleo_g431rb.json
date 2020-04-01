@@ -15,7 +15,8 @@
     "svd_path": "STM32G431xx.svd"
   },
   "frameworks": [
-    "arduino"
+    "arduino",
+    "zephyr"
   ],
   "name": "Nucleo G431RB",
   "upload": {

@@ -155,8 +155,6 @@ void main(void)
 	s32_t timeout = K_SECONDS(3);
 	int ret;
 	int port = HTTP_PORT;
-    
-    printk("Program started!\n");
 
 	if (IS_ENABLED(CONFIG_NET_SOCKETS_SOCKOPT_TLS)) {
 		ret = tls_credential_add(CA_CERTIFICATE_TAG,
@@ -171,24 +169,18 @@ void main(void)
 
 		port = HTTPS_PORT;
 	}
-    
-    printk("CONFIG_NET_SOCKETS_SOCKOPT_TLS!\n");
 
 	if (IS_ENABLED(CONFIG_NET_IPV4)) {
 		(void)connect_socket(AF_INET, SERVER_ADDR4, port,
 				     &sock4, (struct sockaddr *)&addr4,
 				     sizeof(addr4));
 	}
-    
-    printk("CONFIG_NET_IPV4s!\n");
 
 	if (IS_ENABLED(CONFIG_NET_IPV6)) {
 		(void)connect_socket(AF_INET6, SERVER_ADDR6, port,
 				     &sock6, (struct sockaddr *)&addr6,
 				     sizeof(addr6));
 	}
-    
-    printk("CONFIG_NET_IPV6!\n");
 
 	if (sock4 < 0 && sock6 < 0) {
 		LOG_ERR("Cannot create HTTP connection.");
@@ -207,8 +199,6 @@ void main(void)
 		req.response = response_cb;
 		req.recv_buf = recv_buf_ipv4;
 		req.recv_buf_len = sizeof(recv_buf_ipv4);
-        
-        printk("IPv4 GET!\n");
 
 		ret = http_client_req(sock4, &req, timeout, "IPv4 GET");
 
@@ -227,8 +217,6 @@ void main(void)
 		req.response = response_cb;
 		req.recv_buf = recv_buf_ipv6;
 		req.recv_buf_len = sizeof(recv_buf_ipv6);
-        
-        printk("IPv6 GET!\n");
 
 		ret = http_client_req(sock6, &req, timeout, "IPv6 GET");
 
@@ -335,8 +323,6 @@ void main(void)
 		req.response = response_cb;
 		req.recv_buf = recv_buf_ipv4;
 		req.recv_buf_len = sizeof(recv_buf_ipv4);
-        
-        printk("IPv4 POST!\n");
 
 		ret = http_client_req(sock4, &req, timeout, "IPv4 POST");
 
@@ -366,8 +352,6 @@ void main(void)
 
 		close(sock6);
 	}
-    
-    printk("FINAL!!!\n");
 
 	k_sleep(K_FOREVER);
 }

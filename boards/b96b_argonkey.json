@@ -1,0 +1,37 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F412Cx",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f412cg",
+    "zephyr": {
+       "variant": "96b_argonkey"
+    }
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32G412CG",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F412xG.svd"
+  },
+  "frameworks": [
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "96Boards Argonkey (STEVAL-MKI187V1)",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 1048576,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/steval-mki187v1.html",
+  "vendor": "96Boards"
+}
