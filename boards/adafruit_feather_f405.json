@@ -1,0 +1,35 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F405xx",
+    "f_cpu": "168000000L",
+    "mcu": "stm32f405rgt6",
+    "variant": "FEATHER_F405"
+  },
+  "debug": {
+    "jlink_device": "STM32F405RG",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F40x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "Adafruit Feather STM32F405",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 1048576,
+    "protocol": "stlink",
+    "protocols": [
+      "dfu",
+      "serial",
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.adafruit.com/product/4382",
+  "vendor": "Adafruit"
+}

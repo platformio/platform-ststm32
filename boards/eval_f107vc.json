@@ -3,7 +3,6 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F107xC -DSTM32F1",
     "f_cpu": "72000000L",
-    "ldscript": "stm32f107xe.ld",
     "mcu": "stm32f107vct6",
     "zephyr": {
        "variant": "stm3210c_eval"

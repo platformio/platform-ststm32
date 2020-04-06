@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "6.0.0",
+  "version": "6.1.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json"
@@ -55,7 +55,7 @@
     "framework-mbed": {
       "type": "framework",
       "optional": true,
-      "version": "~5.51401.0"
+      "version": "~6.51401.0"
     },
     "framework-cmsis": {
       "type": "framework",
@@ -75,12 +75,12 @@
     "framework-arduinoststm32": {
       "type": "framework",
       "optional": true,
-      "version": "~3.10700.0"
+      "version": "~4.10800.0"
     },
     "framework-arduinoststm32-maple": {
       "type": "framework",
       "optional": true,
-      "version": "~1.10000.190516"
+      "version": "~2.10000.0"
     },
     "framework-arduinostm32mxchip": {
       "type": "framework",
@@ -95,67 +95,75 @@
     "framework-zephyr": {
       "type": "framework",
       "optional": true,
-      "version": "~1.20100.0"
+      "version": "~2.20200.0"
     },
     "framework-zephyr-hal-stm32": {
       "optional": true,
-      "version": "~0.20100.190619"
+      "version": "~0.20200.200206"
     },
     "framework-zephyr-hal-st": {
       "optional": true,
-      "version": "~0.20100.190924"
+      "version": "~0.20200.190924"
     },
     "framework-zephyr-civetweb": {
       "optional": true,
-      "version": "~0.20100.190807"
+      "version": "~0.20200.190807"
     },
     "framework-zephyr-fatfs": {
       "optional": true,
-      "version": "~0.20100.190522"
+      "version": "~0.20200.191125"
     },
     "framework-zephyr-libmetal": {
       "optional": true,
-      "version": "~0.20100.190530"
+      "version": "~0.20200.190530"
     },
     "framework-zephyr-lvgl": {
       "optional": true,
-      "version": "~0.20100.190812"
+      "version": "~0.20200.191207"
     },
     "framework-zephyr-mbedtls": {
       "optional": true,
-      "version": "~0.20100.191006"
+      "version": "~0.20200.200206"
     },
     "framework-zephyr-mcumgr": {
       "optional": true,
-      "version": "~0.20100.190528"
-    },
-    "framework-zephyr-nffs": {
-      "optional": true,
-      "version": "~0.20100.190523"
+      "version": "~0.20200.200117"
     },
     "framework-zephyr-open-amp": {
       "optional": true,
-      "version": "~0.20100.190612"
+      "version": "~0.20200.190612"
     },
     "framework-zephyr-openthread": {
       "optional": true,
-      "version": "~0.20100.191024"
+      "version": "~0.20200.191014"
     },
     "framework-zephyr-segger": {
       "optional": true,
-      "version": "~0.20100.190421"
+      "version": "~0.20200.190421"
     },
     "framework-zephyr-tinycbor": {
       "optional": true,
-      "version": "~0.20100.191016"
+      "version": "~0.20200.191016"
     },
     "framework-zephyr-littlefs": {
       "optional": true,
-      "version": "~0.20100.190811"
+      "version": "~0.20200.190811"
     },
     "framework-zephyr-mipi-sys-t": {
       "optional": true,
-      "version": "~0.20100.191024"
+      "version": "~0.20200.191024"
+    },
+    "framework-zephyr-canopennode": {
+      "optional": true,
+      "version": "~0.20200.200115"
+    },
+    "framework-zephyr-loramac-node": {
+      "optional": true,
+      "version": "~0.20200.191220"
+    },
+    "framework-zephyr-mcuboot": {
+      "optional": true,
+      "version": "~0.20200.200219"
     },
     "tool-stm32duino": {
       "type": "uploader",
@@ -179,7 +187,7 @@
     },
     "tool-cmake": {
       "optional": true,
-      "version": "~3.15.0"
+      "version": "~3.16.0"
     },
     "tool-dtc": {
       "optional": true,

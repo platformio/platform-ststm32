@@ -35,6 +35,7 @@ from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()
 platform = env.PioPlatform()
+board = env.BoardConfig()
 
 env.SConscript("_bare.py")
 
@@ -92,8 +93,8 @@ def get_linker_script(mcu):
     if isfile(default_ldscript):
         return default_ldscript
 
-    ram = env.BoardConfig().get("upload.maximum_ram_size", 0)
-    flash = env.BoardConfig().get("upload.maximum_size", 0)
+    ram = board.get("upload.maximum_ram_size", 0)
+    flash = board.get("upload.maximum_size", 0)
     template_file = join(FRAMEWORK_DIR, "platformio",
                          "ldscripts", PLATFORM_NAME, "tpl", "linker.tpl")
     content = ""
@@ -112,14 +113,14 @@ def get_linker_script(mcu):
 env.Append(CPPPATH=[
     join(FRAMEWORK_DIR, "CMSIS", "Core", "Include"),
     join(FRAMEWORK_DIR, "variants", PLATFORM_NAME,
-         env.BoardConfig().get("build.mcu")[0:7], "common"),
-    join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.mcu")[0:7],
-         env.BoardConfig().get("build.mcu"))
+         board.get("build.mcu")[0:7], "common"),
+    join(FRAMEWORK_DIR, "variants", board.get("build.mcu")[0:7],
+         board.get("build.mcu"))
 ])
 
-
-env.Replace(
-    LDSCRIPT_PATH=get_linker_script(env.BoardConfig().get("build.mcu")))
+if not board.get("build.ldscript", ""):
+    env.Replace(
+        LDSCRIPT_PATH=get_linker_script(board.get("build.mcu")))
 
 #
 # Target: Build Core Library
@@ -129,14 +130,14 @@ libs = []
 
 libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkCMSISVariant"),
-    get_variant_dir(env.BoardConfig().get("build.mcu"))
+    get_variant_dir(board.get("build.mcu"))
 ))
 
 libs.append(
     env.BuildLibrary(
         join("$BUILD_DIR", "FrameworkCMSISCommon"),
         join(FRAMEWORK_DIR, "variants", PLATFORM_NAME,
-             env.BoardConfig().get("build.mcu")[0:7], "common"))
+             board.get("build.mcu")[0:7], "common"))
 )
 
 env.Append(LIBS=libs)

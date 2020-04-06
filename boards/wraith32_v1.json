@@ -1,0 +1,34 @@
+{
+  "build": {
+    "cpu": "cortex-m0",
+    "extra_flags": "-DSTM32F051x8",
+    "f_cpu": "48000000L",
+    "mcu": "stm32f051k6",
+    "variant": "WRAITH32_F051K6"
+  },
+  "debug": {
+    "jlink_device": "STM32F051R8",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F0xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "Wraith V1 ESC",
+  "upload": {
+    "maximum_ram_size": 7936,
+    "maximum_size": 32768,
+    "protocol": "stlink",
+    "protocols": [
+      "dfu",
+      "serial",
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://store.myairbot.com/esc/4in1-esc.html",
+  "vendor": "Airbot"
+}

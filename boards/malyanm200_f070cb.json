@@ -7,7 +7,7 @@
       "arduino": "-DVECT_TAB_OFFSET=0x2000 -DCUSTOM_STARTUP_FILE"
     },
     "mcu": "stm32f070cbt6",
-    "variant": "MALYANM200_F070CB"
+    "variant": "MALYANMx00_F070CB"
   },
   "debug": {
     "jlink_device": "STM32F070CB",
@@ -16,6 +16,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "M200 V2",
@@ -28,7 +29,8 @@
       "stlink",
       "blackmagic",
       "serial"
-    ]
+    ],
+    "offset_address": "0x08002000"
   },
   "url": "http://malyansys.com/en/product/fdm-series/m200-v2/",
   "vendor": "Malyan"

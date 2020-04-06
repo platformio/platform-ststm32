@@ -14,7 +14,9 @@
         "0x0004"
       ]
     ],
-    "ldscript": "stm32f103x8.ld",
+    "libopencm3": {
+      "ldscript": "stm32f103x8.ld"
+    },
     "mcu": "stm32f103r8t6",
     "variant": "stm32f1"
   },

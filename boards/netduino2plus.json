@@ -10,7 +10,6 @@
         "0xDF11"
       ]
     ],
-    "ldscript": "stm32f405xg.ld",
     "mcu": "stm32f405rgt6",
     "variant": "stm32f4"
   },

@@ -25,10 +25,13 @@ class Ststm32Platform(PlatformBase):
             "board_build.core", self.board_config(variables.get("board")).get(
                 "build.core", "arduino"))
 
-        if "arduino" in variables.get("pioframework", []) and build_core == "maple":
-            self.frameworks['arduino']['package'] = "framework-arduinoststm32-maple"
-            self.packages["framework-arduinoststm32-maple"]["optional"] = False
-            self.packages["framework-arduinoststm32"]["optional"] = True
+        if "arduino" in variables.get("pioframework", []):
+            if build_core == "maple":
+                self.frameworks['arduino']['package'] = "framework-arduinoststm32-maple"
+                self.packages["framework-arduinoststm32-maple"]["optional"] = False
+                self.packages["framework-arduinoststm32"]["optional"] = True
+            else:
+                self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.90201.0"
 
         default_protocol = self.board_config(variables.get(
             "board")).get("upload.protocol") or ""
@@ -112,8 +115,7 @@ class Ststm32Platform(PlatformBase):
                         "executable": ("JLinkGDBServerCL.exe"
                                        if system() == "Windows" else
                                        "JLinkGDBServer")
-                    },
-                    "onboard": link in debug.get("onboard_tools", [])
+                    }
                 }
             else:
                 server_args = ["-s", "$PACKAGE_DIR/scripts"]
@@ -137,10 +139,10 @@ class Ststm32Platform(PlatformBase):
                         "package": "tool-openocd",
                         "executable": "bin/openocd",
                         "arguments": server_args
-                    },
-                    "onboard": link in debug.get("onboard_tools", []),
-                    "default": link in debug.get("default_tools", [])
+                    }
                 }
+            debug['tools'][link]['onboard'] = link in debug.get("onboard_tools", [])
+            debug['tools'][link]['default'] = link in debug.get("default_tools", [])
 
         board.manifest['debug'] = debug
         return board

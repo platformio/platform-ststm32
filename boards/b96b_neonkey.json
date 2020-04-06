@@ -1,0 +1,37 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F411xE",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f411ce",
+    "zephyr": {
+       "variant": "96b_neonkey"
+    }
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32F411CE",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F411xx.svd"
+  },
+  "frameworks": [
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "96Boards Neonkey",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.96boards.org/product/neonkey/",
+  "vendor": "96Boards"
+}

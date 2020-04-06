@@ -15,7 +15,8 @@
     "svd_path": "STM32G474xx.svd"
   },
   "frameworks": [
-    "arduino"
+    "arduino",
+    "zephyr"
   ],
   "name": "Nucleo G474RE",
   "upload": {

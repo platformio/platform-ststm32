@@ -1,0 +1,38 @@
+{
+  "build": {
+    "cpu": "cortex-m0",
+    "extra_flags": "-DSTM32F070xB",
+    "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-DVECT_TAB_OFFSET=0x2000 -DCUSTOM_STARTUP_FILE"
+    },
+    "mcu": "stm32f070cbt6",
+    "variant": "MALYANMx00_F070CB"
+  },
+  "debug": {
+    "jlink_device": "STM32F070CB",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F0xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "M300",
+  "upload": {
+    "maximum_ram_size": 15168,
+    "maximum_size": 122880,
+    "protocol": "stlink",
+    "protocols": [
+      "dfu",
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial"
+    ],
+    "offset_address": "0x08002000"
+  },
+  "url": "http://malyansys.com/product/m300/",
+  "vendor": "Malyan"
+}
