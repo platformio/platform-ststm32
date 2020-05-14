@@ -1,0 +1,42 @@
+{
+  "build": {
+    "core": "maple",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32G0xx -DSTM32G071xx",
+    "f_cpu": "64000000L",
+    "mcu": "stm32g071cb",
+    "variant": "stm32g0"
+  },
+  "asdfdebug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32FG071CB",
+    "openocd_extra_args": [
+            "-c",
+            "reset_config none"
+          ],
+    "openocd_target": "stm32g0x",
+    "svd_path": "STM32G0x.svd"
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32G071CB (36k RAM. 128k Flash)",
+  "upload": {
+    "disable_flushing": false,
+    "maximum_ram_size": 36864,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "dfu",
+      "jlink"
+    ],
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32g071cb.html",
+  "vendor": "Generic"
+}
