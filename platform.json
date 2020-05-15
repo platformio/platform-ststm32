@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "6.1.0",
+  "version": "6.2.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json"
@@ -90,7 +90,7 @@
     "framework-stm32cube": {
       "type": "framework",
       "optional": true,
-      "version": "~2.0.181130"
+      "version": "~2.1.0-alpha"
     },
     "framework-zephyr": {
       "type": "framework",

@@ -7,7 +7,7 @@
     "mcu": "stm32g071cb",
     "variant": "stm32g0"
   },
-  "asdfdebug": {
+  "debug": {
     "default_tools": [
       "stlink"
     ],
@@ -29,9 +29,7 @@
     "maximum_size": 131072,
     "protocol": "stlink",
     "protocols": [
-      "stlink",
-      "dfu",
-      "jlink"
+      "stlink"
     ],
     "require_upload_port": true,
     "use_1200bps_touch": false,
