@@ -173,7 +173,7 @@
     "tool-openocd": {
       "type": "uploader",
       "optional": true,
-      "version": "~2.1000.0"
+      "version": "~2.1014.200515"
     },
     "tool-jlink": {
       "type": "uploader",

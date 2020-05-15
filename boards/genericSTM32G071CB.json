@@ -12,10 +12,6 @@
       "stlink"
     ],
     "jlink_device": "STM32FG071CB",
-    "openocd_extra_args": [
-            "-c",
-            "reset_config none"
-          ],
     "openocd_target": "stm32g0x",
     "svd_path": "STM32G0x.svd"
   },
