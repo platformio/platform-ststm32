@@ -25,7 +25,10 @@
     "maximum_size": 131072,
     "protocol": "stlink",
     "protocols": [
-      "stlink"
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial"
     ],
     "require_upload_port": true,
     "use_1200bps_touch": false,
