@@ -11,9 +11,9 @@
     "default_tools": [
       "stlink"
     ],
-    "jlink_device": "STM32FG071CB",
+    "jlink_device": "STM32G071CB",
     "openocd_target": "stm32g0x",
-    "svd_path": "STM32G0x.svd"
+    "svd_path": "STM32G071.svd"
   },
   "frameworks": [
     "stm32cube"
@@ -32,5 +32,5 @@
     "wait_for_upload_port": false
   },
   "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32g071cb.html",
-  "vendor": "Generic"
+  "vendor": "ST"
 }
