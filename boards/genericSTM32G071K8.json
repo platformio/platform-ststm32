@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "maple",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32G0xx -DSTM32G071xx",
+    "f_cpu": "64000000L",
+    "mcu": "stm32g071k8",
+    "variant": "stm32g0"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32G071K8",
+    "openocd_target": "stm32g0x",
+    "svd_path": "STM32G071.svd"
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32G071K8 (36k RAM. 64k Flash)",
+  "upload": {
+    "disable_flushing": false,
+    "maximum_ram_size": 36864,
+    "maximum_size": 65536,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink"
+    ],
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32g071k8.html",
+  "vendor": "ST"
+}
