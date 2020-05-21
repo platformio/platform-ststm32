@@ -207,13 +207,16 @@ elif "F103x8" in cpp_flags:
 
 
 env.Append(
-    CPPPATH=[
+    CPPFLAGS=[
+        "-isystem",
         join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers", "CMSIS", "Include"),
+        "-isystem",
         join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers", "CMSIS", "Device",
              "ST", MCU_FAMILY.upper() + "xx", "Include"),
-
+        "-isystem",
         join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers",
              MCU_FAMILY.upper() + "xx_HAL_Driver", "Inc"),
+        "-isystem",
         join(FRAMEWORK_DIR, FRAMEWORK_CORE, "Drivers",
              "BSP", "Components", "Common")
     ],
