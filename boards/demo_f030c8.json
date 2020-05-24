@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32F030x8",
     "f_cpu": "48000000L",
     "mcu": "stm32f030c8t6",
-    "variant": "DISCO_F030C8"
+    "variant": "DEMO_F030C8"
   },
   "debug": {
     "default_tools": [
@@ -22,7 +22,7 @@
     "mbed",
     "stm32cube"
   ],
-  "name": "ST STM32F0308DISCOVERY",
+  "name": "STM32F030C8 demo board",
   "upload": {
     "maximum_ram_size": 8192,
     "maximum_size": 65536,
@@ -33,6 +33,6 @@
       "blackmagic"
     ]
   },
-  "url": "http://www.st.com/en/evaluation-tools/32f0308discovery.html",
+  "url": "",
   "vendor": "ST"
 }
