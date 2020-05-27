@@ -1,0 +1,66 @@
+name: Examples
+
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-16.04, windows-latest, macos-latest]
+        python-version: [2.7, 3.7]
+        example:
+          - "examples/arduino-blink"
+          - "examples/arduino-external-libs"
+          - "examples/arduino-internal-libs"
+          - "examples/arduino-mxchip-azureiot"
+          - "examples/arduino-mxchip-filesystem"
+          - "examples/arduino-mxchip-sensors"
+          - "examples/arduino-mxchip-wifiscan"
+          - "examples/cmsis-blink"
+          - "examples/libopencm3-1bitsy"
+          - "examples/libopencm3-blink"
+          - "examples/mbed-blink"
+          - "examples/mbed-custom-target"
+          - "examples/mbed-dsp"
+          - "examples/mbed-events"
+          - "examples/mbed-filesystem"
+          - "examples/mbed-rtos"
+          - "examples/mbed-rtos-ethernet"
+          - "examples/mbed-rtos-ethernet-tls"
+          - "examples/mbed-rtos-semaphore"
+          - "examples/mbed-rtos-mesh-minimal"
+          - "examples/mbed-serial"
+          - "examples/spl-blink"
+          - "examples/stm32cube-hal-blink"
+          - "examples/stm32cube-ll-blink"
+          - "examples/zephyr-blink"
+          - "examples/zephyr-cpp-synchronization"
+          - "examples/zephyr-drivers-can"
+          - "examples/zephyr-net-https-client"
+          - "examples/zephyr-subsys-usb-hid-mouse"
+          - "tests/arduino-blink-different-cores"
+          - "tests/mbed-filesystem"
+        exclude:
+          - {python-version: 2.7, example: "examples/zephyr-blink"}
+          - {python-version: 2.7, example: "examples/zephyr-cpp-synchronization"}
+          - {python-version: 2.7, example: "examples/zephyr-drivers-can"}
+          - {python-version: 2.7, example: "examples/zephyr-net-https-client"}
+          - {python-version: 2.7, example: "examples/zephyr-subsys-usb-hid-mouse"}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U https://github.com/platformio/platformio/archive/develop.zip
+          platformio platform install file://.
+      - name: Build examples
+        run: |
+          platformio run -d ${{ matrix.example }}
