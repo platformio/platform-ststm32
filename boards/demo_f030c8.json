@@ -11,15 +11,12 @@
       "stlink"
     ],
     "jlink_device": "STM32F030C8",
-    "onboard_tools": [
-      "stlink"
-    ],
+    
     "openocd_target": "stm32f0x",
     "svd_path": "STM32F030.svd"
   },
   "frameworks": [
     "arduino",
-    "mbed",
     "stm32cube"
   ],
   "name": "STM32F030C8 demo board",
@@ -33,6 +30,5 @@
       "blackmagic"
     ]
   },
-  "url": "",
   "vendor": "ST"
 }
