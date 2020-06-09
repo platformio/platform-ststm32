@@ -11,7 +11,6 @@
       "stlink"
     ],
     "jlink_device": "STM32F030C8",
-	
     "openocd_target": "stm32f0x",
     "svd_path": "STM32F030.svd"
   },
@@ -30,6 +29,6 @@
       "blackmagic"
     ]
   },
-  "url": "",
+  "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f0-series/stm32f0x0-value-line/stm32f030c8.html",
   "vendor": "ST"
 }
