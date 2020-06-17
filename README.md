@@ -1,6 +1,6 @@
 # ST STM32: development platform for [PlatformIO](http://platformio.org)
-[![Build Status](https://travis-ci.org/platformio/platform-ststm32.svg?branch=develop)](https://travis-ci.org/platformio/platform-ststm32)
-[![Build status](https://ci.appveyor.com/api/projects/status/y5dayom6bltenoeh/branch/develop?svg=true)](https://ci.appveyor.com/project/ivankravets/platform-ststm32/branch/develop)
+
+[![Build Status](https://github.com/platformio/platform-ststm32/workflows/Examples/badge.svg)](https://github.com/platformio/platform-ststm32/actions)
 
 The STM32 family of 32-bit Flash MCUs based on the ARM Cortex-M processor is designed to offer new degrees of freedom to MCU users. It offers a 32-bit product range that combines very high performance, real-time capabilities, digital signal processing, and low-power, low-voltage operation, while maintaining full integration and ease of development.
 
