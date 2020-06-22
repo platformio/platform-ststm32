@@ -110,10 +110,13 @@ def get_linker_script(mcu):
 
     return default_ldscript
 
-env.Append(CPPPATH=[
+env.Append(CPPFLAGS=[
+    "-isystem",
     join(FRAMEWORK_DIR, "CMSIS", "Core", "Include"),
+    "-isystem",
     join(FRAMEWORK_DIR, "variants", PLATFORM_NAME,
          board.get("build.mcu")[0:7], "common"),
+    "-isystem",
     join(FRAMEWORK_DIR, "variants", board.get("build.mcu")[0:7],
          board.get("build.mcu"))
 ])
