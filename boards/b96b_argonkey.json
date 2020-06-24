@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F412Cx",
     "f_cpu": "100000000L",
     "mcu": "stm32f412cg",
+    "product_line": "STM32F412Cx",
     "zephyr": {
        "variant": "96b_argonkey"
     }
@@ -17,6 +18,7 @@
     "svd_path": "STM32F412xG.svd"
   },
   "frameworks": [
+    "cmsis",
     "stm32cube",
     "zephyr"
   ],

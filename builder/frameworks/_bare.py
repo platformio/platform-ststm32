@@ -44,12 +44,10 @@ env.Append(
     LINKFLAGS=[
         "-Os",
         "-Wl,--gc-sections,--relax",
-        "-mthumb",
-        "-nostartfiles",
-        "-nostdlib"
+        "-mthumb"
     ],
 
-    LIBS=["c", "gcc", "m", "stdc++", "nosys"]
+    LIBS=["c", "gcc", "m", "stdc++"]
 )
 
 if "BOARD" in env:

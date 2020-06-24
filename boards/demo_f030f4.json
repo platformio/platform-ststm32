@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F030x6",
     "f_cpu": "48000000L",
     "mcu": "stm32f030f4p6",
+    "product_line": "STM32F030x6",
     "variant": "DEMO_F030F4"
   },
   "debug": {
@@ -13,6 +14,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "Demo F030F4",

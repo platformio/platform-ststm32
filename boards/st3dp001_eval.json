@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32F4 -DSTM32F401xE -DSTM32F40_41xxx",
     "f_cpu": "84000000L",
     "mcu": "stm32f401vgt6",
+    "product_line": "STM32F401xE",
     "variant": "ST3DP001_EVAL"
   },
   "debug": {
@@ -20,6 +21,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "3DP001V1 Evaluation board for 3D printer",

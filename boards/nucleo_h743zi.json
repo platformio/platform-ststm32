@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32H7xx -DSTM32H743xx",
     "f_cpu": "400000000L",
     "mcu": "stm32h743zit6",
+    "product_line": "STM32H743xx",
     "variant": "NUCLEO_H743ZI"
   },
   "connectivity": [
@@ -24,6 +25,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube",
     "mbed"
   ],

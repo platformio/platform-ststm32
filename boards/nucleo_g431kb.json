@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32G4xx -DSTM32G431xx",
     "f_cpu": "170000000L",
     "mcu": "stm32g431kbt6",
+    "product_line": "STM32F407xx",
     "variant": "NUCLEO_G431KB"
   },
   "connectivity": [
@@ -15,7 +16,8 @@
     "svd_path": "STM32G431xx.svd"
   },
   "frameworks": [
-    "arduino"
+    "arduino",
+    "cmsis"
   ],
   "name": "Nucleo G431KB",
   "upload": {

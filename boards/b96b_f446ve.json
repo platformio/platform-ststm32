@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F446xx",
     "f_cpu": "168000000L",
     "mcu": "stm32f446vet6",
+    "product_line": "STM32F446xx",
     "zephyr": {
        "variant": "96b_stm32_sensor_mez"
     }
@@ -23,6 +24,7 @@
     "svd_path": "STM32F446x.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

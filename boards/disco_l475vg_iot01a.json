@@ -7,6 +7,7 @@
       "arduino": "-DARDUINO_DISCO_L475VG_IOT"
     },
     "mcu": "stm32l475vgt6",
+    "product_line": "STM32L475xx",
     "variant": "DISCO_L475VG_IOT",
     "zephyr": {
        "variant": "disco_l475_iot1"
@@ -30,6 +31,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

@@ -15,6 +15,7 @@
       ]
     ],
     "mcu": "stm32f407vgt6",
+    "product_line": "STM32F407xx",
     "variant": "DISCO_F407VG"
   },
   "debug": {

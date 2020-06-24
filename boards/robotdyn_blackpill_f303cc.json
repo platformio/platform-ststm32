@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32F3 -DSTM32F303xC -DARDUINO_BLACKPILL_F303CC",
     "f_cpu": "72000000L",
     "mcu": "stm32f303cct6",
+    "product_line": "STM32F303xC",
     "variant": "PILL_F303XX"
   },
   "connectivity": [
@@ -17,6 +18,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "BlackPill F303CC",

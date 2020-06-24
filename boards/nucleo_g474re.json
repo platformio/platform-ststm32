@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32G4xx -DSTM32G474xx",
     "f_cpu": "170000000L",
     "mcu": "stm32g474ret6",
+    "product_line": "STM32G474xx",
     "variant": "NUCLEO_G474RE"
   },
   "connectivity": [
@@ -16,6 +17,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "zephyr"
   ],
   "name": "Nucleo G474RE",

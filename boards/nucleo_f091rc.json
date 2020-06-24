@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F091xC",
     "f_cpu": "48000000L",
     "mcu": "stm32f091rct6",
+    "product_line": "STM32F091xC",
     "variant": "NUCLEO_F091RC"
   },
   "connectivity": [
@@ -22,6 +23,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

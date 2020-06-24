@@ -3,7 +3,8 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32L151xC",
     "f_cpu": "32000000L",
-    "mcu": "stm32l151ccu6"
+    "mcu": "stm32l151ccu6",
+    "product_line": "STM32L151xC"
   },
   "debug": {
     "jlink_device": "STM32L151CC",
@@ -11,6 +12,7 @@
     "svd_path": "STM32L15xC.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube"
   ],

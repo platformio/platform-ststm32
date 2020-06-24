@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F303x8",
     "f_cpu": "72000000L",
     "mcu": "stm32f303k8t6",
+    "product_line": "STM32F303x8",
     "variant": "NUCLEO_F303K8"
   },
   "connectivity": [
@@ -22,6 +23,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube"
   ],

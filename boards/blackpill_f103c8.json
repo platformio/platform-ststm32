@@ -18,6 +18,7 @@
       "ldscript": "stm32f103x8.ld"
     },
     "mcu": "stm32f103c8t6",
+    "product_line": "STM32F103xB",
     "variant": "PILL_F103XX",
     "zephyr": {
        "variant": "stm32_min_dev_black"

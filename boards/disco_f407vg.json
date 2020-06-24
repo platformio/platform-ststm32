@@ -9,6 +9,7 @@
     },
     "mcu": "stm32f407vgt6",
     "variant": "DISCO_F407VG",
+    "product_line": "STM32F407xx",
     "zephyr": {
        "variant": "stm32f4_disco"
     }

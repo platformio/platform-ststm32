@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32F40_41xxx -DSTM32F407xx",
     "f_cpu": "168000000L",
     "mcu": "stm32f407vet6",
+    "product_line": "STM32F407xx",
     "variant": "stm32f4"
   },
   "debug": {

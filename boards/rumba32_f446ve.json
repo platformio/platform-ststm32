@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F446xx",
     "f_cpu": "180000000L",
     "mcu": "stm32f446ret6",
+    "product_line": "STM32F446xx",
     "variant": "RUMBA32_F446VE"
   },
   "connectivity": [
@@ -16,6 +17,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "3D Printer control board",

@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32L432xx",
     "f_cpu": "80000000L",
     "mcu": "stm32l432kcu6",
+    "product_line": "STM32L432xx",
     "variant": "NUCLEO_L432KC"
   },
   "debug": {
@@ -19,6 +20,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

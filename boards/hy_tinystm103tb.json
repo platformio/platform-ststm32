@@ -15,6 +15,7 @@
       ]
     ],
     "mcu": "stm32f103tbu6",
+    "product_line": "STM32F103xB",
     "variant": "HY_TinySTM103T"
   },
   "debug": {
@@ -24,6 +25,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "Tiny STM103T",

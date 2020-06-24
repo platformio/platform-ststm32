@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F746xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f746ngh6",
+    "product_line": "STM32F746xx",
     "variant": "DISCO_F746NG",
     "zephyr": {
        "variant": "stm32f746g_disco"
@@ -26,6 +27,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

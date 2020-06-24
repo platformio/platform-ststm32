@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32L496xx",
     "f_cpu": "80000000L",
     "mcu": "stm32l496agi6",
+    "product_line": "STM32L496xx",
     "zephyr": {
        "variant": "stm32l496g_disco"
     }
@@ -23,6 +24,7 @@
     "svd_path": "STM32L4x6.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

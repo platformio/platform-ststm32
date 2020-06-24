@@ -11,6 +11,7 @@
       ]
     ],
     "mcu": "stm32f405rgt6",
+    "product_line": "STM32F405xx",
     "variant": "stm32f4"
   },
   "debug": {
@@ -27,6 +28,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "STM32F4Stamp F405",

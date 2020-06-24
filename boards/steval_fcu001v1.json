@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F4xx -DSTM32F401xC",
     "f_cpu": "84000000L",
-    "mcu": "stm32f401ccu6"
+    "mcu": "stm32f401ccu6",
+    "product_line": "STM32F401xC"
   },
   "debug": {
     "jlink_device": "STM32F401CC",
@@ -11,6 +12,7 @@
     "svd_path": "STM32F40x.svd"
   },
   "frameworks": [
+    "cmsis",
     "stm32cube",
     "zephyr"
   ],

@@ -18,6 +18,7 @@
       "ldscript": "stm32f103xe.ld"
     },
     "mcu": "stm32f103ret6",
+    "product_line": "STM32F103xE",
     "variant": "stm32f1"
   },
   "debug": {
@@ -27,6 +28,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "libopencm3",
     "stm32cube"
   ],

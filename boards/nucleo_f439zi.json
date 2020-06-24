@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F439xx",
     "f_cpu": "180000000L",
-    "mcu": "stm32f439zit6"
+    "mcu": "stm32f439zit6",
+    "product_line": "STM32F439xx"
   },
   "connectivity": [
     "can",
@@ -21,6 +22,7 @@
     "svd_path": "STM32F439x.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube"
   ],

@@ -3,7 +3,8 @@
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32F070xB",
     "f_cpu": "48000000L",
-    "mcu": "stm32f070rbt6"
+    "mcu": "stm32f070rbt6",
+    "product_line": "STM32F070xB"
   },
   "debug": {
     "default_tools": [
@@ -17,6 +18,7 @@
     "svd_path": "STM32F0xx.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

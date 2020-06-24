@@ -8,6 +8,7 @@
       "ldscript": "stm32f405x6.ld"
     },
     "mcu": "stm32f415rgt",
+    "product_line": "STM32F415xx",
     "variant": "stm32f415xx"
   },
   "debug": {

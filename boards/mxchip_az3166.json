@@ -8,6 +8,7 @@
       "ldscript": "AZ3166.ld"
     },
     "mcu": "stm32f412zgt6",
+    "product_line": "STM32F412Zx",
     "variant": "MXChip_AZ3166"
   },
   "connectivity": [
@@ -27,6 +28,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "Microsoft Azure IoT Development Kit (MXChip AZ3166)",

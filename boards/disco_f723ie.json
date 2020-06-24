@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F723xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f723iek6",
+    "product_line": "DSTM32F723xx",
     "zephyr": {
        "variant": "stm32f723e_disco"
     }
@@ -24,6 +25,7 @@
     "svd_path": "STM32F7x3.svd"
   },
   "frameworks": [
+    "cmsis",
     "stm32cube",
     "zephyr"
   ],

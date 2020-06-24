@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32L4xx -DSTM32L4R9xx",
     "f_cpu": "120000000L",
     "mcu": "stm32l4r9zi",
+    "product_line": "STM32L4R9xx",
     "variant": "STEVAL_MKSBOX1V1"
   },
   "connectivity": [
@@ -20,6 +21,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "SensorTile.box",

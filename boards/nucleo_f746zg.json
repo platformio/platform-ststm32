@@ -3,7 +3,8 @@
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F746xx",
     "f_cpu": "216000000L",
-    "mcu": "stm32f746zgt6"
+    "mcu": "stm32f746zgt6",
+    "product_line": "STM32F746xx"
   },
   "connectivity": [
     "can",
@@ -21,6 +22,7 @@
     "svd_path": "STM32F7x6.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

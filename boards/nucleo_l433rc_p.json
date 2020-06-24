@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L433xx",
     "f_cpu": "80000000L",
-    "mcu": "stm32l433rc"
+    "mcu": "stm32l433rc",
+    "product_line": "STM32L433xx"
   },
   "debug": {
     "default_tools": [
@@ -17,6 +18,7 @@
     "svd_path": "STM32L4x3.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube"
   ],
