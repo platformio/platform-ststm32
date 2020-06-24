@@ -28,8 +28,7 @@ env.Append(
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
         "-Wall",
-        "-mthumb",
-        "-nostdlib"
+        "-mthumb"
     ],
 
     CXXFLAGS=[
