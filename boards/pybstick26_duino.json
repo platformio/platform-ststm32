@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0",
+    "extra_flags": "-DSTM32F072xB",
+    "f_cpu": "48000000L",
+    "mcu": "stm32f072rb",
+    "product_line": "STM32F072xB",
+    "variant": "PYBSTICK26_DUINO"
+  },
+  "debug": {
+    "jlink_device": "STM32F072RB",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F072x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "PYBSTICK26 Duino",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "dfu",
+      "serial",
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://shop.mchobby.be/fr/compatibles-arduino/1851-pybstick-duino-arduino-uniquement-3232100018518-garatronic.html",
+  "vendor": "PYBStick"
+}

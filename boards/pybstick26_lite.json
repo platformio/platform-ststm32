@@ -1,0 +1,39 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F4xx -DSTM32F401xE",
+    "f_cpu": "84000000L",
+    "mcu": "stm32f401ceu6",
+    "product_line": "STM32F401xE",
+    "variant": "PYBSTICK26_LITE"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32F401CE",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F40x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "PYBStick Lite 26",
+  "upload": {
+    "maximum_ram_size": 98304,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial",
+      "dfu"
+    ]
+  },
+  "url": "https://shop.mchobby.be/fr/micropython/1830-pybstick-lite-26-micropython-et-arduino-3232100018303-garatronic.html",
+  "vendor": "PYBStick"
+}

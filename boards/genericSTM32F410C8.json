@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F410Cx -DSTM32F4xx",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f410c8",
+    "product_line": "STM32F410Cx",
+    "variant": "Generic_F410Cx"
+  },
+  "debug": {
+    "jlink_device": "STM32F410C8",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F410xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F410C8 (32k RAM. 64k Flash)",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 65536,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f410c8.html",
+  "vendor": "Generic"
+}

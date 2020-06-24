@@ -1,0 +1,39 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F412Rx",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f412re",
+    "product_line": "STM32F412Rx",
+    "variant": "PYBSTICK26_PRO"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32G412CG",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F412xG.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "PYBStick 26 Pro",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "dfu",
+      "serial"
+    ]
+  },
+  "url": "https://shop.mchobby.be/fr/micropython/1850-pybstick-pro-26-micropython-et-arduino-3232100018501-garatronic.html",
+  "vendor": "PYBStick"
+}

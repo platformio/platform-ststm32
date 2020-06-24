@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F415xx -DSTM32F4xx",
+    "f_cpu": "168000000L",
+    "mcu": "stm32f415rg",
+    "product_line": "STM32F415xx",
+    "variant": "Generic_F4x5RG"
+  },
+  "debug": {
+    "jlink_device": "STM32F415RG",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F41x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F415RG (128k RAM. 1024k Flash)",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 1048576,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f415rg.html",
+  "vendor": "Generic"
+}

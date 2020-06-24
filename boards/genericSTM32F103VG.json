@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F103xG -DSTM32F1",
+    "f_cpu": "72000000L",
+    "mcu": "stm32f103vg",
+    "product_line": "STM32F103xG",
+    "variant": "Generic_F103Vx"
+  },
+  "debug": {
+    "jlink_device": "STM32F103VG",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F103VG (96k RAM. 1024k Flash)",
+  "upload": {
+    "maximum_ram_size": 98304,
+    "maximum_size": 1048576,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f103vg.html",
+  "vendor": "Generic"
+}

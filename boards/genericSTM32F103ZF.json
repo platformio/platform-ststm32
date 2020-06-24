@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F103xG -DSTM32F1",
+    "f_cpu": "72000000L",
+    "mcu": "stm32f103zf",
+    "product_line": "STM32F103xG",
+    "variant": "Generic_F103Zx"
+  },
+  "debug": {
+    "jlink_device": "STM32F103ZF",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F103ZF (96k RAM. 768k Flash)",
+  "upload": {
+    "maximum_ram_size": 98304,
+    "maximum_size": 786432,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f103zf.html",
+  "vendor": "Generic"
+}

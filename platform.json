@@ -125,7 +125,7 @@
     "framework-cmsis-stm32h7": {
       "type": "framework",
       "optional": true,
-      "version": "~1.8.0"
+      "version": "~1.9.0"
     },
     "framework-cmsis-stm32l0": {
       "type": "framework",
