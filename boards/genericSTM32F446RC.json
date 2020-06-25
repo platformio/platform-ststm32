@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F446xx -DSTM32F4xx",
+    "f_cpu": "180000000L",
+    "mcu": "stm32f446rc",
+    "product_line": "STM32F446xx",
+    "variant": "Generic_F446Rx"
+  },
+  "debug": {
+    "jlink_device": "STM32F446RC",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F446x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F446RC (128k RAM. 256k Flash)",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 262144,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f446rc.html",
+  "vendor": "Generic"
+}

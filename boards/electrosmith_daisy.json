@@ -1,0 +1,37 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32H7xx -DSTM32H750xx",
+    "f_cpu": "400000000L",
+    "mcu": "stm32h750ibk6",
+    "product_line": "STM32H750xx",
+    "variant": "DAISY_SEED"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32H750IB",
+    "openocd_target": "stm32h7x"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "Electrosmith Daisy",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.electro-smith.com/daisy/daisy",
+  "vendor": "Electrosmith"
+}

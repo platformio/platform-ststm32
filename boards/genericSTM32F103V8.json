@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F103xB -DSTM32F1",
+    "f_cpu": "72000000L",
+    "mcu": "stm32f103v8",
+    "product_line": "STM32F103xB",
+    "variant": "Generic_F103Vx"
+  },
+  "debug": {
+    "jlink_device": "STM32F103V8",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F103V8 (20k RAM. 64k Flash)",
+  "upload": {
+    "maximum_ram_size": 20480,
+    "maximum_size": 65536,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f103v8.html",
+  "vendor": "Generic"
+}

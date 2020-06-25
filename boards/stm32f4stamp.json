@@ -1,8 +1,8 @@
 {
   "build": {
-    "core": "maple",
+    "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DMCU_STM32F406VG -DBOARD_discovery_f4 -DARDUINO_STM32F4StampF405 -DSTM32F405xx",
+    "extra_flags": "-DSTM32F405xx",
     "f_cpu": "168000000L",
     "hwids": [
       [
@@ -12,7 +12,7 @@
     ],
     "mcu": "stm32f405rgt6",
     "product_line": "STM32F405xx",
-    "variant": "stm32f4"
+    "variant": "Generic_F4x5RG"
   },
   "debug": {
     "default_tools": [

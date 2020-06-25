@@ -1,10 +1,12 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L433xx",
     "f_cpu": "80000000L",
     "mcu": "stm32l433rc",
-    "product_line": "STM32L433xx"
+    "product_line": "STM32L433xx",
+    "variant": "NUCLEO_L433RC_P"
   },
   "debug": {
     "default_tools": [
@@ -18,6 +20,7 @@
     "svd_path": "STM32L4x3.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "mbed",
     "stm32cube"

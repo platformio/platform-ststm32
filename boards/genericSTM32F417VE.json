@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F417xx -DSTM32F4xx",
+    "f_cpu": "168000000L",
+    "mcu": "stm32f417ve",
+    "product_line": "STM32F417xx",
+    "variant": "Generic_F4x7Vx"
+  },
+  "debug": {
+    "jlink_device": "STM32F417VE",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F41x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F417VE (128k RAM. 512k Flash)",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f417ve.html",
+  "vendor": "Generic"
+}

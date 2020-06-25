@@ -1,0 +1,43 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F446xx",
+    "f_cpu": "168000000L",
+    "framework_extra_flags": {
+      "arduino": "-DVECT_TAB_OFFSET=0x10000"
+    },
+    "mcu": "stm32f446vet6",
+    "product_line": "STM32F446xx",
+    "variant": "FYSETC_S6"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32F446VE",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F446x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "FYSETC S6",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial",
+      "dfu"
+    ],
+    "offset_address": "0x08010000"
+  },
+  "url": "https://wiki.fysetc.com/FYSETC_S6/",
+  "vendor": "FYSETC"
+}

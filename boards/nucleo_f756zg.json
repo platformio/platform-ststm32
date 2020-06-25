@@ -1,10 +1,12 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F756xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f756zg",
-    "product_line": "STM32F756xx"
+    "product_line": "STM32F756xx",
+    "variant": "NUCLEO_F7x6ZG"
   },
   "connectivity": [
     "can",
@@ -22,6 +24,7 @@
     "svd_path": "STM32F7x6.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "mbed",
     "stm32cube",

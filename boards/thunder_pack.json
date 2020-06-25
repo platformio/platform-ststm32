@@ -1,14 +1,14 @@
 {
   "build": {
     "cpu": "cortex-m0plus",
-    "extra_flags": "-DSTM32L072xx",
+    "extra_flags": "-DSTM32L072xx -DARDUINO_THUNDERPACK_L072",
     "f_cpu": "32000000L",
     "framework_extra_flags": {
       "arduino": "-D__CORTEX_SC=0"
     },
     "mcu": "stm32l072kz",
     "product_line": "STM32L072xx",
-    "variant": "PX_HER0"
+    "variant": "THUNDERPACK"
   },
   "debug": {
     "jlink_device": "STM32L072KZ",
@@ -20,7 +20,7 @@
     "cmsis",
     "stm32cube"
   ],
-  "name": "ThunderPack",
+  "name": "ThunderPack v1.0",
   "upload": {
     "maximum_ram_size": 20480,
     "maximum_size": 196608,

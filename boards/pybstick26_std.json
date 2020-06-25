@@ -1,0 +1,39 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F4xx -DSTM32F411xE",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f411ceu6",
+    "product_line": "STM32F411xE",
+    "variant": "PYBSTICK26_STD"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32F411CE",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F411xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "PYBStick Standard 26",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "serial",
+      "dfu"
+    ]
+  },
+  "url": "https://shop.mchobby.be/fr/micropython/1844-pybstick-standard-26-micropython-et-arduino-3232100018440-garatronic.html",
+  "vendor": "PYBStick"
+}

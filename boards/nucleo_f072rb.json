@@ -1,10 +1,12 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32F072xB",
     "f_cpu": "48000000L",
     "mcu": "stm32f072rbt6",
-    "product_line": "STM32F072xB"
+    "product_line": "STM32F072xB",
+    "variant": "NUCLEO_F072RB"
   },
   "connectivity": [
     "can"
@@ -21,6 +23,7 @@
     "svd_path": "STM32F072x.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "mbed",
     "stm32cube"

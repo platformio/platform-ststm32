@@ -6,7 +6,7 @@
     "f_cpu": "170000000L",
     "mcu": "stm32g431kbt6",
     "product_line": "STM32F407xx",
-    "variant": "NUCLEO_G431KB"
+    "variant": "STM32G431xx"
   },
   "connectivity": [
     "can"

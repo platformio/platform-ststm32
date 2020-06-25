@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F412Cx -DSTM32F4xx",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f412ce",
+    "product_line": "STM32F412Cx",
+    "variant": "Generic_F412Cx"
+  },
+  "debug": {
+    "jlink_device": "STM32F412CE",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F41x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F412CE (256k RAM. 512k Flash)",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 524288,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f412ce.html",
+  "vendor": "Generic"
+}

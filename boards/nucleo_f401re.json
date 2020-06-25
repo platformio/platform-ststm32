@@ -6,7 +6,7 @@
     "f_cpu": "84000000L",
     "mcu": "stm32f401ret6",
     "product_line": "STM32F401xE",
-    "variant": "NUCLEO_F401RE"
+    "variant": "NUCLEO_F4x1RE"
   },
   "debug": {
     "default_tools": [

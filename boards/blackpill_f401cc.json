@@ -6,7 +6,7 @@
     "f_cpu": "84000000L",
     "mcu": "stm32f401cct6",
     "product_line": "STM32F401xC",
-    "variant": "PILL_F401XX"
+    "variant": "Generic_F401Cx"
   },
   "connectivity": [
     "can"

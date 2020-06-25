@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F411xE -DSTM32F4xx",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f411cc",
+    "product_line": "STM32F411xE",
+    "variant": "Generic_F411Cx"
+  },
+  "debug": {
+    "jlink_device": "STM32F411CC",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F411xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F411CC (128k RAM. 256k Flash)",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 262144,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f411cc.html",
+  "vendor": "Generic"
+}
