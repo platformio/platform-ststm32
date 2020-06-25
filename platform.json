@@ -21,49 +21,49 @@
       "package": "framework-mbed",
       "script": "builder/frameworks/mbed.py",
       "description": "Arm Mbed OS is an open source embedded operating system designed specifically for the 'things' in the Internet of Things. It includes all the features you need to develop a connected product based on an Arm Cortex-M microcontroller, including security, connectivity, an RTOS and drivers for sensors and I/O devices",
-      "url": "https://os.mbed.com/",
+      "homepage": "https://os.mbed.com/",
       "title": "Mbed"
     },
     "cmsis": {
       "package": "framework-cmsis",
       "script": "builder/frameworks/cmsis.py",
       "description": "The ARM Cortex Microcontroller Software Interface Standard (CMSIS) is a vendor-independent hardware abstraction layer for the Cortex-M processor series and specifies debugger interfaces. The CMSIS enables consistent and simple software interfaces to the processor for interface peripherals, real-time operating systems, and middleware. It simplifies software re-use, reducing the learning curve for new microcontroller developers and cutting the time-to-market for devices",
-      "url": "https://developer.arm.com/tools-and-software/embedded/cmsis",
+      "homepage": "https://developer.arm.com/tools-and-software/embedded/cmsis",
       "title": "CMSIS"
     },
     "spl": {
       "package": "framework-spl",
       "script": "builder/frameworks/spl.py",
       "description": "The ST Standard Peripheral Library provides a set of functions for handling the peripherals on the STM32 family of microcontrollers.",
-      "url": "https://www.st.com/en/embedded-software/stsw-stm8069.html",
+      "homepage": "https://www.st.com/en/embedded-software/stsw-stm8069.html",
       "title": "Standard Peripheral Library"
     },
     "libopencm3": {
       "package": "framework-libopencm3",
       "script": "builder/frameworks/libopencm3/libopencm3.py",
       "description": "The libOpenCM3 framework aims to create a free and open-source firmware library for various ARM Cortex-M0(+)/M3/M4 microcontrollers, including ST STM32, Ti Tiva and Stellaris, NXP LPC, Atmel SAM3, Energy Micro EFM32 and others",
-      "url": "http://www.libopencm3.org",
+      "homepage": "http://www.libopencm3.org",
       "title": "libopencm3"
     },
     "arduino": {
       "package": "framework-arduinoststm32",
       "script": "builder/frameworks/arduino.py",
       "description": "Arduino Wiring-based Framework allows writing cross-platform software to control devices attached to a wide range of Arduino boards to create all kinds of creative coding, interactive objects, spaces or physical experiences",
-      "url": "http://arduino.cc/en/Reference/HomePage",
+      "homepage": "http://arduino.cc/en/Reference/HomePage",
       "title": "Arduino"
     },
     "stm32cube": {
       "package": "framework-stm32cube",
       "script": "builder/frameworks/stm32cube.py",
       "description": "STM32Cube embedded software libraries, including: The HAL hardware abstraction layer, enabling portability between different STM32 devices via standardized API calls; The Low-Layer (LL) APIs, a light-weight, optimized, expert oriented set of APIs designed for both performance and runtime efficiency",
-      "url": "https://www.st.com/en/ecosystems/stm32cube.html",
+      "homepage": "https://www.st.com/en/ecosystems/stm32cube.html",
       "title": "STM32Cube"
     },
     "zephyr": {
       "package": "framework-zephyr",
       "script": "builder/frameworks/zephyr.py",
       "description": "The Zephyr Project is a scalable real-time operating system (RTOS) supporting multiple hardware architectures, optimized for resource constrained devices, and built with safety and security in mind",
-      "url": "https://www.zephyrproject.org",
+      "homepage": "https://www.zephyrproject.org",
       "title": "Zephyr RTOS"
     }
   },
