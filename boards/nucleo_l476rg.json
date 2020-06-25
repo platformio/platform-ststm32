@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32L476xx",
     "f_cpu": "80000000L",
     "mcu": "stm32l476rgt6",
+    "product_line": "STM32L476xx",
     "variant": "NUCLEO_L476RG"
   },
   "connectivity": [
@@ -22,6 +23,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

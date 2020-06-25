@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F334x8",
     "f_cpu": "72000000L",
-    "mcu": "stm32f334r8t6"
+    "mcu": "stm32f334r8t6",
+    "product_line": "STM32F334x8"
   },
   "connectivity": [
     "can"
@@ -20,6 +21,7 @@
     "svd_path": "STM32F334x.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

@@ -80,7 +80,72 @@
     "framework-cmsis": {
       "type": "framework",
       "optional": true,
-      "version": "~2.50400.181126"
+      "version": "~2.50501.0"
+    },
+    "framework-cmsis-stm32f0": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.3.4"
+    },
+    "framework-cmsis-stm32f1": {
+      "type": "framework",
+      "optional": true,
+      "version": "~4.3.1"
+    },
+    "framework-cmsis-stm32f2": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.2.3"
+    },
+    "framework-cmsis-stm32f3": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.3.4"
+    },
+    "framework-cmsis-stm32f4": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.6.4"
+    },
+    "framework-cmsis-stm32f7": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.2.5"
+    },
+    "framework-cmsis-stm32g0": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.3.0"
+    },
+    "framework-cmsis-stm32g4": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.1.1"
+    },
+    "framework-cmsis-stm32h7": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.8.0"
+    },
+    "framework-cmsis-stm32l0": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.9.0"
+    },
+    "framework-cmsis-stm32l1": {
+      "type": "framework",
+      "optional": true,
+      "version": "~2.3.0"
+    },
+    "framework-cmsis-stm32l4": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.6.1"
+    },
+    "framework-cmsis-stm32l5": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.0.2"
     },
     "framework-spl": {
       "type": "framework",
@@ -220,6 +285,10 @@
     "tool-gperf": {
       "optional": true,
       "version": "^3.0.0"
+    },
+    "tool-ldscripts-ststm32": {
+      "optional": true,
+      "version": "~0.1.0"
     }
   }
 }

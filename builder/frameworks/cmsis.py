@@ -26,118 +26,110 @@ and cutting the time-to-market for devices.
 http://www.arm.com/products/processors/cortex-m/cortex-microcontroller-software-interface-standard.php
 """
 
-import sys
-from glob import glob
-from string import Template
-from os.path import isdir, isfile, join
+import glob
+import os
+import string
 
 from SCons.Script import DefaultEnvironment
 
 env = DefaultEnvironment()
 platform = env.PioPlatform()
 board = env.BoardConfig()
+mcu = board.get("build.mcu", "")
+product_line = board.get("build.product_line", "")
+assert product_line, "Missing MCU or Product Line field"
 
 env.SConscript("_bare.py")
 
-PLATFORM_NAME = env.get("PIOPLATFORM")
-FRAMEWORK_DIR = platform.get_package_dir("framework-cmsis")
-assert isdir(FRAMEWORK_DIR)
-
-VARIANT_DIR_EXCEPTIONS = {
-    "stm32f103c8": "stm32f103xb",
-    "stm32f103r8": "stm32f103xb",
-    "stm32f103rc": "stm32f103xb",
-    "stm32f103t8": "stm32f103xb",
-    "stm32f103vc": "stm32f103xe",
-    "stm32f103vd": "stm32f103xe",
-    "stm32f103ve": "stm32f103xe",
-    "stm32f103zc": "stm32f103xe",
-    "stm32f103zd": "stm32f103xe",
-    "stm32f303cb": "stm32f303x8",
-    "stm32f407ve": "stm32f407xx"
-}
+CMSIS_DIR = platform.get_package_dir("framework-cmsis")
+CMSIS_DEVICE_DIR = platform.get_package_dir("framework-cmsis-" + mcu[0:7])
+LDSCRIPTS_DIR = platform.get_package_dir("tool-ldscripts-ststm32")
+assert all(os.path.isdir(d) for d in (CMSIS_DIR, CMSIS_DEVICE_DIR, LDSCRIPTS_DIR))
 
 
-def get_variant_dir(mcu):
-    if len(mcu) > 12:
-        mcu = mcu[:-2]
-
-    mcu_family_path = join(FRAMEWORK_DIR, "variants", PLATFORM_NAME, mcu[0:7])
-    mcu_pattern = mcu[0:9] + "[" + mcu[9] + "|x]" + "[" + mcu[10] + "|x]"
-    variant_path = join(mcu_family_path, mcu_pattern)
-    variant_dirs = glob(variant_path)
-
-    if mcu in VARIANT_DIR_EXCEPTIONS:
-        return join(mcu_family_path, VARIANT_DIR_EXCEPTIONS[mcu])
-
-    if not variant_dirs:
-        sys.stderr.write(
-            """Error: There is no variant dir for %s MCU!
-            Please add initialization code to your project manually!""" % mcu)
-    return variant_dirs[0]
-
-
-def get_linker_script(mcu):
-    ldscript = join(FRAMEWORK_DIR, "platformio", "ldscripts", PLATFORM_NAME,
-                    mcu[0:11].upper() + "_FLASH.ld")
-
-    if isfile(ldscript):
-        return ldscript
-
-    default_ldscript = join(FRAMEWORK_DIR, "platformio", "ldscripts",
-                            PLATFORM_NAME, mcu[0:11].upper() + "_DEFAULT.ld")
-
-    print("Warning! Cannot find a linker script for the required board! "
-          "Firmware will be linked with a default linker script!")
-
-    if isfile(default_ldscript):
-        return default_ldscript
-
+def generate_ldscript(default_ldscript_path):
     ram = board.get("upload.maximum_ram_size", 0)
     flash = board.get("upload.maximum_size", 0)
-    template_file = join(FRAMEWORK_DIR, "platformio",
-                         "ldscripts", PLATFORM_NAME, "tpl", "linker.tpl")
+    template_file = os.path.join(LDSCRIPTS_DIR, "tpl", "linker.tpl")
     content = ""
     with open(template_file) as fp:
-        data = Template(fp.read())
+        data = string.Template(fp.read())
         content = data.substitute(
             stack=hex(0x20000000 + ram),  # 0x20000000 - start address for RAM
             ram=str(int(ram / 1024)) + "K",
             flash=str(int(flash / 1024)) + "K")
 
-    with open(default_ldscript, "w") as fp:
+    with open(default_ldscript_path, "w") as fp:
         fp.write(content)
+
+
+def get_linker_script():
+    ldscript_match = glob.glob(os.path.join(
+        LDSCRIPTS_DIR, mcu[0:7], mcu[0:11].upper() + "*_FLASH.ld"))
+
+    if ldscript_match and os.path.isfile(ldscript_match[0]):
+        return ldscript_match[0]
+
+    default_ldscript = os.path.join(
+        LDSCRIPTS_DIR, mcu[0:7], mcu[0:11].upper() + "_DEFAULT.ld")
+
+    print("Warning! Cannot find a linker script for the required board! "
+          "An auto-generated script will be used to link firmware!")
+
+    if not os.path.isfile(default_ldscript):
+        generate_ldscript(default_ldscript)
 
     return default_ldscript
 
-env.Append(CPPPATH=[
-    join(FRAMEWORK_DIR, "CMSIS", "Core", "Include"),
-    join(FRAMEWORK_DIR, "variants", PLATFORM_NAME,
-         board.get("build.mcu")[0:7], "common"),
-    join(FRAMEWORK_DIR, "variants", board.get("build.mcu")[0:7],
-         board.get("build.mcu"))
-])
+
+def prepare_startup_file(src_path):
+    startup_file = os.path.join(src_path, "gcc", "startup_%s.S" % product_line.lower())
+    # Change file extension to uppercase:
+    if not os.path.isfile(startup_file) and os.path.isfile(startup_file[:-2] + ".s"):
+        os.rename(startup_file[:-2] + ".s", startup_file)
+    if not os.path.isfile(startup_file):
+        print("Warning! Cannot find the default startup file for %s. "
+              "Ignore this warning if the startup code is part of your project." % mcu)
+
+
+#
+# Allow using custom linker scripts
+#
 
 if not board.get("build.ldscript", ""):
-    env.Replace(
-        LDSCRIPT_PATH=get_linker_script(board.get("build.mcu")))
+    env.Replace(LDSCRIPT_PATH=get_linker_script())
 
 #
-# Target: Build Core Library
+# Prepare build environment
 #
 
-libs = []
+# The final firmware is linked against standard library with two specifications:
+# nano.specs - link against a reduced-size variant of libc
+# nosys.specs - link against stubbed standard syscalls
 
-libs.append(env.BuildLibrary(
-    join("$BUILD_DIR", "FrameworkCMSISVariant"),
-    get_variant_dir(board.get("build.mcu"))
-))
+env.Append(
+    CPPPATH=[
+        os.path.join(CMSIS_DIR, "CMSIS", "Core", "Include"),
+        os.path.join(CMSIS_DEVICE_DIR, "Include")
+    ],
 
-libs.append(
-    env.BuildLibrary(
-        join("$BUILD_DIR", "FrameworkCMSISCommon"),
-        join(FRAMEWORK_DIR, "variants", PLATFORM_NAME,
-             board.get("build.mcu")[0:7], "common"))
+    LINKFLAGS=[
+        "--specs=nano.specs",
+        "--specs=nosys.specs"
+    ]
 )
 
-env.Append(LIBS=libs)
+#
+# Compile CMSIS sources
+#
+
+sources_path = os.path.join(CMSIS_DEVICE_DIR, "Source", "Templates")
+prepare_startup_file(sources_path)
+
+env.BuildSources(
+    os.path.join("$BUILD_DIR", "FrameworkCMSIS"), sources_path,
+    src_filter=[
+        "-<*>",
+        "+<%s>" % board.get("build.cmsis.system_file", "system_%sxx.c" % mcu[0:7]),
+        "+<gcc/startup_%s.S>" % product_line.lower()]
+)

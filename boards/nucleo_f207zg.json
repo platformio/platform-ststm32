@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32F207xx",
     "f_cpu": "120000000L",
     "mcu": "stm32f207zgt6",
+    "product_line": "STM32F207xx",
     "variant": "NUCLEO_F207ZG"
   },
   "connectivity": [
@@ -24,6 +25,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

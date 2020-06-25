@@ -18,6 +18,7 @@
       "ldscript": "stm32f103xb.ld"
     },
     "mcu": "stm32f103cbt6",
+    "product_line": "STM32F103xB",
     "variant": "MAPLEMINI_F103CB"
   },
   "debug": {
@@ -27,6 +28,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "libopencm3",
     "stm32cube"
   ],

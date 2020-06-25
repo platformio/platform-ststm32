@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F407xx",
     "f_cpu": "168000000L",
-    "mcu": "stm32f407vet6"
+    "mcu": "stm32f407vet6",
+    "product_line": "STM32F407xx"
   },
   "connectivity": [
     "ethernet"
@@ -20,6 +21,7 @@
     "svd_path": "STM32F40x.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube"
   ],

@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32F3 -DSTM32F303xC",
     "f_cpu": "72000000L",
     "mcu": "stm32f303vct6",
+    "product_line": "STM32F303xC",
     "variant": "stm32f303xc",
     "zephyr": {
        "variant": "stm32f3_disco"

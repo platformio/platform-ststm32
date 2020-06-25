@@ -3,7 +3,8 @@
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F750xx",
     "f_cpu": "216000000L",
-    "mcu": "stm32f750n8h6"
+    "mcu": "stm32f750n8h6",
+    "product_line": "STM32F750xx"
   },
   "connectivity": [
     "can",
@@ -21,6 +22,7 @@
     "svd_path": "STM32F7x.svd"
   },
   "frameworks": [
+    "cmsis",
     "stm32cube"
   ],
   "name": "STM32F7508-DK",

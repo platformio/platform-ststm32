@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32F4 -DSTM32F405xx",
     "f_cpu": "168000000L",
     "mcu": "stm32f405rgt6",
+    "product_line": "STM32F405xx",
     "zephyr": {
        "variant": "olimex_stm32_p405"
     }
@@ -15,6 +16,7 @@
     "svd_path": "STM32F40x.svd"
   },
   "frameworks": [
+    "cmsis",
     "stm32cube",
     "zephyr"
   ],

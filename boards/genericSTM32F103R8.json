@@ -18,6 +18,7 @@
       "ldscript": "stm32f103x8.ld"
     },
     "mcu": "stm32f103r8t6",
+    "product_line": "STM32F103xB",
     "variant": "stm32f1"
   },
   "debug": {

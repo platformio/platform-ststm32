@@ -4,7 +4,8 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32L100xC",
     "f_cpu": "32000000L",
-    "mcu": "stm32l100rct6"
+    "mcu": "stm32l100rct6",
+    "product_line": "STM32L100xC"
   },
   "debug": {
     "default_tools": [
@@ -18,6 +19,7 @@
     "svd_path": "STM32L1xx.svd"
   },
   "frameworks": [
+    "cmsis",
     "stm32cube"
   ],
   "name": "ST 32L100DISCOVERY",

@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx",
     "f_cpu": "168000000L",
     "mcu": "stm32f407re",
+    "product_line": "STM32F407xx",
     "variant": "PRNTR_Vx"
   },
   "connectivity": [

@@ -3,7 +3,8 @@
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32F072xB",
     "f_cpu": "48000000L",
-    "mcu": "stm32f072rbt6"
+    "mcu": "stm32f072rbt6",
+    "product_line": "STM32F072xB"
   },
   "connectivity": [
     "can"
@@ -20,6 +21,7 @@
     "svd_path": "STM32F072x.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube"
   ],

@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32L4R5xx",
     "f_cpu": "120000000L",
     "mcu": "stm32l4r5zit6",
+    "product_line": "STM32L4R5xx",
     "variant": "NUCLEO_L4R5ZI"
   },
   "connectivity": [
@@ -22,6 +23,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

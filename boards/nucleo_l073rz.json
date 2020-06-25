@@ -7,6 +7,7 @@
       "arduino": "-D__CORTEX_SC=0"
     },
     "mcu": "stm32l073rz",
+    "product_line": "STM32L073xx",
     "variant": "NUCLEO_L073RZ"
   },
   "debug": {
@@ -22,6 +23,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

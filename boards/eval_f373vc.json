@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F3 -DSTM32F373xC",
     "f_cpu": "72000000L",
     "mcu": "stm32f373vct6",
+    "product_line": "STM32F373xC",
     "zephyr": {
        "variant": "stm32373c_eval"
     }
@@ -17,6 +18,7 @@
     "svd_path": "STM32F30x.svd"
   },
   "frameworks": [
+    "cmsis",
     "stm32cube",
     "zephyr"
   ],

@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F072xB",
     "f_cpu": "48000000L",
     "mcu": "stm32f072rbt6",
+    "product_line": "STM32F072xB",
     "variant": "DISCO_F072RB",
     "zephyr": {
        "variant": "stm32f072b_disco"
@@ -26,6 +27,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

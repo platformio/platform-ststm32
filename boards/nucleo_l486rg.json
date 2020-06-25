@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L486xx",
     "f_cpu": "80000000L",
-    "mcu": "stm32l486rgt6"
+    "mcu": "stm32l486rgt6",
+    "product_line": "STM32L486xx"
   },
   "connectivity": [
     "can"
@@ -20,6 +21,7 @@
     "svd_path": "STM32L4x6.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube"
   ],

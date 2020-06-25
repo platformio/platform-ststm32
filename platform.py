@@ -21,20 +21,29 @@ class Ststm32Platform(PlatformBase):
 
     def configure_default_packages(self, variables, targets):
         board = variables.get("board")
+        board_config = self.board_config(board)
         build_core = variables.get(
-            "board_build.core", self.board_config(variables.get("board")).get(
-                "build.core", "arduino"))
+            "board_build.core", board_config.get("build.core", "arduino"))
 
-        if "arduino" in variables.get("pioframework", []):
+        frameworks = variables.get("pioframework", [])
+        if "arduino" in frameworks:
             if build_core == "maple":
                 self.frameworks['arduino']['package'] = "framework-arduinoststm32-maple"
                 self.packages["framework-arduinoststm32-maple"]["optional"] = False
                 self.packages["framework-arduinoststm32"]["optional"] = True
             else:
                 self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.90201.0"
+        if "cmsis" in frameworks:
+            assert board_config.get(
+                "build.mcu", ""), ("Missing MCU field for %s" % board)
+            device_package = "framework-cmsis-" + board_config.get("build.mcu")[0:7]
+            if device_package in self.packages:
+                self.packages[device_package]["optional"] = False
 
-        default_protocol = self.board_config(variables.get(
-            "board")).get("upload.protocol") or ""
+        if any(f in frameworks for f in ("cmsis", "stm32cube")):
+            self.packages["tool-ldscripts-ststm32"]["optional"] = False
+
+        default_protocol = board_config.get("upload.protocol") or ""
         if variables.get("upload_protocol", default_protocol) == "dfu":
             self.packages["tool-dfuutil"]["optional"] = False
 
@@ -48,7 +57,7 @@ class Ststm32Platform(PlatformBase):
         if "zephyr" in variables.get("pioframework", []):
             for p in self.packages:
                 if p.startswith("framework-zephyr-") or p in (
-                    "tool-cmake", "tool-dtc", "tool-ninja"):
+                        "tool-cmake", "tool-dtc", "tool-ninja"):
                     self.packages[p]["optional"] = False
             self.packages['toolchain-gccarmnoneeabi']['version'] = "~1.80201.0"
             if "windows" not in get_systype():
@@ -59,8 +68,7 @@ class Ststm32Platform(PlatformBase):
             "jlink" in variables.get(option, "")
             for option in ("upload_protocol", "debug_tool")
         ]
-        if variables.get("board"):
-            board_config = self.board_config(variables.get("board"))
+        if board:
             jlink_conds.extend([
                 "jlink" in board_config.get(key, "")
                 for key in ("debug.default_tools", "upload.protocol")

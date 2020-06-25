@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F429xx",
     "f_cpu": "180000000L",
     "mcu": "stm32f429zit6",
+    "product_line": "STM32F429xx",
     "variant": "NUCLEO_F429ZI"
   },
   "connectivity": [
@@ -23,6 +24,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

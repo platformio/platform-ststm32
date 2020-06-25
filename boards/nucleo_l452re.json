@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32L452xx",
     "f_cpu": "80000000L",
     "mcu": "stm32l452ret6",
+    "product_line": "STM32L452xx",
     "variant": "NUCLEO_L452RE"
   },
   "connectivity": [
@@ -23,6 +24,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "ST Nucleo L452RE",
