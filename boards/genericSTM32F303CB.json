@@ -4,7 +4,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F3 -DSTM32F303xC",
     "f_cpu": "72000000L",
-    "mcu": "stm32f303cbt6"
+    "mcu": "stm32f303cbt6",
+    "product_line": "STM32F303xC"
   },
   "connectivity": [
     "can"

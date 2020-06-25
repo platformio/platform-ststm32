@@ -1,6 +1,6 @@
 {
   "build": {
-    "core": "maple",
+    "core": "stm32",
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F103xE -DSTM32F1",
     "f_cpu": "72000000L",
@@ -18,7 +18,8 @@
       "ldscript": "stm32f103xd.ld"
     },
     "mcu": "stm32f103vdt6",
-    "variant": "stm32f1"
+    "product_line": "STM32F103xE",
+    "variant": "Generic_F103Vx"
   },
   "debug": {
     "jlink_device": "STM32F103VD",

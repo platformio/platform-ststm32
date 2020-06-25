@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F769xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f769nih6",
+    "product_line": "STM32F769xx",
     "zephyr": {
        "variant": "stm32f769i_disco"
     }
@@ -24,6 +25,7 @@
     "svd_path": "STM32F7x9.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

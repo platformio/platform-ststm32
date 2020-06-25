@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32L412xx",
     "f_cpu": "80000000L",
     "mcu": "stm32l412kbu6",
+    "product_line": "STM32L412xx",
     "variant": "NUCLEO_L412KB"
   },
   "debug": {
@@ -19,6 +20,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "ST Nucleo L412KB",

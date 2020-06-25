@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F051x8",
     "f_cpu": "48000000L",
     "mcu": "stm32f051k6",
+    "product_line": "STM32F051x8",
     "variant": "WRAITH32_F051K6"
   },
   "debug": {

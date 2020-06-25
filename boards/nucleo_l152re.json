@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32L152xE",
     "f_cpu": "32000000L",
     "mcu": "stm32l152ret6",
+    "product_line": "STM32L152xE",
     "variant": "NUCLEO_L152RE"
   },
   "debug": {
@@ -19,6 +20,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube"
   ],

@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32F401xC -DSTM32F4xx",
     "f_cpu": "84000000L",
     "mcu": "stm32f401rb",
+    "product_line": "STM32F401xC",
     "variant": "Generic_F401Rx"
   },
   "debug": {

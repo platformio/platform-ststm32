@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F4 -DSTM32F469xx",
     "f_cpu": "180000000L",
     "mcu": "stm32f469nih6",
+    "product_line": "STM32F469xx",
     "zephyr": {
        "variant": "stm32f469i_disco"
     }

@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F051x8",
     "f_cpu": "48000000L",
     "mcu": "stm32f051r8t6",
+    "product_line": "STM32F051x8",
     "zephyr": {
        "variant": "stm32f0_disco"
     }
@@ -20,6 +21,7 @@
     "svd_path": "STM32F0xx.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

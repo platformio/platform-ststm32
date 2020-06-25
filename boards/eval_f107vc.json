@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F107xC -DSTM32F1",
     "f_cpu": "72000000L",
     "mcu": "stm32f107vct6",
+    "product_line": "STM32F107xC",
     "zephyr": {
        "variant": "stm3210c_eval"
     }

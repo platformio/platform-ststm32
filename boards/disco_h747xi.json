@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32H7xx -DSTM32H747xx",
     "f_cpu": "400000000L",
     "mcu": "stm32h747xih6",
+    "product_line": "STM32H747xx",
     "zephyr": {
        "variant": "stm32h747i_disco_m7"
     }
@@ -24,6 +25,7 @@
     "svd_path": "STM32H7x7.svd"
   },
   "frameworks": [
+    "cmsis",
     "stm32cube",
     "zephyr"
   ],

@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F072xB",
     "f_cpu": "48000000L",
     "mcu": "stm32f072vbt6",
+    "product_line": "STM32F072xB",
     "zephyr": {
        "variant": "stm32f072_eval"
     }
@@ -17,6 +18,7 @@
     "svd_path": "STM32F072x.svd"
   },
   "frameworks": [
+    "cmsis",
     "stm32cube",
     "zephyr"
   ],

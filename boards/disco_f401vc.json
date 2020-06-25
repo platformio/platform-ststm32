@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F401xC",
     "f_cpu": "84000000L",
-    "mcu": "stm32f401vct6"
+    "mcu": "stm32f401vct6",
+    "product_line": "STM32F401xC"
   },
   "debug": {
     "default_tools": [
@@ -17,6 +18,7 @@
     "svd_path": "STM32F401x.svd"
   },
   "frameworks": [
+    "cmsis",
     "mbed",
     "stm32cube"
   ],

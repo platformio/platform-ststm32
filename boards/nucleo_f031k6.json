@@ -1,9 +1,12 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32F031x6",
     "f_cpu": "48000000L",
-    "mcu": "stm32f031k6t6"
+    "mcu": "stm32f031k6t6",
+    "product_line": "STM32F031x6",
+    "variant": "NUCLEO_F031K6"
   },
   "debug": {
     "default_tools": [
@@ -17,6 +20,8 @@
     "svd_path": "STM32F031x.svd"
   },
   "frameworks": [
+    "arduino",
+    "cmsis",
     "mbed",
     "stm32cube"
   ],

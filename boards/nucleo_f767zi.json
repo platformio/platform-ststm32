@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F767xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f767zit6",
+    "product_line": "STM32F767xx",
     "variant": "NUCLEO_F767ZI"
   },
   "connectivity": [
@@ -23,6 +24,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

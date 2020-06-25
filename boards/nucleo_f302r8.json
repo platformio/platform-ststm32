@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F302x8",
     "f_cpu": "72000000L",
     "mcu": "stm32f302r8t6",
+    "product_line": "STM32F302x8",
     "variant": "NUCLEO_F302R8"
   },
   "connectivity": [
@@ -22,6 +23,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

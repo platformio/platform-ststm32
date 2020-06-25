@@ -8,6 +8,7 @@
       "arduino": "-DARDUINO_BLACK_F407VG"
     },
     "mcu": "stm32f407vgt6",
+    "product_line": "STM32F407xx",
     "variant": "BLACK_F407XX"
   },
   "connectivity": [

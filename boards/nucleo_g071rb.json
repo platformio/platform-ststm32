@@ -8,6 +8,7 @@
       "arduino": "-D__CORTEX_SC=0"
     },
     "mcu": "stm32g071rbt6",
+    "product_line": "STM32G071xx",
     "variant": "NUCLEO_G071RB"
   },
   "debug": {
@@ -16,6 +17,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "zephyr"
   ],
   "name": "Nucleo G071RB",

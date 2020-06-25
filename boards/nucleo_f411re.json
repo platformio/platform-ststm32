@@ -4,7 +4,8 @@
     "extra_flags": "-DSTM32F411xE",
     "f_cpu": "100000000L",
     "mcu": "stm32f411ret6",
-    "variant": "NUCLEO_F411RE"
+    "product_line": "STM32F411xE",
+    "variant": "NUCLEO_F4x1RE"
   },
   "debug": {
     "default_tools": [
@@ -19,6 +20,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "stm32cube",
     "zephyr"

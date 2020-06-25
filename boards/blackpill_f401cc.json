@@ -5,7 +5,8 @@
     "extra_flags": "-DSTM32F4xx -DSTM32F401xC",
     "f_cpu": "84000000L",
     "mcu": "stm32f401cct6",
-    "variant": "PILL_F401XX"
+    "product_line": "STM32F401xC",
+    "variant": "Generic_F401Cx"
   },
   "connectivity": [
     "can"

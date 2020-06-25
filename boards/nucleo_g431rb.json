@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32G4xx -DSTM32G431xx",
     "f_cpu": "170000000L",
     "mcu": "stm32g431rbt6",
+    "product_line": "STM32G431xx",
     "variant": "NUCLEO_G431RB"
   },
   "connectivity": [
@@ -16,6 +17,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "zephyr"
   ],
   "name": "Nucleo G431RB",

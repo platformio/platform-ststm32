@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32F1xx -DSTM32F103xB",
     "f_cpu": "72000000L",
     "mcu": "stm32f103cbt6",
+    "product_line": "STM32F103xB",
     "variant": "AFROFLIGHT_F103CB"
   },
   "debug": {

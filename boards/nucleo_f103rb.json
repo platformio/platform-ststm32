@@ -8,6 +8,7 @@
       "ldscript": "stm32f103xb.ld"
     },
     "mcu": "stm32f103rbt6",
+    "product_line": "STM32F103xB",
     "variant": "NUCLEO_F103RB"
   },
   "debug": {
@@ -23,6 +24,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "mbed",
     "libopencm3",
     "stm32cube",

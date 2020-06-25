@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F413xx -DSTM32F4xx",
+    "f_cpu": "100000000L",
+    "mcu": "stm32f413cg",
+    "product_line": "STM32F413xx",
+    "variant": "Generic_F4x3Cx"
+  },
+  "debug": {
+    "jlink_device": "STM32F413CG",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F41x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F413CG (320k RAM. 1024k Flash)",
+  "upload": {
+    "maximum_ram_size": 327680,
+    "maximum_size": 1048576,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f413cg.html",
+  "vendor": "Generic"
+}

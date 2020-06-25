@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32F405xx",
     "f_cpu": "168000000L",
     "mcu": "stm32f405rgt6",
+    "product_line": "STM32F405xx",
     "variant": "FEATHER_F405"
   },
   "debug": {

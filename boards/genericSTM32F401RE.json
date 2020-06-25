@@ -5,6 +5,7 @@
     "extra_flags": "-DSTM32F401xE -DSTM32F4xx -DARDUINO_GENERIC_F401RE",
     "f_cpu": "84000000L",
     "mcu": "stm32f401re",
+    "product_line": "STM32F401xE",
     "variant": "Generic_F401Rx"
   },
   "debug": {

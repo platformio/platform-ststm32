@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32F765xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f765vit6",
+    "product_line": "STM32F765xx",
     "variant": "REMRAM_V1"
   },
   "connectivity": [
@@ -22,6 +23,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "3D printer controller",

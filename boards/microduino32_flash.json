@@ -1,6 +1,6 @@
 {
   "build": {
-    "core": "maple",
+    "core": "stm32",
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
@@ -15,7 +15,8 @@
       ]
     ],
     "mcu": "stm32f103cbt6",
-    "variant": "MAPLEMINI_F103CB"
+    "product_line": "STM32F103xB",
+    "variant": "Generic_F103Cx"
   },
   "debug": {
     "jlink_device": "STM32F103CB",
@@ -24,6 +25,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "Microduino Core STM32 to Flash",

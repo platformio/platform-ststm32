@@ -4,6 +4,7 @@
     "extra_flags": "-DSTM32L151xB",
     "f_cpu": "32000000L",
     "mcu": "stm32l151rbt6",
+    "product_line": "STM32L151xB",
     "variant": "RAK811_TRACKER"
   },
   "debug": {
@@ -13,6 +14,7 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
     "stm32cube"
   ],
   "name": "RAK811 LoRa Tracker",

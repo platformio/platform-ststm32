@@ -3,7 +3,8 @@
     "cpu": "cortex-m0plus",
     "extra_flags": "-DSTM32L073xx",
     "f_cpu": "32000000L",
-    "mcu": "stm32l073vzt6"
+    "mcu": "stm32l073vzt6",
+    "product_line": "STM32L073xx"
   },
   "debug": {
     "default_tools": [
@@ -17,6 +18,7 @@
     "svd_path": "STM32L07x.svd"
   },
   "frameworks": [
+    "cmsis",
     "stm32cube"
   ],
   "name": "ST STM32L073Z-EVAL",
