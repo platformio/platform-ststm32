@@ -10,37 +10,11 @@ jobs:
         os: [ubuntu-16.04, windows-latest, macos-latest]
         python-version: [2.7, 3.7]
         example:
-          - "examples/arduino-blink"
-          - "examples/arduino-external-libs"
-          - "examples/arduino-internal-libs"
-          - "examples/arduino-mxchip-azureiot"
-          - "examples/arduino-mxchip-filesystem"
-          - "examples/arduino-mxchip-sensors"
-          - "examples/arduino-mxchip-wifiscan"
-          - "examples/cmsis-blink"
-          - "examples/libopencm3-1bitsy"
-          - "examples/libopencm3-blink"
-          - "examples/mbed-blink"
-          - "examples/mbed-custom-target"
-          - "examples/mbed-dsp"
-          - "examples/mbed-events"
-          - "examples/mbed-filesystem"
-          - "examples/mbed-rtos"
-          - "examples/mbed-rtos-ethernet"
-          - "examples/mbed-rtos-ethernet-tls"
-          - "examples/mbed-rtos-semaphore"
-          - "examples/mbed-rtos-mesh-minimal"
-          - "examples/mbed-serial"
-          - "examples/spl-blink"
-          - "examples/stm32cube-hal-blink"
-          - "examples/stm32cube-ll-blink"
           - "examples/zephyr-blink"
           - "examples/zephyr-cpp-synchronization"
           - "examples/zephyr-drivers-can"
           - "examples/zephyr-net-https-client"
           - "examples/zephyr-subsys-usb-hid-mouse"
-          - "tests/arduino-blink-different-cores"
-          - "tests/mbed-filesystem"
         exclude:
           - {python-version: 2.7, example: "examples/zephyr-blink"}
           - {python-version: 2.7, example: "examples/zephyr-cpp-synchronization"}

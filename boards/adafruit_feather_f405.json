@@ -6,7 +6,10 @@
     "f_cpu": "168000000L",
     "mcu": "stm32f405rgt6",
     "product_line": "STM32F405xx",
-    "variant": "FEATHER_F405"
+    "variant": "FEATHER_F405",
+    "zephyr": {
+      "variant": "adafruit_feather_stm32f405"
+    }
   },
   "debug": {
     "jlink_device": "STM32F405RG",
@@ -16,7 +19,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "Adafruit Feather STM32F405",
   "upload": {

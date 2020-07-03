@@ -9,7 +9,10 @@
     },
     "mcu": "stm32f407zgt6",
     "product_line": "STM32F407xx",
-    "variant": "BLACK_F407XX"
+    "variant": "BLACK_F407XX",
+    "zephyr": {
+      "variant": "black_f407zg_pro"
+    }
   },
   "connectivity": [
     "can"
@@ -22,7 +25,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "Black STM32F407ZE",
   "upload": {
