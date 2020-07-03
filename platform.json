@@ -182,85 +182,85 @@
       "optional": true,
       "version": "~2.20300.0"
     },
-    "framework-zephyr-hal-stm32": {
-      "optional": true,
-      "version": "~0.20300.200508"
-    },
-    "framework-zephyr-hal-st": {
-      "optional": true,
-      "version": "~0.20300.200507"
-    },
     "framework-zephyr-cmsis": {
       "optional": true,
-      "version": "~0.20300.200413"
-    },
-    "framework-zephyr-civetweb": {
-      "optional": true,
-      "version": "~0.20300.190807"
-    },
-    "framework-zephyr-fatfs": {
-      "optional": true,
-      "version": "~0.20300.191125"
-    },
-    "framework-zephyr-libmetal": {
-      "optional": true,
-      "version": "~0.20300.200504"
-    },
-    "framework-zephyr-lvgl": {
-      "optional": true,
-      "version": "~0.20300.191207"
-    },
-    "framework-zephyr-mbedtls": {
-      "optional": true,
-      "version": "~0.20300.200528"
-    },
-    "framework-zephyr-mcumgr": {
-      "optional": true,
-      "version": "~0.20300.200515"
-    },
-    "framework-zephyr-open-amp": {
-      "optional": true,
-      "version": "~0.20300.200504"
-    },
-    "framework-zephyr-openthread": {
-      "optional": true,
-      "version": "~0.20300.200507"
-    },
-    "framework-zephyr-segger": {
-      "optional": true,
-      "version": "~0.20300.190421"
-    },
-    "framework-zephyr-tinycbor": {
-      "optional": true,
-      "version": "~0.20300.200309"
-    },
-    "framework-zephyr-littlefs": {
-      "optional": true,
-      "version": "~0.20300.200405"
-    },
-    "framework-zephyr-mipi-sys-t": {
-      "optional": true,
-      "version": "~0.20300.200506"
+      "version": "0.0.0-alpha+sha.542b2296e6"
     },
     "framework-zephyr-canopennode": {
       "optional": true,
-      "version": "~0.20300.200115"
+      "version": "0.0.0-alpha+sha.5c6b0566d5"
     },
-    "framework-zephyr-loramac-node": {
+    "framework-zephyr-civetweb": {
       "optional": true,
-      "version": "~0.20300.191220"
+      "version": "0.0.0-alpha+sha.99129c5efc"
+    },
+    "framework-zephyr-fatfs": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.9ee6b9b951"
+    },
+    "framework-zephyr-hal-st": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.5b3ec3e182"
+    },
+    "framework-zephyr-hal-stm32": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.d1bc80d021"
+    },
+    "framework-zephyr-libmetal": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.3c3c9ec83b"
+    },
+    "framework-zephyr-lvgl": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.74fc2e753a"
+    },
+    "framework-zephyr-mbedtls": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.4bf099f125"
     },
     "framework-zephyr-mcuboot": {
       "optional": true,
-      "version": "~0.20300.200511"
+      "version": "0.0.0-alpha+sha.e88113bbeb"
     },
-    "framework-zephyr-trusted-firmware-m": {
+    "framework-zephyr-mcumgr": {
       "optional": true,
-      "version": "~0.20300.200508"
+      "version": "0.0.0-alpha+sha.5885efb7ca"
+    },
+    "framework-zephyr-open-amp": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.724f7e2a45"
+    },
+    "framework-zephyr-loramac-node": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.29e516ec58"
+    },
+    "framework-zephyr-openthread": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.a83d18cf18"
+    },
+    "framework-zephyr-segger": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.6fcf61606d"
+    },
+    "framework-zephyr-tinycbor": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.40daca97b4"
     },
     "framework-zephyr-tinycrypt": {
       "optional": true,
-      "version": "~0.20300.200320"
+      "version": "0.0.0-alpha+sha.3e9a49d267"
+    },
+    "framework-zephyr-littlefs": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.0aefdda69d"
+    },
+    "framework-zephyr-mipi-sys-t": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.957d46bc3c"
+    },
+    "framework-zephyr-trusted-firmware-m": {
+      "optional": true,
+      "version": "0.0.0-alpha+sha.7de2daa196"
     },
     "tool-stm32duino": {
       "type": "uploader",
