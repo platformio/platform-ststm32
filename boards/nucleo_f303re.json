@@ -22,7 +22,8 @@
     "arduino",
     "cmsis",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST Nucleo F303RE",
   "upload": {

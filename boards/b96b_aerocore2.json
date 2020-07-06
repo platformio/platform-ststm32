@@ -1,0 +1,38 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F427_437xx -DSTM32F427xx",
+    "f_cpu": "168000000L",
+    "mcu": "stm32f427vit6",
+    "product_line": "STM32F427xx",
+    "zephyr": {
+      "variant": "96b_aerocore2"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F427VI",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F427x.svd"
+  },
+  "frameworks": [
+    "cmsis",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "96Boards Neonkey",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 2091752,
+    "protocol": "dfu",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.96boards.org/product/aerocore2/",
+  "vendor": "96Boards"
+}

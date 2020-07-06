@@ -81,7 +81,8 @@ void change_led(struct zcan_frame *msg, void *led_dev_param)
 {
 	struct device *led_dev = (struct device *)led_dev_param;
 
-#if defined(DT_ALIAS_LED0_GPIOS_PIN) && defined(DT_ALIAS_LED0_GPIOS_CONTROLLER)
+#if DT_PHA_HAS_CELL(DT_ALIAS(led0), gpios, pin) && \
+    DT_NODE_HAS_PROP(DT_ALIAS(led0), gpios)
 
 	if (!led_dev_param) {
 		printk("No LED GPIO device\n");
@@ -90,10 +91,10 @@ void change_led(struct zcan_frame *msg, void *led_dev_param)
 
 	switch (msg->data[0]) {
 	case SET_LED:
-		gpio_pin_set(led_dev, DT_ALIAS_LED0_GPIOS_PIN, 1);
+		gpio_pin_set(led_dev, DT_GPIO_PIN(DT_ALIAS(led0), gpios), 1);
 		break;
 	case RESET_LED:
-		gpio_pin_set(led_dev, DT_ALIAS_LED0_GPIOS_PIN, 0);
+		gpio_pin_set(led_dev, DT_GPIO_PIN(DT_ALIAS(led0), gpios), 0);
 		break;
 	}
 #else
@@ -195,7 +196,7 @@ void main(void)
 	k_tid_t rx_tid, get_state_tid;
 	int ret;
 
-	can_dev = device_get_binding(DT_ALIAS_CAN_PRIMARY_LABEL);
+	can_dev = device_get_binding(DT_CHOSEN_ZEPHYR_CAN_PRIMARY_LABEL);
 
 	if (!can_dev) {
 		printk("CAN: Device driver not found.\n");
@@ -206,15 +207,18 @@ void main(void)
 	can_configure(can_dev, CAN_LOOPBACK_MODE, 125000);
 #endif
 
-#if defined(DT_ALIAS_LED0_GPIOS_PIN) && defined(DT_ALIAS_LED0_GPIOS_CONTROLLER)
-	led_gpio_dev = device_get_binding(DT_ALIAS_LED0_GPIOS_CONTROLLER);
+#if DT_PHA_HAS_CELL(DT_ALIAS(led0), gpios, pin) && \
+    DT_NODE_HAS_PROP(DT_ALIAS(led0), gpios)
+	led_gpio_dev = device_get_binding(DT_GPIO_LABEL(DT_ALIAS(led0), gpios));
 	if (!led_gpio_dev) {
 		printk("LED: Device driver not found.\n");
 		return;
 	}
 
-	ret = gpio_pin_configure(led_gpio_dev, DT_ALIAS_LED0_GPIOS_PIN,
-				 GPIO_OUTPUT_HIGH | DT_ALIAS_LED0_GPIOS_FLAGS);
+	ret = gpio_pin_configure(led_gpio_dev,
+				 DT_GPIO_PIN(DT_ALIAS(led0), gpios),
+				 GPIO_OUTPUT_HIGH |
+				 DT_GPIO_FLAGS(DT_ALIAS(led0), gpios));
 	if (ret < 0) {
 		printk("Error setting LED pin to output mode [%d]", ret);
 	}
@@ -257,7 +261,8 @@ void main(void)
 	while (1) {
 		change_led_frame.data[0] = toggle++ & 0x01 ? SET_LED : RESET_LED;
 		/* This sending call is none blocking. */
-		can_send(can_dev, &change_led_frame, K_FOREVER, tx_irq_callback,
+		can_send(can_dev, &change_led_frame, K_FOREVER,
+			 tx_irq_callback,
 			 "LED change");
 		k_sleep(SLEEP_TIME);
 

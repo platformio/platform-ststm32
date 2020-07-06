@@ -27,7 +27,8 @@
     "arduino",
     "cmsis",
     "stm32cube",
-    "mbed"
+    "mbed",
+    "zephyr"
   ],
   "name": "ST Nucleo H743ZI",
   "upload": {
