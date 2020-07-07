@@ -22,6 +22,7 @@ from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS, AlwaysBuild,
 
 
 env = DefaultEnvironment()
+env.SConscript("compat.py", exports="env")
 platform = env.PioPlatform()
 board = env.BoardConfig()
 
