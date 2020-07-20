@@ -38,9 +38,11 @@
 
 /* Save RAM at the expense of ROM */
 #define MBEDTLS_AES_ROM_TABLES
+#define MBEDTLS_AES_FEWER_TABLES
 
 /* Save RAM by adjusting to our exact needs */
 #define MBEDTLS_ECP_MAX_BITS             256
+#undef MBEDTLS_MPI_MAX_SIZE
 #define MBEDTLS_MPI_MAX_SIZE              32 // 256 bits is 32 bytes
 
 /* Save ROM and a few bytes of RAM by specifying our own ciphersuite list */

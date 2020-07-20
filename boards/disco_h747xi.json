@@ -27,6 +27,7 @@
   "frameworks": [
     "cmsis",
     "stm32cube",
+    "mbed",
     "zephyr"
   ],
   "name": "STM32H747I-DISCO",

@@ -29,10 +29,10 @@ How to build PlatformIO based project
     > platformio run --target upload
 
     # Build specific environment
-    > platformio run -e nucleo_f401re
+    > platformio run -e nucleo_f072rb
 
     # Upload firmware for the specific environment
-    > platformio run -e nucleo_f401re --target upload
+    > platformio run -e nucleo_f072rb --target upload
 
     # Clean build files
     > platformio run --target clean

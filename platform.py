@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
+import os
+
 from platform import system
 
 from platformio.managers.platform import PlatformBase
@@ -28,13 +31,23 @@ class Ststm32Platform(PlatformBase):
         frameworks = variables.get("pioframework", [])
         if "arduino" in frameworks:
             if build_core == "maple":
-                self.frameworks['arduino']['package'] = "framework-arduinoststm32-maple"
+                self.frameworks["arduino"]["package"] = "framework-arduinoststm32-maple"
                 self.packages["framework-arduinoststm32-maple"]["optional"] = False
                 self.packages["framework-arduinoststm32"]["optional"] = True
             else:
                 self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.90201.0"
                 self.packages["framework-cmsis"]["version"] = "~2.50501.0"
                 self.packages["framework-cmsis"]["optional"] = False
+
+        if "mbed" in frameworks:
+            deprecated_boards_file = os.path.join(
+                self.get_dir(), "misc", "mbed_deprecated_boards.json")
+            if os.path.isfile(deprecated_boards_file):
+                with open(deprecated_boards_file) as fp:
+                    if board in json.load(fp):
+                        self.packages["framework-mbed"]["version"] = "~6.51504.0"
+            self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.90201.0"
+
         if "cmsis" in frameworks:
             assert board_config.get(
                 "build.mcu", ""), ("Missing MCU field for %s" % board)
