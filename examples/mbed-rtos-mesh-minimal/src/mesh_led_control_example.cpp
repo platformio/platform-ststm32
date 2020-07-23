@@ -38,7 +38,7 @@ static void handle_message(char* msg);
 
 DigitalOut led_1(MBED_CONF_APP_LED, 1);
 InterruptIn my_button(MBED_CONF_APP_BUTTON);
-DigitalOut output(D3, 1);
+DigitalOut output(MBED_CONF_APP_RELAY_CONTROL, 1);
 
 NetworkInterface * network_if;
 UDPSocket* my_socket;
@@ -110,14 +110,22 @@ static void update_state(uint8_t state) {
        tr_debug("Turning led on\n");
        led_1 = 0;
        button_status=1;
-       output = 0;
+       if (MBED_CONF_APP_RELAY_CONTROL != NC) {
+          output = 0;
+       } else {
+          printf("Pins not configured. Skipping the RELAY control.\n");
        }
+    }
     else {
        tr_debug("Turning led off\n");
        led_1 = 1;
        button_status=0;
-       output = 1;
-   }
+       if (MBED_CONF_APP_RELAY_CONTROL != NC) {
+          output = 1;
+       } else {
+          printf("Pins not configured. Skipping the RELAY control.\n");
+       }
+    }
 }
 
 static void handle_message(char* msg) {

@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "7.1.1",
+  "version": "7.2.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json"
@@ -75,7 +75,7 @@
     "framework-mbed": {
       "type": "framework",
       "optional": true,
-      "version": "~6.51401.0"
+      "version": "~6.60200.0"
     },
     "framework-cmsis": {
       "type": "framework",

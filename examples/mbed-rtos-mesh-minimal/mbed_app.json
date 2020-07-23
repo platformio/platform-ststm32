@@ -3,6 +3,7 @@
         "enable-led-control-example": true,
         "LED": "NC",
         "BUTTON": "NC",
+        "RELAY_CONTROL": "NC",
         "BUTTON_MODE": "PullUp"
     },
     "target_overrides": {
@@ -30,6 +31,14 @@
             "LED": "LED_RED",
             "BUTTON": "SW2"
         },
+        "KW24D": {
+            "LED": "LED1",
+            "BUTTON": "SW1"
+        },
+        "KW41Z": {
+            "LED": "LED1",
+            "BUTTON": "SW3"
+        },
         "NUCLEO_F401RE": {
             "LED": "NC",
             "BUTTON": "USER_BUTTON"
@@ -42,6 +51,10 @@
         "NUCLEO_F411RE": {
             "LED": "NC",
             "BUTTON": "USER_BUTTON"
+        },
+        "NCS36510": {
+            "LED": "LED1",
+            "BUTTON": "SW2"
         }
     }
 }
