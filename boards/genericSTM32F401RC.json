@@ -17,7 +17,8 @@
     "arduino",
     "cmsis",
     "spl",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "STM32F401RC (64k RAM. 256k Flash)",
   "upload": {

@@ -30,6 +30,7 @@
     "cmsis",
     "mbed",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "ST Discovery F072RB",

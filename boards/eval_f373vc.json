@@ -20,6 +20,7 @@
   "frameworks": [
     "cmsis",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "STM32373C-EVAL",

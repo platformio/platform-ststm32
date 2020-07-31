@@ -16,7 +16,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "STM32F413RH (320k RAM. 1536k Flash)",
   "upload": {

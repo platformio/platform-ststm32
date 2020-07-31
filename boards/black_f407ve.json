@@ -23,6 +23,7 @@
     "arduino",
     "cmsis",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "Black STM32F407VE",

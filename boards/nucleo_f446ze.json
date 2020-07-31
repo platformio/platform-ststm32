@@ -23,7 +23,8 @@
   "frameworks": [
     "cmsis",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "ST Nucleo F446ZE",
   "upload": {

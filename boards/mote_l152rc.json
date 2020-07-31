@@ -14,7 +14,8 @@
   "frameworks": [
     "mbed",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "NAMote72",
   "upload": {

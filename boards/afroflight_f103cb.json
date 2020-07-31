@@ -16,7 +16,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "AfroFlight Rev5 (8MHz)",
   "upload": {

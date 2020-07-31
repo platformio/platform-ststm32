@@ -27,6 +27,7 @@
   "frameworks": [
     "cmsis",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "32F723EDISCOVERY",

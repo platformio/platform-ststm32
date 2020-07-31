@@ -17,6 +17,7 @@
   "frameworks": [
     "cmsis",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "STM3210C-EVAL",

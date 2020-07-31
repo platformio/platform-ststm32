@@ -20,6 +20,7 @@
   "frameworks": [
     "cmsis",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "96Boards Neonkey",

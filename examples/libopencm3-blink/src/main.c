@@ -21,16 +21,21 @@
 
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
-#ifdef STM32L1
-	#define RCCLEDPORT (RCC_GPIOB)
-	#define LEDPORT (GPIOB)
-	#define LEDPIN (GPIO6)
+
+#ifdef STM32F0
+	#define RCCLEDPORT (RCC_GPIOE)
+	#define LEDPORT (GPIOE)
+	#define LEDPIN (GPIO8)
 #elif STM32F1
 	#define RCCLEDPORT (RCC_GPIOC)
 	#define LEDPORT (GPIOC)
 	#define LEDPIN (GPIO13)
 	#define GPIO_MODE_OUTPUT GPIO_MODE_OUTPUT_2_MHZ
 	#define GPIO_PUPD_NONE GPIO_CNF_OUTPUT_PUSHPULL
+#elif STM32F2
+	#define RCCLEDPORT (RCC_GPIOE)
+	#define LEDPORT (GPIOE)
+	#define LEDPIN (GPIO8)
 #elif STM32F3
 	#define RCCLEDPORT (RCC_GPIOE)
 	#define LEDPORT (GPIOE)
@@ -39,6 +44,34 @@
 	#define RCCLEDPORT (RCC_GPIOD)
 	#define LEDPORT (GPIOD)
 	#define LEDPIN (GPIO12)
+#elif STM32F7
+	#define RCCLEDPORT (RCC_GPIOD)
+	#define LEDPORT (GPIOD)
+	#define LEDPIN (GPIO12)
+#elif STM32G0
+	#define RCCLEDPORT (RCC_GPIOD)
+	#define LEDPORT (GPIOD)
+	#define LEDPIN (GPIO12)
+#elif STM32G4
+	#define RCCLEDPORT (RCC_GPIOD)
+	#define LEDPORT (GPIOD)
+	#define LEDPIN (GPIO12)
+#elif STM32H7
+	#define RCCLEDPORT (RCC_GPIOD)
+	#define LEDPORT (GPIOD)
+	#define LEDPIN (GPIO12)
+#elif STM32L0
+	#define RCCLEDPORT (RCC_GPIOB)
+	#define LEDPORT (GPIOB)
+	#define LEDPIN (GPIO6)
+#elif STM32L1
+	#define RCCLEDPORT (RCC_GPIOB)
+	#define LEDPORT (GPIOB)
+	#define LEDPIN (GPIO6)
+#elif STM32L4
+	#define RCCLEDPORT (RCC_GPIOB)
+	#define LEDPORT (GPIOB)
+	#define LEDPIN (GPIO6)
 #else
     #error "This example doesn't support this target!"
 #endif

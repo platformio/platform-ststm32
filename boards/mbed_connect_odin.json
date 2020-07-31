@@ -20,7 +20,8 @@
   },
   "frameworks": [
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "Mbed Connect Cloud",
   "upload": {

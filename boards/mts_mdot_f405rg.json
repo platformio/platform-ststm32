@@ -11,7 +11,8 @@
   },
   "frameworks": [
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "MultiTech mDot",
   "upload": {

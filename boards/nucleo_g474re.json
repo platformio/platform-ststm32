@@ -19,6 +19,7 @@
     "arduino",
     "cmsis",
     "mbed",
+    "libopencm3",
     "zephyr"
   ],
   "name": "Nucleo G474RE",

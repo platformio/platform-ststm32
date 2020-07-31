@@ -16,7 +16,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "STM32F405RG (128k RAM. 1024k Flash)",
   "upload": {

@@ -21,6 +21,7 @@
     "cmsis",
     "mbed",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "ST Nucleo F412ZG",

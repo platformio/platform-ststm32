@@ -16,7 +16,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "STM32F411CC (128k RAM. 256k Flash)",
   "upload": {

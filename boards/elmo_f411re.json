@@ -17,7 +17,8 @@
   "frameworks": [
     "cmsis",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "Espotel LoRa Module",
   "upload": {

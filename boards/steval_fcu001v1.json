@@ -14,6 +14,7 @@
   "frameworks": [
     "cmsis",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "STEVAL-FCU001V1 Flight controller unit evaluation board",

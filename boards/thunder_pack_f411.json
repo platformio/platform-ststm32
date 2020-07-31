@@ -19,7 +19,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "ThunderPack v1.1+",
   "upload": {
