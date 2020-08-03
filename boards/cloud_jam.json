@@ -23,7 +23,8 @@
     "mbed",
     "cmsis",
     "spl",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "RushUp Cloud-JAM",
   "upload": {

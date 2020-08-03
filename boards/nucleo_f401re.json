@@ -25,6 +25,7 @@
     "cmsis",
     "spl",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "ST Nucleo F401RE",

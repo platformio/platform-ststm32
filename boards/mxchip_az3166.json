@@ -29,7 +29,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "Microsoft Azure IoT Development Kit (MXChip AZ3166)",
   "upload": {

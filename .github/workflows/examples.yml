@@ -20,6 +20,7 @@ jobs:
           - "examples/cmsis-blink"
           - "examples/libopencm3-1bitsy"
           - "examples/libopencm3-blink"
+          - "examples/libopencm3-usb-cdcacm"
           - "examples/mbed-rtos-blink-baremetal"
           - "examples/mbed-rtos-custom-target"
           - "examples/mbed-rtos-ethernet-tls"

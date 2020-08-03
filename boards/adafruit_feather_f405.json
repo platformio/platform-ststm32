@@ -20,6 +20,7 @@
     "arduino",
     "cmsis",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "Adafruit Feather STM32F405",

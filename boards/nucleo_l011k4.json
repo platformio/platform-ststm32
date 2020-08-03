@@ -19,7 +19,8 @@
   },
   "frameworks": [
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "ST Nucleo L011K4",
   "upload": {

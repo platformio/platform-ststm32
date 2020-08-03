@@ -4,9 +4,6 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32L1 -DSTM32L152xB -DSTM32L1XX_MD",
     "f_cpu": "32000000L",
-    "libopencm3": {
-      "ldscript": "stm32l15xx6.ld"
-    },
     "mcu": "stm32l152rbt6",
     "product_line": "STM32L152xB",
     "variant": "stm32l152xb"

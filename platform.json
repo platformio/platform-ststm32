@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "7.2.0",
+  "version": "8.0.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json"
@@ -155,7 +155,7 @@
     "framework-libopencm3": {
       "type": "framework",
       "optional": true,
-      "version": "~1.1.0"
+      "version": "~1.10000.0"
     },
     "framework-arduinoststm32": {
       "type": "framework",

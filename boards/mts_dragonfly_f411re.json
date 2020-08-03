@@ -14,7 +14,8 @@
   },
   "frameworks": [
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "MTS Dragonfly",
   "upload": {

@@ -19,7 +19,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "PYBStick 26 Pro",
   "upload": {

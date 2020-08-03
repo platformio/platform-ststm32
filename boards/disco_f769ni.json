@@ -28,6 +28,7 @@
     "cmsis",
     "mbed",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "ST 32F769IDISCOVERY",

@@ -19,7 +19,8 @@
   },
   "frameworks": [
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "ST STM32L073Z-EVAL",
   "upload": {

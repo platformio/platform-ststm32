@@ -27,6 +27,7 @@
     "cmsis",
     "mbed",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "96Boards B96B-F446VE",

@@ -22,7 +22,8 @@
   "frameworks": [
     "cmsis",
     "spl",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "Armstrap Eagle 2048",
   "upload": {

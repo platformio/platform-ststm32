@@ -22,6 +22,7 @@
     "arduino",
     "cmsis",
     "mbed",
+    "libopencm3",
     "stm32cube"
   ],
   "name": "ST STM32VLDISCOVERY",

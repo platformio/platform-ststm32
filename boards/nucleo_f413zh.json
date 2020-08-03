@@ -23,6 +23,7 @@
   "frameworks": [
     "cmsis",
     "stm32cube",
+    "libopencm3",
     "mbed",
     "zephyr"
   ],

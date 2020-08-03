@@ -19,7 +19,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "WeAct BlackPill V2.0 (BlackPill F411CE)",
   "upload": {

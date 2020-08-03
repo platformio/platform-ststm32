@@ -4,9 +4,6 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F4 -DSTM32F415xx -DSTM32F40_41xxx",
     "f_cpu": "168000000L",
-    "libopencm3": {
-      "ldscript": "stm32f405x6.ld"
-    },
     "mcu": "stm32f415rgt",
     "product_line": "STM32F415xx",
     "variant": "stm32f415xx"

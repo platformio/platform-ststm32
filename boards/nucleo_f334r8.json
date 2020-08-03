@@ -24,6 +24,7 @@
     "cmsis",
     "mbed",
     "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "ST Nucleo F334R8",

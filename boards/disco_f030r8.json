@@ -22,7 +22,8 @@
     "arduino",
     "cmsis",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "ST STM32F0308DISCOVERY",
   "upload": {

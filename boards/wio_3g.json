@@ -24,7 +24,8 @@
   "frameworks": [
     "cmsis",
     "mbed",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "Seeed Wio 3G",
   "upload": {
