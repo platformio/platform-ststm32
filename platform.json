@@ -12,17 +12,13 @@
       "STM32"
   ],
   "engines": {
-    "platformio": "<5"
+    "platformio": "^5"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
   "version": "8.0.0",
-  "packageRepositories": [
-    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
-    "http://dl.platformio.org/packages/manifest.json"
-  ],
   "frameworks": {
     "mbed": {
       "package": "framework-mbed",
