@@ -31,9 +31,6 @@ env = DefaultEnvironment()
 mcu = env.BoardConfig().get("build.mcu")
 core = env.BoardConfig().get("build.core", "")
 
-build_script = join(env.PioPlatform().get_package_dir(
-    "framework-arduinoststm32"), "tools", "platformio-build.py")
-
 if core == "maple":
     build_script = join(
         env.PioPlatform().get_package_dir("framework-arduinoststm32-maple"),
@@ -42,6 +39,9 @@ elif core == "stm32l0":
     build_script = join(
         env.PioPlatform().get_package_dir("framework-arduinoststm32l0"),
         "tools", "platformio-build.py")
+else:
+    build_script = join(env.PioPlatform().get_package_dir(
+        "framework-arduinoststm32"), "tools", "platformio-build.py")
 
 if not isfile(build_script):
     sys.stderr.write("Error: Missing PlatformIO build script %s!\n" % build_script)
