@@ -188,7 +188,7 @@ elif upload_protocol == "dfu":
     # default tool for all boards with embedded DFU bootloader over USB
     _upload_tool = "dfu-util"
     _upload_flags = [
-        "-d", "vid:pid,%s:%s" % (vid, pid),
+        "-d", ",".join(["%s:%s" % (hwid[0], hwid[1]) for hwid in hwids]),
         "-a", "0", "-s",
         "%s:leave" % board.get("upload.offset_address", "0x08000000"), "-D"
     ]
