@@ -18,7 +18,7 @@
     "can"
   ],
   "debug": {
-    "jlink_device": "STM32F407ZE",
+    "jlink_device": "STM32F407ZG",
     "openocd_target": "stm32f4x",
     "svd_path": "STM32F40x.svd"
   },
@@ -29,7 +29,7 @@
     "libopencm3",
     "zephyr"
   ],
-  "name": "Black STM32F407ZE",
+  "name": "Black STM32F407ZG",
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,

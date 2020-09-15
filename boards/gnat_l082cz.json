@@ -1,0 +1,45 @@
+{
+  "build": {
+    "cpu": "cortex-m0plus",
+    "core": "stm32l0",
+    "extra_flags": "-DARDUINO_STM32L0_GNAT",
+    "f_cpu": "32000000L",
+    "hwids": [
+      [
+        "0x1209",
+        "0x6665"
+      ],
+      [
+        "0x0483",
+        "0xDF11"
+      ]
+    ],
+    "mcu": "stm32l082czy6",
+    "usb_product": "Gnat",
+    "product_line": "STM32L082xx",
+    "variant": "Gnat-L082CZ"
+  },
+  "debug": {
+    "jlink_device": "STM32L082CZ",
+    "openocd_target": "stm32l0",
+    "svd_path": "STM32L08x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "Gnat-L082CZ",
+  "upload": {
+    "maximum_ram_size": 20480,
+    "maximum_size": 196608,
+    "protocol": "dfu",
+    "protocols": [
+      "dfu",
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.tindie.com/products/tleracorp/gnat-loragnss-asset-tracker/",
+  "vendor": "Tlera Corporation"
+}

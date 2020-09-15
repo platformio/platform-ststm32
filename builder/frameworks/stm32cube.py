@@ -31,7 +31,7 @@ import sys
 
 from SCons.Script import DefaultEnvironment
 
-from platformio import util
+from platformio import fs
 from platformio.builder.tools.piolib import PlatformIOLibBuilder
 
 env = DefaultEnvironment()
@@ -229,7 +229,7 @@ if not board.get("build.ldscript", ""):
     env.Replace(
         LDSCRIPT_PATH=get_linker_script(board.get("build.mcu")))
 
-variants_remap = util.load_json(
+variants_remap = fs.load_json(
     join(FRAMEWORK_DIR, "platformio", "variants_remap.json"))
 board_type = env.subst("$BOARD")
 variant = variants_remap[

@@ -2,17 +2,17 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F4xx -DSTM32F401xC",
+    "extra_flags": "-DSTM32F4xx -DSTM32F401xE",
     "f_cpu": "84000000L",
-    "mcu": "stm32f401ccu6",
-    "product_line": "STM32F401xC",
+    "mcu": "stm32f401ceu6",
+    "product_line": "STM32F401xE",
     "variant": "Generic_F401Cx"
   },
   "connectivity": [
     "can"
   ],
   "debug": {
-    "jlink_device": "STM32F401CC",
+    "jlink_device": "STM32F401CE",
     "openocd_target": "stm32f4x",
     "svd_path": "STM32F40x.svd"
   },
@@ -22,10 +22,10 @@
     "stm32cube",
     "libopencm3"
   ],
-  "name": "BlackPill F401CC",
+  "name": "BlackPill F401CE",
   "upload": {
-    "maximum_ram_size": 65536,
-    "maximum_size": 262144,
+    "maximum_ram_size": 98304,
+    "maximum_size": 524288,
     "protocol": "stlink",
     "protocols": [
       "jlink",
@@ -35,6 +35,6 @@
       "dfu"
     ]
   },
-  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f401cc.html",
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f401ce.html",
   "vendor": "ST"
 }

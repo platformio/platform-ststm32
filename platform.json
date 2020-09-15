@@ -4,18 +4,21 @@
   "description": "The STM32 family of 32-bit Flash MCUs based on the ARM Cortex-M processor is designed to offer new degrees of freedom to MCU users. It offers a 32-bit product range that combines very high performance, real-time capabilities, digital signal processing, and low-power, low-voltage operation, while maintaining full integration and ease of development.",
   "homepage": "http://www.st.com/web/en/catalog/mmc/FM141/SC1169?sc=stm32",
   "license": "Apache-2.0",
+  "keywords": [
+      "dev-platform",
+      "ARM",
+      "Cortex-M",
+      "STMicroelectronics",
+      "STM32"
+  ],
   "engines": {
-    "platformio": "<5"
+    "platformio": "^5"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "8.0.0",
-  "packageRepositories": [
-    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
-    "http://dl.platformio.org/packages/manifest.json"
-  ],
+  "version": "8.1.0",
   "frameworks": {
     "mbed": {
       "package": "framework-mbed",
@@ -70,236 +73,294 @@
   "packages": {
     "toolchain-gccarmnoneeabi": {
       "type": "toolchain",
+      "owner": "platformio",
       "version": ">=1.60301.0,<1.80000.0"
     },
     "framework-mbed": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~6.60200.0"
     },
     "framework-cmsis": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.50501.0"
     },
     "framework-cmsis-stm32f0": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.3.4"
     },
     "framework-cmsis-stm32f1": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~4.3.1"
     },
     "framework-cmsis-stm32f2": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.2.3"
     },
     "framework-cmsis-stm32f3": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.3.4"
     },
     "framework-cmsis-stm32f4": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.6.4"
     },
     "framework-cmsis-stm32f7": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.2.5"
     },
     "framework-cmsis-stm32g0": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.3.0"
     },
     "framework-cmsis-stm32g4": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.1.1"
     },
     "framework-cmsis-stm32h7": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.8.0"
     },
     "framework-cmsis-stm32l0": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.9.0"
     },
     "framework-cmsis-stm32l1": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.3.0"
     },
     "framework-cmsis-stm32l4": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.6.1"
     },
     "framework-cmsis-stm32l5": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.0.2"
     },
     "framework-spl": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.10201.0"
     },
     "framework-libopencm3": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.10000.0"
     },
     "framework-arduinoststm32": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~4.10900.0"
     },
     "framework-arduinoststm32-maple": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.10000.0"
     },
     "framework-arduinostm32mxchip": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.3.0"
+    },
+    "framework-arduinoststm32l0": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~2.10.0"
     },
     "framework-stm32cube": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.0.181130"
     },
     "framework-zephyr": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.20300.0"
     },
     "framework-zephyr-cmsis": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.542b2296e6"
     },
     "framework-zephyr-canopennode": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.5c6b0566d5"
     },
     "framework-zephyr-civetweb": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.99129c5efc"
     },
     "framework-zephyr-fatfs": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.9ee6b9b951"
     },
     "framework-zephyr-hal-st": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.5b3ec3e182"
     },
     "framework-zephyr-hal-stm32": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.d1bc80d021"
     },
     "framework-zephyr-libmetal": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.3c3c9ec83b"
     },
     "framework-zephyr-lvgl": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.74fc2e753a"
     },
     "framework-zephyr-mbedtls": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.4bf099f125"
     },
     "framework-zephyr-mcuboot": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.e88113bbeb"
     },
     "framework-zephyr-mcumgr": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.5885efb7ca"
     },
     "framework-zephyr-open-amp": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.724f7e2a45"
     },
     "framework-zephyr-loramac-node": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.29e516ec58"
     },
     "framework-zephyr-openthread": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.a83d18cf18"
     },
     "framework-zephyr-segger": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.6fcf61606d"
     },
     "framework-zephyr-tinycbor": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.40daca97b4"
     },
     "framework-zephyr-tinycrypt": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.3e9a49d267"
     },
     "framework-zephyr-littlefs": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.0aefdda69d"
     },
     "framework-zephyr-mipi-sys-t": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.957d46bc3c"
     },
     "framework-zephyr-trusted-firmware-m": {
       "optional": true,
+      "owner": "platformio",
       "version": "0.0.0-alpha+sha.7de2daa196"
     },
     "tool-stm32duino": {
       "type": "uploader",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.0.1"
     },
     "tool-openocd": {
       "type": "uploader",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.1000.0"
     },
     "tool-jlink": {
       "type": "uploader",
       "optional": true,
+      "owner": "platformio",
       "version": "^1.63208.0"
     },
     "tool-dfuutil": {
       "type": "uploader",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.9.190708"
     },
     "tool-cmake": {
       "optional": true,
+      "owner": "platformio",
       "version": "~3.16.0"
     },
     "tool-dtc": {
       "optional": true,
+      "owner": "platformio",
       "version": "~1.4.7"
     },
     "tool-ninja": {
       "optional": true,
+      "owner": "platformio",
       "version": "^1.7.0"
     },
     "tool-gperf": {
       "optional": true,
+      "owner": "platformio",
       "version": "^3.0.0"
     },
     "tool-ldscripts-ststm32": {
       "optional": true,
+      "owner": "platformio",
       "version": "~0.1.0"
     }
   }

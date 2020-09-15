@@ -1,6 +1,6 @@
 {
   "build": {
-    "cpu": "cortex-m0",
+    "cpu": "cortex-m0plus",
     "extra_flags": "-DSTM32L053xx",
     "f_cpu": "32000000L",
     "framework_extra_flags": {
