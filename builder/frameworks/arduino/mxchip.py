@@ -18,7 +18,7 @@ Arduino Wiring-based Framework allows writing cross-platform software to
 control devices attached to a wide range of Arduino boards to create all
 kinds of creative coding, interactive objects, spaces or physical experiences.
 
-http://www.stm32duino.com
+https://github.com/microsoft/devkit-sdk
 """
 
 from os import walk
@@ -45,11 +45,11 @@ env.Append(
         "--param", "max-inline-insns-single=500",
         "-mfloat-abi=softfp",
         "-mfpu=fpv4-sp-d16",
-        "-include", "mbed_config.h"
+        "-include", "mbed_config.h",
+        "-nostdlib"
     ],
 
     CXXFLAGS=[
-        "-Wextra",
         "-std=gnu++11",
         "-fno-threadsafe-statics",
         "-fmessage-length=0",
@@ -60,13 +60,10 @@ env.Append(
 
     CPPDEFINES=[
         ("ARDUINO", 10802),
-        ("FRAMEWORK_ARDUINO", int(FRAMEWORK_VERSION.replace(".", "0"))),
         ("__MBED__", 1),
         ("DEVICE_I2CSLAVE", 1),
         "TARGET_LIKE_MBED",
-        ("LWIP_TIMEVAL_PRIVATE", 0),
         ("DEVICE_PORTOUT", 1),
-        "USBHOST_OTHER",
         ("DEVICE_PORTINOUT", 1),
         "TARGET_RTOS_M4_M7",
         ("DEVICE_LOWPOWERTIMER", 1),
@@ -75,7 +72,6 @@ env.Append(
         ("DEVICE_SERIAL_ASYNCH", 1),
         "TARGET_STM32F4",
         "__CMSIS_RTOS",
-        "TARGET_EMW1062",
         "TOOLCHAIN_GCC",
         ("DEVICE_CAN", 1),
         "TARGET_CORTEX_M",
@@ -104,7 +100,7 @@ env.Append(
         "__MBED_CMSIS_RTOS_CM",
         ("DEVICE_SLEEP", 1),
         "TOOLCHAIN_GCC_ARM",
-        ("TARGET_MXCHIP", 1),
+        "TARGET_MXCHIP",
         ("DEVICE_SPI", 1),
         "USB_STM_HAL",
         "MXCHIP_LIBRARY",
@@ -115,16 +111,13 @@ env.Append(
         "TARGET_AZ3166",
         "ARM_MATH_CM4",
         ("LPS22HB_I2C_PORT", "MICO_I2C_1"),
-        ("DEVICE_STDIO_MESSAGES", 1),
-        "DONT_USE_UPLOADTOBLOB",
-        "USE_MBED_TLS",
-        "USE_PROV_MODULE"
+        ("DEVICE_STDIO_MESSAGES", 1)
     ],
 
     LIBPATH=[
-        join(FRAMEWORK_DIR, "system", "sdk", "lib"),
-        join(FRAMEWORK_DIR, "system", "emw10xx-driver", "libwlan",
-             "TARGET_EMW1062"),
+        join(FRAMEWORK_DIR, "system"),
+        join(FRAMEWORK_DIR, "system", "az3166-driver"),
+        join(FRAMEWORK_DIR, "system", "az3166-driver", "libwlan", "TARGET_EMW1062"),
         join(FRAMEWORK_DIR, "variants",
              board.get("build.variant"), "linker_scripts", "gcc")
     ],
@@ -141,9 +134,9 @@ for d in ("system", join("cores", env.BoardConfig().get("build.core"))):
 
 inc_dirs.extend([
     join(FRAMEWORK_DIR, "system"),
-    join(FRAMEWORK_DIR, "system", "features"),
-    join(FRAMEWORK_DIR, "system", "features", "mbedtls"),
-    join(FRAMEWORK_DIR, "system", "emw10xx-driver", "mico", "platform")
+    join(FRAMEWORK_DIR, "system", "mbed-os", "features"),
+    join(FRAMEWORK_DIR, "system", "mbed-os", "features", "mbedtls"),
+    join(FRAMEWORK_DIR, "system", "az3166-driver", "mico", "platform")
 ])
 
 env.Append(CPPPATH=inc_dirs)
@@ -168,7 +161,7 @@ env.Replace(
     ]
 )
 
-env.Prepend(LIBS=["az_iot", "m", "wlan", "wifi", "libstsafe", "mbed-os", "stdc++", "gcc"])
+env.Prepend(LIBS=["devkit-sdk-core-lib", "wlan", "stsafe"])
 if not board.get("build.ldscript", ""):
     env.Replace(LDSCRIPT_PATH=board.get("build.arduino.ldscript", ""))
 
