@@ -3,7 +3,7 @@
 #include "IoT_DevKit_HW.h"
 #include "SystemVersion.h"
 #include "SystemTickCounter.h"
-#include "telemetry.h"
+#include "Telemetry.h"
 
 #define NUMSENSORS 5 // 5 sensors to display
 
