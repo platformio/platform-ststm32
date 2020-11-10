@@ -212,7 +212,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.20300.0"
+      "version": "~2.20400.0"
     },
     "framework-zephyr-cmsis": {
       "optional": true,
@@ -222,7 +222,7 @@
     "framework-zephyr-canopennode": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.5c6b0566d5"
+      "version": "0.0.0-alpha+sha.468d350028"
     },
     "framework-zephyr-civetweb": {
       "optional": true,
@@ -232,7 +232,7 @@
     "framework-zephyr-fatfs": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.9ee6b9b951"
+      "version": "0.0.0-alpha+sha.13697783bf"
     },
     "framework-zephyr-hal-st": {
       "optional": true,
@@ -242,32 +242,32 @@
     "framework-zephyr-hal-stm32": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.d1bc80d021"
+      "version": "0.0.0-alpha+sha.cea57f86d3"
     },
     "framework-zephyr-libmetal": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.3c3c9ec83b"
+      "version": "0.0.0-alpha+sha.0b23894a04"
     },
     "framework-zephyr-lvgl": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.74fc2e753a"
+      "version": "0.0.0-alpha+sha.928b61c7c8"
     },
     "framework-zephyr-mbedtls": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.4bf099f125"
+      "version": "0.0.0-alpha+sha.aef137b1af"
     },
     "framework-zephyr-mcuboot": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.e88113bbeb"
+      "version": "0.0.0-alpha+sha.a5d79cf8cc"
     },
     "framework-zephyr-mcumgr": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.5885efb7ca"
+      "version": "0.0.0-alpha+sha.5051f9d900"
     },
     "framework-zephyr-open-amp": {
       "optional": true,
@@ -277,17 +277,17 @@
     "framework-zephyr-loramac-node": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.29e516ec58"
+      "version": "0.0.0-alpha+sha.3f545d76a2"
     },
     "framework-zephyr-openthread": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.a83d18cf18"
+      "version": "0.0.0-alpha+sha.07f430dac6"
     },
     "framework-zephyr-segger": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.6fcf61606d"
+      "version": "0.0.0-alpha+sha.874d9e9696"
     },
     "framework-zephyr-tinycbor": {
       "optional": true,
@@ -302,7 +302,7 @@
     "framework-zephyr-littlefs": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.0aefdda69d"
+      "version": "0.0.0-alpha+sha.9e4498d1c7"
     },
     "framework-zephyr-mipi-sys-t": {
       "optional": true,
@@ -312,7 +312,7 @@
     "framework-zephyr-trusted-firmware-m": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.7de2daa196"
+      "version": "0.0.0-alpha+sha.143df67555"
     },
     "tool-stm32duino": {
       "type": "uploader",
