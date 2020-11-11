@@ -1,0 +1,39 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F103xB",
+    "f_cpu": "72000000L",
+    "mcu": "stm32f103rbt6",
+    "product_line": "STM32F103xB",
+    "variant": "Generic_F103Rx",
+    "zephyr": {
+       "variant": "olimex_stm32_h103"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F103RB",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "mbed",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "Olimex STM32-H103",
+  "upload": {
+    "maximum_ram_size": 20480,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.olimex.com/Products/ARM/ST/STM32-H103/",
+  "vendor": "Olimex"
+}
