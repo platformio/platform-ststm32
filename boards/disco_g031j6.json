@@ -18,7 +18,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "libopencm3"
+    "libopencm3",
+    "stm32cube"
   ],
   "name": "ST STM32G0316-DISCO",
   "upload": {

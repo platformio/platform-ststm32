@@ -20,6 +20,7 @@
     "cmsis",
     "mbed",
     "libopencm3",
+    "stm32cube",
     "zephyr"
   ],
   "name": "Nucleo G474RE",

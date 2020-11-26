@@ -19,6 +19,7 @@
     "arduino",
     "cmsis",
     "libopencm3",
+    "stm32cube",
     "zephyr"
   ],
   "name": "Nucleo G431RB",

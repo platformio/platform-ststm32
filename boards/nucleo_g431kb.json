@@ -18,7 +18,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "libopencm3"
+    "libopencm3",
+    "stm32cube"
   ],
   "name": "Nucleo G431KB",
   "upload": {

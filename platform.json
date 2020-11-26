@@ -202,11 +202,83 @@
       "owner": "platformio",
       "version": "~2.10.0"
     },
-    "framework-stm32cube": {
+    "framework-stm32cubef0": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.181130"
+      "version": "~1.11.0"
+    },
+    "framework-stm32cubef1": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.8.0"
+    },
+    "framework-stm32cubef2": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.9.0"
+    },
+    "framework-stm32cubef3": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.11.0"
+    },
+    "framework-stm32cubef4": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.25.0"
+    },
+    "framework-stm32cubef7": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.16.0"
+    },
+    "framework-stm32cubeg0": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.3.0"
+    },
+    "framework-stm32cubeg4": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.3.0"
+    },
+    "framework-stm32cubeh7": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.8.0"
+    },
+    "framework-stm32cubel0": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.11.0"
+    },
+    "framework-stm32cubel1": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.10.0"
+    },
+    "framework-stm32cubel4": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.16.0"
+    },
+    "framework-stm32cubel5": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.3.0"
     },
     "framework-zephyr": {
       "type": "framework",
