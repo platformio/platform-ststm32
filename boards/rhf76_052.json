@@ -16,7 +16,7 @@
   ],
   "debug": {
     "jlink_device": "STM32L051C8",
-    "openocd_target": "stm32l0x",
+    "openocd_target": "stm32l0",
     "svd_path": "STM32L051x.svd"
   },
   "frameworks": [
