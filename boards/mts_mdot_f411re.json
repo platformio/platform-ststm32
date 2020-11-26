@@ -23,6 +23,7 @@
     "protocol": "mbed",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "blackmagic",
       "mbed"

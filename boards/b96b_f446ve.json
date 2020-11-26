@@ -21,6 +21,7 @@
       "stlink"
     ],
     "openocd_board": "st_nucleo_f4",
+    "openocd_target": "stm32f4x",
     "svd_path": "STM32F446x.svd"
   },
   "frameworks": [
@@ -37,6 +38,7 @@
     "protocol": "stlink",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "blackmagic",
       "mbed"

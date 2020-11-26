@@ -31,9 +31,9 @@
     "protocol": "stlink",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
-      "blackmagic",
-      "cmsis-dap"
+      "blackmagic"
     ]
   },
   "url": "https://os.mbed.com/platforms/mbed-Connect-Cloud/",

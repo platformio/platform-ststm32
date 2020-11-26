@@ -24,6 +24,7 @@
     "protocol": "mbed",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "blackmagic",
       "mbed",
       "serial",

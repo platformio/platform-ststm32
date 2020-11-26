@@ -30,10 +30,10 @@
     "protocol": "mbed",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "mbed",
-      "blackmagic",
-      "cmsis-dap"
+      "blackmagic"
     ]
   },
   "url": "https://os.mbed.com/platforms/SAKURAIO_EVB_01/",

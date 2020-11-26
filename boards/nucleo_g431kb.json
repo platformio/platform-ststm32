@@ -13,6 +13,7 @@
   ],
   "debug": {
     "jlink_device": "STM32G431KB",
+    "openocd_target": "stm32g4x",
     "svd_path": "STM32G431xx.svd"
   },
   "frameworks": [
@@ -28,6 +29,7 @@
     "protocol": "mbed",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "blackmagic",
       "mbed"
     ]

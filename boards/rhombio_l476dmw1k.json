@@ -33,9 +33,9 @@
     "protocol": "cmsis-dap",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
-      "blackmagic",
-      "cmsis-dap"
+      "blackmagic"
     ]
   },
   "url": "https://os.mbed.com/platforms/RHOMBIO-L476DMW1K/",

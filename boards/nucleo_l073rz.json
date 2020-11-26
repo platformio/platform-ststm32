@@ -19,6 +19,7 @@
       "stlink"
     ],
     "openocd_board": "st_nucleo_l073rz",
+    "openocd_target": "stm32l0",
     "svd_path": "STM32L07x.svd"
   },
   "frameworks": [
@@ -36,6 +37,7 @@
     "protocol": "stlink",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "blackmagic",
       "mbed"

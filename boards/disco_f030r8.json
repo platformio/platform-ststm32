@@ -16,6 +16,7 @@
       "stlink"
     ],
     "openocd_board": "stm32f0discovery",
+    "openocd_target": "stm32f0x",
     "svd_path": "STM32F030.svd"
   },
   "frameworks": [
@@ -32,6 +33,7 @@
     "protocol": "stlink",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "blackmagic"
     ]
