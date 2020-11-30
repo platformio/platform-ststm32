@@ -9,6 +9,7 @@
   "debug": {
     "jlink_device": "STM32L151CC",
     "openocd_board": "st_nucleo_l1",
+    "openocd_target": "stm32l1",
     "svd_path": "STM32L15xC.svd"
   },
   "frameworks": [
@@ -24,6 +25,7 @@
     "protocol": "stlink",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "blackmagic"
     ]

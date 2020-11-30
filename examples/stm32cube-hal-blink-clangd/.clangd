@@ -1,0 +1,2 @@
+CompileFlags:
+  Add: [-D DEFINE_FROM_CLANGD_FILE]

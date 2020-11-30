@@ -13,12 +13,14 @@
   ],
   "debug": {
     "jlink_device": "STM32G431KB",
+    "openocd_target": "stm32g4x",
     "svd_path": "STM32G431xx.svd"
   },
   "frameworks": [
     "arduino",
     "cmsis",
-    "libopencm3"
+    "libopencm3",
+    "stm32cube"
   ],
   "name": "Nucleo G431KB",
   "upload": {
@@ -27,6 +29,7 @@
     "protocol": "mbed",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "blackmagic",
       "mbed"
     ]

@@ -12,7 +12,7 @@
   },
   "debug": {
     "jlink_device": "STM32L072RB",
-    "openocd_target": "stm32l0x",
+    "openocd_target": "stm32l0",
     "svd_path": "STM32L07x.svd"
   },
   "frameworks": [

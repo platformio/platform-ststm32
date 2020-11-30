@@ -25,10 +25,10 @@
     "protocol": "mbed",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "blackmagic",
-      "mbed",
-      "cmsis-dap"
+      "mbed"
     ]
   },
   "url": "https://os.mbed.com/platforms/ublox-C030-N211/",

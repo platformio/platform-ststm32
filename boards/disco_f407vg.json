@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx -DARDUINO_STM32DiscoveryF407 -DBOARD_discovery_f4",
+    "extra_flags": "-DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx",
     "f_cpu": "168000000L",
     "mcu": "stm32f407vgt6",
     "variant": "DISCO_F407VG",
@@ -20,6 +20,7 @@
       "stlink"
     ],
     "openocd_board": "stm32f4discovery",
+    "openocd_target": "stm32f4x",
     "svd_path": "STM32F40x.svd"
   },
   "frameworks": [
@@ -38,6 +39,7 @@
     "protocol": "stlink",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "blackmagic",
       "mbed"

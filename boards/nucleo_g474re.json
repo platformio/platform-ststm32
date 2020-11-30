@@ -13,6 +13,7 @@
   ],
   "debug": {
     "jlink_device": "STM32G474RE",
+    "openocd_target": "stm32g4x",
     "svd_path": "STM32G474xx.svd"
   },
   "frameworks": [
@@ -20,6 +21,7 @@
     "cmsis",
     "mbed",
     "libopencm3",
+    "stm32cube",
     "zephyr"
   ],
   "name": "Nucleo G474RE",
@@ -29,6 +31,7 @@
     "protocol": "mbed",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "blackmagic",
       "mbed"
     ]

@@ -3,7 +3,8 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F411xE",
     "f_cpu": "100000000L",
-    "mcu": "stm32f411ret6"
+    "mcu": "stm32f411ret6",
+    "product_line": "STM32F411xE"
   },
   "debug": {
     "jlink_device": "STM32F411RE",
@@ -22,6 +23,7 @@
     "protocol": "mbed",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "blackmagic",
       "mbed"

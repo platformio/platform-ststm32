@@ -2,7 +2,8 @@
   "build": {
     "cpu": "cortex-m4",
     "f_cpu": "100000000L",
-    "mcu": "stm32f411ret6"
+    "mcu": "stm32f411ret6",
+    "product_line": "STM32F411xE"
   },
   "connectivity": [
     "cellular"
@@ -24,6 +25,7 @@
     "protocol": "mbed",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "blackmagic",
       "mbed"

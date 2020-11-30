@@ -2,7 +2,8 @@
   "build": {
     "cpu": "cortex-m4",
     "f_cpu": "168000000L",
-    "mcu": "stm32f439ziy6"
+    "mcu": "stm32f439ziy6",
+    "product_line": "STM32F439xx"
   },
   "connectivity": [
     "bluetooth",
@@ -29,6 +30,7 @@
     "protocol": "stlink",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "blackmagic"
     ]

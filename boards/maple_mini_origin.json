@@ -40,6 +40,7 @@
     "protocol": "dfu",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "stlink",
       "blackmagic",
       "dfu",

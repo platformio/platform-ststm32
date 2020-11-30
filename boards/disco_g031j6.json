@@ -13,12 +13,14 @@
   },
   "debug": {
     "jlink_device": "STM32G031J6",
+    "openocd_target": "stm32g0x",
     "svd_path": "STM32G031.svd"
   },
   "frameworks": [
     "arduino",
     "cmsis",
-    "libopencm3"
+    "libopencm3",
+    "stm32cube"
   ],
   "name": "ST STM32G0316-DISCO",
   "upload": {
@@ -27,6 +29,7 @@
     "protocol": "mbed",
     "protocols": [
       "blackmagic",
+      "cmsis-dap",
       "dfu",
       "jlink",
       "serial",

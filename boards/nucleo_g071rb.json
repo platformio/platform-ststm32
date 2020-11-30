@@ -13,12 +13,14 @@
   },
   "debug": {
     "jlink_device": "STM32G071RB",
+    "openocd_target": "stm32g0x",
     "svd_path": "STM32G071.svd"
   },
   "frameworks": [
     "arduino",
     "cmsis",
     "libopencm3",
+    "stm32cube",
     "zephyr"
   ],
   "name": "Nucleo G071RB",
@@ -28,6 +30,7 @@
     "protocol": "mbed",
     "protocols": [
       "jlink",
+      "cmsis-dap",
       "blackmagic",
       "mbed"
     ]
