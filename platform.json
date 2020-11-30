@@ -188,7 +188,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.10000.0"
+      "version": "~3.10000.0"
     },
     "framework-arduinostm32mxchip": {
       "type": "framework",
