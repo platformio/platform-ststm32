@@ -12,6 +12,7 @@
   ],
   "debug": {
     "jlink_device": "STM32WB55xx",
+    "openocd_target": "stm32wbx.cfg",
     "svd_path": "STM32WBxx.svd"
   },
   "frameworks": [
