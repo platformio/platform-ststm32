@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "9.0.0",
+  "version": "10.0.0",
   "frameworks": {
     "mbed": {
       "package": "framework-mbed",
