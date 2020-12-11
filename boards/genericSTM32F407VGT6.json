@@ -39,7 +39,7 @@
   "name": "STM32F407VG (192k RAM. 1024k Flash)",
   "upload": {
     "disable_flushing": false,
-    "maximum_ram_size": 196608,
+    "maximum_ram_size": 131072,
     "maximum_size": 1048576,
     "protocol": "stlink",
     "protocols": [
