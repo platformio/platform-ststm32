@@ -109,7 +109,7 @@ if not board.get("build.ldscript", ""):
 
 env.Append(
     CPPPATH=[
-        os.path.join(CMSIS_DIR, "CMSIS", "Core", "Include"),
+        os.path.join(CMSIS_DIR, "CMSIS", "Include"),
         os.path.join(CMSIS_DEVICE_DIR, "Include")
     ],
 

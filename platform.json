@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "10.0.1",
+  "version": "11.0.0",
   "frameworks": {
     "mbed": {
       "package": "framework-mbed",
@@ -56,7 +56,6 @@
       "title": "Arduino"
     },
     "stm32cube": {
-      "package": "framework-stm32cube",
       "script": "builder/frameworks/stm32cube.py",
       "description": "STM32Cube embedded software libraries, including: The HAL hardware abstraction layer, enabling portability between different STM32 devices via standardized API calls; The Low-Layer (LL) APIs, a light-weight, optimized, expert oriented set of APIs designed for both performance and runtime efficiency",
       "homepage": "https://www.st.com/en/ecosystems/stm32cube.html",
@@ -80,7 +79,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~6.60200.0"
+      "version": "~6.60600.0"
     },
     "framework-cmsis": {
       "type": "framework",
