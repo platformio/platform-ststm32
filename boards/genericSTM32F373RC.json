@@ -5,7 +5,7 @@
     "extra_flags": "-DSTM32F3 -DSTM32F373xC",
     "f_cpu": "72000000L",
     "mcu": "stm32f373rct6",
-    "product_line": "DSTM32F373xC"
+    "product_line": "STM32F373xC"
   },
   "connectivity": [
     "can"
