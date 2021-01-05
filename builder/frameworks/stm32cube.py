@@ -202,6 +202,7 @@ env.Append(
     CPPPATH=[
         "$PROJECT_SRC_DIR",
         "$PROJECT_INCLUDE_DIR",
+        os.path.join(FRAMEWORK_DIR, "Drivers", "CMSIS", "DSP", "Include"),
         os.path.join(FRAMEWORK_DIR, "Drivers", "CMSIS", "Include"),
         os.path.join(
             FRAMEWORK_DIR,
