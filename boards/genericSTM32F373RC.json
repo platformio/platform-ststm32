@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F3 -DSTM32F373xC",
+    "f_cpu": "72000000L",
+    "mcu": "stm32f373rct6",
+    "product_line": "STM32F373xC"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32F373RC",
+    "openocd_target": "stm32f3x",
+    "svd_path": "STM32F37x.svd"
+  },
+  "frameworks": [
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F373RC (32k RAM. 256k Flash)",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "cmsis-dap",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers/stm32f373rc.html",
+  "vendor": "Generic"
+}
