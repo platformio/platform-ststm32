@@ -27,6 +27,7 @@
     "protocols": [
       "jlink",
       "stlink",
+      "cmsis-dap",
       "blackmagic"
     ]
   },
