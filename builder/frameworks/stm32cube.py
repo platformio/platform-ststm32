@@ -319,16 +319,14 @@ if "build.stm32cube.variant" in board:
 if board.get("build.stm32cube.custom_config_header", "no") == "no":
     generate_hal_config_file()
 
-libs.append(
-    env.BuildLibrary(
-        os.path.join("$BUILD_DIR", "FrameworkHALDriver"),
-        os.path.join(
-            FRAMEWORK_DIR,
-            "Drivers",
-            MCU_FAMILY.upper() + "xx_HAL_Driver",
-        ),
-        src_filter="+<*> -<Src/*_template.c> -<Src/Legacy>",
-    )
+env.BuildSources(
+    os.path.join("$BUILD_DIR", "FrameworkHALDriver"),
+    os.path.join(
+        FRAMEWORK_DIR,
+        "Drivers",
+        MCU_FAMILY.upper() + "xx_HAL_Driver",
+    ),
+    src_filter="+<*> -<Src/*_template.c> -<Src/Legacy>",
 )
 
 #
