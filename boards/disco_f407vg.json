@@ -9,6 +9,9 @@
     "product_line": "STM32F407xx",
     "zephyr": {
        "variant": "stm32f4_disco"
+    },
+    "stm32cube": {
+       "variant": "STM32F4-Discovery"
     }
   },
   "debug": {
