@@ -73,13 +73,15 @@
     "toolchain-gccarmnoneeabi": {
       "type": "toolchain",
       "owner": "platformio",
-      "version": ">=1.60301.0,<1.80000.0"
+      "version": ">=1.60301.0,<1.80000.0",
+      "optionalVersions": ["~1.60301.0", "~1.80201.0", "~1.90201.0"]
     },
     "framework-mbed": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~6.60600.0"
+      "version": "~6.60600.0",
+      "optionalVersions": ["~6.51506.0"]
     },
     "framework-cmsis": {
       "type": "framework",
