@@ -51,6 +51,7 @@ jobs:
           - "examples/zephyr-blink"
           - "examples/zephyr-cpp-synchronization"
           - "examples/zephyr-drivers-can"
+          - "examples/zephyr-net-civetweb"
           - "examples/zephyr-net-https-client"
           - "examples/zephyr-subsys-usb-hid-mouse"
           - "tests/arduino-blink-different-cores"
@@ -58,6 +59,7 @@ jobs:
           - {python-version: 2.7, example: "examples/zephyr-blink"}
           - {python-version: 2.7, example: "examples/zephyr-cpp-synchronization"}
           - {python-version: 2.7, example: "examples/zephyr-drivers-can"}
+          - {python-version: 2.7, example: "examples/zephyr-net-civetweb"}
           - {python-version: 2.7, example: "examples/zephyr-net-https-client"}
           - {python-version: 2.7, example: "examples/zephyr-subsys-usb-hid-mouse"}
     runs-on: ${{ matrix.os }}
