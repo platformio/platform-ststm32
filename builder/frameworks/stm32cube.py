@@ -161,7 +161,7 @@ def build_usb_libs(usb_libs_root):
             "flags": ["-I $PROJECT_SRC_DIR", "-I $PROJECT_INCLUDE_DIR"],
             "includeDir": "Inc",
             "srcDir": "Src",
-            "srcFilter": ["+<*>", "-<Src/*_template*>"],
+            "srcFilter": ["+<*>", "-<*_template*>"],
         }
     }
 
