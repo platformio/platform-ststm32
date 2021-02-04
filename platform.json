@@ -76,6 +76,12 @@
       "version": ">=1.60301.0,<1.80000.0",
       "optionalVersions": ["~1.60301.0", "~1.80201.0", "~1.90201.0"]
     },
+    "framework-arduino-nrf52-mbedos": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.3.0"
+    },
     "framework-mbed": {
       "type": "framework",
       "optional": true,

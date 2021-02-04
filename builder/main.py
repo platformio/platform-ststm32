@@ -20,6 +20,27 @@ from os.path import basename, isdir, join
 from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS, AlwaysBuild,
                           Builder, Default, DefaultEnvironment)
 
+from platformio.util import get_serial_ports
+
+
+def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
+    env.AutodetectUploadPort()
+
+    upload_options = {}
+    if "BOARD" in env:
+        upload_options = env.BoardConfig().get("upload", {})
+
+    if not bool(upload_options.get("disable_flushing", False)):
+        env.FlushSerialBuffer("$UPLOAD_PORT")
+
+    before_ports = get_serial_ports()
+
+    if bool(upload_options.get("use_1200bps_touch", False)):
+        env.TouchSerialPort("$UPLOAD_PORT", 1200)
+
+    if bool(upload_options.get("wait_for_upload_port", False)):
+        env.Replace(UPLOAD_PORT=env.WaitForNewSerialPort(before_ports))
+
 
 env = DefaultEnvironment()
 env.SConscript("compat.py", exports="env")
@@ -216,6 +237,11 @@ elif upload_protocol == "dfu":
         upload_actions.insert(
             0, env.VerboseAction(env.AutodetectUploadPort,
                                  "Looking for upload port..."))
+
+    if board.get("build.variant").startswith("PORTENTA") and "arduino" in env.get(
+        "PIOFRAMEWORK"):
+        upload_actions.insert(
+            0, env.VerboseAction(BeforeUpload, "Looking for upload port..."))
 
     if "dfu-util" in _upload_tool:
         # Add special DFU header to the binary image

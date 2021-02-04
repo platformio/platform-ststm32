@@ -45,6 +45,10 @@ class Ststm32Platform(PlatformBase):
                 self.packages["framework-cmsis"]["version"] = "~2.50501.0"
                 self.packages["framework-cmsis"]["optional"] = False
 
+            if board == "arduino_h7m7" or board == "arduino_h7m4":
+                self.frameworks["arduino"]["package"] = "framework-arduino-nrf52-mbedos"
+                self.frameworks["arduino"]["script"] = "builder/frameworks/arduino/arduino_h7_mbedos.py"
+
         if "mbed" in frameworks:
             deprecated_boards_file = os.path.join(
                 self.get_dir(), "misc", "mbed_deprecated_boards.json")

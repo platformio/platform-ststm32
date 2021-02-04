@@ -1,0 +1,66 @@
+{
+  "build": {
+    "arduino":{
+      "ldscript": "linker_script.ld"
+    },
+    "core": "arduino",
+    "cpu": "cortex-m7",
+    "f_cpu": "480000000L",
+    "mcu": "STM32H747xiH6",
+    "variant": "PORTENTA_H7_M7",
+    "product_line": "STM32H747xx",
+    "hwids": [
+      [
+        "0x2341",
+        "0x025b"
+      ],
+      [
+        "0x2341",
+        "0x035b"
+      ],
+      [
+        "0x2341",
+        "0x045b"
+      ]
+    ]
+  },
+  "connectivity": [
+    "bluetooth",
+    "wifi"
+  ],
+  "debug": {
+    "default_tools": [
+      "jlink"
+    ],
+    "jlink_device": "STM32H747XI",
+    "openocd_board": "st_nucleo_h743zi",
+    "openocd_target": "stm32h7x",
+    "svd_path": "STM32H7x7.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube",
+    "libopencm3",
+    "mbed"
+  ],
+  "name": "arduino_h7m7",
+  "upload": {
+    "maximum_ram_size": 523624,
+    "maximum_size": 786432,
+    "protocol": "dfu",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ],
+    "require_upload_port": true,
+    "use_1200bps_touch": true,
+    "wait_for_upload_port": true,
+    "offset_address": "0x08040000"
+  },
+  "url": "https://www.arduino.cc/pro/hardware/product/portenta-h7",
+  "vendor": "Arduino"
+}
