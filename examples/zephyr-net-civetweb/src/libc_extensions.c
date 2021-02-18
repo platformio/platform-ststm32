@@ -4,6 +4,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+#include <logging/log.h>
+LOG_MODULE_REGISTER(lib_extensions, LOG_LEVEL_DBG);
+
 #include <zephyr.h>
 #include <string.h>
 #include <stdio.h>
@@ -11,7 +14,7 @@
 
 #include "libc_extensions.h"
 
-#define FN_MISSING() printf("[IMPLEMENTATION MISSING : %s]\n", __func__)
+#define FN_MISSING() LOG_DBG("[IMPLEMENTATION MISSING : %s]\n", __func__)
 
 int iscntrl(int c)
 {
@@ -150,10 +153,10 @@ double atof(const char *str)
 	return (double)atoi(str);
 }
 
-long long int strtoll(const char *str, char **endptr, int base)
+long long strtoll(const char *str, char **endptr, int base)
 {
 	/* XXX good enough for civetweb uses */
-	return (long long int)strtol(str, endptr, base);
+	return (long long)strtol(str, endptr, base);
 }
 
 time_t time(time_t *t)

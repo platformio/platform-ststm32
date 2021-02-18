@@ -1,0 +1,45 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32H7xx -DSTM32H723xx",
+    "f_cpu": "550000000L",
+    "mcu": "stm32h723zgt6",
+    "product_line": "STM32H723xx"
+  },
+  "connectivity": [
+    "can",
+    "ethernet"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32H723ZG",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32h7x",
+    "svd_path": "STM32H7x3.svd"
+  },
+  "frameworks": [
+    "cmsis",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "ST Nucleo H723ZG",
+  "upload": {
+    "maximum_ram_size": 442368,
+    "maximum_size": 1048576,
+    "protocol": "stlink",
+    "protocols": [
+      "blackmagic",
+      "cmsis-dap",
+      "jlink",
+      "stlink",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-h723zg.html",
+  "vendor": "ST"
+}

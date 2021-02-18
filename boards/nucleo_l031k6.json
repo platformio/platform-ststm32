@@ -23,7 +23,8 @@
     "cmsis",
     "mbed",
     "stm32cube",
-    "libopencm3"
+    "libopencm3",
+    "zephyr"
   ],
   "name": "ST Nucleo L031K6",
   "upload": {

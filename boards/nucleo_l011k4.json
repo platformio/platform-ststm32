@@ -20,7 +20,8 @@
   "frameworks": [
     "cmsis",
     "stm32cube",
-    "libopencm3"
+    "libopencm3",
+    "zephyr"
   ],
   "name": "ST Nucleo L011K4",
   "upload": {

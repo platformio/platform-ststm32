@@ -5,11 +5,11 @@
   "homepage": "http://www.st.com/web/en/catalog/mmc/FM141/SC1169?sc=stm32",
   "license": "Apache-2.0",
   "keywords": [
-      "dev-platform",
-      "ARM",
-      "Cortex-M",
-      "STMicroelectronics",
-      "STM32"
+    "dev-platform",
+    "ARM",
+    "Cortex-M",
+    "STMicroelectronics",
+    "STM32"
   ],
   "engines": {
     "platformio": "^5"
@@ -74,14 +74,20 @@
       "type": "toolchain",
       "owner": "platformio",
       "version": ">=1.60301.0,<1.80000.0",
-      "optionalVersions": ["~1.60301.0", "~1.80201.0", "~1.90201.0"]
+      "optionalVersions": [
+        "~1.60301.0",
+        "~1.80201.0",
+        "~1.90201.0"
+      ]
     },
     "framework-mbed": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
       "version": "~6.60600.0",
-      "optionalVersions": ["~6.51506.0"]
+      "optionalVersions": [
+        "~6.51506.0"
+      ]
     },
     "framework-cmsis": {
       "type": "framework",
@@ -285,12 +291,12 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.20400.0"
+      "version": "~2.20500.0"
     },
     "framework-zephyr-cmsis": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.542b2296e6"
+      "version": "0.0.0-alpha+sha.c3bd2094f9"
     },
     "framework-zephyr-canopennode": {
       "optional": true,
@@ -300,52 +306,52 @@
     "framework-zephyr-civetweb": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.99129c5efc"
+      "version": "0.0.0-alpha+sha.e6903b80c0"
     },
     "framework-zephyr-fatfs": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.13697783bf"
+      "version": "0.0.0-alpha+sha.1d1fcc725a"
     },
     "framework-zephyr-hal-st": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.5b3ec3e182"
+      "version": "0.0.0-alpha+sha.b52fdbf4b6"
     },
     "framework-zephyr-hal-stm32": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.cea57f86d3"
+      "version": "0.0.0-alpha+sha.cc8731dba4"
     },
     "framework-zephyr-libmetal": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.0b23894a04"
+      "version": "0.0.0-alpha+sha.9d4ee2c3cf"
     },
     "framework-zephyr-lvgl": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.928b61c7c8"
+      "version": "0.0.0-alpha+sha.31acbaa36e"
     },
     "framework-zephyr-mbedtls": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.aef137b1af"
+      "version": "0.0.0-alpha+sha.24d84ecff1"
     },
     "framework-zephyr-mcuboot": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.a5d79cf8cc"
+      "version": "0.0.0-alpha+sha.3fc59410b6"
     },
     "framework-zephyr-mcumgr": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.5051f9d900"
+      "version": "0.0.0-alpha+sha.43845e883f"
     },
     "framework-zephyr-open-amp": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.724f7e2a45"
+      "version": "0.0.0-alpha+sha.de1b85a130"
     },
     "framework-zephyr-loramac-node": {
       "optional": true,
@@ -355,12 +361,17 @@
     "framework-zephyr-openthread": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.07f430dac6"
+      "version": "0.0.0-alpha+sha.1d668284a0"
     },
     "framework-zephyr-segger": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.874d9e9696"
+      "version": "0.0.0-alpha+sha.38c79a447e"
+    },
+    "framework-zephyr-sof": {
+      "optional": true,
+      "owner": "platformio",
+      "version": "0.0.0-alpha+sha.b5b772dd61"
     },
     "framework-zephyr-tinycbor": {
       "optional": true,
@@ -380,12 +391,17 @@
     "framework-zephyr-mipi-sys-t": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.957d46bc3c"
+      "version": "0.0.0-alpha+sha.75e671550a"
+    },
+    "framework-zephyr-tfm-mcuboot": {
+      "optional": true,
+      "owner": "platformio",
+      "version": "1.7.0-rc1"
     },
     "framework-zephyr-trusted-firmware-m": {
       "optional": true,
       "owner": "platformio",
-      "version": "0.0.0-alpha+sha.143df67555"
+      "version": "0.0.0-alpha+sha.96340fb6c0"
     },
     "tool-stm32duino": {
       "type": "uploader",
