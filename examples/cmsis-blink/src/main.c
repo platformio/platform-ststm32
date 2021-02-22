@@ -30,7 +30,7 @@
     #include "stm32f0xx.h"
     #define LEDPORT (GPIOC)
     #define LED1 (8)
-    #define ENABLE_GPIO_CLOCK (RCC->APB2ENR |= RCC_AHBENR_GPIOCEN)
+    #define ENABLE_GPIO_CLOCK (RCC->AHBENR |= RCC_AHBENR_GPIOCEN)
     #define _MODER    MODER
     #define GPIOMODER (GPIO_MODER_MODER8_0)
 #elif STM32F1
