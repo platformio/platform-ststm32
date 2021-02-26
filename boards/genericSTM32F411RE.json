@@ -19,10 +19,10 @@
     "stm32cube",
     "libopencm3"
   ],
-  "name": "STM32F411RE (128k RAM. 256k Flash)",
+  "name": "STM32F411RE (128k RAM. 512k Flash)",
   "upload": {
     "maximum_ram_size": 131072,
-    "maximum_size": 262144,
+    "maximum_size": 524288,
     "protocol": "serial",
     "protocols": [
       "blackmagic",

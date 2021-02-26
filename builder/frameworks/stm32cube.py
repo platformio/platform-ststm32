@@ -161,7 +161,7 @@ def build_usb_libs(usb_libs_root):
             "flags": ["-I $PROJECT_SRC_DIR", "-I $PROJECT_INCLUDE_DIR"],
             "includeDir": "Inc",
             "srcDir": "Src",
-            "srcFilter": ["+<*>", "-<Src/*_template*>"],
+            "srcFilter": ["+<*>", "-<*_template*>"],
         }
     }
 
@@ -202,6 +202,7 @@ env.Append(
     CPPPATH=[
         "$PROJECT_SRC_DIR",
         "$PROJECT_INCLUDE_DIR",
+        os.path.join(FRAMEWORK_DIR, "Drivers", "CMSIS", "DSP", "Include"),
         os.path.join(FRAMEWORK_DIR, "Drivers", "CMSIS", "Include"),
         os.path.join(
             FRAMEWORK_DIR,
@@ -318,16 +319,14 @@ if "build.stm32cube.variant" in board:
 if board.get("build.stm32cube.custom_config_header", "no") == "no":
     generate_hal_config_file()
 
-libs.append(
-    env.BuildLibrary(
-        os.path.join("$BUILD_DIR", "FrameworkHALDriver"),
-        os.path.join(
-            FRAMEWORK_DIR,
-            "Drivers",
-            MCU_FAMILY.upper() + "xx_HAL_Driver",
-        ),
-        src_filter="+<*> -<Src/*_template.c> -<Src/Legacy>",
-    )
+env.BuildSources(
+    os.path.join("$BUILD_DIR", "FrameworkHALDriver"),
+    os.path.join(
+        FRAMEWORK_DIR,
+        "Drivers",
+        MCU_FAMILY.upper() + "xx_HAL_Driver",
+    ),
+    src_filter="+<*> -<Src/*_template.c> -<Src/Legacy>",
 )
 
 #

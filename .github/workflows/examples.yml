@@ -8,7 +8,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-16.04, windows-latest, macos-latest]
-        python-version: [2.7, 3.7]
+        python-version: [3.7]
         example:
           - "examples/arduino-blink"
           - "examples/arduino-external-libs"
@@ -51,15 +51,10 @@ jobs:
           - "examples/zephyr-blink"
           - "examples/zephyr-cpp-synchronization"
           - "examples/zephyr-drivers-can"
+          - "examples/zephyr-net-civetweb"
           - "examples/zephyr-net-https-client"
           - "examples/zephyr-subsys-usb-hid-mouse"
           - "tests/arduino-blink-different-cores"
-        exclude:
-          - {python-version: 2.7, example: "examples/zephyr-blink"}
-          - {python-version: 2.7, example: "examples/zephyr-cpp-synchronization"}
-          - {python-version: 2.7, example: "examples/zephyr-drivers-can"}
-          - {python-version: 2.7, example: "examples/zephyr-net-https-client"}
-          - {python-version: 2.7, example: "examples/zephyr-subsys-usb-hid-mouse"}
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2

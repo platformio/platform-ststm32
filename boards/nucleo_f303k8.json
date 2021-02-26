@@ -27,7 +27,8 @@
     "cmsis",
     "mbed",
     "stm32cube",
-    "libopencm3"
+    "libopencm3",
+    "zephyr"
   ],
   "name": "ST Nucleo F303K8",
   "upload": {
