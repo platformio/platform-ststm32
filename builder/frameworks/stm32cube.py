@@ -125,21 +125,27 @@ def generate_hal_config_file():
         "Inc",
     )
 
-    if os.path.isfile(os.path.join(config_path, MCU_FAMILY + "xx_hal_conf.h")):
-        return
+    conf_h_path = os.path.join(config_path, MCU_FAMILY + "xx_hal_conf.h")
+    template_h_path = os.path.join(config_path, MCU_FAMILY + "xx_hal_conf_template.h")
 
-    if not os.path.isfile(
-        os.path.join(config_path, MCU_FAMILY + "xx_hal_conf_template.h")
-    ):
-        sys.stderr.write(
-            "Error: Cannot find peripheral template file to configure framework!\n"
-        )
-        env.Exit(1)
+    if board.get("build.stm32cube.custom_config_header", "no") == "yes":
+        if os.path.isfile(conf_h_path):
+            sys.stderr.write(
+                "Warning: '" + conf_h_path + "' exists, but custom_config_header=yes! Deleting...\n"
+            )
+            os.remove(conf_h_path)
+        print("Using custom " + os.path.basename(conf_h_path) + "\n")
+    else:
+        if os.path.isfile(conf_h_path):
+            return
 
-    shutil.copy(
-        os.path.join(config_path, MCU_FAMILY + "xx_hal_conf_template.h"),
-        os.path.join(config_path, MCU_FAMILY + "xx_hal_conf.h"),
-    )
+        if not os.path.isfile(template_h_path):
+            sys.stderr.write(
+                "Error: Cannot find peripheral template file to configure framework!\n"
+            )
+            env.Exit(1)
+
+        shutil.copy(template_h_path, conf_h_path)
 
 
 def build_custom_lib(lib_path, lib_manifest=None):
@@ -316,8 +322,7 @@ if "build.stm32cube.variant" in board:
 #
 
 # Generate a default stm32xxx_hal_conf.h
-if board.get("build.stm32cube.custom_config_header", "no") == "no":
-    generate_hal_config_file()
+generate_hal_config_file()
 
 env.BuildSources(
     os.path.join("$BUILD_DIR", "FrameworkHALDriver"),
