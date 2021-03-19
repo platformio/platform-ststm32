@@ -130,11 +130,7 @@ def generate_hal_config_file():
 
     if board.get("build.stm32cube.custom_config_header", "no") == "yes":
         if os.path.isfile(conf_h_path):
-            sys.stderr.write(
-                "Warning: '" + conf_h_path + "' exists, but custom_config_header=yes! Deleting...\n"
-            )
             os.remove(conf_h_path)
-        print("Using custom " + os.path.basename(conf_h_path) + "\n")
     else:
         if os.path.isfile(conf_h_path):
             return
