@@ -32,9 +32,11 @@ class Ststm32Platform(PlatformBase):
 
         frameworks = variables.get("pioframework", [])
         if "arduino" in frameworks:
-            if board.startswith("portenta_h7"):
+            if board.startswith("portenta"):
                 self.frameworks["arduino"]["package"] = "framework-arduino-mbed"
-                self.frameworks["arduino"]["script"] = "builder/frameworks/arduino/arduino_h7_mbedos.py"
+                self.frameworks["arduino"][
+                    "script"
+                ] = "builder/frameworks/arduino/mbed-core/arduino-core-mbed.py"
             elif build_core == "maple":
                 self.frameworks["arduino"]["package"] = "framework-arduinoststm32-maple"
                 self.packages["framework-arduinoststm32-maple"]["optional"] = False

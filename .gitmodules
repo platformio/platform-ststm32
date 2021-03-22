@@ -1,3 +1,6 @@
 [submodule "builder/frameworks/libopencm3"]
 	path = builder/frameworks/libopencm3
 	url = https://github.com/platformio/builder-framework-libopencm3.git
+[submodule "builder/frameworks/arduino/mbed-core"]
+	path = builder/frameworks/arduino/mbed-core
+	url = https://github.com/platformio/builder-framework-arduino-core-mbed.git
