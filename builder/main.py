@@ -218,30 +218,32 @@ elif upload_protocol == "dfu":
 
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
-    if board.get("build.mcu").startswith("stm32f103") and "arduino" in env.get(
-        "PIOFRAMEWORK"):
-        # F103 series doesn't have embedded DFU over USB
-        # stm32duino bootloader (v1, v2) is used instead
-        def __configure_upload_port(env):
-            return basename(env.subst("$UPLOAD_PORT"))
+    if "arduino" in env.get("PIOFRAMEWORK"):
+        if env.subst("$BOARD").startswith("portenta"):
+            upload_actions.insert(
+                0,
+                env.VerboseAction(
+                    env.AutodetectUploadPort, "Looking for upload port..."
+                ),
+            )
+        elif board.get("build.mcu").startswith("stm32f103"):
+            # F103 series doesn't have embedded DFU over USB
+            # stm32duino bootloader (v1, v2) is used instead
+            def __configure_upload_port(env):
+                return basename(env.subst("$UPLOAD_PORT"))
 
-        _upload_tool = "maple_upload"
-        _upload_flags = [
-            "${__configure_upload_port(__env__)}",
-            board.get("upload.boot_version", 2),
-            "%s:%s" % (vid[2:], pid[2:])
-        ]
+            _upload_tool = "maple_upload"
+            _upload_flags = [
+                "${__configure_upload_port(__env__)}",
+                board.get("upload.boot_version", 2),
+                "%s:%s" % (vid[2:], pid[2:])
+            ]
 
-        env.Replace(__configure_upload_port=__configure_upload_port)
+            env.Replace(__configure_upload_port=__configure_upload_port)
 
-        upload_actions.insert(
-            0, env.VerboseAction(env.AutodetectUploadPort,
-                                 "Looking for upload port..."))
-
-    if board.get("build.variant").startswith("PORTENTA") and "arduino" in env.get(
-        "PIOFRAMEWORK"):
-        upload_actions.insert(
-            0, env.VerboseAction(BeforeUpload, "Looking for upload port..."))
+            upload_actions.insert(
+                0, env.VerboseAction(env.AutodetectUploadPort,
+                                     "Looking for upload port..."))
 
     if "dfu-util" in _upload_tool:
         # Add special DFU header to the binary image

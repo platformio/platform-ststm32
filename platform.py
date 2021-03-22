@@ -32,7 +32,10 @@ class Ststm32Platform(PlatformBase):
 
         frameworks = variables.get("pioframework", [])
         if "arduino" in frameworks:
-            if build_core == "maple":
+            if board.startswith("portenta_h7"):
+                self.frameworks["arduino"]["package"] = "framework-arduino-mbed"
+                self.frameworks["arduino"]["script"] = "builder/frameworks/arduino/arduino_h7_mbedos.py"
+            elif build_core == "maple":
                 self.frameworks["arduino"]["package"] = "framework-arduinoststm32-maple"
                 self.packages["framework-arduinoststm32-maple"]["optional"] = False
                 self.packages["framework-arduinoststm32"]["optional"] = True
@@ -44,10 +47,6 @@ class Ststm32Platform(PlatformBase):
                 self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.90201.0"
                 self.packages["framework-cmsis"]["version"] = "~2.50501.0"
                 self.packages["framework-cmsis"]["optional"] = False
-
-            if board == "arduino_h7m7" or board == "arduino_h7m4":
-                self.frameworks["arduino"]["package"] = "framework-arduino-nrf52-mbedos"
-                self.frameworks["arduino"]["script"] = "builder/frameworks/arduino/arduino_h7_mbedos.py"
 
         if "mbed" in frameworks:
             deprecated_boards_file = os.path.join(
@@ -186,9 +185,10 @@ class Ststm32Platform(PlatformBase):
 
     def configure_debug_options(self, initial_debug_options, ide_data):
         debug_options = copy.deepcopy(initial_debug_options)
-        server_executable = debug_options["server"]["executable"].lower()
         adapter_speed = initial_debug_options.get("speed")
         if adapter_speed:
+            server_options = debug_options.get("server") or {}
+            server_executable = server_options.get("executable", "").lower()
             if "openocd" in server_executable:
                 debug_options["server"]["arguments"].extend(
                     ["-c", "adapter speed %s" % adapter_speed]
