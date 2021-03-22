@@ -20,6 +20,27 @@ from os.path import basename, isdir, join
 from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS, AlwaysBuild,
                           Builder, Default, DefaultEnvironment)
 
+from platformio.util import get_serial_ports
+
+
+def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
+    env.AutodetectUploadPort()
+
+    upload_options = {}
+    if "BOARD" in env:
+        upload_options = env.BoardConfig().get("upload", {})
+
+    if not bool(upload_options.get("disable_flushing", False)):
+        env.FlushSerialBuffer("$UPLOAD_PORT")
+
+    before_ports = get_serial_ports()
+
+    if bool(upload_options.get("use_1200bps_touch", False)):
+        env.TouchSerialPort("$UPLOAD_PORT", 1200)
+
+    if bool(upload_options.get("wait_for_upload_port", False)):
+        env.Replace(UPLOAD_PORT=env.WaitForNewSerialPort(before_ports))
+
 
 env = DefaultEnvironment()
 env.SConscript("compat.py", exports="env")
@@ -198,25 +219,32 @@ elif upload_protocol == "dfu":
 
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
-    if board.get("build.mcu").startswith("stm32f103") and "arduino" in env.get(
-        "PIOFRAMEWORK"):
-        # F103 series doesn't have embedded DFU over USB
-        # stm32duino bootloader (v1, v2) is used instead
-        def __configure_upload_port(env):
-            return basename(env.subst("$UPLOAD_PORT"))
+    if "arduino" in env.get("PIOFRAMEWORK"):
+        if env.subst("$BOARD").startswith("portenta"):
+            upload_actions.insert(
+                0,
+                env.VerboseAction(
+                    env.AutodetectUploadPort, "Looking for upload port..."
+                ),
+            )
+        elif board.get("build.mcu").startswith("stm32f103"):
+            # F103 series doesn't have embedded DFU over USB
+            # stm32duino bootloader (v1, v2) is used instead
+            def __configure_upload_port(env):
+                return basename(env.subst("$UPLOAD_PORT"))
 
-        _upload_tool = "maple_upload"
-        _upload_flags = [
-            "${__configure_upload_port(__env__)}",
-            board.get("upload.boot_version", 2),
-            "%s:%s" % (vid[2:], pid[2:])
-        ]
+            _upload_tool = "maple_upload"
+            _upload_flags = [
+                "${__configure_upload_port(__env__)}",
+                board.get("upload.boot_version", 2),
+                "%s:%s" % (vid[2:], pid[2:])
+            ]
 
-        env.Replace(__configure_upload_port=__configure_upload_port)
+            env.Replace(__configure_upload_port=__configure_upload_port)
 
-        upload_actions.insert(
-            0, env.VerboseAction(env.AutodetectUploadPort,
-                                 "Looking for upload port..."))
+            upload_actions.insert(
+                0, env.VerboseAction(env.AutodetectUploadPort,
+                                     "Looking for upload port..."))
 
     if "dfu-util" in _upload_tool:
         # Add special DFU header to the binary image
