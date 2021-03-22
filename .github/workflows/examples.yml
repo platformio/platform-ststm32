@@ -13,6 +13,8 @@ jobs:
           - "examples/arduino-blink"
           - "examples/arduino-external-libs"
           - "examples/arduino-internal-libs"
+          - "examples/arduino-mbed-doom"
+          - "examples/arduino-mbed-rpc"
           - "examples/arduino-mxchip-azureiot"
           - "examples/arduino-mxchip-filesystem"
           - "examples/arduino-mxchip-sensors"
