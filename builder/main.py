@@ -223,9 +223,7 @@ elif upload_protocol == "dfu":
         if env.subst("$BOARD").startswith("portenta"):
             upload_actions.insert(
                 0,
-                env.VerboseAction(
-                    env.AutodetectUploadPort, "Looking for upload port..."
-                )
+                env.VerboseAction(BeforeUpload, "Looking for upload port...")
             )
         elif board.get("build.mcu").startswith("stm32f103"):
             # F103 series doesn't have embedded DFU over USB
