@@ -210,7 +210,7 @@ elif upload_protocol == "dfu":
 
     # default tool for all boards with embedded DFU bootloader over USB
     _upload_tool = '"%s"' % join(platform.get_package_dir(
-        "tool-dfuutil") or "", "bin", "dfu-util"),
+        "tool-dfuutil") or "", "bin", "dfu-util")
     _upload_flags = [
         "-d", ",".join(["%s:%s" % (hwid[0], hwid[1]) for hwid in hwids]),
         "-a", "0", "-s",
@@ -225,7 +225,7 @@ elif upload_protocol == "dfu":
                 0,
                 env.VerboseAction(
                     env.AutodetectUploadPort, "Looking for upload port..."
-                ),
+                )
             )
         elif board.get("build.mcu").startswith("stm32f103"):
             # F103 series doesn't have embedded DFU over USB
