@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F1 -DSTM32F103xB -DARDUINO_BLUEPILL_F103C8",
+    "extra_flags": "-DSTM32F1 -DSTM32F103x8 -DARDUINO_BLUEPILL_F103C8",
     "f_cpu": "72000000L",
     "hwids": [
       [
@@ -15,7 +15,7 @@
       ]
     ],
     "mcu": "stm32f103c8t6",
-    "product_line": "STM32F103xB",
+    "product_line": "STM32F103x8",
     "variant": "PILL_F103XX",
     "zephyr": {
        "variant": "stm32_min_dev_blue"

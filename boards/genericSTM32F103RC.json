@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F103xE -DSTM32F1",
+    "extra_flags": "-DSTM32F103xC -DSTM32F1",
     "f_cpu": "72000000L",
     "hwids": [
       [
@@ -15,7 +15,7 @@
       ]
     ],
     "mcu": "stm32f103rct6",
-    "product_line": "STM32F103xE",
+    "product_line": "STM32F103xC",
     "variant": "Generic_F103Rx"
   },
   "debug": {

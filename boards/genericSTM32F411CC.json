@@ -2,10 +2,10 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F411xE -DSTM32F4xx",
+    "extra_flags": "-DSTM32F411xC -DSTM32F4xx",
     "f_cpu": "100000000L",
     "mcu": "stm32f411cc",
-    "product_line": "STM32F411xE",
+    "product_line": "STM32F411xC",
     "variant": "Generic_F411Cx"
   },
   "debug": {

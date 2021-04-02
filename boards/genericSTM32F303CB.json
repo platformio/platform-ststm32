@@ -2,10 +2,10 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F3 -DSTM32F303xC",
+    "extra_flags": "-DSTM32F3 -DSTM32F303xB",
     "f_cpu": "72000000L",
     "mcu": "stm32f303cbt6",
-    "product_line": "STM32F303xC"
+    "product_line": "STM32F303xB"
   },
   "connectivity": [
     "can"
