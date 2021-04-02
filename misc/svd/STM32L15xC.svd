@@ -13872,7 +13872,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>Interrupt enable register</description>
           <addressOffset>0xC</addressOffset>
           <size>0x20</size>
-          <access>write-only</access>
+          <access>read-write</access>
           <resetValue>0x0000</resetValue>
           <fields>
             <field>
@@ -14316,7 +14316,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>Interrupt enable register</description>
           <addressOffset>0xC</addressOffset>
           <size>0x20</size>
-          <access>write-only</access>
+          <access>read-write</access>
           <resetValue>0x0000</resetValue>
           <fields>
             <field>
@@ -15389,7 +15389,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>Interrupt enable register</description>
           <addressOffset>0xC</addressOffset>
           <size>0x20</size>
-          <access>write-only</access>
+          <access>read-write</access>
           <resetValue>0x0000</resetValue>
           <fields>
             <field>
