@@ -37,6 +37,7 @@ class Ststm32Platform(PlatformBase):
                 self.frameworks["arduino"][
                     "script"
                 ] = "builder/frameworks/arduino/mbed-core/arduino-core-mbed.py"
+                self.packages["framework-arduinoststm32"]["optional"] = True
             elif build_core == "maple":
                 self.frameworks["arduino"]["package"] = "framework-arduinoststm32-maple"
                 self.packages["framework-arduinoststm32-maple"]["optional"] = False
