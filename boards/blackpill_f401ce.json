@@ -6,7 +6,10 @@
     "f_cpu": "84000000L",
     "mcu": "stm32f401ceu6",
     "product_line": "STM32F401xE",
-    "variant": "Generic_F401Cx"
+    "variant": "Generic_F401Cx",
+    "zephyr": {
+      "variant": "blackpill_f401ce"
+    }
   },
   "debug": {
     "jlink_device": "STM32F401CE",
@@ -17,7 +20,8 @@
     "arduino",
     "cmsis",
     "stm32cube",
-    "libopencm3"
+    "libopencm3",
+    "zephyr"
   ],
   "name": "WeAct Studio BlackPill V3.0 (STM32F401CE)",
   "upload": {
