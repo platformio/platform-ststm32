@@ -6,7 +6,10 @@
     "f_cpu": "100000000L",
     "mcu": "stm32f411ceu6",
     "product_line": "STM32F411xE",
-    "variant": "Generic_F411Cx"
+    "variant": "Generic_F411Cx",
+    "zephyr": {
+      "variant": "blackpill_f411ce"
+    }
   },
   "debug": {
     "jlink_device": "STM32F411CE",
