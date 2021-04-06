@@ -8,9 +8,6 @@
     "product_line": "STM32F401xE",
     "variant": "Generic_F401Cx"
   },
-  "connectivity": [
-    "can"
-  ],
   "debug": {
     "jlink_device": "STM32F401CE",
     "openocd_target": "stm32f4x",
@@ -22,7 +19,7 @@
     "stm32cube",
     "libopencm3"
   ],
-  "name": "BlackPill F401CE",
+  "name": "WeAct Studio BlackPill V3.0 (STM32F401CE)",
   "upload": {
     "maximum_ram_size": 98304,
     "maximum_size": 524288,
@@ -36,6 +33,6 @@
       "dfu"
     ]
   },
-  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f401ce.html",
-  "vendor": "ST"
+  "url": "https://github.com/WeActTC/MiniSTM32F4x1",
+  "vendor": "WeAct Studio"
 }
