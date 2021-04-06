@@ -8,9 +8,6 @@
     "product_line": "STM32F411xE",
     "variant": "Generic_F411Cx"
   },
-  "connectivity": [
-    "can"
-  ],
   "debug": {
     "jlink_device": "STM32F411CE",
     "openocd_target": "stm32f4x",
@@ -23,7 +20,7 @@
     "libopencm3",
     "zephyr"
   ],
-  "name": "WeAct BlackPill V2.0 (BlackPill F411CE)",
+  "name": "WeAct Studio BlackPill V2.0 (STM32F411CE)",
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 524288,
@@ -37,6 +34,6 @@
       "dfu"
     ]
   },
-  "url": "https://github.com/mcauser/WEACT_F411CEU6",
-  "vendor": "WeAct"
+  "url": "https://github.com/WeActTC/MiniSTM32F4x1",
+  "vendor": "WeAct Studio"
 }
