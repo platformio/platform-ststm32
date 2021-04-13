@@ -251,6 +251,9 @@ env.Append(
     LIBS=["c", "gcc", "m", "stdc++", "nosys"],
 )
 
+if env.GetBuildType() == "debug":
+    env.ConfigureDebugFlags()
+
 # copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
 env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
