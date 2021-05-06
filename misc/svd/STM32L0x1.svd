@@ -3,8 +3,18 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
   <name>STM32L0x1</name>
-  <version>1.0</version>
+  <version>1.5</version>
   <description>STM32L0x1</description>
+  <!-- details about the cpu embedded in the device -->
+  <cpu>
+    <name>CM0+</name>
+    <revision>r0p0</revision>
+    <endian>little</endian>
+    <mpuPresent>true</mpuPresent>
+    <fpuPresent>false</fpuPresent>
+    <nvicPrioBits>4</nvicPrioBits>
+    <vendorSystickConfig>false</vendorSystickConfig>
+  </cpu>
   <!--Bus Interface Properties-->
   <!--Cortex-M3 is byte addressable-->
   <addressUnitBits>8</addressUnitBits>
@@ -5885,21 +5895,22 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <fields>
             <field>
               <name>CALP</name>
-              <description>Use an 8-second calibration cycle
-              period</description>
+              <description>Increase frequency of RTC by 488.5
+              ppm</description>
               <bitOffset>15</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
               <name>CALW8</name>
-              <description>Use a 16-second calibration cycle
+              <description>Use an 8-second calibration cycle
               period</description>
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
               <name>CALW16</name>
-              <description>Reserved</description>
+              <description>Use a 16-second calibration cycle
+              period</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
@@ -7043,19 +7054,14 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
     <peripheral derivedFrom="USART1">
       <name>USART2</name>
       <baseAddress>0x40004400</baseAddress>
-      <interrupt>
-        <name>USART2</name>
-        <description>USART2 global interrupt</description>
-        <value>28</value>
-      </interrupt>
     </peripheral>
     <peripheral derivedFrom="USART1">
       <name>USART4</name>
       <baseAddress>0x40004C00</baseAddress>
       <interrupt>
-        <name>USART1</name>
-        <description>USART1 global interrupt</description>
-        <value>27</value>
+        <name>USART4_USART5</name>
+        <description>USART4/USART5 global interrupt</description>
+        <value>14</value>
       </interrupt>
     </peripheral>
     <peripheral derivedFrom="USART1">
@@ -7263,7 +7269,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>Status register</description>
           <addressOffset>0x8</addressOffset>
           <size>0x20</size>
-          <access>read-writeOnce</access>
+          <access>read-write</access>
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
@@ -8925,8 +8931,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       </registers>
     </peripheral>
     <peripheral>
-      <name>SYSCFG</name>
-      <description>System configuration controller</description>
+      <name>SYSCFG_COMP</name>
+      <description>System configuration controller and COMP
+      register</description>
       <groupName>SYSCFG</groupName>
       <baseAddress>0x40010000</baseAddress>
       <addressBlock>
@@ -9284,6 +9291,140 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
               <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>COMP1_CSR</name>
+          <displayName>COMP1_CSR</displayName>
+          <description>Comparator 1 control and status
+          register</description>
+          <addressOffset>0x18</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>COMP1EN</name>
+              <description>Comparator 1 enable bit</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COMP1INNSEL</name>
+              <description>Comparator 1 Input Minus connection
+              configuration bit</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>COMP1WM</name>
+              <description>Comparator 1 window mode selection
+              bit</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COMP1LPTIMIN1</name>
+              <description>Comparator 1 LPTIM input propagation
+              bit</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COMP1POLARITY</name>
+              <description>Comparator 1 polarity selection
+              bit</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COMP1VALUE</name>
+              <description>Comparator 1 output status
+              bit</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COMP1LOCK</name>
+              <description>COMP1_CSR register lock
+              bit</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>COMP2_CSR</name>
+          <displayName>COMP2_CSR</displayName>
+          <description>Comparator 2 control and status
+          register</description>
+          <addressOffset>0x1C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>COMP2EN</name>
+              <description>Comparator 2 enable bit</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COMP2SPEED</name>
+              <description>Comparator 2 power mode selection
+              bit</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COMP2INNSEL</name>
+              <description>Comparator 2 Input Minus connection
+              configuration bit</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>COMP2INPSEL</name>
+              <description>Comparator 2 Input Plus connection
+              configuration bit</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>COMP2LPTIMIN2</name>
+              <description>Comparator 2 LPTIM input 2 propagation
+              bit</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COMP2LPTIMIN1</name>
+              <description>Comparator 2 LPTIM input 1 propagation
+              bit</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COMP2POLARITY</name>
+              <description>Comparator 2 polarity selection
+              bit</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COMP2VALUE</name>
+              <description>Comparator 2 output status
+              bit</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COMP2LOCK</name>
+              <description>COMP2_CSR register lock
+              bit</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
             </field>
           </fields>
         </register>
@@ -10357,6 +10498,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
     <peripheral derivedFrom="I2C1">
       <name>I2C3</name>
       <baseAddress>0x40007800</baseAddress>
+      <interrupt>
+        <name>I2C3</name>
+        <description>I2C3 global interrupt</description>
+        <value>21</value>
+      </interrupt>
     </peripheral>
     <peripheral>
       <name>PWR</name>
@@ -10535,11 +10681,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
-      <interrupt>
-        <name>FLASH</name>
-        <description>Flash global interrupt</description>
-        <value>3</value>
-      </interrupt>
       <registers>
         <register>
           <name>ACR</name>
@@ -10575,7 +10716,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>DESAB_BUF</name>
+              <name>DISAB_BUF</name>
               <description>Disable Buffer</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
@@ -10629,7 +10770,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>FTDW</name>
+              <name>FIX</name>
               <description>Fixed time data write for Byte, Half
               Word and Word programming</description>
               <bitOffset>8</bitOffset>
@@ -10668,11 +10809,17 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitOffset>17</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
-            <field>
+			<field>
               <name>OBL_LAUNCH</name>
               <description>Launch the option byte
               loading</description>
               <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+			<field>
+              <name>NZDISABLE</name>
+              <description>Non-Zero check notification disable</description>
+              <bitOffset>23</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -10816,7 +10963,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
             <field>
               <name>RDERR</name>
               <description>RDERR</description>
-              <bitOffset>14</bitOffset>
+              <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
               <access>read-write</access>
             </field>
@@ -10837,8 +10984,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>OBR</name>
-          <displayName>OBR</displayName>
+          <name>OPTR</name>
+          <displayName>OPTR</displayName>
           <description>Option byte register</description>
           <addressOffset>0x1C</addressOffset>
           <size>0x20</size>
@@ -10846,37 +10993,83 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00F80000</resetValue>
           <fields>
             <field>
-              <name>RDPRT</name>
+              <name>RDPROT</name>
               <description>Read protection</description>
               <bitOffset>0</bitOffset>
               <bitWidth>8</bitWidth>
             </field>
             <field>
+              <name>WPRMOD</name>
+              <description>WPRMOD</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+			<field>
               <name>BOR_LEV</name>
               <description>BOR_LEV</description>
               <bitOffset>16</bitOffset>
               <bitWidth>4</bitWidth>
             </field>
+			<field>
+              <name>WDG_SW</name>
+              <description>WDG_SW</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
             <field>
-              <name>SPRMOD</name>
-              <description>Selection of protection mode of WPR
-              bits</description>
-              <bitOffset>8</bitOffset>
+              <name>nRST_STOP</name>
+              <description>nRST_STOP</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+			<field>
+              <name>nRST_STDBY</name>
+              <description>nRST_STDBY</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+			<field>
+              <name>BFB2</name>
+              <description>BFB2</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+			<field>
+              <name>nBOOT1</name>
+              <description>nBOOT1</description>
+              <bitOffset>31</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
         </register>
         <register>
-          <name>WRPR</name>
-          <displayName>WRPR</displayName>
+          <name>WRPROT1</name>
+          <displayName>WRPROT1</displayName>
           <description>Write protection register</description>
           <addressOffset>0x20</addressOffset>
           <size>0x20</size>
-          <access>read-write</access>
+          <access>read-only</access>
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>WRP</name>
+              <name>WRPROT1</name>
+              <description>Write protection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+		<register>
+          <name>WRPROT2</name>
+          <displayName>WRPROT2</displayName>
+          <description>Write protection register</description>
+          <addressOffset>0x80</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>WRPROT2</name>
               <description>Write protection</description>
               <bitOffset>0</bitOffset>
               <bitWidth>16</bitWidth>
@@ -10928,147 +11121,177 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0xFF840000</resetValue>
           <fields>
             <field>
-              <name>MR0</name>
+              <name>IM0</name>
               <description>Interrupt Mask on line 0</description>
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR1</name>
+              <name>IM1</name>
               <description>Interrupt Mask on line 1</description>
               <bitOffset>1</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR2</name>
+              <name>IM2</name>
               <description>Interrupt Mask on line 2</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR3</name>
+              <name>IM3</name>
               <description>Interrupt Mask on line 3</description>
               <bitOffset>3</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR4</name>
+              <name>IM4</name>
               <description>Interrupt Mask on line 4</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR5</name>
+              <name>IM5</name>
               <description>Interrupt Mask on line 5</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR6</name>
+              <name>IM6</name>
               <description>Interrupt Mask on line 6</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR7</name>
+              <name>IM7</name>
               <description>Interrupt Mask on line 7</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR8</name>
+              <name>IM8</name>
               <description>Interrupt Mask on line 8</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR9</name>
+              <name>IM9</name>
               <description>Interrupt Mask on line 9</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR10</name>
+              <name>IM10</name>
               <description>Interrupt Mask on line 10</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR11</name>
+              <name>IM11</name>
               <description>Interrupt Mask on line 11</description>
               <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR12</name>
+              <name>IM12</name>
               <description>Interrupt Mask on line 12</description>
               <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR13</name>
+              <name>IM13</name>
               <description>Interrupt Mask on line 13</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR14</name>
+              <name>IM14</name>
               <description>Interrupt Mask on line 14</description>
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR15</name>
+              <name>IM15</name>
               <description>Interrupt Mask on line 15</description>
               <bitOffset>15</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR16</name>
+              <name>IM16</name>
               <description>Interrupt Mask on line 16</description>
               <bitOffset>16</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR17</name>
+              <name>IM17</name>
               <description>Interrupt Mask on line 17</description>
               <bitOffset>17</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR19</name>
+              <name>IM18</name>
+              <description>Interrupt Mask on line 18</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>IM19</name>
               <description>Interrupt Mask on line 19</description>
               <bitOffset>19</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR21</name>
+              <name>IM20</name>
+              <description>Interrupt Mask on line 20</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>IM21</name>
               <description>Interrupt Mask on line 21</description>
               <bitOffset>21</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR22</name>
+              <name>IM22</name>
               <description>Interrupt Mask on line 22</description>
               <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR23</name>
+              <name>IM23</name>
               <description>Interrupt Mask on line 23</description>
               <bitOffset>23</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR25</name>
+              <name>IM24</name>
+              <description>Interrupt Mask on line 24</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>IM25</name>
               <description>Interrupt Mask on line 25</description>
               <bitOffset>25</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR27</name>
+              <name>IM26</name>
               <description>Interrupt Mask on line 27</description>
-              <bitOffset>27</bitOffset>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>IM28</name>
+              <description>Interrupt Mask on line 27</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>IM29</name>
+              <description>Interrupt Mask on line 27</description>
+              <bitOffset>29</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -11083,147 +11306,177 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>MR0</name>
+              <name>EM0</name>
               <description>Event Mask on line 0</description>
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR1</name>
+              <name>EM1</name>
               <description>Event Mask on line 1</description>
               <bitOffset>1</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR2</name>
+              <name>EM2</name>
               <description>Event Mask on line 2</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR3</name>
+              <name>EM3</name>
               <description>Event Mask on line 3</description>
               <bitOffset>3</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR4</name>
+              <name>EM4</name>
               <description>Event Mask on line 4</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR5</name>
+              <name>EM5</name>
               <description>Event Mask on line 5</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR6</name>
+              <name>EM6</name>
               <description>Event Mask on line 6</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR7</name>
+              <name>EM7</name>
               <description>Event Mask on line 7</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR8</name>
+              <name>EM8</name>
               <description>Event Mask on line 8</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR9</name>
+              <name>EM9</name>
               <description>Event Mask on line 9</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR10</name>
+              <name>EM10</name>
               <description>Event Mask on line 10</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR11</name>
+              <name>EM11</name>
               <description>Event Mask on line 11</description>
               <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR12</name>
+              <name>EM12</name>
               <description>Event Mask on line 12</description>
               <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR13</name>
+              <name>EM13</name>
               <description>Event Mask on line 13</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR14</name>
+              <name>EM14</name>
               <description>Event Mask on line 14</description>
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR15</name>
+              <name>EM15</name>
               <description>Event Mask on line 15</description>
               <bitOffset>15</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR16</name>
+              <name>EM16</name>
               <description>Event Mask on line 16</description>
               <bitOffset>16</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR17</name>
+              <name>EM17</name>
               <description>Event Mask on line 17</description>
               <bitOffset>17</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR19</name>
+              <name>EM18</name>
+              <description>Event Mask on line 18</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EM19</name>
               <description>Event Mask on line 19</description>
               <bitOffset>19</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR21</name>
+              <name>EM20</name>
+              <description>Event Mask on line 20</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EM21</name>
               <description>Event Mask on line 21</description>
               <bitOffset>21</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR22</name>
+              <name>EM22</name>
               <description>Event Mask on line 22</description>
               <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR23</name>
+              <name>EM23</name>
               <description>Event Mask on line 23</description>
               <bitOffset>23</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR25</name>
+              <name>EM24</name>
+              <description>Event Mask on line 24</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EM25</name>
               <description>Event Mask on line 25</description>
               <bitOffset>25</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>MR27</name>
-              <description>Event Mask on line 27</description>
-              <bitOffset>27</bitOffset>
+              <name>EM26</name>
+              <description>Event Mask on line 26</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EM28</name>
+              <description>Event Mask on line 28</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EM29</name>
+              <description>Event Mask on line 29</description>
+              <bitOffset>29</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -11239,136 +11492,157 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>TR0</name>
+              <name>RT0</name>
               <description>Rising trigger event configuration of
               line 0</description>
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR1</name>
+              <name>RT1</name>
               <description>Rising trigger event configuration of
               line 1</description>
               <bitOffset>1</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR2</name>
+              <name>RT2</name>
               <description>Rising trigger event configuration of
               line 2</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR3</name>
+              <name>RT3</name>
               <description>Rising trigger event configuration of
               line 3</description>
               <bitOffset>3</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR4</name>
+              <name>RT4</name>
               <description>Rising trigger event configuration of
               line 4</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR5</name>
+              <name>RT5</name>
               <description>Rising trigger event configuration of
               line 5</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR6</name>
+              <name>RT6</name>
               <description>Rising trigger event configuration of
               line 6</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR7</name>
+              <name>RT7</name>
               <description>Rising trigger event configuration of
               line 7</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR8</name>
+              <name>RT8</name>
               <description>Rising trigger event configuration of
               line 8</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR9</name>
+              <name>RT9</name>
               <description>Rising trigger event configuration of
               line 9</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR10</name>
+              <name>RT10</name>
               <description>Rising trigger event configuration of
               line 10</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR11</name>
+              <name>RT11</name>
               <description>Rising trigger event configuration of
               line 11</description>
               <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR12</name>
+              <name>RT12</name>
               <description>Rising trigger event configuration of
               line 12</description>
               <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR13</name>
+              <name>RT13</name>
               <description>Rising trigger event configuration of
               line 13</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR14</name>
+              <name>RT14</name>
               <description>Rising trigger event configuration of
               line 14</description>
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR15</name>
+              <name>RT15</name>
               <description>Rising trigger event configuration of
               line 15</description>
               <bitOffset>15</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR16</name>
+              <name>RT16</name>
               <description>Rising trigger event configuration of
               line 16</description>
               <bitOffset>16</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR17</name>
+              <name>RT17</name>
               <description>Rising trigger event configuration of
               line 17</description>
               <bitOffset>17</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR19</name>
+              <name>RT19</name>
               <description>Rising trigger event configuration of
               line 19</description>
               <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RT20</name>
+              <description>Rising trigger event configuration of
+              line 20</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RT21</name>
+              <description>Rising trigger event configuration of
+              line 21</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RT22</name>
+              <description>Rising trigger event configuration of
+              line 22</description>
+              <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -11384,136 +11658,157 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>TR0</name>
+              <name>FT0</name>
               <description>Falling trigger event configuration of
               line 0</description>
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR1</name>
+              <name>FT1</name>
               <description>Falling trigger event configuration of
               line 1</description>
               <bitOffset>1</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR2</name>
+              <name>FT2</name>
               <description>Falling trigger event configuration of
               line 2</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR3</name>
+              <name>FT3</name>
               <description>Falling trigger event configuration of
               line 3</description>
               <bitOffset>3</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR4</name>
+              <name>FT4</name>
               <description>Falling trigger event configuration of
               line 4</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR5</name>
+              <name>FT5</name>
               <description>Falling trigger event configuration of
               line 5</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR6</name>
+              <name>FT6</name>
               <description>Falling trigger event configuration of
               line 6</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR7</name>
+              <name>FT7</name>
               <description>Falling trigger event configuration of
               line 7</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR8</name>
+              <name>FT8</name>
               <description>Falling trigger event configuration of
               line 8</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR9</name>
+              <name>FT9</name>
               <description>Falling trigger event configuration of
               line 9</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR10</name>
+              <name>FT10</name>
               <description>Falling trigger event configuration of
               line 10</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR11</name>
+              <name>FT11</name>
               <description>Falling trigger event configuration of
               line 11</description>
               <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR12</name>
+              <name>FT12</name>
               <description>Falling trigger event configuration of
               line 12</description>
               <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR13</name>
+              <name>FT13</name>
               <description>Falling trigger event configuration of
               line 13</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR14</name>
+              <name>FT14</name>
               <description>Falling trigger event configuration of
               line 14</description>
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR15</name>
+              <name>FT15</name>
               <description>Falling trigger event configuration of
               line 15</description>
               <bitOffset>15</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR16</name>
+              <name>FT16</name>
               <description>Falling trigger event configuration of
               line 16</description>
               <bitOffset>16</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR17</name>
+              <name>FT17</name>
               <description>Falling trigger event configuration of
               line 17</description>
               <bitOffset>17</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TR19</name>
+              <name>FT19</name>
               <description>Falling trigger event configuration of
               line 19</description>
               <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>FT20</name>
+              <description>Falling trigger event configuration of
+              line 20</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>FT21</name>
+              <description>Falling trigger event configuration of
+              line 21</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>FT22</name>
+              <description>Falling trigger event configuration of
+              line 22</description>
+              <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -11529,136 +11824,157 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>SWIER0</name>
+              <name>SWI0</name>
               <description>Software Interrupt on line
               0</description>
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER1</name>
+              <name>SWI1</name>
               <description>Software Interrupt on line
               1</description>
               <bitOffset>1</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER2</name>
+              <name>SWI2</name>
               <description>Software Interrupt on line
               2</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER3</name>
+              <name>SWI3</name>
               <description>Software Interrupt on line
               3</description>
               <bitOffset>3</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER4</name>
+              <name>SWI4</name>
               <description>Software Interrupt on line
               4</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER5</name>
+              <name>SWI5</name>
               <description>Software Interrupt on line
               5</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER6</name>
+              <name>SWI6</name>
               <description>Software Interrupt on line
               6</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER7</name>
+              <name>SWI7</name>
               <description>Software Interrupt on line
               7</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER8</name>
+              <name>SWI8</name>
               <description>Software Interrupt on line
               8</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER9</name>
+              <name>SWI9</name>
               <description>Software Interrupt on line
               9</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER10</name>
+              <name>SWI10</name>
               <description>Software Interrupt on line
               10</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER11</name>
+              <name>SWI11</name>
               <description>Software Interrupt on line
               11</description>
               <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER12</name>
+              <name>SWI12</name>
               <description>Software Interrupt on line
               12</description>
               <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER13</name>
+              <name>SWI13</name>
               <description>Software Interrupt on line
               13</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER14</name>
+              <name>SWI14</name>
               <description>Software Interrupt on line
               14</description>
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER15</name>
+              <name>SWI15</name>
               <description>Software Interrupt on line
               15</description>
               <bitOffset>15</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER16</name>
+              <name>SWI16</name>
               <description>Software Interrupt on line
               16</description>
               <bitOffset>16</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER17</name>
+              <name>SWI17</name>
               <description>Software Interrupt on line
               17</description>
               <bitOffset>17</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SWIER19</name>
+              <name>SWI19</name>
               <description>Software Interrupt on line
               19</description>
               <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SWI20</name>
+              <description>Software Interrupt on line
+              20</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SWI21</name>
+              <description>Software Interrupt on line
+              21</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SWI22</name>
+              <description>Software Interrupt on line
+              22</description>
+              <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -11673,117 +11989,135 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>PR0</name>
+              <name>PIF0</name>
               <description>Pending bit 0</description>
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR1</name>
+              <name>PIF1</name>
               <description>Pending bit 1</description>
               <bitOffset>1</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR2</name>
+              <name>PIF2</name>
               <description>Pending bit 2</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR3</name>
+              <name>PIF3</name>
               <description>Pending bit 3</description>
               <bitOffset>3</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR4</name>
+              <name>PIF4</name>
               <description>Pending bit 4</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR5</name>
+              <name>PIF5</name>
               <description>Pending bit 5</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR6</name>
+              <name>PIF6</name>
               <description>Pending bit 6</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR7</name>
+              <name>PIF7</name>
               <description>Pending bit 7</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR8</name>
+              <name>PIF8</name>
               <description>Pending bit 8</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR9</name>
+              <name>PIF9</name>
               <description>Pending bit 9</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR10</name>
+              <name>PIF10</name>
               <description>Pending bit 10</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR11</name>
+              <name>PIF11</name>
               <description>Pending bit 11</description>
               <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR12</name>
+              <name>PIF12</name>
               <description>Pending bit 12</description>
               <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR13</name>
+              <name>PIF13</name>
               <description>Pending bit 13</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR14</name>
+              <name>PIF14</name>
               <description>Pending bit 14</description>
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR15</name>
+              <name>PIF15</name>
               <description>Pending bit 15</description>
               <bitOffset>15</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR16</name>
+              <name>PIF16</name>
               <description>Pending bit 16</description>
               <bitOffset>16</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR17</name>
+              <name>PIF17</name>
               <description>Pending bit 17</description>
               <bitOffset>17</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>PR19</name>
+              <name>PIF19</name>
               <description>Pending bit 19</description>
               <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PIF20</name>
+              <description>Pending bit 20</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PIF21</name>
+              <description>Pending bit 21</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PIF22</name>
+              <description>Pending bit 22</description>
+              <bitOffset>22</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -12484,13 +12818,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>DBG_I2C3_STOP</name>
-              <description>I2C3 SMBUS timeout mode stopped when
-              core is halted</description>
-              <bitOffset>30</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
               <name>DBG_LPTIMER_STOP</name>
               <description>LPTIM1 counter stopped when core is
               halted</description>
@@ -12516,10 +12843,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>DBG_TIMER22_STOP</name>
+              <name>DBG_TIMER22_STO</name>
               <description>Debug Timer 22 stopped when Core is
               halted</description>
-              <bitOffset>5</bitOffset>
+              <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -12698,12 +13025,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>TDE</name>
               <description>Trigger DMA request enable</description>
               <bitOffset>14</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>COMDE</name>
-              <description>Reserved</description>
-              <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
@@ -13503,9 +13824,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM3</name>
       <baseAddress>0x40000400</baseAddress>
       <interrupt>
-        <name>TIM2</name>
-        <description>TIM2 global interrupt</description>
-        <value>15</value>
+        <name>TIM3</name>
+        <description>TIM3 global interrupt</description>
+        <value>16</value>
       </interrupt>
     </peripheral>
     <peripheral>
@@ -13519,7 +13840,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM6_DAC</name>
+        <name>TIM6</name>
         <description>TIM6 global interrupt and DAC</description>
         <value>17</value>
       </interrupt>
@@ -13694,11 +14015,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
     </peripheral>
     <peripheral derivedFrom="TIM6">
       <name>TIM7</name>
-      <baseAddress>0x40000C00</baseAddress>
+      <baseAddress>0x40001400</baseAddress>
       <interrupt>
-        <name>TIM6_DAC</name>
-        <description>TIM6 global interrupt and DAC</description>
-        <value>17</value>
+        <name>TIM7</name>
+        <description>TIM7 global interrupt and DAC</description>
+        <value>18</value>
       </interrupt>
     </peripheral>
     <peripheral>
@@ -15782,6 +16103,610 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
             <field>
               <name>PRI_31</name>
               <description>priority for interrupt n</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>MPU</name>
+      <description>Memory protection unit</description>
+      <groupName>MPU</groupName>
+      <baseAddress>0xE000ED90</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x15</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>MPU_TYPER</name>
+          <displayName>MPU_TYPER</displayName>
+          <description>MPU type register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0X00000800</resetValue>
+          <fields>
+            <field>
+              <name>SEPARATE</name>
+              <description>Separate flag</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DREGION</name>
+              <description>Number of MPU data regions</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>IREGION</name>
+              <description>Number of MPU instruction
+              regions</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MPU_CTRL</name>
+          <displayName>MPU_CTRL</displayName>
+          <description>MPU control register</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>ENABLE</name>
+              <description>Enables the MPU</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>HFNMIENA</name>
+              <description>Enables the operation of MPU during hard
+              fault</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PRIVDEFENA</name>
+              <description>Enable priviliged software access to
+              default memory map</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MPU_RNR</name>
+          <displayName>MPU_RNR</displayName>
+          <description>MPU region number register</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>REGION</name>
+              <description>MPU region</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MPU_RBAR</name>
+          <displayName>MPU_RBAR</displayName>
+          <description>MPU region base address
+          register</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>REGION</name>
+              <description>MPU region field</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>VALID</name>
+              <description>MPU region number valid</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ADDR</name>
+              <description>Region base address field</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>27</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MPU_RASR</name>
+          <displayName>MPU_RASR</displayName>
+          <description>MPU region attribute and size
+          register</description>
+          <addressOffset>0x10</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>ENABLE</name>
+              <description>Region enable bit.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SIZE</name>
+              <description>Size of the MPU protection
+              region</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>5</bitWidth>
+            </field>
+            <field>
+              <name>SRD</name>
+              <description>Subregion disable bits</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>B</name>
+              <description>memory attribute</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>C</name>
+              <description>memory attribute</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S</name>
+              <description>Shareable memory attribute</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TEX</name>
+              <description>memory attribute</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>AP</name>
+              <description>Access permission</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>XN</name>
+              <description>Instruction access disable
+              bit</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>STK</name>
+      <description>SysTick timer</description>
+      <groupName>STK</groupName>
+      <baseAddress>0xE000E010</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x11</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>CSR</name>
+          <displayName>CSR</displayName>
+          <description>SysTick control and status
+          register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>ENABLE</name>
+              <description>Counter enable</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TICKINT</name>
+              <description>SysTick exception request
+              enable</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CLKSOURCE</name>
+              <description>Clock source selection</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COUNTFLAG</name>
+              <description>COUNTFLAG</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>RVR</name>
+          <displayName>RVR</displayName>
+          <description>SysTick reload value register</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>RELOAD</name>
+              <description>RELOAD value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CVR</name>
+          <displayName>CVR</displayName>
+          <description>SysTick current value register</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>CURRENT</name>
+              <description>Current counter value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CALIB</name>
+          <displayName>CALIB</displayName>
+          <description>SysTick calibration value
+          register</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>TENMS</name>
+              <description>Calibration value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+            <field>
+              <name>SKEW</name>
+              <description>SKEW flag: Indicates whether the TENMS
+              value is exact</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>NOREF</name>
+              <description>NOREF flag. Reads as zero</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>SCB</name>
+      <description>System control block</description>
+      <groupName>SCB</groupName>
+      <baseAddress>0xE000ED00</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x41</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>CPUID</name>
+          <displayName>CPUID</displayName>
+          <description>CPUID base register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x410FC241</resetValue>
+          <fields>
+            <field>
+              <name>Revision</name>
+              <description>Revision number</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>PartNo</name>
+              <description>Part number of the
+              processor</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>12</bitWidth>
+            </field>
+            <field>
+              <name>Architecture</name>
+              <description>Reads as 0xF</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>Variant</name>
+              <description>Variant number</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>Implementer</name>
+              <description>Implementer code</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>ICSR</name>
+          <displayName>ICSR</displayName>
+          <description>Interrupt control and state
+          register</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>VECTACTIVE</name>
+              <description>Active vector</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>9</bitWidth>
+            </field>
+            <field>
+              <name>RETTOBASE</name>
+              <description>Return to base level</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>VECTPENDING</name>
+              <description>Pending vector</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>7</bitWidth>
+            </field>
+            <field>
+              <name>ISRPENDING</name>
+              <description>Interrupt pending flag</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PENDSTCLR</name>
+              <description>SysTick exception clear-pending
+              bit</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PENDSTSET</name>
+              <description>SysTick exception set-pending
+              bit</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PENDSVCLR</name>
+              <description>PendSV clear-pending bit</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PENDSVSET</name>
+              <description>PendSV set-pending bit</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>NMIPENDSET</name>
+              <description>NMI set-pending bit.</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VTOR</name>
+          <displayName>VTOR</displayName>
+          <description>Vector table offset register</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>TBLOFF</name>
+              <description>Vector table base offset
+              field</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>25</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>AIRCR</name>
+          <displayName>AIRCR</displayName>
+          <description>Application interrupt and reset control
+          register</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>VECTCLRACTIVE</name>
+              <description>VECTCLRACTIVE</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SYSRESETREQ</name>
+              <description>SYSRESETREQ</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ENDIANESS</name>
+              <description>ENDIANESS</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>VECTKEYSTAT</name>
+              <description>Register key</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SCR</name>
+          <displayName>SCR</displayName>
+          <description>System control register</description>
+          <addressOffset>0x10</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>SLEEPONEXIT</name>
+              <description>SLEEPONEXIT</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SLEEPDEEP</name>
+              <description>SLEEPDEEP</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SEVEONPEND</name>
+              <description>Send Event on Pending bit</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CCR</name>
+          <displayName>CCR</displayName>
+          <description>Configuration and control
+          register</description>
+          <addressOffset>0x14</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>NONBASETHRDENA</name>
+              <description>Configures how the processor enters
+              Thread mode</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>USERSETMPEND</name>
+              <description>USERSETMPEND</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UNALIGN__TRP</name>
+              <description>UNALIGN_ TRP</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DIV_0_TRP</name>
+              <description>DIV_0_TRP</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>BFHFNMIGN</name>
+              <description>BFHFNMIGN</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>STKALIGN</name>
+              <description>STKALIGN</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SHPR2</name>
+          <displayName>SHPR2</displayName>
+          <description>System handler priority
+          registers</description>
+          <addressOffset>0x1C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PRI_11</name>
+              <description>Priority of system handler
+              11</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SHPR3</name>
+          <displayName>SHPR3</displayName>
+          <description>System handler priority
+          registers</description>
+          <addressOffset>0x20</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PRI_14</name>
+              <description>Priority of system handler
+              14</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>PRI_15</name>
+              <description>Priority of system handler
+              15</description>
               <bitOffset>24</bitOffset>
               <bitWidth>8</bitWidth>
             </field>

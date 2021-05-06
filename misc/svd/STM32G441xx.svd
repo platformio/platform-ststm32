@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2020 STMicroelectronics.
+
+ SPDX-License-Identifier: Apache-2.0
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
 <device xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.1" xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
    <name>STM32G441xx</name>
-   <version>1.0</version>
+   <version>1.6</version>
    <description>STM32G441xx</description>
     <cpu>
     <name>CM4</name>
@@ -142,10 +159,10 @@
          </registers>
       </peripheral>
       <peripheral>
-         <name>WWDG</name>
+         <name>IWDG</name>
          <description>WinWATCHDOG</description>
          <groupName>IWDG</groupName>
-         <baseAddress>0x40002C00</baseAddress>
+         <baseAddress>0x40003000</baseAddress>
          <addressBlock>
             <offset>0x0</offset>
             <size>0x400</size>
@@ -252,10 +269,10 @@
          </registers>
       </peripheral>
       <peripheral>
-         <name>IWDG</name>
+         <name>WWDG</name>
          <description>System window watchdog</description>
          <groupName>WWDG</groupName>
-         <baseAddress>0x40003000</baseAddress>
+         <baseAddress>0x40002C00</baseAddress>
          <addressBlock>
             <offset>0x0</offset>
             <size>0x400</size>
@@ -11516,6 +11533,23 @@
                      <description>OCREF_CLR source selection</description>
                      <bitOffset>16</bitOffset>
                      <bitWidth>3</bitWidth>
+                  </field>
+               </fields>
+            </register>
+	    <register>
+               <name>OR1</name>
+               <displayName>OR1</displayName>
+               <description>TIM option register 1</description>
+               <addressOffset>0x68</addressOffset>
+               <size>0x20</size>
+               <access>read-write</access>
+               <resetValue>0x00000000</resetValue>
+               <fields>
+                  <field>
+                     <name>HSE32EN</name>
+                     <description>HSE Divided by 32 enable</description>
+                     <bitOffset>0</bitOffset>
+                     <bitWidth>1</bitWidth>
                   </field>
                </fields>
             </register>
@@ -24378,8 +24412,7 @@
             <name>COMP4</name>
             <description>COMP4_5_6</description>
             <value>65</value>
-         </interrupt>
-         		 	 
+         </interrupt>         		 	 
         <registers>
             <register>
                <name>COMP_C1CSR</name>
@@ -24554,8 +24587,7 @@
                      <access>read-write</access>
                   </field>
                </fields>
-            </register>
-			
+            </register>			
             <register>
                <name>COMP_C3CSR</name>
                <displayName>COMP_C3CSR</displayName>
@@ -24642,13 +24674,12 @@
                      <access>read-write</access>
                   </field>
                </fields>
-            </register>
-			
+            </register>			
             <register>
                <name>COMP_C4CSR</name>
                <displayName>COMP_C4CSR</displayName>
                <description>Comparator control/status           register</description>
-               <addressOffset>0x12</addressOffset>
+               <addressOffset>0xC</addressOffset>
                <size>0x20</size>
                <resetValue>0x00000000</resetValue>
                <fields>
@@ -24730,8 +24761,7 @@
                      <access>read-write</access>
                   </field>
                </fields>
-            </register>
-			            			         			    		
+            </register>			            			         			    		
         </registers>	
     </peripheral>		         
     <peripheral>
@@ -26186,8 +26216,8 @@
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
-                     <name>AWDCH1CH</name>
-                     <description>AWDCH1CH</description>
+                     <name>AWD1CH</name>
+                     <description>Analog watchdog 1 channel selection</description>
                      <bitOffset>26</bitOffset>
                      <bitWidth>5</bitWidth>
                   </field>
@@ -26271,16 +26301,10 @@
                   </field>
                   <field>
                      <name>EXTSEL</name>
-                     <description>EXTSEL</description>
-                     <bitOffset>6</bitOffset>
-                     <bitWidth>4</bitWidth>
-                  </field>
-                  <field>
-                     <name>ALIGN_5</name>
-                     <description>ALIGN_5</description>
+                     <description>External trigger selection for regular group</description>
                      <bitOffset>5</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
+                     <bitWidth>5</bitWidth>
+                  </field>                  
                   <field>
                      <name>RES</name>
                      <description>RES</description>
@@ -27140,14 +27164,12 @@
       <peripheral derivedFrom="ADC1">
          <name>ADC2</name>
          <baseAddress>0x50000100</baseAddress>
-      </peripheral>     
-    
-	         
+      </peripheral>     	         
       <peripheral>
          <name>ADC12_Common</name>
          <description>Analog-to-Digital Converter</description>
          <groupName>ADC</groupName>
-         <baseAddress>0x50000200</baseAddress>
+         <baseAddress>0x50000300</baseAddress>
          <addressBlock>
             <offset>0x0</offset>
             <size>0x11</size>
@@ -27343,14 +27365,14 @@
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
-                     <name>CH17SEL</name>
-                     <description>CH17 selection</description>
+                     <name>VSENSESEL</name>
+                     <description> VTS selection</description>
                      <bitOffset>23</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
-                     <name>CH18SEL</name>
-                     <description>CH18 selection</description>
+                     <name>VBATSEL</name>
+                     <description>VBAT selection</description>
                      <bitOffset>24</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
@@ -29899,7 +29921,7 @@
                <description>MPU control register</description>
                <addressOffset>0x4</addressOffset>
                <size>0x20</size>
-               <access>read-only</access>
+               <access>read-write</access>
                <resetValue>0X00000000</resetValue>
                <fields>
                   <field>
@@ -30150,7 +30172,7 @@
          <name>SCB</name>
          <description>System control block</description>
          <groupName>SCB</groupName>
-         <baseAddress>0xE000E040</baseAddress>
+         <baseAddress>0xE000ED00</baseAddress>
          <addressBlock>
             <offset>0x0</offset>
             <size>0x41</size>
@@ -30473,8 +30495,8 @@
                </fields>
             </register>
             <register>
-               <name>SHCRS</name>
-               <displayName>SHCRS</displayName>
+               <name>SHCSR</name>
+               <displayName>SHCSR</displayName>
                <description>System handler control and state           register</description>
                <addressOffset>0x24</addressOffset>
                <size>0x20</size>
@@ -30768,14 +30790,14 @@
             </register>
          </registers>
       </peripheral>      
-      <peripheral>
+       <peripheral>
          <name>NVIC</name>
          <description>Nested Vectored Interrupt       Controller</description>
          <groupName>NVIC</groupName>
          <baseAddress>0xE000E100</baseAddress>
          <addressBlock>
             <offset>0x0</offset>
-            <size>0xE04</size>
+            <size>0x400</size>
             <usage>registers</usage>
          </addressBlock>
          <registers>
@@ -31898,31 +31920,47 @@
                <size>0x20</size>
                <access>read-write</access>
                <resetValue>0x00000000</resetValue>
-            </register> 
-           <register>
-               <name>STIR</name>
-               <displayName>STIR</displayName>
-               <description>Software trigger interrupt register</description>
-               <addressOffset>0xE00</addressOffset>
-               <size>0x20</size>
-               <access>read-write</access>
-               <resetValue>0x00000000</resetValue>
-               <fields>
-                  <field>
-                     <name>INTID</name>
-                     <description>Software generated interrupt               ID</description>
-                     <bitOffset>0</bitOffset>
-                     <bitWidth>9</bitWidth>
-                  </field>
-               </fields>
-          </register>			
+            </register>        			
          </registers>
       </peripheral>
+	  <peripheral>
+      <name>NVIC_STIR</name>
+      <description>Nested vectored interrupt
+      controller</description>
+      <groupName>NVIC</groupName>
+      <baseAddress>0xE000EF00</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x5</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>STIR</name>
+          <displayName>STIR</displayName>
+          <description>Software trigger interrupt
+          register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>INTID</name>
+              <description>Software generated interrupt
+              ID</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>9</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
       <peripheral>
          <name>FPU_CPACR</name>
          <description>Floating point unit CPACR</description>
          <groupName>FPU</groupName>
-         <baseAddress>0xE000EF08</baseAddress>
+         <baseAddress>0xE000ED88</baseAddress>
          <addressBlock>
             <offset>0x0</offset>
             <size>0x5</size>
@@ -31949,7 +31987,7 @@
          </registers>
       </peripheral>
       <peripheral>
-         <name>SCB_ACTRL</name>
+         <name>SCB_ACTLR</name>
          <description>System control block ACTLR</description>
          <groupName>SCB</groupName>
          <baseAddress>0xE000E008</baseAddress>
@@ -32011,7 +32049,7 @@
             <offset>0x0</offset>
             <size>0x400</size>
             <usage>registers</usage>
-         </addressBlock>        
+         </addressBlock>
          <registers>
             <register>
                <name>CREL</name>
@@ -32020,7 +32058,7 @@
                <addressOffset>0x0</addressOffset>
                <size>0x20</size>
                <access>read-only</access>
-               <resetValue>0x11111111</resetValue>
+               <resetValue>0x32141218</resetValue>
                <fields>
                   <field>
                      <name>DAY</name>
@@ -32104,7 +32142,7 @@
                      <description>DTSEG1</description>
                      <bitOffset>8</bitOffset>
                      <bitWidth>5</bitWidth>
-                     <access>write-only</access>
+                     <access>read-write</access>
                   </field>
                   <field>
                      <name>DBRP</name>
@@ -32118,7 +32156,7 @@
                      <description>TDC</description>
                      <bitOffset>23</bitOffset>
                      <bitWidth>1</bitWidth>
-                     <access>read-only</access>
+                     <access>read-write</access>
                   </field>
                </fields>
             </register>
@@ -32127,8 +32165,7 @@
                <displayName>TEST</displayName>
                <description>Write access to the Test Register has to be           enabled by setting bit CCCR[TEST] to 1 . All Test           Register functions are set to their reset values when bit           CCCR[TEST] is reset. Loop Back mode and software control           of Tx pin FDCANx_TX are hardware test modes. Programming           TX differently from 00 may disturb the message transfer           on the CAN bus.</description>
                <addressOffset>0x10</addressOffset>
-               <size>0x20</size>
-               <access>read-write</access>
+               <size>0x20</size>              
                <resetValue>0x00000000</resetValue>
                <fields>
                   <field>
@@ -32136,18 +32173,21 @@
                      <description>LBCK</description>
                      <bitOffset>4</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>TX</name>
                      <description>TX</description>
                      <bitOffset>5</bitOffset>
                      <bitWidth>2</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>RX</name>
                      <description>RX</description>
                      <bitOffset>7</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-only</access>
                   </field>
                </fields>
             </register>
@@ -32180,8 +32220,7 @@
                <displayName>CCCR</displayName>
                <description>For details about setting and resetting of           single bits see Software initialization.</description>
                <addressOffset>0x18</addressOffset>
-               <size>0x20</size>
-               <access>read-write</access>
+               <size>0x20</size>              
                <resetValue>0x00000001</resetValue>
                <fields>
                   <field>
@@ -32189,84 +32228,98 @@
                      <description>INIT</description>
                      <bitOffset>0</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>CCE</name>
                      <description>CCE</description>
                      <bitOffset>1</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>ASM</name>
                      <description>ASM</description>
                      <bitOffset>2</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>CSA</name>
                      <description>CSA</description>
                      <bitOffset>3</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-only</access>
                   </field>
                   <field>
                      <name>CSR</name>
                      <description>CSR</description>
                      <bitOffset>4</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>MON</name>
                      <description>MON</description>
                      <bitOffset>5</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>DAR</name>
                      <description>DAR</description>
                      <bitOffset>6</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>TEST</name>
                      <description>TEST</description>
                      <bitOffset>7</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>FDOE</name>
                      <description>FDOE</description>
                      <bitOffset>8</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>BRSE</name>
                      <description>BRSE</description>
                      <bitOffset>9</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>PXHD</name>
                      <description>PXHD</description>
                      <bitOffset>12</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>EFBI</name>
                      <description>EFBI</description>
                      <bitOffset>13</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>TXP</name>
                      <description>TXP</description>
                      <bitOffset>14</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                   <field>
                      <name>NISO</name>
                      <description>NISO</description>
                      <bitOffset>15</bitOffset>
                      <bitWidth>1</bitWidth>
+					 <access>read-write</access>
                   </field>
                </fields>
             </register>
@@ -32277,11 +32330,11 @@
                <addressOffset>0x1C</addressOffset>
                <size>0x20</size>
                <access>read-write</access>
-               <resetValue>0x00000A33</resetValue>
+               <resetValue>0x06000A03</resetValue>
                <fields>
                   <field>
-                     <name>TSEG2</name>
-                     <description>TSEG2</description>
+                     <name>NTSEG2</name>
+                     <description>NTSEG2</description>
                      <bitOffset>0</bitOffset>
                      <bitWidth>7</bitWidth>
                   </field>
@@ -32365,7 +32418,7 @@
                      <description>TOS</description>
                      <bitOffset>1</bitOffset>
                      <bitWidth>2</bitWidth>
-                     <access>write-only</access>
+                     <access>read-write</access>
                   </field>
                   <field>
                      <name>TOP</name>
@@ -32409,7 +32462,7 @@
                      <bitWidth>8</bitWidth>
                   </field>
                   <field>
-                     <name>TREC</name>
+                     <name>REC</name>
                      <description>TREC</description>
                      <bitOffset>8</bitOffset>
                      <bitWidth>7</bitWidth>
@@ -32448,35 +32501,35 @@
                      <description>ACT</description>
                      <bitOffset>3</bitOffset>
                      <bitWidth>2</bitWidth>
-                     <access>write-only</access>
+                     <access>read-only</access>
                   </field>
                   <field>
                      <name>EP</name>
                      <description>EP</description>
                      <bitOffset>5</bitOffset>
                      <bitWidth>1</bitWidth>
-                     <access>read-write</access>
+                     <access>read-only</access>
                   </field>
                   <field>
                      <name>EW</name>
                      <description>EW</description>
                      <bitOffset>6</bitOffset>
                      <bitWidth>1</bitWidth>
-                     <access>read-write</access>
+                     <access>read-only</access>
                   </field>
                   <field>
                      <name>BO</name>
                      <description>BO</description>
                      <bitOffset>7</bitOffset>
                      <bitWidth>1</bitWidth>
-                     <access>read-write</access>
+                     <access>read-only</access>
                   </field>
                   <field>
                      <name>DLEC</name>
                      <description>DLEC</description>
                      <bitOffset>8</bitOffset>
                      <bitWidth>3</bitWidth>
-                     <access>write-only</access>
+                     <access>read-write</access>
                   </field>
                   <field>
                      <name>RESI</name>
@@ -32554,165 +32607,141 @@
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
-                     <name>RF0W</name>
-                     <description>RF0W</description>
-                     <bitOffset>1</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
                      <name>RF0F</name>
                      <description>RF0F</description>
-                     <bitOffset>2</bitOffset>
+                     <bitOffset>1</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>RF0L</name>
                      <description>RF0L</description>
-                     <bitOffset>3</bitOffset>
+                     <bitOffset>2</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>RF1N</name>
                      <description>RF1N</description>
-                     <bitOffset>4</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>RF1W</name>
-                     <description>RF1W</description>
-                     <bitOffset>5</bitOffset>
+                     <bitOffset>3</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>RF1F</name>
                      <description>RF1F</description>
-                     <bitOffset>6</bitOffset>
+                     <bitOffset>4</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>RF1L</name>
                      <description>RF1L</description>
-                     <bitOffset>7</bitOffset>
+                     <bitOffset>5</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>HPM</name>
                      <description>HPM</description>
-                     <bitOffset>8</bitOffset>
+                     <bitOffset>6</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TC</name>
                      <description>TC</description>
-                     <bitOffset>9</bitOffset>
+                     <bitOffset>7</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TCF</name>
                      <description>TCF</description>
-                     <bitOffset>10</bitOffset>
+                     <bitOffset>8</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TFE</name>
                      <description>TFE</description>
-                     <bitOffset>11</bitOffset>
+                     <bitOffset>9</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TEFN</name>
                      <description>TEFN</description>
-                     <bitOffset>12</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>TEFW</name>
-                     <description>TEFW</description>
-                     <bitOffset>13</bitOffset>
+                     <bitOffset>10</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TEFF</name>
                      <description>TEFF</description>
-                     <bitOffset>14</bitOffset>
+                     <bitOffset>11</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TEFL</name>
                      <description>TEFL</description>
-                     <bitOffset>15</bitOffset>
+                     <bitOffset>12</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TSW</name>
                      <description>TSW</description>
-                     <bitOffset>16</bitOffset>
+                     <bitOffset>13</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>MRAF</name>
                      <description>MRAF</description>
-                     <bitOffset>17</bitOffset>
+                     <bitOffset>14</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TOO</name>
                      <description>TOO</description>
-                     <bitOffset>18</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>DRX</name>
-                     <description>DRX</description>
-                     <bitOffset>19</bitOffset>
+                     <bitOffset>15</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>ELO</name>
                      <description>ELO</description>
-                     <bitOffset>22</bitOffset>
+                     <bitOffset>16</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>EP</name>
                      <description>EP</description>
-                     <bitOffset>23</bitOffset>
+                     <bitOffset>17</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>EW</name>
                      <description>EW</description>
-                     <bitOffset>24</bitOffset>
+                     <bitOffset>18</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>BO</name>
                      <description>BO</description>
-                     <bitOffset>25</bitOffset>
+                     <bitOffset>19</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>WDI</name>
                      <description>WDI</description>
-                     <bitOffset>26</bitOffset>
+                     <bitOffset>20</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>PEA</name>
                      <description>PEA</description>
-                     <bitOffset>27</bitOffset>
+                     <bitOffset>21</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>PED</name>
                      <description>PED</description>
-                     <bitOffset>28</bitOffset>
+                     <bitOffset>22</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>ARA</name>
                      <description>ARA</description>
-                     <bitOffset>29</bitOffset>
+                     <bitOffset>23</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                </fields>
@@ -32733,177 +32762,141 @@
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
-                     <name>RF0WE</name>
-                     <description>RF0WE</description>
-                     <bitOffset>1</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
                      <name>RF0FE</name>
                      <description>RF0FE</description>
-                     <bitOffset>2</bitOffset>
+                     <bitOffset>1</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>RF0LE</name>
                      <description>RF0LE</description>
-                     <bitOffset>3</bitOffset>
+                     <bitOffset>2</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>RF1NE</name>
                      <description>RF1NE</description>
-                     <bitOffset>4</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>RF1WE</name>
-                     <description>RF1WE</description>
-                     <bitOffset>5</bitOffset>
+                     <bitOffset>3</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>RF1FE</name>
                      <description>RF1FE</description>
-                     <bitOffset>6</bitOffset>
+                     <bitOffset>4</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>RF1LE</name>
                      <description>RF1LE</description>
-                     <bitOffset>7</bitOffset>
+                     <bitOffset>5</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>HPME</name>
                      <description>HPME</description>
-                     <bitOffset>8</bitOffset>
+                     <bitOffset>6</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TCE</name>
                      <description>TCE</description>
-                     <bitOffset>9</bitOffset>
+                     <bitOffset>7</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TCFE</name>
                      <description>TCFE</description>
-                     <bitOffset>10</bitOffset>
+                     <bitOffset>8</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TFEE</name>
                      <description>TFEE</description>
-                     <bitOffset>11</bitOffset>
+                     <bitOffset>9</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TEFNE</name>
                      <description>TEFNE</description>
-                     <bitOffset>12</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>TEFWE</name>
-                     <description>TEFWE</description>
-                     <bitOffset>13</bitOffset>
+                     <bitOffset>10</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TEFFE</name>
                      <description>TEFFE</description>
-                     <bitOffset>14</bitOffset>
+                     <bitOffset>11</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TEFLE</name>
                      <description>TEFLE</description>
-                     <bitOffset>15</bitOffset>
+                     <bitOffset>12</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TSWE</name>
                      <description>TSWE</description>
-                     <bitOffset>16</bitOffset>
+                     <bitOffset>13</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>MRAFE</name>
                      <description>MRAFE</description>
-                     <bitOffset>17</bitOffset>
+                     <bitOffset>14</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>TOOE</name>
                      <description>TOOE</description>
-                     <bitOffset>18</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>DRX</name>
-                     <description>DRX</description>
-                     <bitOffset>19</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>BECE</name>
-                     <description>BECE</description>
-                     <bitOffset>20</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>BEUE</name>
-                     <description>BEUE</description>
-                     <bitOffset>21</bitOffset>
+                     <bitOffset>15</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>ELOE</name>
                      <description>ELOE</description>
-                     <bitOffset>22</bitOffset>
+                     <bitOffset>16</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>EPE</name>
                      <description>EPE</description>
-                     <bitOffset>23</bitOffset>
+                     <bitOffset>17</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>EWE</name>
                      <description>EWE</description>
-                     <bitOffset>24</bitOffset>
+                     <bitOffset>18</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>BOE</name>
                      <description>BOE</description>
-                     <bitOffset>25</bitOffset>
+                     <bitOffset>19</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>WDIE</name>
                      <description>WDIE</description>
-                     <bitOffset>26</bitOffset>
+                     <bitOffset>20</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>PEAE</name>
                      <description>PEAE</description>
-                     <bitOffset>27</bitOffset>
+                     <bitOffset>21</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>PEDE</name>
                      <description>PEDE</description>
-                     <bitOffset>28</bitOffset>
+                     <bitOffset>22</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
                      <name>ARAE</name>
                      <description>ARAE</description>
-                     <bitOffset>29</bitOffset>
+                     <bitOffset>23</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                </fields>
@@ -32918,186 +32911,48 @@
                <resetValue>0x00000000</resetValue>
                <fields>
                   <field>
-                     <name>RF0NL</name>
-                     <description>RF0NL</description>
+                     <name>RxFIFO0</name>
+                     <description>RxFIFO0</description>
                      <bitOffset>0</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
-                     <name>RF0WL</name>
-                     <description>RF0WL</description>
+                     <name>RxFIFO1</name>
+                     <description>RxFIFO1</description>
                      <bitOffset>1</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
-                     <name>RF0FL</name>
-                     <description>RF0FL</description>
+                     <name>SMSG</name>
+                     <description>SMSG</description>
                      <bitOffset>2</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
-                     <name>RF0LL</name>
-                     <description>RF0LL</description>
+                     <name>TFERR</name>
+                     <description>TFERR</description>
                      <bitOffset>3</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
-                     <name>RF1NL</name>
-                     <description>RF1NL</description>
+                     <name>MISC</name>
+                     <description>MISC</description>
                      <bitOffset>4</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
-                     <name>RF1WL</name>
-                     <description>RF1WL</description>
+                     <name>BERR</name>
+                     <description>BERR</description>
                      <bitOffset>5</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
                   <field>
-                     <name>RF1FL</name>
-                     <description>RF1FL</description>
+                     <name>PERR</name>
+                     <description>PERR</description>
                      <bitOffset>6</bitOffset>
                      <bitWidth>1</bitWidth>
                   </field>
-                  <field>
-                     <name>RF1LL</name>
-                     <description>RF1LL</description>
-                     <bitOffset>7</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>HPML</name>
-                     <description>HPML</description>
-                     <bitOffset>8</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>TCL</name>
-                     <description>TCL</description>
-                     <bitOffset>9</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>TCFL</name>
-                     <description>TCFL</description>
-                     <bitOffset>10</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>TFEL</name>
-                     <description>TFEL</description>
-                     <bitOffset>11</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>TEFNL</name>
-                     <description>TEFNL</description>
-                     <bitOffset>12</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>TEFWL</name>
-                     <description>TEFWL</description>
-                     <bitOffset>13</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>TEFFL</name>
-                     <description>TEFFL</description>
-                     <bitOffset>14</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>TEFLL</name>
-                     <description>TEFLL</description>
-                     <bitOffset>15</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>TSWL</name>
-                     <description>TSWL</description>
-                     <bitOffset>16</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>MRAFL</name>
-                     <description>MRAFL</description>
-                     <bitOffset>17</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>TOOL</name>
-                     <description>TOOL</description>
-                     <bitOffset>18</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>DRXL</name>
-                     <description>DRXL</description>
-                     <bitOffset>19</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>BECL</name>
-                     <description>BECL</description>
-                     <bitOffset>20</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>BEUL</name>
-                     <description>BEUL</description>
-                     <bitOffset>21</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>ELOL</name>
-                     <description>ELOL</description>
-                     <bitOffset>22</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>EPL</name>
-                     <description>EPL</description>
-                     <bitOffset>23</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>EWL</name>
-                     <description>EWL</description>
-                     <bitOffset>24</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>BOL</name>
-                     <description>BOL</description>
-                     <bitOffset>25</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>WDIL</name>
-                     <description>WDIL</description>
-                     <bitOffset>26</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>PEAL</name>
-                     <description>PEAL</description>
-                     <bitOffset>27</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>PEDL</name>
-                     <description>PEDL</description>
-                     <bitOffset>28</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>ARAL</name>
-                     <description>ARAL</description>
-                     <bitOffset>29</bitOffset>
-                     <bitWidth>1</bitWidth>
-                  </field>
-               </fields>
+              </fields>
             </register>
             <register>
                <name>ILE</name>
@@ -33149,14 +33004,42 @@
                      <description>ANFE</description>
                      <bitOffset>2</bitOffset>
                      <bitWidth>2</bitWidth>
-                     <access>write-only</access>
+                     <access>read-write</access>
                   </field>
                   <field>
                      <name>ANFS</name>
                      <description>ANFS</description>
                      <bitOffset>4</bitOffset>
                      <bitWidth>2</bitWidth>
-                     <access>write-only</access>
+                     <access>read-write</access>
+                  </field>				  
+				  <field>
+                     <name>F1OM</name>
+                     <description>F1OM</description>
+                     <bitOffset>8</bitOffset>
+                     <bitWidth>1</bitWidth>
+                     <access>read-write</access>
+                  </field>
+				  <field>
+                     <name>F0OM</name>
+                     <description>F0OM</description>
+                     <bitOffset>9</bitOffset>
+                     <bitWidth>1</bitWidth>
+                     <access>read-write</access>
+                  </field>
+				  <field>
+                     <name>LSS</name>
+                     <description>LSS</description>
+                     <bitOffset>16</bitOffset>
+                     <bitWidth>5</bitWidth>
+                     <access>read-write</access>
+                  </field>
+				  <field>
+                     <name>LSE</name>
+                     <description>LSE</description>
+                     <bitOffset>24</bitOffset>
+                     <bitWidth>4</bitWidth>
+                     <access>read-write</access>
                   </field>
                </fields>
             </register>
@@ -33190,7 +33073,7 @@
                      <name>BIDX</name>
                      <description>BIDX</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>6</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                   <field>
                      <name>MSI</name>
@@ -33202,7 +33085,7 @@
                      <name>FIDX</name>
                      <description>FIDX</description>
                      <bitOffset>8</bitOffset>
-                     <bitWidth>7</bitWidth>
+                     <bitWidth>5</bitWidth>
                   </field>
                   <field>
                      <name>FLST</name>
@@ -33218,26 +33101,26 @@
                <description>FDCAN Rx FIFO 0 Status Register</description>
                <addressOffset>0x90</addressOffset>
                <size>0x20</size>
-               <access>read-write</access>
+               <access>read-only</access>
                <resetValue>0x00000000</resetValue>
                <fields>
                   <field>
                      <name>F0FL</name>
                      <description>F0FL</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>7</bitWidth>
+                     <bitWidth>4</bitWidth>
                   </field>
                   <field>
                      <name>F0GI</name>
                      <description>F0GI</description>
                      <bitOffset>8</bitOffset>
-                     <bitWidth>6</bitWidth>
+                     <bitWidth>2</bitWidth>
                   </field>
                   <field>
                      <name>F0PI</name>
                      <description>F0PI</description>
                      <bitOffset>16</bitOffset>
-                     <bitWidth>6</bitWidth>
+                     <bitWidth>2</bitWidth>
                   </field>
                   <field>
                      <name>F0F</name>
@@ -33266,7 +33149,7 @@
                      <name>F0AI</name>
                      <description>F0AI</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>6</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                </fields>
             </register>
@@ -33283,19 +33166,19 @@
                      <name>F1FL</name>
                      <description>F1FL</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>7</bitWidth>
+                     <bitWidth>4</bitWidth>
                   </field>
                   <field>
                      <name>F1GI</name>
                      <description>F1GI</description>
                      <bitOffset>8</bitOffset>
-                     <bitWidth>6</bitWidth>
+                     <bitWidth>2</bitWidth>
                   </field>
                   <field>
                      <name>F1PI</name>
                      <description>F1PI</description>
                      <bitOffset>16</bitOffset>
-                     <bitWidth>6</bitWidth>
+                     <bitWidth>2</bitWidth>
                   </field>
                   <field>
                      <name>F1F</name>
@@ -33308,12 +33191,6 @@
                      <description>RF1L</description>
                      <bitOffset>25</bitOffset>
                      <bitWidth>1</bitWidth>
-                  </field>
-                  <field>
-                     <name>DMS</name>
-                     <description>DMS</description>
-                     <bitOffset>30</bitOffset>
-                     <bitWidth>2</bitWidth>
                   </field>
                </fields>
             </register>
@@ -33330,7 +33207,7 @@
                      <name>F1AI</name>
                      <description>F1AI</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>6</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                </fields>
             </register>
@@ -33342,31 +33219,13 @@
                <size>0x20</size>
                <access>read-write</access>
                <resetValue>0x00000000</resetValue>
-               <fields>
-                  <field>
-                     <name>TBSA</name>
-                     <description>TBSA</description>
-                     <bitOffset>2</bitOffset>
-                     <bitWidth>14</bitWidth>
-                  </field>
-                  <field>
-                     <name>NDTB</name>
-                     <description>NDTB</description>
-                     <bitOffset>16</bitOffset>
-                     <bitWidth>6</bitWidth>
-                  </field>
-                  <field>
-                     <name>TFQS</name>
-                     <description>TFQS</description>
-                     <bitOffset>24</bitOffset>
-                     <bitWidth>6</bitWidth>
-                  </field>
+               <fields>                
                   <field>
                      <name>TFQM</name>
                      <description>TFQM</description>
-                     <bitOffset>30</bitOffset>
+                     <bitOffset>24</bitOffset>
                      <bitWidth>1</bitWidth>
-                  </field>
+                  </field> 
                </fields>
             </register>
             <register>
@@ -33376,25 +33235,25 @@
                <addressOffset>0xC4</addressOffset>
                <size>0x20</size>
                <access>read-only</access>
-               <resetValue>0x00000000</resetValue>
+               <resetValue>0x00000003</resetValue>
                <fields>
                   <field>
                      <name>TFFL</name>
                      <description>TFFL</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>6</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                   <field>
                      <name>TFGI</name>
                      <description>TFGI</description>
                      <bitOffset>8</bitOffset>
-                     <bitWidth>5</bitWidth>
+                     <bitWidth>2</bitWidth>
                   </field>
                   <field>
                      <name>TFQPI</name>
                      <description>TFQPI</description>
                      <bitOffset>16</bitOffset>
-                     <bitWidth>5</bitWidth>
+                     <bitWidth>2</bitWidth>
                   </field>
                   <field>
                      <name>TFQF</name>
@@ -33417,7 +33276,7 @@
                      <name>TRP</name>
                      <description>TRP</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>32</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                </fields>
             </register>
@@ -33434,7 +33293,7 @@
                      <name>AR</name>
                      <description>AR</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>32</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                </fields>
             </register>
@@ -33451,7 +33310,7 @@
                      <name>CR</name>
                      <description>CR</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>32</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                </fields>
             </register>
@@ -33468,7 +33327,7 @@
                      <name>TO</name>
                      <description>TO</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>32</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                </fields>
             </register>
@@ -33485,7 +33344,7 @@
                      <name>CF</name>
                      <description>CF</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>32</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                </fields>
             </register>
@@ -33502,7 +33361,7 @@
                      <name>TIE</name>
                      <description>TIE</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>32</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                </fields>
             </register>
@@ -33519,7 +33378,7 @@
                      <name>CFIE</name>
                      <description>CFIE</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>32</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                </fields>
             </register>
@@ -33536,19 +33395,19 @@
                      <name>EFFL</name>
                      <description>EFFL</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>6</bitWidth>
+                     <bitWidth>3</bitWidth>
                   </field>
                   <field>
                      <name>EFGI</name>
                      <description>EFGI</description>
                      <bitOffset>8</bitOffset>
-                     <bitWidth>5</bitWidth>
+                     <bitWidth>2</bitWidth>
                   </field>
                   <field>
                      <name>EFPI</name>
                      <description>EFPI</description>
                      <bitOffset>16</bitOffset>
-                     <bitWidth>5</bitWidth>
+                     <bitWidth>2</bitWidth>
                   </field>
                   <field>
                      <name>EFF</name>
@@ -33577,7 +33436,7 @@
                      <name>EFAI</name>
                      <description>EFAI</description>
                      <bitOffset>0</bitOffset>
-                     <bitWidth>5</bitWidth>
+                     <bitWidth>2</bitWidth>
                   </field>
                </fields>
             </register>
@@ -33600,11 +33459,20 @@
             </register>
          </registers>
       </peripheral>
-      <peripheral derivedFrom="FDCAN">
+       <peripheral derivedFrom="FDCAN">
          <name>FDCAN1</name>
-         <baseAddress>0x40006400</baseAddress>        
-      </peripheral>
-          
+         <baseAddress>0x40006400</baseAddress>
+         <interrupt>
+            <name>fdcan1_intr1_it</name>
+            <description>FDCAN1 interrupt</description>
+            <value>21</value>
+         </interrupt>
+         <interrupt>
+            <name>fdcan1_intr0_it</name>
+            <description>FDCAN1 interrupt</description>
+            <value>22</value>
+         </interrupt>              
+      </peripheral>          
       <peripheral>
          <name>UCPD1</name>
          <description>UCPD1</description>

@@ -3,7 +3,7 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
   <name>STM32F21x</name>
-  <version>1.0</version>
+  <version>1.5</version>
   <description>STM32F21x</description>
   <!--Bus Interface Properties-->
   <!--Cortex-M3 is byte addressable-->
@@ -658,6 +658,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <offset>0x0</offset>
         <size>0x1000</size>
         <usage>registers</usage>
+      </addressBlock>
+      <addressBlock>
+        <offset>0x1000</offset>
+        <size>0xFFFFF400</size>
+        <usage>reserved</usage>
       </addressBlock>
       <interrupt>
         <name>FSMC</name>
@@ -7132,7 +7137,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <access>read-write</access>
             </field>
             <field>
-              <name>PINRSTF</name>
+              <name>PADRSTF</name>
               <description>PIN reset flag</description>
               <bitOffset>26</bitOffset>
               <bitWidth>1</bitWidth>
@@ -16496,7 +16501,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
             </field>
           </fields>
         </register>
-        <register>
+       <register>
           <name>F0R1</name>
           <displayName>F0R1</displayName>
           <description>Filter bank 0 register 1</description>
@@ -17714,7 +17719,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
             </field>
           </fields>
         </register>
-        <register>
+		<register>
           <name>F3R1</name>
           <displayName>F3R1</displayName>
           <description>Filter bank 3 register 1</description>
@@ -17722,7 +17727,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -17916,8 +17921,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F3R2</name>
           <displayName>F3R2</displayName>
           <description>Filter bank 3 register 2</description>
@@ -17925,7 +17930,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -18119,8 +18124,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F4R1</name>
           <displayName>F4R1</displayName>
           <description>Filter bank 4 register 1</description>
@@ -18128,7 +18133,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -18322,8 +18327,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F4R2</name>
           <displayName>F4R2</displayName>
           <description>Filter bank 4 register 2</description>
@@ -18331,7 +18336,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -18525,8 +18530,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F5R1</name>
           <displayName>F5R1</displayName>
           <description>Filter bank 5 register 1</description>
@@ -18534,7 +18539,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -18728,8 +18733,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F5R2</name>
           <displayName>F5R2</displayName>
           <description>Filter bank 5 register 2</description>
@@ -18737,7 +18742,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -18931,8 +18936,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F6R1</name>
           <displayName>F6R1</displayName>
           <description>Filter bank 6 register 1</description>
@@ -18940,7 +18945,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -19134,8 +19139,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F6R2</name>
           <displayName>F6R2</displayName>
           <description>Filter bank 6 register 2</description>
@@ -19143,7 +19148,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -19337,8 +19342,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		
+		<register>
           <name>F7R1</name>
           <displayName>F7R1</displayName>
           <description>Filter bank 7 register 1</description>
@@ -19346,7 +19352,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -19540,8 +19546,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F7R2</name>
           <displayName>F7R2</displayName>
           <description>Filter bank 7 register 2</description>
@@ -19549,7 +19555,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -19743,8 +19749,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F8R1</name>
           <displayName>F8R1</displayName>
           <description>Filter bank 8 register 1</description>
@@ -19752,7 +19758,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -19946,8 +19952,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F8R2</name>
           <displayName>F8R2</displayName>
           <description>Filter bank 8 register 2</description>
@@ -19955,7 +19961,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -20149,8 +20155,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F9R1</name>
           <displayName>F9R1</displayName>
           <description>Filter bank 9 register 1</description>
@@ -20158,7 +20164,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -20352,8 +20358,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F9R2</name>
           <displayName>F9R2</displayName>
           <description>Filter bank 9 register 2</description>
@@ -20361,7 +20367,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -20555,8 +20561,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F10R1</name>
           <displayName>F10R1</displayName>
           <description>Filter bank 10 register 1</description>
@@ -20564,7 +20570,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -20758,8 +20764,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F10R2</name>
           <displayName>F10R2</displayName>
           <description>Filter bank 10 register 2</description>
@@ -20767,7 +20773,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -20961,8 +20967,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F11R1</name>
           <displayName>F11R1</displayName>
           <description>Filter bank 11 register 1</description>
@@ -20970,7 +20976,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -21164,8 +21170,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F11R2</name>
           <displayName>F11R2</displayName>
           <description>Filter bank 11 register 2</description>
@@ -21173,7 +21179,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -21367,8 +21373,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F12R1</name>
           <displayName>F12R1</displayName>
           <description>Filter bank 4 register 1</description>
@@ -21376,7 +21382,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -21570,8 +21576,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F12R2</name>
           <displayName>F12R2</displayName>
           <description>Filter bank 12 register 2</description>
@@ -21579,7 +21585,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -21773,8 +21779,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F13R1</name>
           <displayName>F13R1</displayName>
           <description>Filter bank 13 register 1</description>
@@ -21782,7 +21788,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -21976,8 +21982,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F13R2</name>
           <displayName>F13R2</displayName>
           <description>Filter bank 13 register 2</description>
@@ -21985,7 +21991,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -22179,8 +22185,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+				<register>
           <name>F14R1</name>
           <displayName>F14R1</displayName>
           <description>Filter bank 14 register 1</description>
@@ -22188,7 +22194,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -22382,8 +22388,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F14R2</name>
           <displayName>F14R2</displayName>
           <description>Filter bank 14 register 2</description>
@@ -22391,7 +22397,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -22585,8 +22591,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F15R1</name>
           <displayName>F15R1</displayName>
           <description>Filter bank 15 register 1</description>
@@ -22594,7 +22600,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -22788,8 +22794,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F15R2</name>
           <displayName>F15R2</displayName>
           <description>Filter bank 15 register 2</description>
@@ -22797,7 +22803,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -22991,8 +22997,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F16R1</name>
           <displayName>F16R1</displayName>
           <description>Filter bank 16 register 1</description>
@@ -23000,7 +23006,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -23194,8 +23200,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F16R2</name>
           <displayName>F16R2</displayName>
           <description>Filter bank 16 register 2</description>
@@ -23203,7 +23209,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -23397,8 +23403,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+				<register>
           <name>F17R1</name>
           <displayName>F17R1</displayName>
           <description>Filter bank 17 register 1</description>
@@ -23406,7 +23412,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -23600,8 +23606,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F17R2</name>
           <displayName>F17R2</displayName>
           <description>Filter bank 17 register 2</description>
@@ -23609,7 +23615,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -23803,8 +23809,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+				<register>
           <name>F18R1</name>
           <displayName>F18R1</displayName>
           <description>Filter bank 18 register 1</description>
@@ -23812,7 +23818,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -24006,8 +24012,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F18R2</name>
           <displayName>F18R2</displayName>
           <description>Filter bank 18 register 2</description>
@@ -24015,7 +24021,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -24209,8 +24215,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F19R1</name>
           <displayName>F19R1</displayName>
           <description>Filter bank 19 register 1</description>
@@ -24218,7 +24224,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -24412,8 +24418,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F19R2</name>
           <displayName>F19R2</displayName>
           <description>Filter bank 19 register 2</description>
@@ -24421,7 +24427,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -24615,8 +24621,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F20R1</name>
           <displayName>F20R1</displayName>
           <description>Filter bank 20 register 1</description>
@@ -24624,7 +24630,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -24818,8 +24824,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F20R2</name>
           <displayName>F20R2</displayName>
           <description>Filter bank 20 register 2</description>
@@ -24827,7 +24833,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -25021,8 +25027,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F21R1</name>
           <displayName>F21R1</displayName>
           <description>Filter bank 21 register 1</description>
@@ -25030,7 +25036,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -25224,8 +25230,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F21R2</name>
           <displayName>F21R2</displayName>
           <description>Filter bank 21 register 2</description>
@@ -25233,7 +25239,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -25427,8 +25433,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F22R1</name>
           <displayName>F22R1</displayName>
           <description>Filter bank 22 register 1</description>
@@ -25436,7 +25442,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -25630,8 +25636,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F22R2</name>
           <displayName>F22R2</displayName>
           <description>Filter bank 22 register 2</description>
@@ -25639,7 +25645,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -25833,8 +25839,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F23R1</name>
           <displayName>F23R1</displayName>
           <description>Filter bank 23 register 1</description>
@@ -25842,7 +25848,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -26036,8 +26042,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F23R2</name>
           <displayName>F23R2</displayName>
           <description>Filter bank 23 register 2</description>
@@ -26045,7 +26051,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -26239,8 +26245,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+				<register>
           <name>F24R1</name>
           <displayName>F24R1</displayName>
           <description>Filter bank 24 register 1</description>
@@ -26248,7 +26254,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -26442,8 +26448,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F24R2</name>
           <displayName>F24R2</displayName>
           <description>Filter bank 24 register 2</description>
@@ -26451,7 +26457,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -26645,8 +26651,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F25R1</name>
           <displayName>F25R1</displayName>
           <description>Filter bank 25 register 1</description>
@@ -26654,7 +26660,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -26848,8 +26854,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F25R2</name>
           <displayName>F25R2</displayName>
           <description>Filter bank 25 register 2</description>
@@ -26857,7 +26863,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -27051,8 +27057,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F26R1</name>
           <displayName>F26R1</displayName>
           <description>Filter bank 26 register 1</description>
@@ -27060,7 +27066,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -27254,8 +27260,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
+		</register>
+		<register>
           <name>F26R2</name>
           <displayName>F26R2</displayName>
           <description>Filter bank 26 register 2</description>
@@ -27263,7 +27269,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
-          <fields>
+		  <fields>
             <field>
               <name>FB0</name>
               <description>Filter bits</description>
@@ -27457,9 +27463,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
           </fields>
-        </register>
-        <register>
-          <name>F27R1</name>
+		</register>
+          <register>
+		  <name>F27R1</name>
           <displayName>F27R1</displayName>
           <description>Filter bank 27 register 1</description>
           <addressOffset>0x318</addressOffset>
@@ -44332,7 +44338,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>start register</description>
           <addressOffset>0x8</addressOffset>
           <size>0x20</size>
-          <access>write-only</access>
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
@@ -44340,6 +44345,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>Digest calculation</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>write-only</access>
             </field>
             <field>
               <name>NBLW</name>
@@ -44347,6 +44353,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               the message</description>
               <bitOffset>0</bitOffset>
               <bitWidth>5</bitWidth>
+              <access>write-only</access>
             </field>
           </fields>
         </register>
@@ -48063,8 +48070,13 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <baseAddress>0x40040000</baseAddress>
       <addressBlock>
         <offset>0x0</offset>
-        <size>0x400</size>
+        <size>0xFFFC0400</size>
         <usage>registers</usage>
+      </addressBlock>
+      <addressBlock>
+        <offset>0xFFFC0400</offset>
+        <size>0x40000</size>
+        <usage>reserved</usage>
       </addressBlock>
       <interrupt>
         <name>OTG_HS_EP1_OUT</name>
@@ -49085,8 +49097,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
             </field>
             <field>
               <name>VBUSBSEN</name>
-              <description>Enable the VBUS sensing
-              device</description>
+              <description>Enable the VBUS sensing device</description>
               <bitOffset>19</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
@@ -57149,6 +57160,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x3F200</size>
         <usage>registers</usage>
       </addressBlock>
+      <addressBlock>
+        <offset>0x3F200</offset>
+        <size>0xFFFC1200</size>
+        <usage>reserved</usage>
+      </addressBlock>
       <registers>
         <register>
           <name>OTG_HS_PCGCR</name>
@@ -57192,6 +57208,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <offset>0x0</offset>
         <size>0x1001</size>
         <usage>registers</usage>
+      </addressBlock>
+      <addressBlock>
+        <offset>0x1001</offset>
+        <size>0xFFFFF3FF</size>
+        <usage>reserved</usage>
       </addressBlock>
       <registers>
         <register>

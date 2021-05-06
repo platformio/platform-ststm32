@@ -3,7 +3,7 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
   <name>STM32F091x</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <description>STM32F091x</description>
   <!--Bus Interface Properties-->
   <!--Cortex-M0 is byte addressable-->
@@ -3328,57 +3328,47 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>EN1</name>
-              <description>DAC channel1 enable</description>
-              <bitOffset>0</bitOffset>
+              <name>DBP</name>
+              <description>Disable backup domain write
+              protection</description>
+              <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>BOFF1</name>
-              <description>DAC channel1 output buffer
-              disable</description>
-              <bitOffset>1</bitOffset>
-              <bitWidth>1</bitWidth>
+              <name>PLS</name>
+              <description>PVD level selection</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>3</bitWidth>
             </field>
             <field>
-              <name>TEN1</name>
-              <description>DAC channel1 trigger
+              <name>PVDE</name>
+              <description>Power voltage detector
               enable</description>
-              <bitOffset>2</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>TSEL10</name>
-              <description>DAC channel1 trigger
-              selection</description>
-              <bitOffset>3</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>TSEL11</name>
-              <description>DAC channel1 trigger
-              selection</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>TSEL12</name>
-              <description>DAC channel1 trigger
-              selection</description>
-              <bitOffset>5</bitOffset>
+              <name>CSBF</name>
+              <description>Clear standby flag</description>
+              <bitOffset>3</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>DMAEN1</name>
-              <description>DAC channel1 DMA enable</description>
-              <bitOffset>12</bitOffset>
+              <name>CWUF</name>
+              <description>Clear wakeup flag</description>
+              <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>DMAUDRIE1</name>
-              <description>DAC channel1 DMA Underrun Interrupt
-              enable</description>
-              <bitOffset>13</bitOffset>
+              <name>PDDS</name>
+              <description>Power down deepsleep</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>LPDS</name>
+              <description>Low-power deep sleep</description>
+              <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -3584,30 +3574,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>BRE</name>
-              <description>Backup regulator enable</description>
-              <bitOffset>9</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>EWUP</name>
-              <description>Enable WKUP pin</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>BRR</name>
-              <description>Backup regulator ready</description>
-              <bitOffset>3</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>PVDO</name>
-              <description>PVD output</description>
-              <bitOffset>2</bitOffset>
+              <name>WUF</name>
+              <description>Wakeup flag</description>
+              <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
               <access>read-only</access>
             </field>
@@ -3619,11 +3588,75 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <access>read-only</access>
             </field>
             <field>
-              <name>WUF</name>
-              <description>Wakeup flag</description>
-              <bitOffset>0</bitOffset>
+              <name>PVDO</name>
+              <description>PVD output</description>
+              <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
               <access>read-only</access>
+            </field>
+            <field>
+              <name>VREFINTRDY</name>
+              <description>VREFINT reference voltage
+              ready</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>EWUP1</name>
+              <description>Enable WKUP pin 1</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EWUP2</name>
+              <description>Enable WKUP pin 2</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EWUP3</name>
+              <description>Enable WKUP pin 3</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EWUP4</name>
+              <description>Enable WKUP pin 4</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EWUP5</name>
+              <description>Enable WKUP pin 5</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EWUP6</name>
+              <description>Enable WKUP pin 6</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EWUP7</name>
+              <description>Enable WKUP pin 7</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>EWUP8</name>
+              <description>Enable WKUP pin 8</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-write</access>
             </field>
           </fields>
         </register>
@@ -12733,7 +12766,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <baseAddress>0x4001001C</baseAddress>
       <addressBlock>
         <offset>0x0</offset>
-        <size>0x400</size>
+        <size>0x5</size>
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
@@ -18770,7 +18803,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <register>
           <name>CAN_BTR</name>
           <displayName>CAN_BTR</displayName>
-          <description>CAN_BTR</description>
+          <description>CAN BTR</description>
           <addressOffset>0x1C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>

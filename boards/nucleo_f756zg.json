@@ -22,7 +22,7 @@
     ],
     "openocd_board": "st_nucleo_f7",
     "openocd_target": "stm32f7x",
-    "svd_path": "STM32F7x6.svd"
+    "svd_path": "STM32F756.svd"
   },
   "frameworks": [
     "arduino",

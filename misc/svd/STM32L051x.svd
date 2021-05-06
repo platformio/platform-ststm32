@@ -12955,9 +12955,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>FPDS</name>
-              <description>Flash power down in Stop
-              mode</description>
+              <name>ULP</name>
+              <description>Ultra-low-power mode</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
@@ -15018,6 +15017,13 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
+              <name>DBG_I2C3_STOP</name>
+              <description>I2C3 SMBUS timeout mode stopped when
+              core is halted</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
               <name>DBG_LPTIMER_STOP</name>
               <description>LPTIM1 counter stopped when core is
               halted</description>
@@ -15043,10 +15049,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>DBG_TIMER22_STO</name>
+              <name>DBG_TIMER22_STOP</name>
               <description>Debug Timer 22 stopped when Core is
               halted</description>
-              <bitOffset>6</bitOffset>
+              <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>

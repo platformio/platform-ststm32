@@ -12250,7 +12250,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>ADC_IRQ</name>
+        <name>ADC</name>
         <description>ADC1 global interrupt</description>
         <value>18</value>
       </interrupt>

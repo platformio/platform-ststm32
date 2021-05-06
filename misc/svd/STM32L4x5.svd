@@ -3,18 +3,18 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
   <name>STM32L4x5</name>
-  <version>1.4</version>
+  <version>1.6</version>
   <description>STM32L4x5</description>
   <!-- details about the cpu embedded in the device -->
   <cpu>
     <name>CM4</name>
-    <revision>r1p0</revision>
+    <revision>r0p1</revision>
     <endian>little</endian>
-    <mpuPresent>false</mpuPresent>
-    <fpuPresent>false</fpuPresent>
-    <nvicPrioBits>3</nvicPrioBits>
+    <mpuPresent>true</mpuPresent>
+    <fpuPresent>true</fpuPresent>
+    <nvicPrioBits>4</nvicPrioBits>
     <vendorSystickConfig>false</vendorSystickConfig>
-  </cpu>
+  </cpu> 
   <!--Bus Interface Properties-->
   <!--Cortex-M3 is byte addressable-->
   <addressUnitBits>8</addressUnitBits>
@@ -7383,14 +7383,14 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0xFF00FF00</resetValue>
           <fields>
             <field>
-              <name>WRP1B_STRT</name>
+              <name>WRP1B_END</name>
               <description>Bank 1 WRP second area B end
               offset</description>
               <bitOffset>16</bitOffset>
               <bitWidth>8</bitWidth>
             </field>
             <field>
-              <name>WRP1B_END</name>
+              <name>WRP1B_STRT</name>
               <description>Bank 1 WRP second area B start
               offset</description>
               <bitOffset>0</bitOffset>
@@ -43752,69 +43752,34 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>DFSDM3</name>
-        <description>SD Filter 3 global Interrupt</description>
+        <name>DFSDM1_FLT3</name>
+        <description>DFSDM1_FLT3 global interrupt</description>
         <value>42</value>
       </interrupt>
       <interrupt>
-        <name>DFSDM3</name>
-        <description>SD Filter 3 global Interrupt</description>
-        <value>42</value>
-      </interrupt>
-      <interrupt>
-        <name>DFSDM3</name>
-        <description>SD Filter 3 global Interrupt</description>
-        <value>42</value>
-      </interrupt>
-      <interrupt>
-        <name>DFSDM0</name>
-        <description>SD Filter 0 global Interrupt</description>
+        <name>DFSDM1_FLT0</name>
+        <description>DFSDM1_FLT0 global interrupt</description>
         <value>61</value>
       </interrupt>
       <interrupt>
-        <name>DFSDM0</name>
-        <description>SD Filter 0 global Interrupt</description>
-        <value>61</value>
-      </interrupt>
-      <interrupt>
-        <name>DFSDM0</name>
-        <description>SD Filter 0 global Interrupt</description>
-        <value>61</value>
-      </interrupt>
-      <interrupt>
-        <name>DFSDM1</name>
-        <description>SD Filter 1 global Interrupt</description>
+        <name>DFSDM1_FLT1</name>
+        <description>DFSDM1_FLT1 global interrupt</description>
         <value>62</value>
       </interrupt>
       <interrupt>
-        <name>DFSDM1</name>
-        <description>SD Filter 1 global Interrupt</description>
-        <value>62</value>
-      </interrupt>
-      <interrupt>
-        <name>DFSDM1</name>
-        <description>SD Filter 1 global Interrupt</description>
-        <value>62</value>
-      </interrupt>
-      <interrupt>
-        <name>DFSDM2</name>
-        <description>SD Filter 2 global Interrupt</description>
+        <name>DFSDM1_FLT2</name>
+        <description>DFSDM1_FLT2 global interrupt</description>
         <value>63</value>
       </interrupt>
-      <interrupt>
-        <name>DFSDM2</name>
-        <description>SD Filter 2 global Interrupt</description>
-        <value>63</value>
-      </interrupt>
-      <interrupt>
-        <name>DFSDM2</name>
-        <description>SD Filter 2 global Interrupt</description>
-        <value>63</value>
+	  <interrupt>
+        <name>I2C4_ER</name>
+        <description>I2C4 error interrupt</description>
+        <value>84</value>
       </interrupt>
       <registers>
         <register>
-          <name>CHCFG0R1</name>
-          <displayName>CHCFG0R1</displayName>
+          <name>CH0CFGR1</name>
+          <displayName>CH0CFGR1</displayName>
           <description>channel configuration y
           register</description>
           <addressOffset>0x0</addressOffset>
@@ -43891,8 +43856,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG0R2</name>
-          <displayName>CHCFG0R2</displayName>
+          <name>CH0CFGR2</name>
+          <displayName>CH0CFGR2</displayName>
           <description>channel configuration y
           register</description>
           <addressOffset>0x4</addressOffset>
@@ -43915,8 +43880,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>AWSCD0R</name>
-          <displayName>AWSCD0R</displayName>
+          <name>CH0AWSCDR</name>
+          <displayName>CH0AWSCDR</displayName>
           <description>analog watchdog and short-circuit detector
           register</description>
           <addressOffset>0x8</addressOffset>
@@ -43951,8 +43916,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHWDAT0R</name>
-          <displayName>CHWDAT0R</displayName>
+          <name>CH0WDATR</name>
+          <displayName>CH0WDATR</displayName>
           <description>channel watchdog filter data
           register</description>
           <addressOffset>0xC</addressOffset>
@@ -43969,8 +43934,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHDATIN0R</name>
-          <displayName>CHDATIN0R</displayName>
+          <name>CH0DATINR</name>
+          <displayName>CH0DATINR</displayName>
           <description>channel data input register</description>
           <addressOffset>0x10</addressOffset>
           <size>0x20</size>
@@ -43992,9 +43957,26 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG1R1</name>
-          <displayName>CHCFG1R1</displayName>
-          <description>CHCFG1R1</description>
+          <name>CH0DLYR</name>
+          <displayName>CH0DLYR</displayName>
+          <description>channel y delay register</description>
+          <addressOffset>0x14</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0</resetValue>
+          <fields>
+            <field>
+              <name>PLSSKP</name>
+              <description>PLSSKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CH1CFGR1</name>
+          <displayName>CH1CFGR1</displayName>
+          <description>CH1CFGR1</description>
           <addressOffset>0x20</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44051,9 +44033,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG1R2</name>
-          <displayName>CHCFG1R2</displayName>
-          <description>CHCFG1R2</description>
+          <name>CH1CFGR2</name>
+          <displayName>CH1CFGR2</displayName>
+          <description>CH1CFGR2</description>
           <addressOffset>0x24</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44074,9 +44056,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>AWSCD1R</name>
-          <displayName>AWSCD1R</displayName>
-          <description>AWSCD1R</description>
+          <name>CH1AWSCDR</name>
+          <displayName>CH1AWSCDR</displayName>
+          <description>CH1AWSCDR</description>
           <addressOffset>0x28</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44109,9 +44091,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHWDAT1R</name>
-          <displayName>CHWDAT1R</displayName>
-          <description>CHWDAT1R</description>
+          <name>CH1WDATR</name>
+          <displayName>CH1WDATR</displayName>
+          <description>CH1WDATR</description>
           <addressOffset>0x2C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44126,9 +44108,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHDATIN1R</name>
-          <displayName>CHDATIN1R</displayName>
-          <description>CHDATIN1R</description>
+          <name>CH1DATINR</name>
+          <displayName>CH1DATINR</displayName>
+          <description>CH1DATINR</description>
           <addressOffset>0x30</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44149,9 +44131,26 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG2R1</name>
-          <displayName>CHCFG2R1</displayName>
-          <description>CHCFG2R1</description>
+          <name>CH1DLYR</name>
+          <displayName>CH1DLYR</displayName>
+          <description>channel y delay register</description>
+          <addressOffset>0x34</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0</resetValue>
+          <fields>
+            <field>
+              <name>PLSSKP</name>
+              <description>PLSSKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>     
+		<register>
+          <name>CH2CFGR1</name>
+          <displayName>CH2CFGR1</displayName>
+          <description>CH2CFGR1</description>
           <addressOffset>0x40</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44208,9 +44207,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG2R2</name>
-          <displayName>CHCFG2R2</displayName>
-          <description>CHCFG2R2</description>
+          <name>CH2CFGR2</name>
+          <displayName>CH2CFGR2</displayName>
+          <description>CH2CFGR2</description>
           <addressOffset>0x44</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44231,9 +44230,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>AWSCD2R</name>
-          <displayName>AWSCD2R</displayName>
-          <description>AWSCD2R</description>
+          <name>CH2AWSCDR</name>
+          <displayName>CH2AWSCDR</displayName>
+          <description>CH2AWSCDR</description>
           <addressOffset>0x48</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44266,9 +44265,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHWDAT2R</name>
-          <displayName>CHWDAT2R</displayName>
-          <description>CHWDAT2R</description>
+          <name>CH2WDATR</name>
+          <displayName>CH2WDATR</displayName>
+          <description>CH2WDATR</description>
           <addressOffset>0x4C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44283,9 +44282,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHDATIN2R</name>
-          <displayName>CHDATIN2R</displayName>
-          <description>CHDATIN2R</description>
+          <name>CH2DATINR</name>
+          <displayName>CH2DATINR</displayName>
+          <description>CH2DATINR</description>
           <addressOffset>0x50</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44306,9 +44305,26 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG3R1</name>
-          <displayName>CHCFG3R1</displayName>
-          <description>CHCFG3R1</description>
+          <name>CH2DLYR</name>
+          <displayName>CH2DLYR</displayName>
+          <description>channel y delay register</description>
+          <addressOffset>0x54</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0</resetValue>
+          <fields>
+            <field>
+              <name>PLSSKP</name>
+              <description>PLSSKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>        
+		<register>
+          <name>CH3CFGR1</name>
+          <displayName>CH3CFGR1</displayName>
+          <description>CH3CFGR1</description>
           <addressOffset>0x60</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44365,9 +44381,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG3R2</name>
-          <displayName>CHCFG3R2</displayName>
-          <description>CHCFG3R2</description>
+          <name>CH3CFGR2</name>
+          <displayName>CH3CFGR2</displayName>
+          <description>CH3CFGR2</description>
           <addressOffset>0x64</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44388,9 +44404,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>AWSCD3R</name>
-          <displayName>AWSCD3R</displayName>
-          <description>AWSCD3R</description>
+          <name>CH3AWSCDR</name>
+          <displayName>CH3AWSCDR</displayName>
+          <description>CH3AWSCDR</description>
           <addressOffset>0x68</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44423,9 +44439,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHWDAT3R</name>
-          <displayName>CHWDAT3R</displayName>
-          <description>CHWDAT3R</description>
+          <name>CH3WDATR</name>
+          <displayName>CH3WDATR</displayName>
+          <description>CH3WDATR</description>
           <addressOffset>0x6C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44440,9 +44456,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHDATIN3R</name>
-          <displayName>CHDATIN3R</displayName>
-          <description>CHDATIN3R</description>
+          <name>CH3DATINR</name>
+          <displayName>CH3DATINR</displayName>
+          <description>CH3DATINR</description>
           <addressOffset>0x70</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44463,9 +44479,26 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG4R1</name>
-          <displayName>CHCFG4R1</displayName>
-          <description>CHCFG4R1</description>
+          <name>CH3DLYR</name>
+          <displayName>CH3DLYR</displayName>
+          <description>channel y delay register</description>
+          <addressOffset>0x74</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0</resetValue>
+          <fields>
+            <field>
+              <name>PLSSKP</name>
+              <description>PLSSKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>        
+		<register>
+          <name>CH4CFGR1</name>
+          <displayName>CH4CFGR1</displayName>
+          <description>CH4CFGR1</description>
           <addressOffset>0x80</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44522,9 +44555,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG4R2</name>
-          <displayName>CHCFG4R2</displayName>
-          <description>CHCFG4R2</description>
+          <name>CH4CFGR2</name>
+          <displayName>CH4CFGR2</displayName>
+          <description>CH4CFGR2</description>
           <addressOffset>0x84</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44545,9 +44578,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>AWSCD4R</name>
-          <displayName>AWSCD4R</displayName>
-          <description>AWSCD4R</description>
+          <name>CH4AWSCDR</name>
+          <displayName>CH4AWSCDR</displayName>
+          <description>CH4AWSCDR</description>
           <addressOffset>0x88</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44580,9 +44613,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHWDAT4R</name>
-          <displayName>CHWDAT4R</displayName>
-          <description>CHWDAT4R</description>
+          <name>CH4WDATR</name>
+          <displayName>CH4WDATR</displayName>
+          <description>CH4WDATR</description>
           <addressOffset>0x8C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44597,9 +44630,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHDATIN4R</name>
-          <displayName>CHDATIN4R</displayName>
-          <description>CHDATIN4R</description>
+          <name>CH4DATINR</name>
+          <displayName>CH4DATINR</displayName>
+          <description>CH4DATINR</description>
           <addressOffset>0x90</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44620,9 +44653,26 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG5R1</name>
-          <displayName>CHCFG5R1</displayName>
-          <description>CHCFG5R1</description>
+          <name>CH4DLYR</name>
+          <displayName>CH4DLYR</displayName>
+          <description>channel y delay register</description>
+          <addressOffset>0x94</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0</resetValue>
+          <fields>
+            <field>
+              <name>PLSSKP</name>
+              <description>PLSSKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>        
+		<register>
+          <name>CH5CFGR1</name>
+          <displayName>CH5CFGR1</displayName>
+          <description>CH5CFGR1</description>
           <addressOffset>0xA0</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44679,9 +44729,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG5R2</name>
-          <displayName>CHCFG5R2</displayName>
-          <description>CHCFG5R2</description>
+          <name>CH5CFGR2</name>
+          <displayName>CH5CFGR2</displayName>
+          <description>CH5CFGR2</description>
           <addressOffset>0xA4</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44702,9 +44752,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>AWSCD5R</name>
-          <displayName>AWSCD5R</displayName>
-          <description>AWSCD5R</description>
+          <name>CH5AWSCDR</name>
+          <displayName>CH5AWSCDR</displayName>
+          <description>CH5AWSCDR</description>
           <addressOffset>0xA8</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44737,9 +44787,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHWDAT5R</name>
-          <displayName>CHWDAT5R</displayName>
-          <description>CHWDAT5R</description>
+          <name>CH5WDATR</name>
+          <displayName>CH5WDATR</displayName>
+          <description>CH5WDATR</description>
           <addressOffset>0xAC</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44754,9 +44804,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHDATIN5R</name>
-          <displayName>CHDATIN5R</displayName>
-          <description>CHDATIN5R</description>
+          <name>CH5DATINR</name>
+          <displayName>CH5DATINR</displayName>
+          <description>CH5DATINR</description>
           <addressOffset>0xB0</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44777,9 +44827,26 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG6R1</name>
-          <displayName>CHCFG6R1</displayName>
-          <description>CHCFG6R1</description>
+          <name>CH5DLYR</name>
+          <displayName>CH5DLYR</displayName>
+          <description>channel y delay register</description>
+          <addressOffset>0xB4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0</resetValue>
+          <fields>
+            <field>
+              <name>PLSSKP</name>
+              <description>PLSSKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>            
+		<register>
+          <name>CH6CFGR1</name>
+          <displayName>CH6CFGR1</displayName>
+          <description>CH6CFGR1</description>
           <addressOffset>0xC0</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44836,9 +44903,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG6R2</name>
-          <displayName>CHCFG6R2</displayName>
-          <description>CHCFG6R2</description>
+          <name>CH6CFGR2</name>
+          <displayName>CH6CFGR2</displayName>
+          <description>CH6CFGR2</description>
           <addressOffset>0xC4</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44859,9 +44926,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>AWSCD6R</name>
-          <displayName>AWSCD6R</displayName>
-          <description>AWSCD6R</description>
+          <name>CH6AWSCDR</name>
+          <displayName>CH6AWSCDR</displayName>
+          <description>CH6AWSCDR</description>
           <addressOffset>0xC8</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44894,9 +44961,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHWDAT6R</name>
-          <displayName>CHWDAT6R</displayName>
-          <description>CHWDAT6R</description>
+          <name>CH6WDATR</name>
+          <displayName>CH6WDATR</displayName>
+          <description>CH6WDATR</description>
           <addressOffset>0xCC</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44911,9 +44978,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHDATIN6R</name>
-          <displayName>CHDATIN6R</displayName>
-          <description>CHDATIN6R</description>
+          <name>CH6DATINR</name>
+          <displayName>CH6DATINR</displayName>
+          <description>CH6DATINR</description>
           <addressOffset>0xD0</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44934,9 +45001,26 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG7R1</name>
-          <displayName>CHCFG7R1</displayName>
-          <description>CHCFG7R1</description>
+          <name>CH6DLYR</name>
+          <displayName>CH6DLYR</displayName>
+          <description>channel y delay register</description>
+          <addressOffset>0xD4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0</resetValue>
+          <fields>
+            <field>
+              <name>PLSSKP</name>
+              <description>PLSSKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register> 
+        <register>
+          <name>CH7CFGR1</name>
+          <displayName>CH7CFGR1</displayName>
+          <description>CH7CFGR1</description>
           <addressOffset>0xE0</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -44993,9 +45077,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHCFG7R2</name>
-          <displayName>CHCFG7R2</displayName>
-          <description>CHCFG7R2</description>
+          <name>CH7CFGR2</name>
+          <displayName>CH7CFGR2</displayName>
+          <description>CH7CFGR2</description>
           <addressOffset>0xE4</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -45016,9 +45100,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>AWSCD7R</name>
-          <displayName>AWSCD7R</displayName>
-          <description>AWSCD7R</description>
+          <name>CH7AWSCDR</name>
+          <displayName>CH7AWSCDR</displayName>
+          <description>CH7AWSCDR</description>
           <addressOffset>0xE8</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -45051,9 +45135,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHWDAT7R</name>
-          <displayName>CHWDAT7R</displayName>
-          <description>CHWDAT7R</description>
+          <name>CH7WDATR</name>
+          <displayName>CH7WDATR</displayName>
+          <description>CH7WDATR</description>
           <addressOffset>0xEC</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -45068,9 +45152,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CHDATIN7R</name>
-          <displayName>CHDATIN7R</displayName>
-          <description>CHDATIN7R</description>
+          <name>CH7DATINR</name>
+          <displayName>CH7DATINR</displayName>
+          <description>CH7DATINR</description>
           <addressOffset>0xF0</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -45091,8 +45175,25 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_CR1</name>
-          <displayName>DFSDM0_CR1</displayName>
+          <name>CH7DLYR</name>
+          <displayName>CH7DLYR</displayName>
+          <description>channel y delay register</description>
+          <addressOffset>0xF4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0</resetValue>
+          <fields>
+            <field>
+              <name>PLSSKP</name>
+              <description>PLSSKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>     
+        <register>
+          <name>DFSDM_FLT0CR1</name>
+          <displayName>DFSDM_FLT0CR1</displayName>
           <description>control register 1</description>
           <addressOffset>0x100</addressOffset>
           <size>0x20</size>
@@ -45199,8 +45300,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_CR2</name>
-          <displayName>DFSDM0_CR2</displayName>
+          <name>DFSDM_FLT0CR2</name>
+          <displayName>DFSDM_FLT0CR2</displayName>
           <description>control register 2</description>
           <addressOffset>0x104</addressOffset>
           <size>0x20</size>
@@ -45273,8 +45374,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_ISR</name>
-          <displayName>DFSDM0_ISR</displayName>
+          <name>DFSDM_FLT0ISR</name>
+          <displayName>DFSDM_FLT0ISR</displayName>
           <description>interrupt and status register</description>
           <addressOffset>0x108</addressOffset>
           <size>0x20</size>
@@ -45345,8 +45446,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_ICR</name>
-          <displayName>DFSDM0_ICR</displayName>
+          <name>DFSDM_FLT0ICR</name>
+          <displayName>DFSDM_FLT0ICR</displayName>
           <description>interrupt flag clear register</description>
           <addressOffset>0x10C</addressOffset>
           <size>0x20</size>
@@ -45384,8 +45485,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_JCHGR</name>
-          <displayName>DFSDM0_JCHGR</displayName>
+          <name>DFSDM_FLT0JCHGR</name>
+          <displayName>DFSDM_FLT0JCHGR</displayName>
           <description>injected channel group selection
           register</description>
           <addressOffset>0x110</addressOffset>
@@ -45403,8 +45504,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_FCR</name>
-          <displayName>DFSDM0_FCR</displayName>
+          <name>DFSDM_FLT0FCR</name>
+          <displayName>DFSDM_FLT0FCR</displayName>
           <description>filter control register</description>
           <addressOffset>0x114</addressOffset>
           <size>0x20</size>
@@ -45434,8 +45535,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_JDATAR</name>
-          <displayName>DFSDM0_JDATAR</displayName>
+          <name>DFSDM_FLT0JDATAR</name>
+          <displayName>DFSDM_FLT0JDATAR</displayName>
           <description>data register for injected
           group</description>
           <addressOffset>0x118</addressOffset>
@@ -45460,8 +45561,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_RDATAR</name>
-          <displayName>DFSDM0_RDATAR</displayName>
+          <name>DFSDM_FLT0RDATAR</name>
+          <displayName>DFSDM_FLT0RDATAR</displayName>
           <description>data register for the regular
           channel</description>
           <addressOffset>0x11C</addressOffset>
@@ -45493,8 +45594,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_AWHTR</name>
-          <displayName>DFSDM0_AWHTR</displayName>
+          <name>DFSDM_FLT0AWHTR</name>
+          <displayName>DFSDM_FLT0AWHTR</displayName>
           <description>analog watchdog high threshold
           register</description>
           <addressOffset>0x120</addressOffset>
@@ -45519,8 +45620,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_AWLTR</name>
-          <displayName>DFSDM0_AWLTR</displayName>
+          <name>DFSDM_FLT0AWLTR</name>
+          <displayName>DFSDM_FLT0AWLTR</displayName>
           <description>analog watchdog low threshold
           register</description>
           <addressOffset>0x124</addressOffset>
@@ -45545,8 +45646,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_AWSR</name>
-          <displayName>DFSDM0_AWSR</displayName>
+          <name>DFSDM_FLT0AWSR</name>
+          <displayName>DFSDM_FLT0AWSR</displayName>
           <description>analog watchdog status
           register</description>
           <addressOffset>0x128</addressOffset>
@@ -45571,8 +45672,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_AWCFR</name>
-          <displayName>DFSDM0_AWCFR</displayName>
+          <name>DFSDM_FLT0AWCFR</name>
+          <displayName>DFSDM_FLT0AWCFR</displayName>
           <description>analog watchdog clear flag
           register</description>
           <addressOffset>0x12C</addressOffset>
@@ -45597,8 +45698,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_EXMAX</name>
-          <displayName>DFSDM0_EXMAX</displayName>
+          <name>DFSDM_FLT0EXMAX</name>
+          <displayName>DFSDM_FLT0EXMAX</displayName>
           <description>Extremes detector maximum
           register</description>
           <addressOffset>0x130</addressOffset>
@@ -45623,8 +45724,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_EXMIN</name>
-          <displayName>DFSDM0_EXMIN</displayName>
+          <name>DFSDM_FLT0EXMIN</name>
+          <displayName>DFSDM_FLT0EXMIN</displayName>
           <description>Extremes detector minimum
           register</description>
           <addressOffset>0x134</addressOffset>
@@ -45648,8 +45749,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM0_CNVTIMR</name>
-          <displayName>DFSDM0_CNVTIMR</displayName>
+          <name>DFSDM_FLT0CNVTIMR</name>
+          <displayName>DFSDM_FLT0CNVTIMR</displayName>
           <description>conversion timer register</description>
           <addressOffset>0x138</addressOffset>
           <size>0x20</size>
@@ -45666,8 +45767,583 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_CR1</name>
-          <displayName>DFSDM1_CR1</displayName>
+          <name>DFSDM_FLT1CR1</name>
+          <displayName>DFSDM_FLT1CR1</displayName>
+          <description>control register 1</description>
+          <addressOffset>0x180</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>AWFSEL</name>
+              <description>Analog watchdog fast mode
+              select</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>FAST</name>
+              <description>Fast conversion mode selection for
+              regular conversions</description>
+              <bitOffset>29</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RCH</name>
+              <description>Regular channel selection</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>RDMAEN</name>
+              <description>DMA channel enabled to read data for the
+              regular conversion</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RSYNC</name>
+              <description>Launch regular conversion synchronously
+              with DFSDM0</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RCONT</name>
+              <description>Continuous mode selection for regular
+              conversions</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RSWSTART</name>
+              <description>Software start of a conversion on the
+              regular channel</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JEXTEN</name>
+              <description>Trigger enable and trigger edge
+              selection for injected conversions</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>JEXTSEL</name>
+              <description>Trigger signal selection for launching
+              injected conversions</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>JDMAEN</name>
+              <description>DMA channel enabled to read data for the
+              injected channel group</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JSCAN</name>
+              <description>Scanning conversion mode for injected
+              conversions</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JSYNC</name>
+              <description>Launch an injected conversion
+              synchronously with the DFSDM0 JSWSTART
+              trigger</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JSWSTART</name>
+              <description>Start a conversion of the injected group
+              of channels</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DFEN</name>
+              <description>DFSDM enable</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1CR2</name>
+          <displayName>DFSDM_FLT1CR2</displayName>
+          <description>control register 2</description>
+          <addressOffset>0x184</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>AWDCH</name>
+              <description>Analog watchdog channel
+              selection</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>EXCH</name>
+              <description>Extremes detector channel
+              selection</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>CKABIE</name>
+              <description>Clock absence interrupt
+              enable</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SCDIE</name>
+              <description>Short-circuit detector interrupt
+              enable</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>AWDIE</name>
+              <description>Analog watchdog interrupt
+              enable</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ROVRIE</name>
+              <description>Regular data overrun interrupt
+              enable</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JOVRIE</name>
+              <description>Injected data overrun interrupt
+              enable</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>REOCIE</name>
+              <description>Regular end of conversion interrupt
+              enable</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JEOCIE</name>
+              <description>Injected end of conversion interrupt
+              enable</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1ISR</name>
+          <displayName>DFSDM_FLT1ISR</displayName>
+          <description>interrupt and status register</description>
+          <addressOffset>0x188</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00FF0000</resetValue>
+          <fields>
+            <field>
+              <name>SCDF</name>
+              <description>short-circuit detector
+              flag</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>CKABF</name>
+              <description>Clock absence flag</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>RCIP</name>
+              <description>Regular conversion in progress
+              status</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JCIP</name>
+              <description>Injected conversion in progress
+              status</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>AWDF</name>
+              <description>Analog watchdog</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ROVRF</name>
+              <description>Regular conversion overrun
+              flag</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JOVRF</name>
+              <description>Injected conversion overrun
+              flag</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>REOCF</name>
+              <description>End of regular conversion
+              flag</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JEOCF</name>
+              <description>End of injected conversion
+              flag</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1ICR</name>
+          <displayName>DFSDM1_ICR</displayName>
+          <description>interrupt flag clear register</description>
+          <addressOffset>0x18C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CLRSCDF</name>
+              <description>Clear the short-circuit detector
+              flag</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>CLRCKABF</name>
+              <description>Clear the clock absence
+              flag</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>CLRROVRF</name>
+              <description>Clear the regular conversion overrun
+              flag</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CLRJOVRF</name>
+              <description>Clear the injected conversion overrun
+              flag</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1CHGR</name>
+          <displayName>DFSDM_FLT1JCHGR</displayName>
+          <description>injected channel group selection
+          register</description>
+          <addressOffset>0x190</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000001</resetValue>
+          <fields>
+            <field>
+              <name>JCHG</name>
+              <description>Injected channel group
+              selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1FCR</name>
+          <displayName>DFSDM1_FCR</displayName>
+          <description>filter control register</description>
+          <addressOffset>0x194</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>FORD</name>
+              <description>Sinc filter order</description>
+              <bitOffset>29</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>FOSR</name>
+              <description>Sinc filter oversampling ratio
+              (decimation rate)</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>10</bitWidth>
+            </field>
+            <field>
+              <name>IOSR</name>
+              <description>Integrator oversampling ratio (averaging
+              length)</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1JDATAR</name>
+          <displayName>DFSDM_FLT1JDATAR</displayName>
+          <description>data register for injected
+          group</description>
+          <addressOffset>0x198</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>JDATA</name>
+              <description>Injected group conversion
+              data</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+            <field>
+              <name>JDATACH</name>
+              <description>Injected channel most recently
+              converted</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1RDATAR</name>
+          <displayName>DFSDM_FLT1RDATAR</displayName>
+          <description>data register for the regular
+          channel</description>
+          <addressOffset>0x19C</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>RDATA</name>
+              <description>Regular channel conversion
+              data</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+            <field>
+              <name>RPEND</name>
+              <description>Regular channel pending
+              data</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RDATACH</name>
+              <description>Regular channel most recently
+              converted</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1AWHTR</name>
+          <displayName>DFSDM_FLT1AWHTR</displayName>
+          <description>analog watchdog high threshold
+          register</description>
+          <addressOffset>0x1A0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>AWHT</name>
+              <description>Analog watchdog high
+              threshold</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+            <field>
+              <name>BKAWH</name>
+              <description>Break signal assignment to analog
+              watchdog high threshold event</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1AWLTR</name>
+          <displayName>DFSDM_FLT1AWLTR</displayName>
+          <description>analog watchdog low threshold
+          register</description>
+          <addressOffset>0x1A4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>AWLT</name>
+              <description>Analog watchdog low
+              threshold</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+            <field>
+              <name>BKAWL</name>
+              <description>Break signal assignment to analog
+              watchdog low threshold event</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1AWSR</name>
+          <displayName>DFSDM_FLT1AWSR</displayName>
+          <description>analog watchdog status
+          register</description>
+          <addressOffset>0x1A8</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>AWHTF</name>
+              <description>Analog watchdog high threshold
+              flag</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>AWLTF</name>
+              <description>Analog watchdog low threshold
+              flag</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1AWCFR</name>
+          <displayName>DFSDM_FLT1AWCFR</displayName>
+          <description>analog watchdog clear flag
+          register</description>
+          <addressOffset>0x1AC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CLRAWHTF</name>
+              <description>Clear the analog watchdog high threshold
+              flag</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>CLRAWLTF</name>
+              <description>Clear the analog watchdog low threshold
+              flag</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1EXMAX</name>
+          <displayName>DFSDM_FLT1EXMAX</displayName>
+          <description>Extremes detector maximum
+          register</description>
+          <addressOffset>0x1B0</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x80000000</resetValue>
+          <fields>
+            <field>
+              <name>EXMAX</name>
+              <description>Extremes detector maximum
+              value</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+            <field>
+              <name>EXMAXCH</name>
+              <description>Extremes detector maximum data
+              channel</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1EXMIN</name>
+          <displayName>DFSDM_FLT1EXMIN</displayName>
+          <description>Extremes detector minimum
+          register</description>
+          <addressOffset>0x1B4</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x7FFFFF00</resetValue>
+          <fields>
+            <field>
+              <name>EXMIN</name>
+              <description>EXMIN</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+            <field>
+              <name>EXMINCH</name>
+              <description>Extremes detector minimum data
+              channel</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT1CNVTIMR</name>
+          <displayName>DFSDM_FLT1CNVTIMR</displayName>
+          <description>conversion timer register</description>
+          <addressOffset>0x1B8</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CNVCNT</name>
+              <description>28-bit timer counting conversion time t
+              = CNVCNT[27:0] / fDFSDM_CKIN</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>28</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DFSDM_FLT2CR1</name>
+          <displayName>DFSDM_FLT2CR1</displayName>
           <description>control register 1</description>
           <addressOffset>0x200</addressOffset>
           <size>0x20</size>
@@ -45774,8 +46450,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_CR2</name>
-          <displayName>DFSDM1_CR2</displayName>
+          <name>DFSDM_FLT2CR2</name>
+          <displayName>DFSDM_FLT2CR2</displayName>
           <description>control register 2</description>
           <addressOffset>0x204</addressOffset>
           <size>0x20</size>
@@ -45848,8 +46524,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_ISR</name>
-          <displayName>DFSDM1_ISR</displayName>
+          <name>DFSDM_FLT2ISR</name>
+          <displayName>DFSDM_FLT2ISR</displayName>
           <description>interrupt and status register</description>
           <addressOffset>0x208</addressOffset>
           <size>0x20</size>
@@ -45920,8 +46596,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_ICR</name>
-          <displayName>DFSDM1_ICR</displayName>
+          <name>DFSDM_FLT2ICR</name>
+          <displayName>DFSDM_FLT2ICR</displayName>
           <description>interrupt flag clear register</description>
           <addressOffset>0x20C</addressOffset>
           <size>0x20</size>
@@ -45959,8 +46635,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_JCHGR</name>
-          <displayName>DFSDM1_JCHGR</displayName>
+          <name>DFSDM_FLT2JCHGR</name>
+          <displayName>DFSDM_FLT2JCHGR</displayName>
           <description>injected channel group selection
           register</description>
           <addressOffset>0x210</addressOffset>
@@ -45978,8 +46654,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_FCR</name>
-          <displayName>DFSDM1_FCR</displayName>
+          <name>DFSDM_FLT2FCR</name>
+          <displayName>DFSDM_FLT2FCR</displayName>
           <description>filter control register</description>
           <addressOffset>0x214</addressOffset>
           <size>0x20</size>
@@ -46009,8 +46685,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_JDATAR</name>
-          <displayName>DFSDM1_JDATAR</displayName>
+          <name>DFSDM_FLT2JDATAR</name>
+          <displayName>DFSDM_FLT2JDATAR</displayName>
           <description>data register for injected
           group</description>
           <addressOffset>0x218</addressOffset>
@@ -46035,8 +46711,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_RDATAR</name>
-          <displayName>DFSDM1_RDATAR</displayName>
+          <name>DFSDM_FLT2RDATAR</name>
+          <displayName>DFSDM_FLT2RDATAR</displayName>
           <description>data register for the regular
           channel</description>
           <addressOffset>0x21C</addressOffset>
@@ -46068,8 +46744,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_AWHTR</name>
-          <displayName>DFSDM1_AWHTR</displayName>
+          <name>DFSDM_FLT2AWHTR</name>
+          <displayName>DFSDM_FLT2AWHTR</displayName>
           <description>analog watchdog high threshold
           register</description>
           <addressOffset>0x220</addressOffset>
@@ -46094,8 +46770,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_AWLTR</name>
-          <displayName>DFSDM1_AWLTR</displayName>
+          <name>DFSDM_FLT2AWLTR</name>
+          <displayName>DFSDM_FLT2AWLTR</displayName>
           <description>analog watchdog low threshold
           register</description>
           <addressOffset>0x224</addressOffset>
@@ -46120,8 +46796,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_AWSR</name>
-          <displayName>DFSDM1_AWSR</displayName>
+          <name>DFSDM_FLT2AWSR</name>
+          <displayName>DFSDM_FLT2AWSR</displayName>
           <description>analog watchdog status
           register</description>
           <addressOffset>0x228</addressOffset>
@@ -46146,8 +46822,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_AWCFR</name>
-          <displayName>DFSDM1_AWCFR</displayName>
+          <name>DFSDM_FLT2AWCFR</name>
+          <displayName>DFSDM_FLT2AWCFR</displayName>
           <description>analog watchdog clear flag
           register</description>
           <addressOffset>0x22C</addressOffset>
@@ -46172,8 +46848,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_EXMAX</name>
-          <displayName>DFSDM1_EXMAX</displayName>
+          <name>DFSDM_FLT2EXMAX</name>
+          <displayName>DFSDM_FLT2EXMAX</displayName>
           <description>Extremes detector maximum
           register</description>
           <addressOffset>0x230</addressOffset>
@@ -46198,8 +46874,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_EXMIN</name>
-          <displayName>DFSDM1_EXMIN</displayName>
+          <name>DFSDM_FLT2EXMIN</name>
+          <displayName>DFSDM_FLT2EXMIN</displayName>
           <description>Extremes detector minimum
           register</description>
           <addressOffset>0x234</addressOffset>
@@ -46223,8 +46899,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM1_CNVTIMR</name>
-          <displayName>DFSDM1_CNVTIMR</displayName>
+          <name>DFSDM_FLT2CNVTIMR</name>
+          <displayName>DFSDM_FLT2CNVTIMR</displayName>
           <description>conversion timer register</description>
           <addressOffset>0x238</addressOffset>
           <size>0x20</size>
@@ -46241,10 +46917,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_CR1</name>
-          <displayName>DFSDM2_CR1</displayName>
+          <name>DFSDM_FLT3CR1</name>
+          <displayName>DFSDM_FLT3CR1</displayName>
           <description>control register 1</description>
-          <addressOffset>0x300</addressOffset>
+          <addressOffset>0x280</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -46349,10 +47025,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_CR2</name>
-          <displayName>DFSDM2_CR2</displayName>
+          <name>DFSDM_FLT3CR2</name>
+          <displayName>DFSDM_FLT3CR2</displayName>
           <description>control register 2</description>
-          <addressOffset>0x304</addressOffset>
+          <addressOffset>0x284</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -46423,10 +47099,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_ISR</name>
-          <displayName>DFSDM2_ISR</displayName>
+          <name>DFSDM_FLT3ISR</name>
+          <displayName>DFSDM_FLT3ISR</displayName>
           <description>interrupt and status register</description>
-          <addressOffset>0x308</addressOffset>
+          <addressOffset>0x288</addressOffset>
           <size>0x20</size>
           <access>read-only</access>
           <resetValue>0x00FF0000</resetValue>
@@ -46495,10 +47171,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_ICR</name>
-          <displayName>DFSDM2_ICR</displayName>
+          <name>DFSDM_FLT3ICR</name>
+          <displayName>DFSDM_FLT3ICR</displayName>
           <description>interrupt flag clear register</description>
-          <addressOffset>0x30C</addressOffset>
+          <addressOffset>0x28C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -46534,11 +47210,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_JCHGR</name>
-          <displayName>DFSDM2_JCHGR</displayName>
+          <name>DFSDM_FLT3JCHGR</name>
+          <displayName>DFSDM_FLT3JCHGR</displayName>
           <description>injected channel group selection
           register</description>
-          <addressOffset>0x310</addressOffset>
+          <addressOffset>0x290</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000001</resetValue>
@@ -46553,10 +47229,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_FCR</name>
-          <displayName>DFSDM2_FCR</displayName>
+          <name>DFSDM_FLT3FCR</name>
+          <displayName>DFSDM_FLT3FCR</displayName>
           <description>filter control register</description>
-          <addressOffset>0x314</addressOffset>
+          <addressOffset>0x294</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -46584,11 +47260,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_JDATAR</name>
-          <displayName>DFSDM2_JDATAR</displayName>
+          <name>DFSDM_FLT3JDATAR</name>
+          <displayName>DFSDM_FLT3JDATAR</displayName>
           <description>data register for injected
           group</description>
-          <addressOffset>0x318</addressOffset>
+          <addressOffset>0x298</addressOffset>
           <size>0x20</size>
           <access>read-only</access>
           <resetValue>0x00000000</resetValue>
@@ -46610,11 +47286,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_RDATAR</name>
-          <displayName>DFSDM2_RDATAR</displayName>
+          <name>DFSDM_FLT3RDATAR</name>
+          <displayName>DFSDM_FLT3RDATAR</displayName>
           <description>data register for the regular
           channel</description>
-          <addressOffset>0x31C</addressOffset>
+          <addressOffset>0x29C</addressOffset>
           <size>0x20</size>
           <access>read-only</access>
           <resetValue>0x00000000</resetValue>
@@ -46643,11 +47319,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_AWHTR</name>
-          <displayName>DFSDM2_AWHTR</displayName>
+          <name>DFSDM_FLT3AWHTR</name>
+          <displayName>DFSDM_FLT3AWHTR</displayName>
           <description>analog watchdog high threshold
           register</description>
-          <addressOffset>0x320</addressOffset>
+          <addressOffset>0x2A0</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -46669,11 +47345,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_AWLTR</name>
-          <displayName>DFSDM2_AWLTR</displayName>
+          <name>DFSDM_FLT3AWLTR</name>
+          <displayName>DFSDM_FLT3AWLTR</displayName>
           <description>analog watchdog low threshold
           register</description>
-          <addressOffset>0x324</addressOffset>
+          <addressOffset>0x2A4</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -46695,11 +47371,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_AWSR</name>
-          <displayName>DFSDM2_AWSR</displayName>
+          <name>DFSDM_FLT3AWSR</name>
+          <displayName>DFSDM_FLT3AWSR</displayName>
           <description>analog watchdog status
           register</description>
-          <addressOffset>0x328</addressOffset>
+          <addressOffset>0x2A8</addressOffset>
           <size>0x20</size>
           <access>read-only</access>
           <resetValue>0x00000000</resetValue>
@@ -46721,11 +47397,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_AWCFR</name>
-          <displayName>DFSDM2_AWCFR</displayName>
+          <name>DFSDM_FLT3AWCFR</name>
+          <displayName>DFSDM_FLT3AWCFR</displayName>
           <description>analog watchdog clear flag
           register</description>
-          <addressOffset>0x32C</addressOffset>
+          <addressOffset>0x2AC</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -46747,11 +47423,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_EXMAX</name>
-          <displayName>DFSDM2_EXMAX</displayName>
+          <name>DFSDM_FLT3EXMAX</name>
+          <displayName>DFSDM_FLT3EXMAX</displayName>
           <description>Extremes detector maximum
           register</description>
-          <addressOffset>0x330</addressOffset>
+          <addressOffset>0x2B0</addressOffset>
           <size>0x20</size>
           <access>read-only</access>
           <resetValue>0x80000000</resetValue>
@@ -46773,11 +47449,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_EXMIN</name>
-          <displayName>DFSDM2_EXMIN</displayName>
+          <name>DFSDM_FLT3EXMIN</name>
+          <displayName>DFSDM_FLT3EXMIN</displayName>
           <description>Extremes detector minimum
           register</description>
-          <addressOffset>0x334</addressOffset>
+          <addressOffset>0x2B4</addressOffset>
           <size>0x20</size>
           <access>read-only</access>
           <resetValue>0x7FFFFF00</resetValue>
@@ -46798,585 +47474,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>DFSDM2_CNVTIMR</name>
-          <displayName>DFSDM2_CNVTIMR</displayName>
+          <name>DFSDM_FLT3CNVTIMR</name>
+          <displayName>DFSDM_FLT3CNVTIMR</displayName>
           <description>conversion timer register</description>
-          <addressOffset>0x338</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CNVCNT</name>
-              <description>28-bit timer counting conversion time t
-              = CNVCNT[27:0] / fDFSDM_CKIN</description>
-              <bitOffset>4</bitOffset>
-              <bitWidth>28</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_CR1</name>
-          <displayName>DFSDM3_CR1</displayName>
-          <description>control register 1</description>
-          <addressOffset>0x400</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>AWFSEL</name>
-              <description>Analog watchdog fast mode
-              select</description>
-              <bitOffset>30</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>FAST</name>
-              <description>Fast conversion mode selection for
-              regular conversions</description>
-              <bitOffset>29</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>RCH</name>
-              <description>Regular channel selection</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>3</bitWidth>
-            </field>
-            <field>
-              <name>RDMAEN</name>
-              <description>DMA channel enabled to read data for the
-              regular conversion</description>
-              <bitOffset>21</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>RSYNC</name>
-              <description>Launch regular conversion synchronously
-              with DFSDM0</description>
-              <bitOffset>19</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>RCONT</name>
-              <description>Continuous mode selection for regular
-              conversions</description>
-              <bitOffset>18</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>RSWSTART</name>
-              <description>Software start of a conversion on the
-              regular channel</description>
-              <bitOffset>17</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>JEXTEN</name>
-              <description>Trigger enable and trigger edge
-              selection for injected conversions</description>
-              <bitOffset>13</bitOffset>
-              <bitWidth>2</bitWidth>
-            </field>
-            <field>
-              <name>JEXTSEL</name>
-              <description>Trigger signal selection for launching
-              injected conversions</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>3</bitWidth>
-            </field>
-            <field>
-              <name>JDMAEN</name>
-              <description>DMA channel enabled to read data for the
-              injected channel group</description>
-              <bitOffset>5</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>JSCAN</name>
-              <description>Scanning conversion mode for injected
-              conversions</description>
-              <bitOffset>4</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>JSYNC</name>
-              <description>Launch an injected conversion
-              synchronously with the DFSDM0 JSWSTART
-              trigger</description>
-              <bitOffset>3</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>JSWSTART</name>
-              <description>Start a conversion of the injected group
-              of channels</description>
-              <bitOffset>1</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>DFEN</name>
-              <description>DFSDM enable</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_CR2</name>
-          <displayName>DFSDM3_CR2</displayName>
-          <description>control register 2</description>
-          <addressOffset>0x404</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>AWDCH</name>
-              <description>Analog watchdog channel
-              selection</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>EXCH</name>
-              <description>Extremes detector channel
-              selection</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>CKABIE</name>
-              <description>Clock absence interrupt
-              enable</description>
-              <bitOffset>6</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>SCDIE</name>
-              <description>Short-circuit detector interrupt
-              enable</description>
-              <bitOffset>5</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>AWDIE</name>
-              <description>Analog watchdog interrupt
-              enable</description>
-              <bitOffset>4</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>ROVRIE</name>
-              <description>Regular data overrun interrupt
-              enable</description>
-              <bitOffset>3</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>JOVRIE</name>
-              <description>Injected data overrun interrupt
-              enable</description>
-              <bitOffset>2</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>REOCIE</name>
-              <description>Regular end of conversion interrupt
-              enable</description>
-              <bitOffset>1</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>JEOCIE</name>
-              <description>Injected end of conversion interrupt
-              enable</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_ISR</name>
-          <displayName>DFSDM3_ISR</displayName>
-          <description>interrupt and status register</description>
-          <addressOffset>0x408</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00FF0000</resetValue>
-          <fields>
-            <field>
-              <name>SCDF</name>
-              <description>short-circuit detector
-              flag</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>CKABF</name>
-              <description>Clock absence flag</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>RCIP</name>
-              <description>Regular conversion in progress
-              status</description>
-              <bitOffset>14</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>JCIP</name>
-              <description>Injected conversion in progress
-              status</description>
-              <bitOffset>13</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>AWDF</name>
-              <description>Analog watchdog</description>
-              <bitOffset>4</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>ROVRF</name>
-              <description>Regular conversion overrun
-              flag</description>
-              <bitOffset>3</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>JOVRF</name>
-              <description>Injected conversion overrun
-              flag</description>
-              <bitOffset>2</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>REOCF</name>
-              <description>End of regular conversion
-              flag</description>
-              <bitOffset>1</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>JEOCF</name>
-              <description>End of injected conversion
-              flag</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_ICR</name>
-          <displayName>DFSDM3_ICR</displayName>
-          <description>interrupt flag clear register</description>
-          <addressOffset>0x40C</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRSCDF</name>
-              <description>Clear the short-circuit detector
-              flag</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>CLRCKABF</name>
-              <description>Clear the clock absence
-              flag</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>CLRROVRF</name>
-              <description>Clear the regular conversion overrun
-              flag</description>
-              <bitOffset>3</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>CLRJOVRF</name>
-              <description>Clear the injected conversion overrun
-              flag</description>
-              <bitOffset>2</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_JCHGR</name>
-          <displayName>DFSDM3_JCHGR</displayName>
-          <description>injected channel group selection
-          register</description>
-          <addressOffset>0x410</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000001</resetValue>
-          <fields>
-            <field>
-              <name>JCHG</name>
-              <description>Injected channel group
-              selection</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_FCR</name>
-          <displayName>DFSDM3_FCR</displayName>
-          <description>filter control register</description>
-          <addressOffset>0x414</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>FORD</name>
-              <description>Sinc filter order</description>
-              <bitOffset>29</bitOffset>
-              <bitWidth>3</bitWidth>
-            </field>
-            <field>
-              <name>FOSR</name>
-              <description>Sinc filter oversampling ratio
-              (decimation rate)</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>10</bitWidth>
-            </field>
-            <field>
-              <name>IOSR</name>
-              <description>Integrator oversampling ratio (averaging
-              length)</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_JDATAR</name>
-          <displayName>DFSDM3_JDATAR</displayName>
-          <description>data register for injected
-          group</description>
-          <addressOffset>0x418</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>JDATA</name>
-              <description>Injected group conversion
-              data</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>24</bitWidth>
-            </field>
-            <field>
-              <name>JDATACH</name>
-              <description>Injected channel most recently
-              converted</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>3</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_RDATAR</name>
-          <displayName>DFSDM3_RDATAR</displayName>
-          <description>data register for the regular
-          channel</description>
-          <addressOffset>0x41C</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>RDATA</name>
-              <description>Regular channel conversion
-              data</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>24</bitWidth>
-            </field>
-            <field>
-              <name>RPEND</name>
-              <description>Regular channel pending
-              data</description>
-              <bitOffset>4</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>RDATACH</name>
-              <description>Regular channel most recently
-              converted</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>3</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_AWHTR</name>
-          <displayName>DFSDM3_AWHTR</displayName>
-          <description>analog watchdog high threshold
-          register</description>
-          <addressOffset>0x420</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>AWHT</name>
-              <description>Analog watchdog high
-              threshold</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>24</bitWidth>
-            </field>
-            <field>
-              <name>BKAWH</name>
-              <description>Break signal assignment to analog
-              watchdog high threshold event</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>4</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_AWLTR</name>
-          <displayName>DFSDM3_AWLTR</displayName>
-          <description>analog watchdog low threshold
-          register</description>
-          <addressOffset>0x424</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>AWLT</name>
-              <description>Analog watchdog low
-              threshold</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>24</bitWidth>
-            </field>
-            <field>
-              <name>BKAWL</name>
-              <description>Break signal assignment to analog
-              watchdog low threshold event</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>4</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_AWSR</name>
-          <displayName>DFSDM3_AWSR</displayName>
-          <description>analog watchdog status
-          register</description>
-          <addressOffset>0x428</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>AWHTF</name>
-              <description>Analog watchdog high threshold
-              flag</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>AWLTF</name>
-              <description>Analog watchdog low threshold
-              flag</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_AWCFR</name>
-          <displayName>DFSDM3_AWCFR</displayName>
-          <description>analog watchdog clear flag
-          register</description>
-          <addressOffset>0x42C</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>CLRAWHTF</name>
-              <description>Clear the analog watchdog high threshold
-              flag</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-            <field>
-              <name>CLRAWLTF</name>
-              <description>Clear the analog watchdog low threshold
-              flag</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>8</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_EXMAX</name>
-          <displayName>DFSDM3_EXMAX</displayName>
-          <description>Extremes detector maximum
-          register</description>
-          <addressOffset>0x430</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x80000000</resetValue>
-          <fields>
-            <field>
-              <name>EXMAX</name>
-              <description>Extremes detector maximum
-              value</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>24</bitWidth>
-            </field>
-            <field>
-              <name>EXMAXCH</name>
-              <description>Extremes detector maximum data
-              channel</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>3</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_EXMIN</name>
-          <displayName>DFSDM3_EXMIN</displayName>
-          <description>Extremes detector minimum
-          register</description>
-          <addressOffset>0x434</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x7FFFFF00</resetValue>
-          <fields>
-            <field>
-              <name>EXMIN</name>
-              <description>EXMIN</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>24</bitWidth>
-            </field>
-            <field>
-              <name>EXMINCH</name>
-              <description>Extremes detector minimum data
-              channel</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>3</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>DFSDM3_CNVTIMR</name>
-          <displayName>DFSDM3_CNVTIMR</displayName>
-          <description>conversion timer register</description>
-          <addressOffset>0x438</addressOffset>
+          <addressOffset>0x2B8</addressOffset>
           <size>0x20</size>
           <access>read-only</access>
           <resetValue>0x00000000</resetValue>
@@ -51897,7 +51998,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>MPU control register</description>
           <addressOffset>0x4</addressOffset>
           <size>0x20</size>
-          <access>read-only</access>
+          <access>read-write</access>
           <resetValue>0X00000000</resetValue>
           <fields>
             <field>
@@ -52498,8 +52599,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>SHCRS</name>
-          <displayName>SHCRS</displayName>
+          <name>SHCSR</name>
+          <displayName>SHCSR</displayName>
           <description>System handler control and state
           register</description>
           <addressOffset>0x24</addressOffset>

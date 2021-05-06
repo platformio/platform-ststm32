@@ -49610,6 +49610,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitOffset>16</bitOffset>
               <bitWidth>12</bitWidth>
             </field>
+            <field>
+              <name>DB1M</name>
+              <description>Dual-bank on 1 Mbyte Flash memory devices</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SPRMOD</name>
+              <description>Selection of protection mode for nWPRi bits</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
           </fields>
         </register>
         <register>
