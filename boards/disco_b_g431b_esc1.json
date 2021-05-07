@@ -1,0 +1,45 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32G4xx -DSTM32G431xx -DSTM32G431CBU",
+    "f_cpu": "170000000L",
+    "mcu": "stm32g431cbu6",
+    "product_line": "STM32G431xx",
+    "variant": "DISCO_B_G431B_ESC1"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32G431CB",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "stm32g4discovery",
+    "svd_path": "STM32G431xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "libopencm3",
+    "zephyr"
+  ],
+  "name": "B-G431B-ESC1 Discovery",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 131072,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "stlink",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/b-g431b-esc1.html",
+  "vendor": "ST"
+}
