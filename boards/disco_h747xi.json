@@ -23,7 +23,7 @@
     ],
     "openocd_board": "st_nucleo_h743zi",
     "openocd_target": "stm32h7x",
-    "svd_path": "STM32H7x7.svd"
+    "svd_path": "STM32H747_CM7.svd"
   },
   "frameworks": [
     "cmsis",

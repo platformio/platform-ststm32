@@ -3,7 +3,7 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
   <name>STM32L1xx</name>
-  <version>1.1</version>
+  <version>1.0</version>
   <description>STM32L1xx</description>
   <!--Bus Interface Properties-->
   <!--Cortex-M3 is byte addressable-->
@@ -13275,6 +13275,24 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
+              <name>SS</name>
+              <description>RTC timestamp subsecond
+              field</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CALR</name>
+          <displayName>CALR</displayName>
+          <description>calibration register</description>
+          <addressOffset>0x3C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
               <name>CALP</name>
               <description>Use an 8-second calibration cycle
               period</description>
@@ -13303,108 +13321,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CALR</name>
-          <displayName>CALR</displayName>
-          <description>calibration register</description>
-          <addressOffset>0x3C</addressOffset>
-          <size>0x20</size>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>ALARMOUTTYPE</name>
-              <description>AFO_ALARM output type</description>
-              <bitOffset>18</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMPPUDIS</name>
-              <description>TAMPER pull-up disable</description>
-              <bitOffset>15</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMPPRCH</name>
-              <description>Tamper precharge duration</description>
-              <bitOffset>13</bitOffset>
-              <bitWidth>2</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMPFLT</name>
-              <description>Tamper filter count</description>
-              <bitOffset>11</bitOffset>
-              <bitWidth>2</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMPFREQ</name>
-              <description>Tamper sampling frequency</description>
-              <bitOffset>8</bitOffset>
-              <bitWidth>3</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMPTS</name>
-              <description>Activate timestamp on tamper detection
-              event</description>
-              <bitOffset>7</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMP3TRG</name>
-              <description>TAMPER1 mapping</description>
-              <bitOffset>6</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMP3E</name>
-              <description>TIMESTAMP mapping</description>
-              <bitOffset>5</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMP2TRG</name>
-              <description>Active level for tamper 2</description>
-              <bitOffset>4</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMP2E</name>
-              <description>Tamper 2 detection enable</description>
-              <bitOffset>3</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMPIE</name>
-              <description>Tamper interrupt enable</description>
-              <bitOffset>2</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMP1ETRG</name>
-              <description>Active level for tamper 1</description>
-              <bitOffset>1</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>TAMP1E</name>
-              <description>Tamper 1 detection enable</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>1</bitWidth>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-        <register>
           <name>TAFCR</name>
           <displayName>TAFCR</displayName>
           <description>tamper and alternate function configuration
@@ -13415,17 +13331,83 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>MASKSS</name>
-              <description>Mask the most-significant bits starting
-              at this bit</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>4</bitWidth>
+              <name>ALARMOUTTYPE</name>
+              <description>AFO_ALARM output type</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>SS</name>
-              <description>Sub seconds value</description>
+              <name>TAMPPUDIS</name>
+              <description>TAMPER pull-up disable</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TAMPPRCH</name>
+              <description>Tamper precharge duration</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>TAMPFLT</name>
+              <description>Tamper filter count</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>TAMPFREQ</name>
+              <description>Tamper sampling frequency</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>TAMPTS</name>
+              <description>Activate timestamp on tamper detection
+              event</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TAMP3TRG</name>
+              <description>TAMPER1 mapping</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TAMP3E</name>
+              <description>TIMESTAMP mapping</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TAMP2TRG</name>
+              <description>Active level for tamper 2</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TAMP2E</name>
+              <description>Tamper 2 detection enable</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TAMPIE</name>
+              <description>Tamper interrupt enable</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TAMP1ETRG</name>
+              <description>Active level for tamper 1</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TAMP1E</name>
+              <description>Tamper 1 detection enable</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>15</bitWidth>
+              <bitWidth>1</bitWidth>
             </field>
           </fields>
         </register>
@@ -13463,6 +13445,30 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
+              <name>MASKSS</name>
+              <description>Mask the most-significant bits starting
+              at this bit</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>SS</name>
+              <description>Sub seconds value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>15</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP0R</name>
+          <displayName>BKP0R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x50</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
               <name>BKP</name>
               <description>BKP</description>
               <bitOffset>0</bitOffset>
@@ -13471,13 +13477,531 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>BK0R</name>
-          <displayName>BK0R</displayName>
-          <description>BK0R</description>
+          <name>BKP1R</name>
+          <displayName>BKP1R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x54</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP2R</name>
+          <displayName>BKP2R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x58</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP3R</name>
+          <displayName>BKP3R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x5C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP4R</name>
+          <displayName>BKP4R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x60</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP5R</name>
+          <displayName>BKP5R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x64</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP6R</name>
+          <displayName>BKP6R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x68</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP7R</name>
+          <displayName>BKP7R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x6C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP8R</name>
+          <displayName>BKP8R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x70</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP9R</name>
+          <displayName>BKP9R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x74</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP10R</name>
+          <displayName>BKP10R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x78</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP11R</name>
+          <displayName>BKP11R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x7C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP12R</name>
+          <displayName>BKP12R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x80</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP13R</name>
+          <displayName>BKP13R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x84</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP14R</name>
+          <displayName>BKP14R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x88</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP15R</name>
+          <displayName>BKP15R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x8C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP16R</name>
+          <displayName>BKP16R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x90</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP17R</name>
+          <displayName>BKP17R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x94</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP18R</name>
+          <displayName>BKP18R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x98</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP19R</name>
+          <displayName>BKP19R</displayName>
+          <description>backup register</description>
           <addressOffset>0x9C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP20R</name>
+          <displayName>BKP20R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xA0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP21R</name>
+          <displayName>BKP21R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xA4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP22R</name>
+          <displayName>BKP22R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xA8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP23R</name>
+          <displayName>BKP23R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xAC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP24R</name>
+          <displayName>BKP24R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xB0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP25R</name>
+          <displayName>BKP25R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xB4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP26R</name>
+          <displayName>BKP26R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xB8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP27R</name>
+          <displayName>BKP27R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xBC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP28R</name>
+          <displayName>BKP28R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xC0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP29R</name>
+          <displayName>BKP29R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xC4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP30R</name>
+          <displayName>BKP30R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xC8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP31R</name>
+          <displayName>BKP31R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xCC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
         </register>
       </registers>
     </peripheral>
@@ -15029,7 +15553,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>Interrupt enable register</description>
           <addressOffset>0xC</addressOffset>
           <size>0x20</size>
-          <access>write-only</access>
+          <access>read-write</access>
           <resetValue>0x0000</resetValue>
           <fields>
             <field>
@@ -15473,7 +15997,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>Interrupt enable register</description>
           <addressOffset>0xC</addressOffset>
           <size>0x20</size>
-          <access>write-only</access>
+          <access>read-write</access>
           <resetValue>0x0000</resetValue>
           <fields>
             <field>
@@ -16546,7 +17070,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>Interrupt enable register</description>
           <addressOffset>0xC</addressOffset>
           <size>0x20</size>
-          <access>write-only</access>
+          <access>read-write</access>
           <resetValue>0x0000</resetValue>
           <fields>
             <field>
@@ -19241,11 +19765,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <offset>0x0</offset>
         <size>0x1001</size>
         <usage>registers</usage>
-      </addressBlock>
-      <addressBlock>
-        <offset>0x1001</offset>
-        <size>0xFFFFF3FF</size>
-        <usage>reserved</usage>
       </addressBlock>
       <registers>
         <register>

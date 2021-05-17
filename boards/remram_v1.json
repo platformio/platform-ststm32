@@ -19,7 +19,7 @@
       "stlink"
     ],
     "openocd_target": "stm32f7x",
-    "svd_path": "STM32F7x5.svd"
+    "svd_path": "STM32F765.svd"
   },
   "frameworks": [
     "arduino",

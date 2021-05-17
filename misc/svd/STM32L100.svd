@@ -3,8 +3,17 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
   <name>STM32L100</name>
-  <version>1.0</version>
+  <version>1.3</version>
   <description>STM32L100</description>
+  <cpu>                                                           <!-- details about the cpu embedded in the device -->
+    <name>CM3</name>
+    <revision>r1p1</revision>
+    <endian>little</endian>
+    <mpuPresent>false</mpuPresent>
+    <fpuPresent>false</fpuPresent>
+    <nvicPrioBits>4</nvicPrioBits>
+    <vendorSystickConfig>false</vendorSystickConfig>
+  </cpu>   
   <!--Bus Interface Properties-->
   <!--Cortex-M3 is byte addressable-->
   <addressUnitBits>8</addressUnitBits>
@@ -16,94 +25,300 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
   <resetMask>0xFFFFFFFF</resetMask>
   <peripherals>
     <peripheral>
-      <name>C_ADC</name>
-      <description>Common ADC registers</description>
-      <groupName>ADC</groupName>
-      <baseAddress>0x40012700</baseAddress>
+      <name>AES</name>
+      <description>Advanced encrytion standard hardware
+      accelerator</description>
+      <groupName>AES</groupName>
+      <baseAddress>0x50060000</baseAddress>
       <addressBlock>
         <offset>0x0</offset>
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>AES</name>
+        <description>AES global interrupt</description>
+        <value>55</value>
+      </interrupt>
       <registers>
         <register>
-          <name>CSR</name>
-          <displayName>CSR</displayName>
-          <description>ADC Common status register</description>
+          <name>CR</name>
+          <displayName>CR</displayName>
+          <description>control register</description>
           <addressOffset>0x0</addressOffset>
           <size>0x20</size>
-          <access>read-only</access>
+          <access>read-write</access>
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>ADONS1</name>
-              <description>ADON Status of ADC</description>
-              <bitOffset>6</bitOffset>
+              <name>DMAOUTEN</name>
+              <description>Enable DMA management of data output
+              phase</description>
+              <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>OVR1</name>
-              <description>Overrun flag of ADC 1</description>
+              <name>DMAINEN</name>
+              <description>Enable DMA management of data input
+              phase</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ERRIE</name>
+              <description>Error interrupt enable</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CCFIE</name>
+              <description>CCF flag interrupt enable</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ERRC</name>
+              <description>Error clear</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CCFC</name>
+              <description>Computation Complete Flag
+              Clear</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CHMOD</name>
+              <description>AES chaining mode</description>
               <bitOffset>5</bitOffset>
-              <bitWidth>1</bitWidth>
+              <bitWidth>2</bitWidth>
             </field>
             <field>
-              <name>STRT1</name>
-              <description>Regular channel Start flag of ADC
-              1</description>
-              <bitOffset>4</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>JSTRT1</name>
-              <description>Injected channel Start flag of ADC
-              1</description>
+              <name>MODE</name>
+              <description>AES operating mode</description>
               <bitOffset>3</bitOffset>
-              <bitWidth>1</bitWidth>
+              <bitWidth>2</bitWidth>
             </field>
             <field>
-              <name>JEOC1</name>
-              <description>Injected channel end of conversion of
-              ADC 1</description>
-              <bitOffset>2</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
-            <field>
-              <name>EOC1</name>
-              <description>End of conversion of ADC 1</description>
+              <name>DATATYPE</name>
+              <description>Data type selection</description>
               <bitOffset>1</bitOffset>
-              <bitWidth>1</bitWidth>
+              <bitWidth>2</bitWidth>
             </field>
             <field>
-              <name>AWD1</name>
-              <description>Analog watchdog flag of ADC
-              1</description>
+              <name>EN</name>
+              <description>AES enable</description>
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
         </register>
         <register>
-          <name>CCR</name>
-          <displayName>CCR</displayName>
-          <description>ADC common control register</description>
+          <name>SR</name>
+          <displayName>SR</displayName>
+          <description>Status register</description>
           <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>WRERR</name>
+              <description>Write error flag</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RDERR</name>
+              <description>Read error flag</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CCF</name>
+              <description>Computation complete flag</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DINR</name>
+          <displayName>DINR</displayName>
+          <description>Data input register</description>
+          <addressOffset>0x8</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>TSVREFE</name>
-              <description>Temperature sensor and VREFINT
-              enable</description>
-              <bitOffset>23</bitOffset>
-              <bitWidth>1</bitWidth>
+              <name>DINR</name>
+              <description>Data input</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
             </field>
+          </fields>
+        </register>
+        <register>
+          <name>DOUTR</name>
+          <displayName>DOUTR</displayName>
+          <description>Data output register</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
             <field>
-              <name>ADCPRE</name>
-              <description>ADC prescaler</description>
-              <bitOffset>16</bitOffset>
-              <bitWidth>2</bitWidth>
+              <name>DOUTR</name>
+              <description>Data output</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>KEYR0</name>
+          <displayName>KEYR0</displayName>
+          <description>AES Key register 0</description>
+          <addressOffset>0x10</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>KEYR0</name>
+              <description>AES key</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>KEYR1</name>
+          <displayName>KEYR1</displayName>
+          <description>AES Key register 1</description>
+          <addressOffset>0x14</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>KEYR1</name>
+              <description>AES key</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>KEYR2</name>
+          <displayName>KEYR2</displayName>
+          <description>AES Key register 2</description>
+          <addressOffset>0x18</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>KEYR2</name>
+              <description>AES key</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>KEYR3</name>
+          <displayName>KEYR3</displayName>
+          <description>AES Key register 3</description>
+          <addressOffset>0x1C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>KEYR3</name>
+              <description>AES key</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>IVR0</name>
+          <displayName>IVR0</displayName>
+          <description>Initialization Vector Register
+          0</description>
+          <addressOffset>0x20</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>IVR0</name>
+              <description>Initialization Vector
+              Register</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>IVR1</name>
+          <displayName>IVR1</displayName>
+          <description>Initialization Vector Register
+          1</description>
+          <addressOffset>0x24</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>IVR1</name>
+              <description>Initialization Vector
+              Register</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>IVR2</name>
+          <displayName>IVR2</displayName>
+          <description>Initialization Vector Register
+          2</description>
+          <addressOffset>0x28</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>IVR2</name>
+              <description>Initialization Vector
+              Register</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>IVR3</name>
+          <displayName>IVR3</displayName>
+          <description>Initialization Vector Register
+          3</description>
+          <addressOffset>0x2C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>IVR3</name>
+              <description>Initialization Vector
+              Register</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
             </field>
           </fields>
         </register>
@@ -116,9 +331,15 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <baseAddress>0x40007C00</baseAddress>
       <addressBlock>
         <offset>0x0</offset>
-        <size>0x400</size>
+        <size>0x4</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>COMP_ACQ</name>
+        <description>Comparator Channel Acquisition
+        interrupt</description>
+        <value>56</value>
+      </interrupt>
       <registers>
         <register>
           <name>CSR</name>
@@ -750,7 +971,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       </registers>
     </peripheral>
     <peripheral>
-      <name>DMA</name>
+      <name>DMA1</name>
       <description>Direct memory access controller</description>
       <groupName>DMA</groupName>
       <baseAddress>0x40026000</baseAddress>
@@ -759,6 +980,41 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>DMA1_Channel1</name>
+        <description>DMA1 Channel1 global interrupt</description>
+        <value>11</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA1_Channel2</name>
+        <description>DMA1 Channel2 global interrupt</description>
+        <value>12</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA1_Channel3</name>
+        <description>DMA1 Channel3 global interrupt</description>
+        <value>13</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA1_Channel4</name>
+        <description>DMA1 Channel4 global interrupt</description>
+        <value>14</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA1_Channel5</name>
+        <description>DMA1 Channel5 global interrupt</description>
+        <value>15</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA1_Channel6</name>
+        <description>DMA1 Channel6 global interrupt</description>
+        <value>16</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA1_Channel7</name>
+        <description>DMA1 Channel7 global interrupt</description>
+        <value>17</value>
+      </interrupt>
       <registers>
         <register>
           <name>ISR</name>
@@ -2163,6 +2419,35 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         </register>
       </registers>
     </peripheral>
+    <peripheral derivedFrom="DMA1">
+      <name>DMA2</name>
+      <baseAddress>0x40026400</baseAddress>
+      <interrupt>
+        <name>DMA2_CH1</name>
+        <description>DMA2 Channel 1 interrupt</description>
+        <value>50</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA2_CH2</name>
+        <description>DMA2 Channel 2 interrupt</description>
+        <value>51</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA2_CH3</name>
+        <description>DMA2 Channel 3 interrupt</description>
+        <value>52</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA2_CH4</name>
+        <description>DMA2 Channel 4 interrupt</description>
+        <value>53</value>
+      </interrupt>
+      <interrupt>
+        <name>DMA2_CH5</name>
+        <description>DMA2 Channel 5 interrupt</description>
+        <value>54</value>
+      </interrupt>
+    </peripheral>
     <peripheral>
       <name>EXTI</name>
       <description>External interrupt/event
@@ -2715,6 +3000,799 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>WRP3</description>
               <bitOffset>0</bitOffset>
               <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>FSMC</name>
+      <description>Flexible static memory controller</description>
+      <groupName>FSMC</groupName>
+      <baseAddress>0xA0000000</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x400</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>BCR1</name>
+          <displayName>BCR1</displayName>
+          <description>BCR1</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CBURSTRW</name>
+              <description>CBURSTRW</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASYNCWAIT</name>
+              <description>ASYNCWAIT</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EXTMOD</name>
+              <description>EXTMOD</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITEN</name>
+              <description>WAITEN</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WREN</name>
+              <description>WREN</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITCFG</name>
+              <description>WAITCFG</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WRAPMOD</name>
+              <description>WRAPMOD</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITPOL</name>
+              <description>WAITPOL</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>BURSTEN</name>
+              <description>BURSTEN</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>FACCEN</name>
+              <description>FACCEN</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MWID</name>
+              <description>MWID</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>MTYP</name>
+              <description>MTYP</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>MUXEN</name>
+              <description>MUXEN</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MBKEN</name>
+              <description>MBKEN</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BTR1</name>
+          <displayName>BTR1</displayName>
+          <description>BTR1</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ACCMOD</name>
+              <description>ACCMOD</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>DATLAT</name>
+              <description>DATLAT</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>CLKDIV</name>
+              <description>CLKDIV</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>BUSTURN</name>
+              <description>BUSTURN</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>DATAST</name>
+              <description>DATAST</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>ADDHLD</name>
+              <description>ADDHLD</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>ADDSET</name>
+              <description>ADDSET</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BCR2</name>
+          <displayName>BCR2</displayName>
+          <description>BCR2</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CBURSTRW</name>
+              <description>CBURSTRW</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASYNCWAIT</name>
+              <description>ASYNCWAIT</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EXTMOD</name>
+              <description>EXTMOD</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITEN</name>
+              <description>WAITEN</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WREN</name>
+              <description>WREN</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITCFG</name>
+              <description>WAITCFG</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WRAPMOD</name>
+              <description>WRAPMOD</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITPOL</name>
+              <description>WAITPOL</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>BURSTEN</name>
+              <description>BURSTEN</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>FACCEN</name>
+              <description>FACCEN</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MWID</name>
+              <description>MWID</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>MTYP</name>
+              <description>MTYP</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>MUXEN</name>
+              <description>MUXEN</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MBKEN</name>
+              <description>MBKEN</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BTR2</name>
+          <displayName>BTR2</displayName>
+          <description>BTR2</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ACCMOD</name>
+              <description>ACCMOD</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>DATLAT</name>
+              <description>DATLAT</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>CLKDIV</name>
+              <description>CLKDIV</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>BUSTURN</name>
+              <description>BUSTURN</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>DATAST</name>
+              <description>DATAST</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>ADDHLD</name>
+              <description>ADDHLD</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>ADDSET</name>
+              <description>ADDSET</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BCR3</name>
+          <displayName>BCR3</displayName>
+          <description>BCR3</description>
+          <addressOffset>0x10</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CBURSTRW</name>
+              <description>CBURSTRW</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASYNCWAIT</name>
+              <description>ASYNCWAIT</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EXTMOD</name>
+              <description>EXTMOD</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITEN</name>
+              <description>WAITEN</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WREN</name>
+              <description>WREN</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITCFG</name>
+              <description>WAITCFG</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WRAPMOD</name>
+              <description>WRAPMOD</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITPOL</name>
+              <description>WAITPOL</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>BURSTEN</name>
+              <description>BURSTEN</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>FACCEN</name>
+              <description>FACCEN</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MWID</name>
+              <description>MWID</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>MTYP</name>
+              <description>MTYP</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>MUXEN</name>
+              <description>MUXEN</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MBKEN</name>
+              <description>MBKEN</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BTR3</name>
+          <displayName>BTR3</displayName>
+          <description>BTR3</description>
+          <addressOffset>0x14</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ACCMOD</name>
+              <description>ACCMOD</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>DATLAT</name>
+              <description>DATLAT</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>CLKDIV</name>
+              <description>CLKDIV</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>BUSTURN</name>
+              <description>BUSTURN</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>DATAST</name>
+              <description>DATAST</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>ADDHLD</name>
+              <description>ADDHLD</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>ADDSET</name>
+              <description>ADDSET</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BCR4</name>
+          <displayName>BCR4</displayName>
+          <description>BCR4</description>
+          <addressOffset>0x18</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CBURSTRW</name>
+              <description>CBURSTRW</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASYNCWAIT</name>
+              <description>ASYNCWAIT</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EXTMOD</name>
+              <description>EXTMOD</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITEN</name>
+              <description>WAITEN</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WREN</name>
+              <description>WREN</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITCFG</name>
+              <description>WAITCFG</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WRAPMOD</name>
+              <description>WRAPMOD</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITPOL</name>
+              <description>WAITPOL</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>BURSTEN</name>
+              <description>BURSTEN</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>FACCEN</name>
+              <description>FACCEN</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MWID</name>
+              <description>MWID</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>MTYP</name>
+              <description>MTYP</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>MUXEN</name>
+              <description>MUXEN</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MBKEN</name>
+              <description>MBKEN</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BTR4</name>
+          <displayName>BTR4</displayName>
+          <description>BTR4</description>
+          <addressOffset>0x1C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ACCMOD</name>
+              <description>ACCMOD</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>DATLAT</name>
+              <description>DATLAT</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>CLKDIV</name>
+              <description>CLKDIV</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>BUSTURN</name>
+              <description>BUSTURN</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>DATAST</name>
+              <description>DATAST</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>ADDHLD</name>
+              <description>ADDHLD</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>ADDSET</name>
+              <description>ADDSET</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BWTR1</name>
+          <displayName>BWTR1</displayName>
+          <description>BWTR1</description>
+          <addressOffset>0x104</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ACCMOD</name>
+              <description>ACCMOD</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>DATLAT</name>
+              <description>DATLAT</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>CLKDIV</name>
+              <description>CLKDIV</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>DATAST</name>
+              <description>DATAST</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>ADDHLD</name>
+              <description>ADDHLD</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>ADDSET</name>
+              <description>ADDSET</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BWTR2</name>
+          <displayName>BWTR2</displayName>
+          <description>BWTR2</description>
+          <addressOffset>0x10C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ACCMOD</name>
+              <description>ACCMOD</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>DATLAT</name>
+              <description>DATLAT</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>CLKDIV</name>
+              <description>CLKDIV</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>DATAST</name>
+              <description>DATAST</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>ADDHLD</name>
+              <description>ADDHLD</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>ADDSET</name>
+              <description>ADDSET</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BWTR3</name>
+          <displayName>BWTR3</displayName>
+          <description>BWTR3</description>
+          <addressOffset>0x114</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ACCMOD</name>
+              <description>ACCMOD</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>DATLAT</name>
+              <description>DATLAT</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>CLKDIV</name>
+              <description>CLKDIV</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>DATAST</name>
+              <description>DATAST</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>ADDHLD</name>
+              <description>ADDHLD</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>ADDSET</name>
+              <description>ADDSET</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BWTR4</name>
+          <displayName>BWTR4</displayName>
+          <description>BWTR4</description>
+          <addressOffset>0x11C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ACCMOD</name>
+              <description>ACCMOD</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>DATLAT</name>
+              <description>DATLAT</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>CLKDIV</name>
+              <description>CLKDIV</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>DATAST</name>
+              <description>DATAST</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>ADDHLD</name>
+              <description>ADDHLD</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>ADDSET</name>
+              <description>ADDSET</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
             </field>
           </fields>
         </register>
@@ -6441,6 +7519,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>GPIOD</name>
       <baseAddress>0x40020C00</baseAddress>
     </peripheral>
+    <peripheral derivedFrom="GPIOC">
+      <name>GPIOH</name>
+      <baseAddress>0x40021400</baseAddress>
+    </peripheral>
     <peripheral>
       <name>I2C1</name>
       <description>Inter-integrated circuit</description>
@@ -8847,6 +9929,304 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       </registers>
     </peripheral>
     <peripheral>
+      <name>OPAMP</name>
+      <description>Operational amplifiers</description>
+      <groupName>OPAMP</groupName>
+      <baseAddress>0x40007C5C</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x3A4</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>CSR</name>
+          <displayName>CSR</displayName>
+          <description>control/status register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00010101</resetValue>
+          <fields>
+            <field>
+              <name>OPA3CALOUT</name>
+              <description>OPAMP3 calibration output</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA2CALOUT</name>
+              <description>OPAMP2 calibration output</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA1CALOUT</name>
+              <description>OPAMP1 calibration output</description>
+              <bitOffset>29</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>AOP_RANGE</name>
+              <description>Power range selection</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S7SEL2</name>
+              <description>Switch 7 for OPAMP2 enable</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ANAWSEL3</name>
+              <description>Switch SanA enable for
+              OPAMP3</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ANAWSEL2</name>
+              <description>Switch SanA enable for
+              OPAMP2</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ANAWSEL1</name>
+              <description>Switch SanA enable for
+              OPAMP1</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA3LPM</name>
+              <description>OPAMP3 low power mode</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA3CAL_H</name>
+              <description>OPAMP3 offset calibration for N
+              differential pair</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA3CAL_L</name>
+              <description>OPAMP3 offset Calibration for P
+              differential pair</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S6SEL3</name>
+              <description>Switch 6 for OPAMP3 enable</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S5SEL3</name>
+              <description>Switch 5 for OPAMP3 enable</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S4SEL3</name>
+              <description>Switch 4 for OPAMP3 enable</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S3SEL3</name>
+              <description>Switch 3 for OPAMP3 Enable</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA3PD</name>
+              <description>OPAMP3 power down</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA2LPM</name>
+              <description>OPAMP2 low power mode</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA2CAL_H</name>
+              <description>OPAMP2 offset calibration for N
+              differential pair</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA2CAL_L</name>
+              <description>OPAMP2 offset Calibration for P
+              differential pair</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S6SEL2</name>
+              <description>Switch 6 for OPAMP2 enable</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S5SEL2</name>
+              <description>Switch 5 for OPAMP2 enable</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S4SEL2</name>
+              <description>Switch 4 for OPAMP2 enable</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S3SEL2</name>
+              <description>Switch 3 for OPAMP2 enable</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA2PD</name>
+              <description>OPAMP2 power down</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA1LPM</name>
+              <description>OPAMP1 low power mode</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA1CAL_H</name>
+              <description>OPAMP1 offset calibration for N
+              differential pair</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA1CAL_L</name>
+              <description>OPAMP1 offset calibration for P
+              differential pair</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S6SEL1</name>
+              <description>Switch 6 for OPAMP1 enable</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S5SEL1</name>
+              <description>Switch 5 for OPAMP1 enable</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S4SEL1</name>
+              <description>Switch 4 for OPAMP1 enable</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S3SEL1</name>
+              <description>Switch 3 for OPAMP1 enable</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OPA1PD</name>
+              <description>OPAMP1 power down</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>OTR</name>
+          <displayName>OTR</displayName>
+          <description>offset trimming register for normal
+          mode</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>OT_USER</name>
+              <description>Select user or factory trimming
+              value</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>AO3_OPT_OFFSET_TRIM</name>
+              <description>OPAMP3, 10-bit offset trim value for
+              normal mode</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>10</bitWidth>
+            </field>
+            <field>
+              <name>AO2_OPT_OFFSET_TRIM</name>
+              <description>OPAMP2, 10-bit offset trim value for
+              normal mode</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>10</bitWidth>
+            </field>
+            <field>
+              <name>AO1_OPT_OFFSET_TRIM</name>
+              <description>OPAMP1, 10-bit offset trim value for
+              normal mode</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>10</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>LPOTR</name>
+          <displayName>LPOTR</displayName>
+          <description>OPAMP offset trimming register for low power
+          mode</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>AO3_OPT_OFFSET_TRIM_LP</name>
+              <description>OPAMP3, 10-bit offset trim value for low
+              power mode</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>10</bitWidth>
+            </field>
+            <field>
+              <name>AO2_OPT_OFFSET_TRIM_LP</name>
+              <description>OPAMP2, 10-bit offset trim value for low
+              power mode</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>10</bitWidth>
+            </field>
+            <field>
+              <name>AO1_OPT_OFFSET_TRIM_LP</name>
+              <description>OPAMP1, 10-bit offset trim value for low
+              power mode</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>10</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
       <name>PWR</name>
       <description>Power control</description>
       <groupName>PWR</groupName>
@@ -9427,7 +10807,19 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>DMARST</name>
+              <name>FSMCRST</name>
+              <description>FSMC reset</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DMA2RST</name>
+              <description>DMA2 reset</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DMA1RST</name>
               <description>DMA1 reset</description>
               <bitOffset>24</bitOffset>
               <bitWidth>1</bitWidth>
@@ -9442,6 +10834,30 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>CRCRST</name>
               <description>CRC reset</description>
               <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOGRST</name>
+              <description>IO port G reset</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOFRST</name>
+              <description>IO port F reset</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOHRST</name>
+              <description>IO port H reset</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOERST</name>
+              <description>IO port E reset</description>
+              <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
@@ -9489,6 +10905,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>SPI1RST</name>
               <description>SPI1RST</description>
               <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SDIORST</name>
+              <description>SDIORST</description>
+              <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
@@ -9569,6 +10991,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
+              <name>UART5RST</name>
+              <description>UART 5 reset</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UART4RST</name>
+              <description>UART 4 reset</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
               <name>USART3RST</name>
               <description>USART 3 reset</description>
               <bitOffset>18</bitOffset>
@@ -9578,6 +11012,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>USART2RST</name>
               <description>USART 2 reset</description>
               <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SPI3RST</name>
+              <description>SPI 3 reset</description>
+              <bitOffset>15</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
@@ -9611,6 +11051,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
+              <name>TIM5RST</name>
+              <description>Timer 5 reset</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
               <name>TIM4RST</name>
               <description>Timer 4 reset</description>
               <bitOffset>2</bitOffset>
@@ -9641,7 +11087,19 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00008000</resetValue>
           <fields>
             <field>
-              <name>DMAEN</name>
+              <name>FSMCEN</name>
+              <description>FSMCEN</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DMA2EN</name>
+              <description>DMA2 clock enable</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DMA1EN</name>
               <description>DMA1 clock enable</description>
               <bitOffset>24</bitOffset>
               <bitWidth>1</bitWidth>
@@ -9656,6 +11114,30 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>CRCEN</name>
               <description>CRC clock enable</description>
               <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOPGEN</name>
+              <description>IO port G clock enable</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOPFEN</name>
+              <description>IO port F clock enable</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOPHEN</name>
+              <description>IO port H clock enable</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOPEEN</name>
+              <description>IO port E clock enable</description>
+              <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
@@ -9704,6 +11186,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>SPI1EN</name>
               <description>SPI 1 clock enable</description>
               <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SDIOEN</name>
+              <description>SDIO clock enable</description>
+              <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
@@ -9789,6 +11277,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
+              <name>USART5EN</name>
+              <description>UART 5 clock enable</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>USART4EN</name>
+              <description>UART 4 clock enable</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
               <name>USART3EN</name>
               <description>USART 3 clock enable</description>
               <bitOffset>18</bitOffset>
@@ -9798,6 +11298,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>USART2EN</name>
               <description>USART 2 clock enable</description>
               <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SPI3EN</name>
+              <description>SPI 3 clock enable</description>
+              <bitOffset>15</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
@@ -9832,6 +11338,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
+              <name>TIM5EN</name>
+              <description>Timer 5 clock enable</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
               <name>TIM4EN</name>
               <description>Timer 4 clock enable</description>
               <bitOffset>2</bitOffset>
@@ -9862,7 +11374,14 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x0101903F</resetValue>
           <fields>
             <field>
-              <name>DMALPEN</name>
+              <name>DMA2LPEN</name>
+              <description>DMA2 clock enable during Sleep
+              mode</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DMA1LPEN</name>
               <description>DMA1 clock enable during Sleep
               mode</description>
               <bitOffset>24</bitOffset>
@@ -9887,6 +11406,34 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>CRC clock enable during Sleep
               mode</description>
               <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOGLPEN</name>
+              <description>IO port G clock enable during Sleep
+              mode</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOFLPEN</name>
+              <description>IO port F clock enable during Sleep
+              mode</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOHLPEN</name>
+              <description>IO port H clock enable during Sleep
+              mode</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>GPIOELPEN</name>
+              <description>IO port E clock enable during Sleep
+              mode</description>
+              <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
@@ -9941,6 +11488,13 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>SPI 1 clock enable during Sleep
               mode</description>
               <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SDIOLPEN</name>
+              <description>SDIO clock enable during Sleep
+              mode</description>
+              <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
@@ -10235,7 +11789,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <baseAddress>0x40007C04</baseAddress>
       <addressBlock>
         <offset>0x0</offset>
-        <size>0x400</size>
+        <size>0x58</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
@@ -11631,6 +13185,24 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
+              <name>SS</name>
+              <description>RTC timestamp subsecond
+              field</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CALR</name>
+          <displayName>CALR</displayName>
+          <description>calibration register</description>
+          <addressOffset>0x3C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
               <name>CALP</name>
               <description>Use an 8-second calibration cycle
               period</description>
@@ -11659,10 +13231,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>CALR</name>
-          <displayName>CALR</displayName>
-          <description>calibration register</description>
-          <addressOffset>0x3C</addressOffset>
+          <name>TAFCR</name>
+          <displayName>TAFCR</displayName>
+          <description>tamper and alternate function configuration
+          register</description>
+          <addressOffset>0x40</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -11749,31 +13322,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>TAFCR</name>
-          <displayName>TAFCR</displayName>
-          <description>tamper and alternate function configuration
-          register</description>
-          <addressOffset>0x40</addressOffset>
-          <size>0x20</size>
-          <access>read-write</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>MASKSS</name>
-              <description>Mask the most-significant bits starting
-              at this bit</description>
-              <bitOffset>24</bitOffset>
-              <bitWidth>4</bitWidth>
-            </field>
-            <field>
-              <name>SS</name>
-              <description>Sub seconds value</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>15</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
           <name>ALRMASSR</name>
           <displayName>ALRMASSR</displayName>
           <description>alarm A sub second register</description>
@@ -11807,6 +13355,30 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
+              <name>MASKSS</name>
+              <description>Mask the most-significant bits starting
+              at this bit</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>SS</name>
+              <description>Sub seconds value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>15</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP0R</name>
+          <displayName>BKP0R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x50</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
               <name>BKP</name>
               <description>BKP</description>
               <bitOffset>0</bitOffset>
@@ -11815,13 +13387,531 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>BK0R</name>
-          <displayName>BK0R</displayName>
-          <description>BK0R</description>
+          <name>BKP1R</name>
+          <displayName>BKP1R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x54</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP2R</name>
+          <displayName>BKP2R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x58</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP3R</name>
+          <displayName>BKP3R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x5C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP4R</name>
+          <displayName>BKP4R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x60</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP5R</name>
+          <displayName>BKP5R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x64</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP6R</name>
+          <displayName>BKP6R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x68</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP7R</name>
+          <displayName>BKP7R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x6C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP8R</name>
+          <displayName>BKP8R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x70</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP9R</name>
+          <displayName>BKP9R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x74</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP10R</name>
+          <displayName>BKP10R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x78</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP11R</name>
+          <displayName>BKP11R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x7C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP12R</name>
+          <displayName>BKP12R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x80</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP13R</name>
+          <displayName>BKP13R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x84</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP14R</name>
+          <displayName>BKP14R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x88</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP15R</name>
+          <displayName>BKP15R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x8C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP16R</name>
+          <displayName>BKP16R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x90</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP17R</name>
+          <displayName>BKP17R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x94</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP18R</name>
+          <displayName>BKP18R</displayName>
+          <description>backup register</description>
+          <addressOffset>0x98</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP19R</name>
+          <displayName>BKP19R</displayName>
+          <description>backup register</description>
           <addressOffset>0x9C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP20R</name>
+          <displayName>BKP20R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xA0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP21R</name>
+          <displayName>BKP21R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xA4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP22R</name>
+          <displayName>BKP22R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xA8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP23R</name>
+          <displayName>BKP23R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xAC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP24R</name>
+          <displayName>BKP24R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xB0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP25R</name>
+          <displayName>BKP25R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xB4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP26R</name>
+          <displayName>BKP26R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xB8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP27R</name>
+          <displayName>BKP27R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xBC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP28R</name>
+          <displayName>BKP28R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xC0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP29R</name>
+          <displayName>BKP29R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xC4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP30R</name>
+          <displayName>BKP30R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xC8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BKP31R</name>
+          <displayName>BKP31R</displayName>
+          <description>backup register</description>
+          <addressOffset>0xCC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BKP</name>
+              <description>BKP</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
         </register>
       </registers>
     </peripheral>
@@ -11836,9 +13926,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>SPI1</name>
-        <description>SPI1 global interrupt</description>
-        <value>35</value>
+        <name>SPI3</name>
+        <description>SPI3 global interrupt</description>
+        <value>47</value>
       </interrupt>
       <registers>
         <register>
@@ -12003,8 +14093,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x0002</resetValue>
           <fields>
             <field>
-              <name>TIFRFE</name>
-              <description>TI frame format error</description>
+              <name>FRE</name>
+              <description>Frame Error</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
               <access>read-only</access>
@@ -12233,6 +14323,15 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>SPI2</name>
       <baseAddress>0x40003800</baseAddress>
       <interrupt>
+        <name>SPI1</name>
+        <description>SPI1 global interrupt</description>
+        <value>35</value>
+      </interrupt>
+    </peripheral>
+    <peripheral derivedFrom="SPI1">
+      <name>SPI3</name>
+      <baseAddress>0x40003C00</baseAddress>
+      <interrupt>
         <name>SPI2</name>
         <description>SPI2 global interrupt</description>
         <value>36</value>
@@ -12248,6 +14347,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>TIM10</name>
+        <description>TIM10 global interrupt</description>
+        <value>26</value>
+      </interrupt>
       <registers>
         <register>
           <name>MEMRMP</name>
@@ -12460,9 +14564,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM10</name>
-        <description>TIM10 global interrupt</description>
-        <value>26</value>
+        <name>TIM11</name>
+        <description>TIM11 global interrupt</description>
+        <value>27</value>
       </interrupt>
       <registers>
         <register>
@@ -12512,7 +14616,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>Interrupt enable register</description>
           <addressOffset>0xC</addressOffset>
           <size>0x20</size>
-          <access>write-only</access>
+          <access>read-write</access>
           <resetValue>0x0000</resetValue>
           <fields>
             <field>
@@ -12780,9 +14884,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM11</name>
       <baseAddress>0x40011000</baseAddress>
       <interrupt>
-        <name>TIM11</name>
-        <description>TIM11 global interrupt</description>
-        <value>27</value>
+        <name>TIM2</name>
+        <description>TIM2 global interrupt</description>
+        <value>28</value>
       </interrupt>
     </peripheral>
     <peripheral>
@@ -12796,9 +14900,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM2</name>
-        <description>TIM2 global interrupt</description>
-        <value>28</value>
+        <name>TIM3</name>
+        <description>TIM3 global interrupt</description>
+        <value>29</value>
       </interrupt>
       <registers>
         <register>
@@ -12956,7 +15060,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>Interrupt enable register</description>
           <addressOffset>0xC</addressOffset>
           <size>0x20</size>
-          <access>write-only</access>
+          <access>read-write</access>
           <resetValue>0x0000</resetValue>
           <fields>
             <field>
@@ -13695,18 +15799,27 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM3</name>
       <baseAddress>0x40000400</baseAddress>
       <interrupt>
-        <name>TIM3</name>
-        <description>TIM3 global interrupt</description>
-        <value>29</value>
+        <name>TIM4</name>
+        <description>TIM4 global interrupt</description>
+        <value>30</value>
       </interrupt>
     </peripheral>
     <peripheral derivedFrom="TIM2">
       <name>TIM4</name>
       <baseAddress>0x40000800</baseAddress>
       <interrupt>
-        <name>TIM4</name>
-        <description>TIM4 global interrupt</description>
-        <value>30</value>
+        <name>TIM6</name>
+        <description>TIM6 global interrupt</description>
+        <value>43</value>
+      </interrupt>
+    </peripheral>
+    <peripheral derivedFrom="TIM2">
+      <name>TIM5</name>
+      <baseAddress>0x40000C00</baseAddress>
+      <interrupt>
+        <name>TIM5</name>
+        <description>TIM5 Global interrupt</description>
+        <value>46</value>
       </interrupt>
     </peripheral>
     <peripheral>
@@ -13720,9 +15833,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM6</name>
-        <description>TIM6 global interrupt</description>
-        <value>43</value>
+        <name>TIM7</name>
+        <description>TIM7 global interrupt</description>
+        <value>44</value>
       </interrupt>
       <registers>
         <register>
@@ -13900,9 +16013,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM7</name>
       <baseAddress>0x40001400</baseAddress>
       <interrupt>
-        <name>TIM7</name>
-        <description>TIM7 global interrupt</description>
-        <value>44</value>
+        <name>TIM9</name>
+        <description>TIM9 global interrupt</description>
+        <value>25</value>
       </interrupt>
     </peripheral>
     <peripheral>
@@ -13916,9 +16029,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM9</name>
-        <description>TIM9 global interrupt</description>
-        <value>25</value>
+        <name>USART1</name>
+        <description>USART1 global interrupt</description>
+        <value>37</value>
       </interrupt>
       <registers>
         <register>
@@ -14020,7 +16133,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>Interrupt enable register</description>
           <addressOffset>0xC</addressOffset>
           <size>0x20</size>
-          <access>write-only</access>
+          <access>read-write</access>
           <resetValue>0x0000</resetValue>
           <fields>
             <field>
@@ -14387,9 +16500,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>USART1</name>
-        <description>USART1 global interrupt</description>
-        <value>37</value>
+        <name>USART3</name>
+        <description>USART3 global interrupt</description>
+        <value>39</value>
       </interrupt>
       <registers>
         <register>
@@ -14796,31 +16909,14 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>USART2</name>
       <baseAddress>0x40004400</baseAddress>
       <interrupt>
-        <name>USART2</name>
-        <description>USART2 global interrupt</description>
-        <value>38</value>
+        <name>USART5</name>
+        <description>USART5 global interrupt</description>
+        <value>49</value>
       </interrupt>
     </peripheral>
     <peripheral derivedFrom="USART1">
       <name>USART3</name>
       <baseAddress>0x40004800</baseAddress>
-      <interrupt>
-        <name>USART3</name>
-        <description>USART3 global interrupt</description>
-        <value>39</value>
-      </interrupt>
-    </peripheral>
-    <peripheral>
-      <name>USB</name>
-      <description>Universal serial bus full-speed device
-      interface</description>
-      <groupName>USB</groupName>
-      <baseAddress>0x40005C00</baseAddress>
-      <addressBlock>
-        <offset>0x0</offset>
-        <size>0x400</size>
-        <usage>registers</usage>
-      </addressBlock>
       <interrupt>
         <name>USB_HP</name>
         <description>USB High priority interrupt</description>
@@ -14837,6 +16933,36 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         interrupt</description>
         <value>42</value>
       </interrupt>
+    </peripheral>
+    <peripheral derivedFrom="USART1">
+      <name>USART4</name>
+      <baseAddress>0x40004C00</baseAddress>
+      <interrupt>
+        <name>USART4</name>
+        <description>USART4 global interrupt</description>
+        <value>48</value>
+      </interrupt>
+    </peripheral>
+    <peripheral derivedFrom="USART1">
+      <name>USART5</name>
+      <baseAddress>0x40005000</baseAddress>
+      <interrupt>
+        <name>USART2</name>
+        <description>USART2 global interrupt</description>
+        <value>38</value>
+      </interrupt>
+    </peripheral>
+    <peripheral>
+      <name>USB</name>
+      <description>Universal serial bus full-speed device
+      interface</description>
+      <groupName>USB</groupName>
+      <baseAddress>0x40005C00</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x400</size>
+        <usage>registers</usage>
+      </addressBlock>
       <registers>
         <register>
           <name>USB_EP0R</name>
@@ -15714,6 +17840,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
     <peripheral derivedFrom="USB">
       <name>USB_SRAM</name>
       <baseAddress>0x40006000</baseAddress>
+      <interrupt>
+        <name>WWDG</name>
+        <description>Window Watchdog interrupt</description>
+        <value>0</value>
+      </interrupt>
     </peripheral>
     <peripheral>
       <name>WWDG</name>
@@ -15726,9 +17857,9 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>WWDG</name>
-        <description>Window Watchdog interrupt</description>
-        <value>0</value>
+        <name>ADC1</name>
+        <description>ADC1 global interrupt</description>
+        <value>18</value>
       </interrupt>
       <registers>
         <register>
@@ -15822,11 +17953,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
-      <interrupt>
-        <name>ADC1</name>
-        <description>ADC1 global interrupt</description>
-        <value>18</value>
-      </interrupt>
       <registers>
         <register>
           <name>SR</name>
@@ -16135,10 +18261,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>SampletimebitsSMPx_x</name>
-              <description>Reserved</description>
+              <name>SMP</name>
+              <description>Channel sampling time
+              selection</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
+              <bitWidth>30</bitWidth>
             </field>
           </fields>
         </register>
@@ -16152,10 +18279,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>SampletimebitsSMPx_x</name>
-              <description>Reserved</description>
+              <name>SMP</name>
+              <description>Channel sampling time
+              selection</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
+              <bitWidth>30</bitWidth>
             </field>
           </fields>
         </register>
@@ -16169,10 +18297,11 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>SampletimebitsSMPx_x</name>
-              <description>Reserved</description>
+              <name>SMP</name>
+              <description>Channel Sample time
+              selection</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
+              <bitWidth>30</bitWidth>
             </field>
           </fields>
         </register>
@@ -16688,10 +18817,93 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>SampletimebitsSMPx_x</name>
-              <description>Reserved</description>
+              <name>SMP</name>
+              <description>Channel Sample time
+              selection</description>
               <bitOffset>0</bitOffset>
-              <bitWidth>32</bitWidth>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CSR</name>
+          <displayName>CSR</displayName>
+          <description>ADC common status register</description>
+          <addressOffset>0x300</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>AWD1</name>
+              <description>Analog watchdog flag of the
+              ADC</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EOC1</name>
+              <description>End of conversion of the
+              ADC</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JEOC1</name>
+              <description>Injected channel end of conversion of
+              the ADC</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JSTRT1</name>
+              <description>Injected channel Start flag of the
+              ADC</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>STRT1</name>
+              <description>Regular channel Start flag of the
+              ADC</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OVR1</name>
+              <description>Overrun flag of the ADC</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ADONS1</name>
+              <description>ADON Status of ADC1</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CCR</name>
+          <displayName>CCR</displayName>
+          <description>ADC common control register</description>
+          <addressOffset>0x304</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ADCPRE</name>
+              <description>ADC prescaler</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>TSVREFE</name>
+              <description>Temperature sensor and VREFINT
+              enable</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
             </field>
           </fields>
         </register>
@@ -16702,55 +18914,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <description>Nested Vectored Interrupt
       Controller</description>
       <groupName>NVIC</groupName>
-      <baseAddress>0xE000E000</baseAddress>
+      <baseAddress>0xE000E100</baseAddress>
       <addressBlock>
         <offset>0x0</offset>
-        <size>0x1001</size>
+        <size>0x339</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
-          <name>ICTR</name>
-          <displayName>ICTR</displayName>
-          <description>Interrupt Controller Type
-          Register</description>
-          <addressOffset>0x4</addressOffset>
-          <size>0x20</size>
-          <access>read-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>INTLINESNUM</name>
-              <description>Total number of interrupt lines in
-              groups</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>4</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>STIR</name>
-          <displayName>STIR</displayName>
-          <description>Software Triggered Interrupt
-          Register</description>
-          <addressOffset>0xF00</addressOffset>
-          <size>0x20</size>
-          <access>write-only</access>
-          <resetValue>0x00000000</resetValue>
-          <fields>
-            <field>
-              <name>INTID</name>
-              <description>interrupt to be triggered</description>
-              <bitOffset>0</bitOffset>
-              <bitWidth>9</bitWidth>
-            </field>
-          </fields>
-        </register>
-        <register>
           <name>ISER0</name>
           <displayName>ISER0</displayName>
           <description>Interrupt Set-Enable Register</description>
-          <addressOffset>0x100</addressOffset>
+          <addressOffset>0x0</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -16767,7 +18942,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>ISER1</name>
           <displayName>ISER1</displayName>
           <description>Interrupt Set-Enable Register</description>
-          <addressOffset>0x104</addressOffset>
+          <addressOffset>0x4</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -16785,7 +18960,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>ICER0</displayName>
           <description>Interrupt Clear-Enable
           Register</description>
-          <addressOffset>0x180</addressOffset>
+          <addressOffset>0x80</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -16803,7 +18978,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>ICER1</displayName>
           <description>Interrupt Clear-Enable
           Register</description>
-          <addressOffset>0x184</addressOffset>
+          <addressOffset>0x84</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -16820,7 +18995,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>ISPR0</name>
           <displayName>ISPR0</displayName>
           <description>Interrupt Set-Pending Register</description>
-          <addressOffset>0x200</addressOffset>
+          <addressOffset>0x100</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -16837,7 +19012,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>ISPR1</name>
           <displayName>ISPR1</displayName>
           <description>Interrupt Set-Pending Register</description>
-          <addressOffset>0x204</addressOffset>
+          <addressOffset>0x104</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -16855,7 +19030,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>ICPR0</displayName>
           <description>Interrupt Clear-Pending
           Register</description>
-          <addressOffset>0x280</addressOffset>
+          <addressOffset>0x180</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -16873,7 +19048,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>ICPR1</displayName>
           <description>Interrupt Clear-Pending
           Register</description>
-          <addressOffset>0x284</addressOffset>
+          <addressOffset>0x184</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -16890,7 +19065,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IABR0</name>
           <displayName>IABR0</displayName>
           <description>Interrupt Active Bit Register</description>
-          <addressOffset>0x300</addressOffset>
+          <addressOffset>0x200</addressOffset>
           <size>0x20</size>
           <access>read-only</access>
           <resetValue>0x00000000</resetValue>
@@ -16907,7 +19082,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IABR1</name>
           <displayName>IABR1</displayName>
           <description>Interrupt Active Bit Register</description>
-          <addressOffset>0x304</addressOffset>
+          <addressOffset>0x204</addressOffset>
           <size>0x20</size>
           <access>read-only</access>
           <resetValue>0x00000000</resetValue>
@@ -16924,7 +19099,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR0</name>
           <displayName>IPR0</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x400</addressOffset>
+          <addressOffset>0x300</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -16959,7 +19134,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR1</name>
           <displayName>IPR1</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x404</addressOffset>
+          <addressOffset>0x304</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -16994,7 +19169,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR2</name>
           <displayName>IPR2</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x408</addressOffset>
+          <addressOffset>0x308</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17029,7 +19204,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR3</name>
           <displayName>IPR3</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x40C</addressOffset>
+          <addressOffset>0x30C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17064,7 +19239,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR4</name>
           <displayName>IPR4</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x410</addressOffset>
+          <addressOffset>0x310</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17099,7 +19274,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR5</name>
           <displayName>IPR5</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x414</addressOffset>
+          <addressOffset>0x314</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17134,7 +19309,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR6</name>
           <displayName>IPR6</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x418</addressOffset>
+          <addressOffset>0x318</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17169,7 +19344,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR7</name>
           <displayName>IPR7</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x41C</addressOffset>
+          <addressOffset>0x31C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17204,7 +19379,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR8</name>
           <displayName>IPR8</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x420</addressOffset>
+          <addressOffset>0x320</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17239,7 +19414,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR9</name>
           <displayName>IPR9</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x424</addressOffset>
+          <addressOffset>0x324</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17274,7 +19449,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR10</name>
           <displayName>IPR10</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x428</addressOffset>
+          <addressOffset>0x328</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17309,7 +19484,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR11</name>
           <displayName>IPR11</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x42C</addressOffset>
+          <addressOffset>0x32C</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17344,7 +19519,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR12</name>
           <displayName>IPR12</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x430</addressOffset>
+          <addressOffset>0x330</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17379,7 +19554,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <name>IPR13</name>
           <displayName>IPR13</displayName>
           <description>Interrupt Priority Register</description>
-          <addressOffset>0x434</addressOffset>
+          <addressOffset>0x334</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
@@ -17407,6 +19582,2081 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>IPR_N3</description>
               <bitOffset>24</bitOffset>
               <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>DBGMCU</name>
+      <description>debug support</description>
+      <groupName>DBGMCU</groupName>
+      <baseAddress>0xE0042000</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x15</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>IDCODE</name>
+          <displayName>IDCODE</displayName>
+          <description>DBGMCU_IDCODE</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>DEV_ID</name>
+              <description>Device identifier</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>12</bitWidth>
+            </field>
+            <field>
+              <name>REV_ID</name>
+              <description>Revision identifie</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CR</name>
+          <displayName>CR</displayName>
+          <description>Debug MCU configuration
+          register</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>DBG_SLEEP</name>
+              <description>Debug Sleep mode</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_STOP</name>
+              <description>Debug Stop mode</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_STANDBY</name>
+              <description>Debug Standby mode</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TRACE_IOEN</name>
+              <description>Trace pin assignment
+              control</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TRACE_MODE</name>
+              <description>Trace pin assignment
+              control</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>APB1_FZ</name>
+          <displayName>APB1_FZ</displayName>
+          <description>Debug MCU APB1 freeze
+          register1</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>DBG_TIM2_STOP</name>
+              <description>TIM2 counter stopped when core is
+              halted</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_TIM3_STOP</name>
+              <description>TIM3 counter stopped when core is
+              halted</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_TIM4_STOP</name>
+              <description>TIM4 counter stopped when core is
+              halted</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_TIM5_STOP</name>
+              <description>TIM5 counter stopped when core is
+              halted</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_TIM6_STOP</name>
+              <description>TIM6 counter stopped when core is
+              halted</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_TIM7_STOP</name>
+              <description>TIM7 counter stopped when core is
+              halted</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_RTC_STOP</name>
+              <description>Debug RTC stopped when core is
+              halted</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_WWDG_STOP</name>
+              <description>Debug window watchdog stopped when core
+              is halted</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_IWDG_STOP</name>
+              <description>Debug independent watchdog stopped when
+              core is halted</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_I2C1_SMBUS_TIMEOUT</name>
+              <description>SMBUS timeout mode stopped when core is
+              halted</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_I2C2_SMBUS_TIMEOUT</name>
+              <description>SMBUS timeout mode stopped when core is
+              halted</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>APB2_FZ</name>
+          <displayName>APB2_FZ</displayName>
+          <description>Debug MCU APB1 freeze register
+          2</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>DBG_TIM9_STOP</name>
+              <description>TIM counter stopped when core is
+              halted</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_TIM10_STOP</name>
+              <description>TIM counter stopped when core is
+              halted</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBG_TIM11_STOP</name>
+              <description>TIM counter stopped when core is
+              halted</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>SDIO</name>
+      <description>Secure digital input/output
+      interface</description>
+      <groupName>SDIO</groupName>
+      <baseAddress>0x40012C00</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x400</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <interrupt>
+        <name>SDIO</name>
+        <description>SDIO Global interrupt</description>
+        <value>45</value>
+      </interrupt>
+      <registers>
+        <register>
+          <name>POWER</name>
+          <displayName>POWER</displayName>
+          <description>power control register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PWRCTRL</name>
+              <description>Power supply control bits.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CLKCR</name>
+          <displayName>CLKCR</displayName>
+          <description>SDI clock control register</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>HWFC_EN</name>
+              <description>HW Flow Control enable</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>NEGEDGE</name>
+              <description>SDIO_CK dephasing selection
+              bit</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WIDBUS</name>
+              <description>Wide bus mode enable bit</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>BYPASS</name>
+              <description>Clock divider bypass enable
+              bit</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PWRSAV</name>
+              <description>Power saving configuration
+              bit</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CLKEN</name>
+              <description>Clock enable bit</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CLKDIV</name>
+              <description>Clock divide factor</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>ARG</name>
+          <displayName>ARG</displayName>
+          <description>argument register</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CMDARG</name>
+              <description>Command argument</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CMD</name>
+          <displayName>CMD</displayName>
+          <description>command register</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CE_ATACMD</name>
+              <description>CE-ATA command</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>nIEN</name>
+              <description>not Interrupt Enable</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ENCMDcompl</name>
+              <description>Enable CMD completion</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SDIOSuspend</name>
+              <description>SD I/O suspend command</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CPSMEN</name>
+              <description>Command path state machine (CPSM) Enable
+              bit</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITPEND</name>
+              <description>CPSM Waits for ends of data transfer
+              (CmdPend internal signal).</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITINT</name>
+              <description>CPSM waits for interrupt
+              request</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>WAITRESP</name>
+              <description>Wait for response bits</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>CMDINDEX</name>
+              <description>Command index</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>RESPCMD</name>
+          <displayName>RESPCMD</displayName>
+          <description>command response register</description>
+          <addressOffset>0x10</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>RESPCMD</name>
+              <description>Response command index</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>RESP1</name>
+          <displayName>RESP1</displayName>
+          <description>response 1..4 register</description>
+          <addressOffset>0x14</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CARDSTATUS1</name>
+              <description>see Table 133.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>RESP2</name>
+          <displayName>RESP2</displayName>
+          <description>response 1..4 register</description>
+          <addressOffset>0x18</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CARDSTATUS2</name>
+              <description>see Table 133.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>RESP3</name>
+          <displayName>RESP3</displayName>
+          <description>response 1..4 register</description>
+          <addressOffset>0x1C</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CARDSTATUS3</name>
+              <description>see Table 133.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>RESP4</name>
+          <displayName>RESP4</displayName>
+          <description>response 1..4 register</description>
+          <addressOffset>0x20</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CARDSTATUS4</name>
+              <description>see Table 133.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DTIMER</name>
+          <displayName>DTIMER</displayName>
+          <description>data timer register</description>
+          <addressOffset>0x24</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>DATATIME</name>
+              <description>Data timeout period</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DLEN</name>
+          <displayName>DLEN</displayName>
+          <description>data length register</description>
+          <addressOffset>0x28</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>DATALENGTH</name>
+              <description>Data length value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>25</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DCTRL</name>
+          <displayName>DCTRL</displayName>
+          <description>data control register</description>
+          <addressOffset>0x2C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>SDIOEN</name>
+              <description>SD I/O enable functions</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RWMOD</name>
+              <description>Read wait mode</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RWSTOP</name>
+              <description>Read wait stop</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RWSTART</name>
+              <description>Read wait start</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBLOCKSIZE</name>
+              <description>Data block size</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>DMAEN</name>
+              <description>DMA enable bit</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DTMODE</name>
+              <description>Data transfer mode selection 1: Stream
+              or SDIO multibyte data transfer.</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DTDIR</name>
+              <description>Data transfer direction
+              selection</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DTEN</name>
+              <description>Data transfer enabled bit</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>DCOUNT</name>
+          <displayName>DCOUNT</displayName>
+          <description>data counter register</description>
+          <addressOffset>0x30</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>DATACOUNT</name>
+              <description>Data count value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>25</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>STA</name>
+          <displayName>STA</displayName>
+          <description>status register</description>
+          <addressOffset>0x34</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CEATAEND</name>
+              <description>CE-ATA command completion signal
+              received for CMD61</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SDIOIT</name>
+              <description>SDIO interrupt received</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXDAVL</name>
+              <description>Data available in receive
+              FIFO</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXDAVL</name>
+              <description>Data available in transmit
+              FIFO</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXFIFOE</name>
+              <description>Receive FIFO empty</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXFIFOE</name>
+              <description>Transmit FIFO empty</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXFIFOF</name>
+              <description>Receive FIFO full</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXFIFOF</name>
+              <description>Transmit FIFO full</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXFIFOHF</name>
+              <description>Receive FIFO half full: there are at
+              least 8 words in the FIFO</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXFIFOHE</name>
+              <description>Transmit FIFO half empty: at least 8
+              words can be written into the FIFO</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXACT</name>
+              <description>Data receive in progress</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXACT</name>
+              <description>Data transmit in progress</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CMDACT</name>
+              <description>Command transfer in
+              progress</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBCKEND</name>
+              <description>Data block sent/received (CRC check
+              passed)</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>STBITERR</name>
+              <description>Start bit not detected on all data
+              signals in wide bus mode</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DATAEND</name>
+              <description>Data end (data counter, SDIDCOUNT, is
+              zero)</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CMDSENT</name>
+              <description>Command sent (no response
+              required)</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CMDREND</name>
+              <description>Command response received (CRC check
+              passed)</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXOVERR</name>
+              <description>Received FIFO overrun
+              error</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXUNDERR</name>
+              <description>Transmit FIFO underrun
+              error</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DTIMEOUT</name>
+              <description>Data timeout</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CTIMEOUT</name>
+              <description>Command response timeout</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DCRCFAIL</name>
+              <description>Data block sent/received (CRC check
+              failed)</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CCRCFAIL</name>
+              <description>Command response received (CRC check
+              failed)</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>ICR</name>
+          <displayName>ICR</displayName>
+          <description>interrupt clear register</description>
+          <addressOffset>0x38</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CEATAENDC</name>
+              <description>CEATAEND flag clear bit</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SDIOITC</name>
+              <description>SDIOIT flag clear bit</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBCKENDC</name>
+              <description>DBCKEND flag clear bit</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>STBITERRC</name>
+              <description>STBITERR flag clear bit</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DATAENDC</name>
+              <description>DATAEND flag clear bit</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CMDSENTC</name>
+              <description>CMDSENT flag clear bit</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CMDRENDC</name>
+              <description>CMDREND flag clear bit</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXOVERRC</name>
+              <description>RXOVERR flag clear bit</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXUNDERRC</name>
+              <description>TXUNDERR flag clear bit</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DTIMEOUTC</name>
+              <description>DTIMEOUT flag clear bit</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CTIMEOUTC</name>
+              <description>CTIMEOUT flag clear bit</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DCRCFAILC</name>
+              <description>DCRCFAIL flag clear bit</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CCRCFAILC</name>
+              <description>CCRCFAIL flag clear bit</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MASK</name>
+          <displayName>MASK</displayName>
+          <description>mask register</description>
+          <addressOffset>0x3C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CEATAENDIE</name>
+              <description>CE-ATA command completion signal
+              received interrupt enable</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SDIOITIE</name>
+              <description>SDIO mode interrupt received interrupt
+              enable</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXDAVLIE</name>
+              <description>Data available in Rx FIFO interrupt
+              enable</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXDAVLIE</name>
+              <description>Data available in Tx FIFO interrupt
+              enable</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXFIFOEIE</name>
+              <description>Rx FIFO empty interrupt
+              enable</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXFIFOEIE</name>
+              <description>Tx FIFO empty interrupt
+              enable</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXFIFOFIE</name>
+              <description>Rx FIFO full interrupt
+              enable</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXFIFOFIE</name>
+              <description>Tx FIFO full interrupt
+              enable</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXFIFOHFIE</name>
+              <description>Rx FIFO half full interrupt
+              enable</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXFIFOHEIE</name>
+              <description>Tx FIFO half empty interrupt
+              enable</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXACTIE</name>
+              <description>Data receive acting interrupt
+              enable</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXACTIE</name>
+              <description>Data transmit acting interrupt
+              enable</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CMDACTIE</name>
+              <description>Command acting interrupt
+              enable</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DBCKENDIE</name>
+              <description>Data block end interrupt
+              enable</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>STBITERRIE</name>
+              <description>Start bit error interrupt
+              enable</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DATAENDIE</name>
+              <description>Data end interrupt enable</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CMDSENTIE</name>
+              <description>Command sent interrupt
+              enable</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CMDRENDIE</name>
+              <description>Command response received interrupt
+              enable</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>RXOVERRIE</name>
+              <description>Rx FIFO overrun error interrupt
+              enable</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TXUNDERRIE</name>
+              <description>Tx FIFO underrun error interrupt
+              enable</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DTIMEOUTIE</name>
+              <description>Data timeout interrupt
+              enable</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CTIMEOUTIE</name>
+              <description>Command timeout interrupt
+              enable</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DCRCFAILIE</name>
+              <description>Data CRC fail interrupt
+              enable</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CCRCFAILIE</name>
+              <description>Command CRC fail interrupt
+              enable</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FIFOCNT</name>
+          <displayName>FIFOCNT</displayName>
+          <description>FIFO counter register</description>
+          <addressOffset>0x48</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>FIFOCOUNT</name>
+              <description>Remaining number of words to be written
+              to or read from the FIFO.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FIFO</name>
+          <displayName>FIFO</displayName>
+          <description>data FIFO register</description>
+          <addressOffset>0x80</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>FIF0Data</name>
+              <description>FIF0Data</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>MPU</name>
+      <description>Memory protection unit</description>
+      <groupName>MPU</groupName>
+      <baseAddress>0xE000ED90</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x15</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>MPU_TYPER</name>
+          <displayName>MPU_TYPER</displayName>
+          <description>MPU type register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0X00000800</resetValue>
+          <fields>
+            <field>
+              <name>SEPARATE</name>
+              <description>Separate flag</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DREGION</name>
+              <description>Number of MPU data regions</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>IREGION</name>
+              <description>Number of MPU instruction
+              regions</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MPU_CTRL</name>
+          <displayName>MPU_CTRL</displayName>
+          <description>MPU control register</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>ENABLE</name>
+              <description>Enables the MPU</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>HFNMIENA</name>
+              <description>Enables the operation of MPU during hard
+              fault</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PRIVDEFENA</name>
+              <description>Enable priviliged software access to
+              default memory map</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MPU_RNR</name>
+          <displayName>MPU_RNR</displayName>
+          <description>MPU region number register</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>REGION</name>
+              <description>MPU region</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MPU_RBAR</name>
+          <displayName>MPU_RBAR</displayName>
+          <description>MPU region base address
+          register</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>REGION</name>
+              <description>MPU region field</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>VALID</name>
+              <description>MPU region number valid</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ADDR</name>
+              <description>Region base address field</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>27</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MPU_RASR</name>
+          <displayName>MPU_RASR</displayName>
+          <description>MPU region attribute and size
+          register</description>
+          <addressOffset>0x10</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>ENABLE</name>
+              <description>Region enable bit.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SIZE</name>
+              <description>Size of the MPU protection
+              region</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>5</bitWidth>
+            </field>
+            <field>
+              <name>SRD</name>
+              <description>Subregion disable bits</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>B</name>
+              <description>memory attribute</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>C</name>
+              <description>memory attribute</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>S</name>
+              <description>Shareable memory attribute</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TEX</name>
+              <description>memory attribute</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>AP</name>
+              <description>Access permission</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>XN</name>
+              <description>Instruction access disable
+              bit</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>SCB_ACTRL</name>
+      <description>System control block ACTLR</description>
+      <groupName>SCB</groupName>
+      <baseAddress>0xE000E008</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x5</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>ACTRL</name>
+          <displayName>ACTRL</displayName>
+          <description>Auxiliary control register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>DISFOLD</name>
+              <description>DISFOLD</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>FPEXCODIS</name>
+              <description>FPEXCODIS</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DISRAMODE</name>
+              <description>DISRAMODE</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DISITMATBFLUSH</name>
+              <description>DISITMATBFLUSH</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>NVIC_STIR</name>
+      <description>Nested vectored interrupt
+      controller</description>
+      <groupName>NVIC</groupName>
+      <baseAddress>0xE000EF00</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x5</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>STIR</name>
+          <displayName>STIR</displayName>
+          <description>Software trigger interrupt
+          register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>INTID</name>
+              <description>Software generated interrupt
+              ID</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>9</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>SCB</name>
+      <description>System control block</description>
+      <groupName>SCB</groupName>
+      <baseAddress>0xE000ED00</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x41</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>CPUID</name>
+          <displayName>CPUID</displayName>
+          <description>CPUID base register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x410FC241</resetValue>
+          <fields>
+            <field>
+              <name>Revision</name>
+              <description>Revision number</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>PartNo</name>
+              <description>Part number of the
+              processor</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>12</bitWidth>
+            </field>
+            <field>
+              <name>Constant</name>
+              <description>Reads as 0xF</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>Variant</name>
+              <description>Variant number</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>Implementer</name>
+              <description>Implementer code</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>ICSR</name>
+          <displayName>ICSR</displayName>
+          <description>Interrupt control and state
+          register</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>VECTACTIVE</name>
+              <description>Active vector</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>9</bitWidth>
+            </field>
+            <field>
+              <name>RETTOBASE</name>
+              <description>Return to base level</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>VECTPENDING</name>
+              <description>Pending vector</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>7</bitWidth>
+            </field>
+            <field>
+              <name>ISRPENDING</name>
+              <description>Interrupt pending flag</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PENDSTCLR</name>
+              <description>SysTick exception clear-pending
+              bit</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PENDSTSET</name>
+              <description>SysTick exception set-pending
+              bit</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PENDSVCLR</name>
+              <description>PendSV clear-pending bit</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PENDSVSET</name>
+              <description>PendSV set-pending bit</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>NMIPENDSET</name>
+              <description>NMI set-pending bit.</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VTOR</name>
+          <displayName>VTOR</displayName>
+          <description>Vector table offset register</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>TBLOFF</name>
+              <description>Vector table base offset
+              field</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>21</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>AIRCR</name>
+          <displayName>AIRCR</displayName>
+          <description>Application interrupt and reset control
+          register</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>VECTRESET</name>
+              <description>VECTRESET</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>VECTCLRACTIVE</name>
+              <description>VECTCLRACTIVE</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SYSRESETREQ</name>
+              <description>SYSRESETREQ</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PRIGROUP</name>
+              <description>PRIGROUP</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+            <field>
+              <name>ENDIANESS</name>
+              <description>ENDIANESS</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>VECTKEYSTAT</name>
+              <description>Register key</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SCR</name>
+          <displayName>SCR</displayName>
+          <description>System control register</description>
+          <addressOffset>0x10</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>SLEEPONEXIT</name>
+              <description>SLEEPONEXIT</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SLEEPDEEP</name>
+              <description>SLEEPDEEP</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SEVEONPEND</name>
+              <description>Send Event on Pending bit</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CCR</name>
+          <displayName>CCR</displayName>
+          <description>Configuration and control
+          register</description>
+          <addressOffset>0x14</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>NONBASETHRDENA</name>
+              <description>Configures how the processor enters
+              Thread mode</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>USERSETMPEND</name>
+              <description>USERSETMPEND</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UNALIGN__TRP</name>
+              <description>UNALIGN_ TRP</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DIV_0_TRP</name>
+              <description>DIV_0_TRP</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>BFHFNMIGN</name>
+              <description>BFHFNMIGN</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>STKALIGN</name>
+              <description>STKALIGN</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SHPR1</name>
+          <displayName>SHPR1</displayName>
+          <description>System handler priority
+          registers</description>
+          <addressOffset>0x18</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PRI_4</name>
+              <description>Priority of system handler
+              4</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>PRI_5</name>
+              <description>Priority of system handler
+              5</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>PRI_6</name>
+              <description>Priority of system handler
+              6</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SHPR2</name>
+          <displayName>SHPR2</displayName>
+          <description>System handler priority
+          registers</description>
+          <addressOffset>0x1C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PRI_11</name>
+              <description>Priority of system handler
+              11</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SHPR3</name>
+          <displayName>SHPR3</displayName>
+          <description>System handler priority
+          registers</description>
+          <addressOffset>0x20</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>PRI_14</name>
+              <description>Priority of system handler
+              14</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+            <field>
+              <name>PRI_15</name>
+              <description>Priority of system handler
+              15</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>8</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SHCRS</name>
+          <displayName>SHCRS</displayName>
+          <description>System handler control and state
+          register</description>
+          <addressOffset>0x24</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>MEMFAULTACT</name>
+              <description>Memory management fault exception active
+              bit</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>BUSFAULTACT</name>
+              <description>Bus fault exception active
+              bit</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>USGFAULTACT</name>
+              <description>Usage fault exception active
+              bit</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SVCALLACT</name>
+              <description>SVC call active bit</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MONITORACT</name>
+              <description>Debug monitor active bit</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PENDSVACT</name>
+              <description>PendSV exception active
+              bit</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SYSTICKACT</name>
+              <description>SysTick exception active
+              bit</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>USGFAULTPENDED</name>
+              <description>Usage fault exception pending
+              bit</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MEMFAULTPENDED</name>
+              <description>Memory management fault exception
+              pending bit</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>BUSFAULTPENDED</name>
+              <description>Bus fault exception pending
+              bit</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SVCALLPENDED</name>
+              <description>SVC call pending bit</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MEMFAULTENA</name>
+              <description>Memory management fault enable
+              bit</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>BUSFAULTENA</name>
+              <description>Bus fault enable bit</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>USGFAULTENA</name>
+              <description>Usage fault enable bit</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CFSR_UFSR_BFSR_MMFSR</name>
+          <displayName>CFSR_UFSR_BFSR_MMFSR</displayName>
+          <description>Configurable fault status
+          register</description>
+          <addressOffset>0x28</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>IACCVIOL</name>
+              <description>IACCVIOL</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DACCVIOL</name>
+              <description>DACCVIOL</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MUNSTKERR</name>
+              <description>MUNSTKERR</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MSTKERR</name>
+              <description>MSTKERR</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MLSPERR</name>
+              <description>MLSPERR</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MMARVALID</name>
+              <description>MMARVALID</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>IBUSERR</name>
+              <description>Instruction bus error</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>PRECISERR</name>
+              <description>Precise data bus error</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>IMPRECISERR</name>
+              <description>Imprecise data bus error</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UNSTKERR</name>
+              <description>Bus fault on unstacking for a return
+              from exception</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>STKERR</name>
+              <description>Bus fault on stacking for exception
+              entry</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>LSPERR</name>
+              <description>Bus fault on floating-point lazy state
+              preservation</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>BFARVALID</name>
+              <description>Bus Fault Address Register (BFAR) valid
+              flag</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UNDEFINSTR</name>
+              <description>Undefined instruction usage
+              fault</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>INVSTATE</name>
+              <description>Invalid state usage fault</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>INVPC</name>
+              <description>Invalid PC load usage
+              fault</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>NOCP</name>
+              <description>No coprocessor usage
+              fault.</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UNALIGNED</name>
+              <description>Unaligned access usage
+              fault</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DIVBYZERO</name>
+              <description>Divide by zero usage fault</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>HFSR</name>
+          <displayName>HFSR</displayName>
+          <description>Hard fault status register</description>
+          <addressOffset>0x2C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>VECTTBL</name>
+              <description>Vector table hard fault</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>FORCED</name>
+              <description>Forced hard fault</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>DEBUG_VT</name>
+              <description>Reserved for Debug use</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>MMFAR</name>
+          <displayName>MMFAR</displayName>
+          <description>Memory management fault address
+          register</description>
+          <addressOffset>0x34</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>MMFAR</name>
+              <description>Memory management fault
+              address</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>BFAR</name>
+          <displayName>BFAR</displayName>
+          <description>Bus fault address register</description>
+          <addressOffset>0x38</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>BFAR</name>
+              <description>Bus fault address</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>STK</name>
+      <description>SysTick timer</description>
+      <groupName>STK</groupName>
+      <baseAddress>0xE000E010</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x11</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>CTRL</name>
+          <displayName>CTRL</displayName>
+          <description>SysTick control and status
+          register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>ENABLE</name>
+              <description>Counter enable</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TICKINT</name>
+              <description>SysTick exception request
+              enable</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CLKSOURCE</name>
+              <description>Clock source selection</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>COUNTFLAG</name>
+              <description>COUNTFLAG</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>LOAD_</name>
+          <displayName>LOAD_</displayName>
+          <description>SysTick reload value register</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>RELOAD</name>
+              <description>RELOAD value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>VAL</name>
+          <displayName>VAL</displayName>
+          <description>SysTick current value register</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>CURRENT</name>
+              <description>Current counter value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>24</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CALIB</name>
+          <displayName>CALIB</displayName>
+          <description>SysTick calibration value
+          register</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0X00000000</resetValue>
+          <fields>
+            <field>
+              <name>TENMS</name>
+              <description>Calibration value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>24</bitWidth>
             </field>
           </fields>
         </register>

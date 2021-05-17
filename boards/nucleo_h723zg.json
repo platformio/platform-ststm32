@@ -20,7 +20,7 @@
       "stlink"
     ],
     "openocd_target": "stm32h7x",
-    "svd_path": "STM32H7x3.svd"
+    "svd_path": "STM32H723.svd"
   },
   "frameworks": [
     "cmsis",

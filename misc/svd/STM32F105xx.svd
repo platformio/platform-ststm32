@@ -26,7 +26,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>PVD_IRQ</name>
+        <name>PVD</name>
         <description>PVD through EXTI line detection
         interrupt</description>
         <value>1</value>
@@ -1426,42 +1426,42 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TAMPER_IRQ</name>
+        <name>TAMPER</name>
         <description>Tamper interrupt</description>
         <value>2</value>
       </interrupt>
       <interrupt>
-        <name>EXTI0_IRQ</name>
+        <name>EXTI0</name>
         <description>EXTI Line0 interrupt</description>
         <value>6</value>
       </interrupt>
       <interrupt>
-        <name>EXTI1_IRQ</name>
+        <name>EXTI1</name>
         <description>EXTI Line1 interrupt</description>
         <value>7</value>
       </interrupt>
       <interrupt>
-        <name>EXTI2_IRQ</name>
+        <name>EXTI2</name>
         <description>EXTI Line2 interrupt</description>
         <value>8</value>
       </interrupt>
       <interrupt>
-        <name>EXTI3_IRQ</name>
+        <name>EXTI3</name>
         <description>EXTI Line3 interrupt</description>
         <value>9</value>
       </interrupt>
       <interrupt>
-        <name>EXTI4_IRQ</name>
+        <name>EXTI4</name>
         <description>EXTI Line4 interrupt</description>
         <value>10</value>
       </interrupt>
       <interrupt>
-        <name>EXTI9_5_IRQ</name>
+        <name>EXTI9_5</name>
         <description>EXTI Line[9:5] interrupts</description>
         <value>23</value>
       </interrupt>
       <interrupt>
-        <name>EXTI15_10_IRQ</name>
+        <name>EXTI15_10</name>
         <description>EXTI Line[15:10] interrupts</description>
         <value>40</value>
       </interrupt>
@@ -2329,37 +2329,37 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>DMA1_Channel1_IRQ</name>
+        <name>DMA1_Channel1</name>
         <description>DMA1 Channel1 global interrupt</description>
         <value>11</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_Channel2_IRQ</name>
+        <name>DMA1_Channel2</name>
         <description>DMA1 Channel2 global interrupt</description>
         <value>12</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_Channel3_IRQ</name>
+        <name>DMA1_Channel3</name>
         <description>DMA1 Channel3 global interrupt</description>
         <value>13</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_Channel4_IRQ</name>
+        <name>DMA1_Channel4</name>
         <description>DMA1 Channel4 global interrupt</description>
         <value>14</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_Channel5_IRQ</name>
+        <name>DMA1_Channel5</name>
         <description>DMA1 Channel5 global interrupt</description>
         <value>15</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_Channel6_IRQ</name>
+        <name>DMA1_Channel6</name>
         <description>DMA1 Channel6 global interrupt</description>
         <value>16</value>
       </interrupt>
       <interrupt>
-        <name>DMA1_Channel7_IRQ</name>
+        <name>DMA1_Channel7</name>
         <description>DMA1 Channel7 global interrupt</description>
         <value>17</value>
       </interrupt>
@@ -3773,27 +3773,27 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>DMA2</name>
       <baseAddress>0x40020400</baseAddress>
       <interrupt>
-        <name>DMA2_Channel1_IRQ</name>
+        <name>DMA2_Channel1</name>
         <description>DMA2 Channel1 global interrupt</description>
         <value>56</value>
       </interrupt>
       <interrupt>
-        <name>DMA2_Channel2_IRQ</name>
+        <name>DMA2_Channel2</name>
         <description>DMA2 Channel2 global interrupt</description>
         <value>57</value>
       </interrupt>
       <interrupt>
-        <name>DMA2_Channel3_IRQ</name>
+        <name>DMA2_Channel3</name>
         <description>DMA2 Channel3 global interrupt</description>
         <value>58</value>
       </interrupt>
       <interrupt>
-        <name>DMA2_Channel4_IRQ</name>
+        <name>DMA2_Channel4</name>
         <description>DMA2 Channel4 global interrupt</description>
         <value>59</value>
       </interrupt>
       <interrupt>
-        <name>DMA2_Channel5_IRQ</name>
+        <name>DMA2_Channel5</name>
         <description>DMA2 Channel5 global interrupt</description>
         <value>60</value>
       </interrupt>
@@ -3809,12 +3809,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>RTC_IRQ</name>
+        <name>RTC</name>
         <description>RTC global interrupt</description>
         <value>3</value>
       </interrupt>
       <interrupt>
-        <name>RTCAlarm_IRQ</name>
+        <name>RTCAlarm</name>
         <description>RTC Alarms through EXTI line
         interrupt</description>
         <value>41</value>
@@ -4971,7 +4971,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>WWDG_IRQ</name>
+        <name>WWDG</name>
         <description>Window Watchdog interrupt</description>
         <value>0</value>
       </interrupt>
@@ -5059,23 +5059,23 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM1_BRK_IRQ</name>
+        <name>TIM1_BRK</name>
         <description>TIM1 Break interrupt</description>
         <value>24</value>
       </interrupt>
       <interrupt>
-        <name>TIM1_UP_IRQ</name>
+        <name>TIM1_UP</name>
         <description>TIM1 Update interrupt</description>
         <value>25</value>
       </interrupt>
       <interrupt>
-        <name>TIM1_TRG_COM_IRQ</name>
+        <name>TIM1_TRG_COM</name>
         <description>TIM1 Trigger and Commutation
         interrupts</description>
         <value>26</value>
       </interrupt>
       <interrupt>
-        <name>TIM1_CC_IRQ</name>
+        <name>TIM1_CC</name>
         <description>TIM1 Capture Compare interrupt</description>
         <value>27</value>
       </interrupt>
@@ -6166,7 +6166,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM2_IRQ</name>
+        <name>TIM2</name>
         <description>TIM2 global interrupt</description>
         <value>28</value>
       </interrupt>
@@ -7037,7 +7037,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM3</name>
       <baseAddress>0x40000400</baseAddress>
       <interrupt>
-        <name>TIM3_IRQ</name>
+        <name>TIM3</name>
         <description>TIM3 global interrupt</description>
         <value>29</value>
       </interrupt>
@@ -7046,7 +7046,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM4</name>
       <baseAddress>0x40000800</baseAddress>
       <interrupt>
-        <name>TIM4_IRQ</name>
+        <name>TIM4</name>
         <description>TIM4 global interrupt</description>
         <value>30</value>
       </interrupt>
@@ -7055,7 +7055,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM5</name>
       <baseAddress>0x40000C00</baseAddress>
       <interrupt>
-        <name>TIM5_IRQ</name>
+        <name>TIM5</name>
         <description>TIM5 global interrupt</description>
         <value>50</value>
       </interrupt>
@@ -7071,7 +7071,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM6_IRQ</name>
+        <name>TIM6</name>
         <description>TIM6 global interrupt</description>
         <value>54</value>
       </interrupt>
@@ -7248,7 +7248,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>TIM7</name>
       <baseAddress>0x40001400</baseAddress>
       <interrupt>
-        <name>TIM7_IRQ</name>
+        <name>TIM7</name>
         <description>TIM7 global interrupt</description>
         <value>55</value>
       </interrupt>
@@ -7264,12 +7264,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>I2C1_EV_IRQ</name>
+        <name>I2C1_EV</name>
         <description>I2C1 event interrupt</description>
         <value>31</value>
       </interrupt>
       <interrupt>
-        <name>I2C1_ER_IRQ</name>
+        <name>I2C1_ER</name>
         <description>I2C1 error interrupt</description>
         <value>32</value>
       </interrupt>
@@ -7726,12 +7726,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>I2C2</name>
       <baseAddress>0x40005800</baseAddress>
       <interrupt>
-        <name>I2C2_EV_IRQ</name>
+        <name>I2C2_EV</name>
         <description>I2C2 event interrupt</description>
         <value>33</value>
       </interrupt>
       <interrupt>
-        <name>I2C2_ER_IRQ</name>
+        <name>I2C2_ER</name>
         <description>I2C2 error interrupt</description>
         <value>34</value>
       </interrupt>
@@ -7747,7 +7747,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>SPI1_IRQ</name>
+        <name>SPI1</name>
         <description>SPI1 global interrupt</description>
         <value>35</value>
       </interrupt>
@@ -8131,7 +8131,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>SPI2</name>
       <baseAddress>0x40003800</baseAddress>
       <interrupt>
-        <name>SPI2_IRQ</name>
+        <name>SPI2</name>
         <description>SPI2 global interrupt</description>
         <value>36</value>
       </interrupt>
@@ -8140,7 +8140,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>SPI3</name>
       <baseAddress>0x40003C00</baseAddress>
       <interrupt>
-        <name>SPI3_IRQ</name>
+        <name>SPI3</name>
         <description>SPI3 global interrupt</description>
         <value>51</value>
       </interrupt>
@@ -8157,7 +8157,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>USART1_IRQ</name>
+        <name>USART1</name>
         <description>USART1 global interrupt</description>
         <value>37</value>
       </interrupt>
@@ -8553,7 +8553,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>USART2</name>
       <baseAddress>0x40004400</baseAddress>
       <interrupt>
-        <name>USART2_IRQ</name>
+        <name>USART2</name>
         <description>USART2 global interrupt</description>
         <value>38</value>
       </interrupt>
@@ -8562,7 +8562,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>USART3</name>
       <baseAddress>0x40004800</baseAddress>
       <interrupt>
-        <name>USART3_IRQ</name>
+        <name>USART3</name>
         <description>USART3 global interrupt</description>
         <value>39</value>
       </interrupt>
@@ -8578,7 +8578,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>ADC_IRQ</name>
+        <name>ADC</name>
         <description>ADC1 global interrupt</description>
         <value>18</value>
       </interrupt>
@@ -9392,7 +9392,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>ADC_IRQ</name>
+        <name>ADC</name>
         <description>ADC2 global interrupts</description>
         <value>18</value>
       </interrupt>
@@ -10194,22 +10194,22 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>CAN2_TX_IRQ</name>
+        <name>CAN2_TX</name>
         <description>CAN2 TX interrupts</description>
         <value>63</value>
       </interrupt>
       <interrupt>
-        <name>CAN2_RX0_IRQ</name>
+        <name>CAN2_RX0</name>
         <description>CAN2 RX0 interrupts</description>
         <value>64</value>
       </interrupt>
       <interrupt>
-        <name>CAN2_RX1_IRQ</name>
+        <name>CAN2_RX1</name>
         <description>CAN2 RX1 interrupts</description>
         <value>65</value>
       </interrupt>
       <interrupt>
-        <name>CAN2_SCE_IRQ</name>
+        <name>CAN2_SCE</name>
         <description>CAN2 SCE interrupt</description>
         <value>66</value>
       </interrupt>
@@ -23628,22 +23628,22 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <name>CAN1</name>
       <baseAddress>0x40006400</baseAddress>
       <interrupt>
-        <name>CAN1_TX_IRQ</name>
+        <name>CAN1_TX</name>
         <description>CAN1 TX interrupts</description>
         <value>19</value>
       </interrupt>
       <interrupt>
-        <name>CAN1_RX0_IRQ</name>
+        <name>CAN1_RX0</name>
         <description>CAN1 RX0 interrupts</description>
         <value>20</value>
       </interrupt>
       <interrupt>
-        <name>CAN1_RX1_IRQ</name>
+        <name>CAN1_RX1</name>
         <description>CAN1 RX1 interrupts</description>
         <value>21</value>
       </interrupt>
       <interrupt>
-        <name>CAN1_SCE_IRQ</name>
+        <name>CAN1_SCE</name>
         <description>CAN1 SCE interrupt</description>
         <value>22</value>
       </interrupt>
@@ -23659,7 +23659,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>OTG_FS_IRQ</name>
+        <name>OTG_FS</name>
         <description>USB On The Go FS global
         interrupt</description>
         <value>67</value>
@@ -29350,7 +29350,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>UART4_IRQ</name>
+        <name>UART4</name>
         <description>UART4 global interrupt</description>
         <value>52</value>
       </interrupt>
@@ -29669,7 +29669,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>UART5_IRQ</name>
+        <name>UART5</name>
         <description>UART5 global interrupt</description>
         <value>53</value>
       </interrupt>
@@ -30041,7 +30041,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>FLASH_IRQ</name>
+        <name>FLASH</name>
         <description>Flash global interrupt</description>
         <value>4</value>
       </interrupt>
@@ -30329,12 +30329,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>RCC_IRQ</name>
+        <name>RCC</name>
         <description>RCC global interrupt</description>
         <value>5</value>
       </interrupt>
       <interrupt>
-        <name>RCC_IRQ</name>
+        <name>RCC</name>
         <description>RCC global interrupt</description>
         <value>5</value>
       </interrupt>

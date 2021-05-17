@@ -13,7 +13,7 @@
   "debug": {
     "jlink_device": "STM32WB55xx",
     "openocd_target": "stm32wbx.cfg",
-    "svd_path": "STM32WBxx.svd"
+    "svd_path": "STM32WB55_CM4.svd"
   },
   "frameworks": [
     "arduino"
