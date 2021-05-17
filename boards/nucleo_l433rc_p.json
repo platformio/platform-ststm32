@@ -6,7 +6,7 @@
     "f_cpu": "80000000L",
     "mcu": "stm32l433rc",
     "product_line": "STM32L433xx",
-    "variant": "NUCLEO_L433RC_P"
+    "variant": "STM32L4xx/L433RCTxP"
   },
   "debug": {
     "default_tools": [

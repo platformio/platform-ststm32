@@ -4,9 +4,9 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F401xE -DSTM32F4xx -DARDUINO_GENERIC_F401RE",
     "f_cpu": "84000000L",
-    "mcu": "stm32f401re",
+    "mcu": "stm32f401ret6",
     "product_line": "STM32F401xE",
-    "variant": "Generic_F401Rx"
+    "variant": "STM32F4xx/F401R(B-C-D-E)T"
   },
   "debug": {
     "jlink_device": "STM32F401RE",

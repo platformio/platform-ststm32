@@ -6,7 +6,7 @@
     "f_cpu": "72000000L",
     "mcu": "stm32f303vct6",
     "product_line": "STM32F303xC",
-    "variant": "stm32f303xc",
+    "variant": "STM32F3xx/F303V(B-C)T",
     "zephyr": {
        "variant": "stm32f3_disco"
     }
@@ -24,6 +24,7 @@
     "svd_path": "STM32F30x.svd"
   },
   "frameworks": [
+    "arduino",
     "mbed",
     "cmsis",
     "spl",

@@ -9,7 +9,7 @@
     },
     "mcu": "stm32g031j6",
     "product_line": "STM32G031xx",
-    "variant": "DISCO_G0316"
+    "variant": "STM32G0xx/G031J(4-6)M_G041J6M"
   },
   "debug": {
     "jlink_device": "STM32G031J6",

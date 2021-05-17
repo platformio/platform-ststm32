@@ -1,11 +1,12 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F411xE",
     "f_cpu": "100000000L",
     "mcu": "stm32f411ret6",
     "product_line": "STM32F411xE",
-    "variant": "NUCLEO_F4x1RE"
+    "variant": "STM32F4xx/F411R(C-E)T"
   },
   "debug": {
     "default_tools": [

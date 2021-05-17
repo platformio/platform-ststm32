@@ -1,0 +1,44 @@
+{
+  "build": {
+    "arduino": {
+      "variant_h": "variant_ELEKTOR_F072Cx.h"
+    },
+    "core": "stm32",
+    "cpu": "cortex-m0",
+    "extra_flags": "-DSTM32F072xB",
+    "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
+    "mcu": "stm32f072c8t6",
+    "variant": "STM32F0xx/F072C8(T-U)_F072CB(T-U-Y)",
+    "product_line": "STM32F072xB"
+  },
+  "debug": {
+    "jlink_device": "STM32F072C8",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F072x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "Elektor LoRa Node Core F072C8 (128 kB)",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 131072,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "cmsis-dap",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.elektormagazine.com/labs/lorawan-node-experimental-platform",
+  "vendor": "Elektor"
+}

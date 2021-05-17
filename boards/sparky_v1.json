@@ -6,7 +6,7 @@
     "f_cpu": "72000000L",
     "mcu": "stm32f303cct6",
     "product_line": "STM32F303xC",
-    "variant": "SPARKY_F303CC"
+    "variant": "STM32F3xx/F303C(B-C)T"
   },
   "connectivity": [
     "can"

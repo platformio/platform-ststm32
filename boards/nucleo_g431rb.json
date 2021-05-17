@@ -6,7 +6,7 @@
     "f_cpu": "170000000L",
     "mcu": "stm32g431rbt6",
     "product_line": "STM32G431xx",
-    "variant": "NUCLEO_G431RB"
+    "variant": "STM32G4xx/G431R(6-8-B)(I-T)_G441RB(I-T)"
   },
   "connectivity": [
     "can"
@@ -18,7 +18,7 @@
     "jlink_device": "STM32G431RB",
     "onboard_tools": [
       "stlink"
-    ],    
+    ],
     "openocd_target": "stm32g4x",
     "svd_path": "STM32G431xx.svd"
   },

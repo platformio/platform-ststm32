@@ -1,0 +1,46 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m33",
+    "extra_flags": "-DSTM32L552xx",
+    "f_cpu": "80000000L",
+    "mcu": "stm32l552zet6",
+    "product_line": "STM32L552xx",
+    "variant": "STM32L5xx/L552Z(C-E)TxQ_L562ZETxQ"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32L552ZE",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_l5.cfg",
+    "openocd_target": "stm32l5x",
+    "svd_path": "STM32L552.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "ST Nucleo L552ZE-Q",
+  "upload": {
+    "maximum_ram_size": 196608,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-l552ze-q.html",
+  "vendor": "ST"
+}

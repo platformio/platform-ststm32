@@ -5,7 +5,7 @@
     "f_cpu": "24000000L",
     "mcu": "stm32f100rbt6",
     "product_line": "STM32F100xB",
-    "variant": "DISCO_F100RB"
+    "variant": "STM32F1xx/F100R(8-B)T"
   },
   "debug": {
     "default_tools": [

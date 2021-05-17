@@ -4,9 +4,9 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F410Rx -DSTM32F4xx",
     "f_cpu": "100000000L",
-    "mcu": "stm32f410r8",
+    "mcu": "stm32f410r8t6",
     "product_line": "STM32F410Rx",
-    "variant": "Generic_F410Rx"
+    "variant": "STM32F4xx/F410R(8-B)(I-T)"
   },
   "debug": {
     "jlink_device": "STM32F410R8",

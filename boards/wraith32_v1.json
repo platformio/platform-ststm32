@@ -3,14 +3,17 @@
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32F051x8",
     "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32f051k6",
     "product_line": "STM32F051x8",
-    "variant": "WRAITH32_F051K6"
+    "variant": "STM32F0xx/F051K(6-8)U"
   },
   "debug": {
     "jlink_device": "STM32F051R8",
     "openocd_target": "stm32f0x",
-    "svd_path": "STM32F0xx.svd"
+    "svd_path": "STM32F0x1.svd"
   },
   "frameworks": [
     "arduino",

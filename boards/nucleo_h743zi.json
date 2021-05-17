@@ -6,7 +6,7 @@
     "f_cpu": "400000000L",
     "mcu": "stm32h743zit6",
     "product_line": "STM32H743xx",
-    "variant": "NUCLEO_H743ZI"
+    "variant": "STM32H7xx/H742Z(G-I)T_H743Z(G-I)T_H747A(G-I)I_H747I(G-I)T_H750ZBT_H753ZIT_H757AII_H757IIT"
   },
   "connectivity": [
     "can",

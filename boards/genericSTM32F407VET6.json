@@ -16,7 +16,7 @@
     ],
     "mcu": "stm32f407vet6",
     "product_line": "STM32F407xx",
-    "variant": "Generic_F4x7Vx"
+    "variant": "STM32F4xx/F407V(E-G)T_F417V(E-G)T"
   },
   "debug": {
     "default_tools": [

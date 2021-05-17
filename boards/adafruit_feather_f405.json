@@ -4,9 +4,12 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F405xx",
     "f_cpu": "168000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32f405rgt6",
     "product_line": "STM32F405xx",
-    "variant": "FEATHER_F405",
+    "variant": "STM32F4xx/F405RGT_F415RGT",
     "zephyr": {
       "variant": "adafruit_feather_stm32f405"
     }

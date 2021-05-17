@@ -1,15 +1,18 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_BLACK_F407VX.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx",
     "f_cpu": "168000000L",
     "framework_extra_flags": {
-      "arduino": "-DARDUINO_BLACK_F407VE"
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
     },
     "mcu": "stm32f407vet6",
     "product_line": "STM32F407xx",
-    "variant": "BLACK_F407XX"
+    "variant": "STM32F4xx/F407V(E-G)T_F417V(E-G)T"
   },
   "connectivity": [
     "can"

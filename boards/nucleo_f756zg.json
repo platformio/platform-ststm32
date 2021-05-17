@@ -1,12 +1,15 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_NUCLEO_F7x6ZG.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F756xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f756zg",
     "product_line": "STM32F756xx",
-    "variant": "NUCLEO_F7x6ZG"
+    "variant": "STM32F7xx/F745Z(E-G)T_F746Z(E-G)(T-Y)_F750Z8T_F756ZG(T-Y)"
   },
   "connectivity": [
     "can",

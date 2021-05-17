@@ -4,9 +4,12 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F207xx",
     "f_cpu": "120000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32f207zgt6",
     "product_line": "STM32F207xx",
-    "variant": "NUCLEO_F207ZG"
+    "variant": "STM32F2xx/F207Z(C-E-F-G)T_F217Z(E-G)T"
   },
   "connectivity": [
     "can",

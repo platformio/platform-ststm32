@@ -1,12 +1,18 @@
 {
   "build": {
+    "arduino": {
+      "ldscript": "DAISY_SEED.ld"
+    },
     "core": "stm32",
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32H7xx -DSTM32H750xx",
     "f_cpu": "400000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32h750ibk6",
     "product_line": "STM32H750xx",
-    "variant": "DAISY_SEED"
+    "variant": "STM32H7xx/H743I(G-I)(K-T)_H750IBK_H753II(K-T)"
   },
   "connectivity": [
     "can"

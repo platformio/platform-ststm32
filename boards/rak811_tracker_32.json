@@ -1,11 +1,17 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_RAK811_TRACKER.h"
+    },
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32L151xB",
     "f_cpu": "32000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32l151rbt6",
     "product_line": "STM32L151xB",
-    "variant": "RAK811_TRACKER"
+    "variant": "STM32L1xx/L100C6Ux(A)_L151C(6-8-B)(T-U)x(A)_L152C(6-8-B)(T-U)x(A)"
   },
   "debug": {
     "jlink_device": "STM32L151CC",

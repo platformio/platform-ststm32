@@ -4,9 +4,9 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F446xx -DSTM32F4xx",
     "f_cpu": "180000000L",
-    "mcu": "stm32f446re",
+    "mcu": "stm32f446ret6",
     "product_line": "STM32F446xx",
-    "variant": "Generic_F446Rx"
+    "variant": "STM32F4xx/F446R(C-E)T"
   },
   "debug": {
     "jlink_device": "STM32F446RE",

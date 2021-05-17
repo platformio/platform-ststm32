@@ -6,7 +6,7 @@
     "f_cpu": "170000000L",
     "mcu": "stm32g474ret6",
     "product_line": "STM32G474xx",
-    "variant": "NUCLEO_G474RE"
+    "variant": "STM32G4xx/G473R(B-C-E)T_G474R(B-C-E)T_G483RET_G484RET"
   },
   "connectivity": [
     "can"

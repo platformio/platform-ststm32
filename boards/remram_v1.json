@@ -3,9 +3,12 @@
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F765xx",
     "f_cpu": "216000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32f765vit6",
     "product_line": "STM32F765xx",
-    "variant": "REMRAM_V1"
+    "variant": "STM32F7xx/F765V(G-I)(H-T)_F767V(G-I)(H-T)_F777VI(H-T)"
   },
   "connectivity": [
     "can"

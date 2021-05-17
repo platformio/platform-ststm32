@@ -1,11 +1,12 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F767xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f767zit6",
     "product_line": "STM32F767xx",
-    "variant": "NUCLEO_F767ZI"
+    "variant": "STM32F7xx/F765Z(G-I)T_F767Z(G-I)T_F777ZIT"
   },
   "connectivity": [
     "can",

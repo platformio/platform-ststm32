@@ -5,7 +5,7 @@
     "f_cpu": "48000000L",
     "mcu": "stm32f072rbt6",
     "product_line": "STM32F072xB",
-    "variant": "DISCO_F072RB",
+    "variant": "STM32F0xx/F072R8T_F072RB(H-I-T)",
     "zephyr": {
        "variant": "stm32f072b_disco"
     }

@@ -1,0 +1,49 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32L4xx -DSTM32L4S5xx",
+    "f_cpu": "80000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
+    "mcu": "stm32l4s5vit6",
+    "product_line": "STM32L4S5xx",
+    "variant": "STM32L4xx/L4R5V(G-I)T_L4R7VIT_L4S5VIT_L4S7VIT"
+  },
+  "connectivity": [
+    "bluetooth",
+    "can",
+    "wifi"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32L4S5VI",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32l4x",
+    "svd_path": "STM32L4S5.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "ST STM32L4+ Discovery kit IoT node",
+  "upload": {
+    "maximum_ram_size": 655360,
+    "maximum_size": 2097152,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html",
+  "vendor": "ST"
+}

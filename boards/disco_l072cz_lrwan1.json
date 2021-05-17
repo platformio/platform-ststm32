@@ -4,11 +4,11 @@
     "extra_flags": "-DSTM32L072xx",
     "f_cpu": "32000000L",
     "framework_extra_flags": {
-      "arduino": "-D__CORTEX_SC=0"
+      "arduino": "-D__CORTEX_SC=0 -DCUSTOM_PERIPHERAL_PINS"
     },
     "mcu": "stm32l072cz",
     "product_line": "STM32L072xx",
-    "variant": "DISCO_L072CZ_LRWAN1",
+    "variant": "STM32L0xx/L072CBY_L072CZ(E-Y)_L073CZY_L082CZY",
     "zephyr": {
        "variant": "b_l072z_lrwan1"
     }

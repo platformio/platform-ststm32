@@ -16,7 +16,7 @@
     ],
     "openocd_board": "st_nucleo_f0",
     "openocd_target": "stm32f0x",
-    "svd_path": "STM32F0xx.svd"
+    "svd_path": "STM32F0x0.svd"
   },
   "frameworks": [
     "cmsis",

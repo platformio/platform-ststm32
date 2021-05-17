@@ -5,7 +5,7 @@
     "f_cpu": "80000000L",
     "mcu": "stm32l412kbu6",
     "product_line": "STM32L412xx",
-    "variant": "NUCLEO_L412KB"
+    "variant": "STM32L4xx/L412K(8-B)(T-U)_L422KB(T-U)"
   },
   "debug": {
     "default_tools": [
