@@ -1,12 +1,17 @@
+disco_b_g431b_esc1
+
 {
   "build": {
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32G4xx -DSTM32G431xx -DSTM32G431CBU",
+    "extra_flags": "-DSTM32G4xx -DSTM32G431xx",
     "f_cpu": "170000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32g431cbu6",
     "product_line": "STM32G431xx",
-    "variant": "DISCO_B_G431B_ESC1"
+    "variant": "STM32G4xx/G431C(6-8-B)U_G441CBU"
   },
   "connectivity": [
     "can"
@@ -19,24 +24,24 @@
     "onboard_tools": [
       "stlink"
     ],
-    "openocd_board": "stm32g4discovery",
+    "openocd_target": "stm32g4x",
     "svd_path": "STM32G431xx.svd"
   },
   "frameworks": [
     "arduino",
     "cmsis",
-    "libopencm3",
-    "zephyr"
+    "stm32cube"
   ],
-  "name": "B-G431B-ESC1 Discovery",
+  "name": "ST B-G431B-ESC1 Discovery",
   "upload": {
     "maximum_ram_size": 32768,
     "maximum_size": 131072,
-    "protocol": "mbed",
+    "protocol": "stlink",
     "protocols": [
-      "jlink",
-      "blackmagic",
       "stlink",
+      "jlink",
+      "cmsis-dap",
+      "blackmagic",
       "mbed"
     ]
   },
