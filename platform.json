@@ -216,7 +216,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.0.0"
+      "version": "~2.1.0"
     },
     "framework-stm32cubef0": {
       "type": "framework",
