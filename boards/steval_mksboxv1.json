@@ -5,7 +5,7 @@
     "f_cpu": "120000000L",
     "mcu": "stm32l4r9zi",
     "product_line": "STM32L4R9xx",
-    "variant": "STEVAL_MKSBOX1V1"
+    "variant": "STM32L4xx/L4R9Z(G-I)J_L4S9ZIJ"
   },
   "connectivity": [
     "bluetooth",

@@ -26,7 +26,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM1_IRQ</name>
+        <name>TIM1</name>
         <description>Timer 1 Interrupt</description>
         <value>0</value>
       </interrupt>
@@ -797,7 +797,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TIM2_IRQ</name>
+        <name>TIM2</name>
         <description>Timer 2 Interrupt</description>
         <value>1</value>
       </interrupt>
@@ -1593,7 +1593,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>SC1_IRQ</name>
+        <name>SC1</name>
         <description>Serial Controller 1 Interrupt</description>
         <value>5</value>
       </interrupt>
@@ -1916,7 +1916,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>SC2_IRQ</name>
+        <name>SC2</name>
         <description>Serial Controller 2 Interrupt</description>
         <value>6</value>
       </interrupt>
@@ -2240,7 +2240,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>ADC_IRQ</name>
+        <name>ADC</name>
         <description>ADC Interrupt</description>
         <value>11</value>
       </interrupt>
@@ -2543,22 +2543,22 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>EXTIA_IRQ</name>
+        <name>EXTIA</name>
         <description>EXTI port A interrupt</description>
         <value>12</value>
       </interrupt>
       <interrupt>
-        <name>EXTIB_IRQ</name>
+        <name>EXTIB</name>
         <description>EXTI port B interrupt</description>
         <value>13</value>
       </interrupt>
       <interrupt>
-        <name>EXTIC_IRQ</name>
+        <name>EXTIC</name>
         <description>EXTI port C interrupt</description>
         <value>14</value>
       </interrupt>
       <interrupt>
-        <name>EXTID_IRQ</name>
+        <name>EXTID</name>
         <description>EXTI port D interrupt</description>
         <value>15</value>
       </interrupt>
@@ -4408,7 +4408,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>SLPTIM_IRQ</name>
+        <name>SLPTIM</name>
         <description>Sleep Timer Interrupt</description>
         <value>4</value>
       </interrupt>
@@ -4853,8 +4853,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>IRQD</name>
-              <description>IRQD</description>
+              <name>ARQD</name>
+              <description>ARQD</description>
               <bitOffset>3</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
@@ -7070,7 +7070,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>MAC_TIM_IRQ</name>
+        <name>MAC_TIM</name>
         <description>MAC Timer Interrupt</description>
         <value>8</value>
       </interrupt>

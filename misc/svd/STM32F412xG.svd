@@ -3,6 +3,9 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
   <name>STM32F412xG</name>
+
+<!-- modified by Keil 14.06.2018 -->
+
   <version>1.0</version>
   <description>STM32F412xG</description>
   <!--Bus Interface Properties-->
@@ -3551,6 +3554,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>SPI1RST</name>
               <description>SPI 1 reset</description>
               <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>SPI4RST</name>
+              <description>SPI4 reset</description>
+              <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>

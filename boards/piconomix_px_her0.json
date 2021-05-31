@@ -4,11 +4,11 @@
     "extra_flags": "-DSTM32L072xx",
     "f_cpu": "32000000L",
     "framework_extra_flags": {
-      "arduino": "-D__CORTEX_SC=0"
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS -D__CORTEX_SC=0"
     },
     "mcu": "stm32l072rb",
     "product_line": "STM32L072xx",
-    "variant": "PX_HER0"
+    "variant": "STM32L0xx/L072R(B-Z)T_L073R(B-Z)T_L083R(B-Z)T"
   },
   "debug": {
     "jlink_device": "STM32L072RB",

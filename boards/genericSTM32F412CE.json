@@ -4,9 +4,9 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F412Cx -DSTM32F4xx",
     "f_cpu": "100000000L",
-    "mcu": "stm32f412ce",
+    "mcu": "stm32f412ceu6",
     "product_line": "STM32F412Cx",
-    "variant": "Generic_F412Cx"
+    "variant": "STM32F4xx/F412C(E-G)U"
   },
   "debug": {
     "jlink_device": "STM32F412CE",

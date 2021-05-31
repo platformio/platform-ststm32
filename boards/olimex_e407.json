@@ -4,12 +4,9 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx",
     "f_cpu": "168000000L",
-    "framework_extra_flags": {
-      "arduino": "-DARDUINO_BLACK_F407ZG"
-    },
     "mcu": "stm32f407zgt6",
     "product_line": "STM32F407xx",
-    "variant": "BLACK_F407XX",
+    "variant": "STM32F4xx/F407Z(E-G)T_F417Z(E-G)T",
     "zephyr": {
        "variant": "olimex_stm32_e407"
     }

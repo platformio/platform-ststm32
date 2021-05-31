@@ -5,7 +5,7 @@
     "f_cpu": "32000000L",
     "mcu": "stm32l152ret6",
     "product_line": "STM32L152xE",
-    "variant": "NUCLEO_L152RE"
+    "variant": "STM32L1xx/L151RET_L152RET_L162RET"
   },
   "debug": {
     "default_tools": [

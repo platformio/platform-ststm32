@@ -1,11 +1,12 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F302x8",
     "f_cpu": "72000000L",
     "mcu": "stm32f302r8t6",
     "product_line": "STM32F302x8",
-    "variant": "NUCLEO_F302R8"
+    "variant": "STM32F3xx/F302R(6-8)T"
   },
   "connectivity": [
     "can"

@@ -1,11 +1,12 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L476xx",
     "f_cpu": "80000000L",
     "mcu": "stm32l476rgt6",
     "product_line": "STM32L476xx",
-    "variant": "NUCLEO_L476RG"
+    "variant": "STM32L4xx/L475R(C-E-G)T_L476R(C-E-G)T_L486RGT"
   },
   "connectivity": [
     "can"
@@ -20,7 +21,7 @@
     ],
     "openocd_board": "st_nucleo_l4",
     "openocd_target": "stm32l4x",
-    "svd_path": "STM32L4x6.svd"
+    "svd_path": "STM32L476.svd"
   },
   "frameworks": [
     "arduino",

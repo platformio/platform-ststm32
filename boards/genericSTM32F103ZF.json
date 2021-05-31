@@ -4,9 +4,9 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F103xG -DSTM32F1",
     "f_cpu": "72000000L",
-    "mcu": "stm32f103zf",
+    "mcu": "stm32f103zft6",
     "product_line": "STM32F103xG",
-    "variant": "Generic_F103Zx"
+    "variant": "STM32F1xx/F103Z(F-G)(H-T)"
   },
   "debug": {
     "jlink_device": "STM32F103ZF",

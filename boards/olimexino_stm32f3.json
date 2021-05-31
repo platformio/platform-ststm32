@@ -1,0 +1,38 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F303xC",
+    "f_cpu": "72000000L",
+    "mcu": "stm32f303rct6tr",
+    "variant": "STM32F3xx/F303R(B-C)T",
+    "product_line": "STM32F303xC"
+  },
+  "debug": {
+    "jlink_device": "STM32F303RC",
+    "openocd_target": "stm32f3x",
+    "svd_path": "STM32F303x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "Olimex OLIMEXINO-STM32F3",
+  "upload": {
+    "maximum_ram_size": 40960,
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "blackmagic",
+      "cmsis-dap",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.olimex.com/Products/Duino/STM32/OLIMEXINO-STM32F3/open-source-hardware",
+  "vendor": "Olimex"
+}

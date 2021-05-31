@@ -1,5 +1,9 @@
 {
   "build": {
+    "arduino": {
+      "ldscript": "MALYANMx00_F070CB.ld",
+      "variant_h": "variant_MALYANMx00_F070CB.h"
+    },
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32F070xB",
     "f_cpu": "48000000L",
@@ -8,12 +12,12 @@
     },
     "mcu": "stm32f070cbt6",
     "product_line": "STM32F070xB",
-    "variant": "MALYANMx00_F070CB"
+    "variant": "STM32F0xx/F070CBT"
   },
   "debug": {
     "jlink_device": "STM32F070CB",
     "openocd_target": "stm32f0x",
-    "svd_path": "STM32F0xx.svd"
+    "svd_path": "STM32F0x0.svd"
   },
   "frameworks": [
     "arduino",

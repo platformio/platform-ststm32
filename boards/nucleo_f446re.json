@@ -1,11 +1,12 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F446xx",
     "f_cpu": "180000000L",
     "mcu": "stm32f446ret6",
     "product_line": "STM32F446xx",
-    "variant": "NUCLEO_F446RE"
+    "variant": "STM32F4xx/F446R(C-E)T"
   },
   "connectivity": [
     "can"

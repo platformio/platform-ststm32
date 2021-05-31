@@ -54,9 +54,6 @@ if "BOARD" in env:
         CCFLAGS=[
             "-mcpu=%s" % env.BoardConfig().get("build.cpu")
         ],
-        CPPDEFINES=[
-            env.BoardConfig().get("build.variant", "").upper()
-        ],
         LINKFLAGS=[
             "-mcpu=%s" % env.BoardConfig().get("build.cpu")
         ]

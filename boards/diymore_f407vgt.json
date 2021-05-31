@@ -9,7 +9,7 @@
     },
     "mcu": "stm32f407vgt6",
     "product_line": "STM32F407xx",
-    "variant": "DIYMORE_F407VGT"
+    "variant": "STM32F4xx/F407V(E-G)T_F417V(E-G)T"
   },
   "debug": {
     "jlink_device": "STM32F407VG",

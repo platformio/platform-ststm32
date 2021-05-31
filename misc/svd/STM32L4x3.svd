@@ -3,16 +3,16 @@
 xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
   <name>STM32L4x3</name>
-  <version>1.3</version>
+  <version>1.5</version>
   <description>STM32L4x3</description>
   <!-- details about the cpu embedded in the device -->
   <cpu>
     <name>CM4</name>
-    <revision>r1p0</revision>
+    <revision>r0p1</revision>
     <endian>little</endian>
-    <mpuPresent>false</mpuPresent>
-    <fpuPresent>false</fpuPresent>
-    <nvicPrioBits>3</nvicPrioBits>
+    <mpuPresent>true</mpuPresent>
+    <fpuPresent>true</fpuPresent>
+    <nvicPrioBits>4</nvicPrioBits>
     <vendorSystickConfig>false</vendorSystickConfig>
   </cpu>  
   <!--Bus Interface Properties-->
@@ -7149,14 +7149,14 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0xFF00FF00</resetValue>
           <fields>
             <field>
-              <name>WRP1B_STRT</name>
+              <name>WRP1B_END</name>
               <description>Bank 1 WRP second area B end
               offset</description>
               <bitOffset>16</bitOffset>
               <bitWidth>8</bitWidth>
             </field>
             <field>
-              <name>WRP1B_END</name>
+              <name>WRP1B_STRT</name>
               <description>Bank 1 WRP second area B start
               offset</description>
               <bitOffset>0</bitOffset>
@@ -12412,8 +12412,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         </register>
       </registers>
     </peripheral>
+	
+	
     <peripheral>
-      <name>ADC</name>
+      <name>ADC1</name>
       <description>Analog-to-Digital Converter</description>
       <groupName>ADC</groupName>
       <baseAddress>0x50040000</baseAddress>
@@ -12423,7 +12425,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>ADC1_2</name>
+        <name>ADC1</name>
         <description>ADC1 and ADC2 global interrupt</description>
         <value>18</value>
       </interrupt>
@@ -12663,6 +12665,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
+              <name>JQDIS</name>
+              <description>JQDIS</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>		  	  
+            <field>
               <name>AWDCH1CH</name>
               <description>AWDCH1CH</description>
               <bitOffset>26</bitOffset>
@@ -12716,12 +12724,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitOffset>16</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
-            <field>
-              <name>AUTOFF</name>
-              <description>AUTOFF</description>
-              <bitOffset>15</bitOffset>
-              <bitWidth>1</bitWidth>
-            </field>
+  
             <field>
               <name>AUTDLY</name>
               <description>AUTDLY</description>
@@ -12888,6 +12891,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitOffset>3</bitOffset>
               <bitWidth>3</bitWidth>
             </field>
+            <field>
+              <name>SMP0</name>
+              <description>SMP0</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>			
           </fields>
         </register>
         <register>
@@ -13058,8 +13067,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>5</bitWidth>
             </field>
             <field>
-              <name>L3</name>
-              <description>L3</description>
+              <name>L</name>
+              <description>L</description>
               <bitOffset>0</bitOffset>
               <bitWidth>4</bitWidth>
             </field>
@@ -13437,8 +13446,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
             <field>
               <name>AWD2CH</name>
               <description>AWD2CH</description>
-              <bitOffset>1</bitOffset>
-              <bitWidth>18</bitWidth>
+              <bitOffset>0</bitOffset>
+              <bitWidth>19</bitWidth>
             </field>
           </fields>
         </register>
@@ -13455,8 +13464,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
             <field>
               <name>AWD3CH</name>
               <description>AWD3CH</description>
-              <bitOffset>1</bitOffset>
-              <bitWidth>18</bitWidth>
+              <bitOffset>0</bitOffset>
+              <bitWidth>19</bitWidth>
             </field>
           </fields>
         </register>
@@ -13469,6 +13478,15 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <size>0x20</size>
           <resetValue>0x00000000</resetValue>
           <fields>
+            <field>
+              <name>DIFSEL_0</name>
+              <description> Differential mode for channel 0</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+              <access>read-only</access>
+            </field>		  
+		  
+		  
             <field>
               <name>DIFSEL_1_15</name>
               <description>Differential mode for channels 15 to
@@ -13512,6 +13530,289 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         </register>
       </registers>
     </peripheral>
+    <peripheral derivedFrom="ADC1">
+      <name>ADC2</name>
+      <baseAddress>0x50040100</baseAddress>
+    </peripheral>
+    <peripheral derivedFrom="ADC1">
+      <name>ADC3</name>
+      <baseAddress>0x50040200</baseAddress>
+      <interrupt>
+        <name>ADC3</name>
+        <description>ADC3 global Interrupt</description>
+        <value>47</value>
+      </interrupt>
+    </peripheral>
+    <peripheral>
+      <name>ADC123_Common</name>
+      <description>Analog-to-Digital Converter</description>
+      <groupName>ADC</groupName>
+      <baseAddress>0x50040300</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x11</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>CSR</name>
+          <displayName>CSR</displayName>
+          <description>ADC Common status register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ADDRDY_MST</name>
+              <description>ADDRDY_MST</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EOSMP_MST</name>
+              <description>EOSMP_MST</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EOC_MST</name>
+              <description>EOC_MST</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EOS_MST</name>
+              <description>EOS_MST</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OVR_MST</name>
+              <description>OVR_MST</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JEOC_MST</name>
+              <description>JEOC_MST</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JEOS_MST</name>
+              <description>JEOS_MST</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>AWD1_MST</name>
+              <description>AWD1_MST</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>AWD2_MST</name>
+              <description>AWD2_MST</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>AWD3_MST</name>
+              <description>AWD3_MST</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JQOVF_MST</name>
+              <description>JQOVF_MST</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ADRDY_SLV</name>
+              <description>ADRDY_SLV</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EOSMP_SLV</name>
+              <description>EOSMP_SLV</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EOC_SLV</name>
+              <description>End of regular conversion of the slave
+              ADC</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>EOS_SLV</name>
+              <description>End of regular sequence flag of the
+              slave ADC</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>OVR_SLV</name>
+              <description>Overrun flag of the slave
+              ADC</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JEOC_SLV</name>
+              <description>End of injected conversion flag of the
+              slave ADC</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JEOS_SLV</name>
+              <description>End of injected sequence flag of the
+              slave ADC</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>AWD1_SLV</name>
+              <description>Analog watchdog 1 flag of the slave
+              ADC</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>AWD2_SLV</name>
+              <description>Analog watchdog 2 flag of the slave
+              ADC</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>AWD3_SLV</name>
+              <description>Analog watchdog 3 flag of the slave
+              ADC</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>JQOVF_SLV</name>
+              <description>Injected Context Queue Overflow flag of
+              the slave ADC</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CCR</name>
+          <displayName>CCR</displayName>
+          <description>ADC common control register</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>DUAL</name>
+              <description> Dual ADC mode selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>5</bitWidth>
+            </field>
+            <field>
+              <name>DELAY</name>
+              <description>Delay between 2 sampling
+              phases</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>DMACFG</name>
+              <description>DMA configuration (for multi-ADC
+              mode)</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>MDMA</name>
+              <description>Direct memory access mode for multi ADC
+              mode</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>CKMODE</name>
+              <description>ADC clock mode</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+			
+            <field>
+              <name>PRESC</name>
+              <description>ADC prescaler</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>			
+			
+			
+            <field>
+              <name>VREFEN</name>
+              <description>VREFINT enable</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CH17SEL</name>
+              <description>CH17SEL</description>
+              <bitOffset>23</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>CH18SEL</name>
+              <description>CH18SEL</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>CDR</name>
+          <displayName>CDR</displayName>
+          <description>ADC common regular data register for dual
+          and triple modes</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>RDATA_SLV</name>
+              <description>Regular data of the slave
+              ADC</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+            <field>
+              <name>RDATA_MST</name>
+              <description>Regular data of the master
+              ADC</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+	
+	
+	
+	
+	
+	
+	
+	
     <peripheral>
       <name>GPIOA</name>
       <description>General-purpose I/Os</description>
@@ -42646,11 +42947,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
-      <interrupt>
-        <name>FPU</name>
-        <description>USB global interrupt</description>
-        <value>81</value>
-      </interrupt>
+
       <registers>
         <register>
           <name>EP0R</name>
@@ -44032,7 +44329,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>MPU control register</description>
           <addressOffset>0x4</addressOffset>
           <size>0x20</size>
-          <access>read-only</access>
+          <access>read-write</access>
           <resetValue>0X00000000</resetValue>
           <fields>
             <field>
@@ -44633,8 +44930,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>SHCRS</name>
-          <displayName>SHCRS</displayName>
+          <name>SHCSR</name>
+          <displayName>SHCSR</displayName>
           <description>System handler control and state
           register</description>
           <addressOffset>0x24</addressOffset>

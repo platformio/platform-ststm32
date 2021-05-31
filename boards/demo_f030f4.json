@@ -5,7 +5,7 @@
     "f_cpu": "48000000L",
     "mcu": "stm32f030f4p6",
     "product_line": "STM32F030x6",
-    "variant": "DEMO_F030F4"
+    "variant": "STM32F0xx/F030F4P"
   },
   "debug": {
     "jlink_device": "STM32F030F4",

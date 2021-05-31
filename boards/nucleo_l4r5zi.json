@@ -1,11 +1,12 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32L4R5xx",
     "f_cpu": "120000000L",
     "mcu": "stm32l4r5zit6",
     "product_line": "STM32L4R5xx",
-    "variant": "NUCLEO_L4R5ZI"
+    "variant": "STM32L4xx/L4R5Z(G-I)T_L4R7ZIT_L4S5ZIT_L4S7ZIT"
   },
   "connectivity": [
     "can"

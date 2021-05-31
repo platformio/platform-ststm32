@@ -6,7 +6,7 @@
     "f_cpu": "48000000L",
     "mcu": "stm32f031k6t6",
     "product_line": "STM32F031x6",
-    "variant": "NUCLEO_F031K6"
+    "variant": "STM32F0xx/F031K6T"
   },
   "debug": {
     "default_tools": [

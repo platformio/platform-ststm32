@@ -16,7 +16,7 @@
     ],
     "mcu": "stm32f103vet6",
     "product_line": "STM32F103xE",
-    "variant": "Generic_F103Vx"
+    "variant": "STM32F1xx/F103V(C-D-E)(H-T)"
   },
   "debug": {
     "jlink_device": "STM32F103VE",

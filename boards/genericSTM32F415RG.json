@@ -4,9 +4,9 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F415xx -DSTM32F4xx",
     "f_cpu": "168000000L",
-    "mcu": "stm32f415rg",
+    "mcu": "stm32f415rgt6",
     "product_line": "STM32F415xx",
-    "variant": "Generic_F4x5RG"
+    "variant": "STM32F4xx/F405RGT_F415RGT"
   },
   "debug": {
     "jlink_device": "STM32F415RG",

@@ -9,7 +9,7 @@
     },
     "mcu": "stm32g071rbt6",
     "product_line": "STM32G071xx",
-    "variant": "NUCLEO_G071RB"
+    "variant": "STM32G0xx/G071R(6-8)T_G071RB(I-T)_G081RB(I-T)"
   },
   "debug": {
     "default_tools": [

@@ -4,9 +4,12 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F4 -DSTM32F407xx -DSTM32F40_41xxx",
     "f_cpu": "168000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32f407vet6",
     "product_line": "STM32F407xx",
-    "variant": "ARMED_V1"
+    "variant": "STM32F4xx/F407V(E-G)T_F417V(E-G)T"
   },
   "connectivity": [
     "can"

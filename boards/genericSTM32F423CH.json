@@ -4,9 +4,9 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F423xx -DSTM32F4xx",
     "f_cpu": "100000000L",
-    "mcu": "stm32f423ch",
+    "mcu": "stm32f423chu6",
     "product_line": "STM32F423xx",
-    "variant": "Generic_F4x3Cx"
+    "variant": "STM32F4xx/F413C(G-H)U_F423CHU"
   },
   "debug": {
     "jlink_device": "STM32F423CH",

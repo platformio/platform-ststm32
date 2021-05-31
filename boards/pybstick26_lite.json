@@ -4,9 +4,12 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F4xx -DSTM32F401xE",
     "f_cpu": "84000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32f401ceu6",
     "product_line": "STM32F401xE",
-    "variant": "PYBSTICK26_LITE"
+    "variant": "STM32F4xx/F401CC(F-U-Y)_F401C(B-D-E)(U-Y)"
   },
   "connectivity": [
     "can"

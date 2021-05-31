@@ -4,9 +4,12 @@
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32F072xB",
     "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32f072rb",
     "product_line": "STM32F072xB",
-    "variant": "PYBSTICK26_DUINO"
+    "variant": "STM32F0xx/F072R8T_F072RB(H-I-T)"
   },
   "debug": {
     "jlink_device": "STM32F072RB",

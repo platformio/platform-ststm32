@@ -1,11 +1,12 @@
 {
   "build": {
+    "core": "stm32",
     "cpu": "cortex-m0",
     "extra_flags": "-DSTM32F091xC",
     "f_cpu": "48000000L",
     "mcu": "stm32f091rct6",
     "product_line": "STM32F091xC",
-    "variant": "NUCLEO_F091RC"
+    "variant": "STM32F0xx/F091RBT_F091RC(H-T-Y)"
   },
   "connectivity": [
     "can"

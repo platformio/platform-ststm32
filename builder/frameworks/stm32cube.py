@@ -49,18 +49,10 @@ assert all(os.path.isdir(d) for d in (FRAMEWORK_DIR, LDSCRIPTS_DIR))
 
 class CustomLibBuilder(PlatformIOLibBuilder):
 
-    PARSE_SRC_BY_H_NAME = False
-
-    # Max depth of nested includes:
-    # -1 = unlimited
-    # 0 - disabled nesting
-    # >0 - number of allowed nested includes
-    CCONDITIONAL_SCANNER_DEPTH = 0
-
-    # For cases when sources located not only in "src" dir
-    @property
-    def src_dir(self):
-        return self.path
+    def build(self):
+        if self.env.GetBuildType() == "debug":
+            self.env.ConfigureDebugFlags()
+        return PlatformIOLibBuilder.build(self)
 
 
 def generate_ldscript(default_ldscript_path):
@@ -151,7 +143,7 @@ def build_custom_lib(lib_path, lib_manifest=None):
         lib_manifest = lib_manifest or {"name": os.path.basename(lib_path)}
         env.Append(
             EXTRA_LIB_BUILDERS=[
-                PlatformIOLibBuilder(env, lib_path, lib_manifest.copy())
+                CustomLibBuilder(env, lib_path, lib_manifest.copy())
             ]
         )
 

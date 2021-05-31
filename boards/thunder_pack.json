@@ -4,11 +4,11 @@
     "extra_flags": "-DSTM32L072xx -DARDUINO_THUNDERPACK_L072",
     "f_cpu": "32000000L",
     "framework_extra_flags": {
-      "arduino": "-D__CORTEX_SC=0"
+      "arduino": "-D__CORTEX_SC=0 -DCUSTOM_PERIPHERAL_PINS"
     },
     "mcu": "stm32l072kz",
     "product_line": "STM32L072xx",
-    "variant": "THUNDERPACK"
+    "variant": "STM32L0xx/L072K(B-Z)T_L082K(B-Z)T"
   },
   "debug": {
     "jlink_device": "STM32L072KZ",
