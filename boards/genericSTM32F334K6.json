@@ -21,7 +21,7 @@
   ],
   "name": "STM32F334K6 (16k RAM. 32k Flash)",
   "upload": {
-    "maximum_ram_size": 16384,
+    "maximum_ram_size": 12288,
     "maximum_size": 32768,
     "protocol": "stlink",
     "protocols": [
