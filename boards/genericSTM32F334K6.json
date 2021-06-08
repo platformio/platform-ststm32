@@ -1,0 +1,36 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F3 -DSTM32F334x8",
+    "f_cpu": "72000000L",
+    "mcu": "stm32f334k6t7",
+    "product_line": "STM32F334X8"
+  },
+  "platforms": "ststm32",
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32F334K6",
+    "openocd_target": "stm32f3x",
+    "svd_path": "STM32F334x.svd"
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "STM32F334K6 (16k RAM. 32k Flash)",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 32768,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers/stm32f334K6.html",
+  "vendor": "Generic"
+}
