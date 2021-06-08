@@ -24,7 +24,7 @@
   ],
   "name": "STM32G431KB (32k RAM. 128k Flash)",
   "upload": {
-    "maximum_ram_size": 32768,
+    "maximum_ram_size": 22528,
     "maximum_size": 131072,
     "protocol": "stlink",
     "protocols": [
