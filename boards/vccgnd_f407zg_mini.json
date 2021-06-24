@@ -13,7 +13,7 @@
   },
   "debug": {
     "jlink_device": "STM32F407ZG",
-    "openocd_target": "stm32f1x",
+    "openocd_target": "stm32f4x",
     "svd_path": "STM32F407xx.svd"
   },
   "frameworks": [
