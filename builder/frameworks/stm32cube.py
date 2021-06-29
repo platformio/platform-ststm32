@@ -137,6 +137,8 @@ def generate_hal_config_file():
 
 
 def build_custom_lib(lib_path, lib_manifest=None):
+    if not os.path.isdir(lib_path):
+        return
     if board.get("build.stm32cube.disable_embedded_libs", "no") == "yes":
         return
     if lib_path:
@@ -255,8 +257,9 @@ if not board.get("build.ldscript", ""):
 
 bsp_dir = os.path.join(FRAMEWORK_DIR, "Drivers", "BSP")
 components_dir = os.path.join(bsp_dir, "Components")
-for component in os.listdir(components_dir):
-    build_custom_lib(os.path.join(components_dir, component))
+if os.path.isdir(components_dir):
+    for component in os.listdir(components_dir):
+        build_custom_lib(os.path.join(components_dir, component))
 
 if os.path.isdir(os.path.join(bsp_dir, "Adafruit_Shield")):
     build_custom_lib(os.path.join(bsp_dir, "Adafruit_Shield"))
@@ -266,19 +269,25 @@ if os.path.isdir(os.path.join(bsp_dir, "Adafruit_Shield")):
 #
 
 utils_dir = os.path.join(FRAMEWORK_DIR, "Utilities")
-for util in os.listdir(utils_dir):
-    util_dir = os.path.join(utils_dir, util)
-    # Some of utilities is not meant to be built
-    if not any(f.endswith((".c", ".h")) for f in os.listdir(util_dir)):
-        continue
-    build_custom_lib(
-        os.path.join(utils_dir, util),
-        {
-            "name": "Util-%s" % util,
-            "dependencies": [{"name": "FrameworkVariantBSP"}],
-            "build": {"flags": ["-I $PROJECT_SRC_DIR", "-I $PROJECT_INCLUDE_DIR"], "libLDFMode": "deep"},
-        },
-    )
+if os.path.isdir(utils_dir):
+    for util in os.listdir(utils_dir):
+        util_dir = os.path.join(utils_dir, util)
+        # Some of utilities is not meant to be built
+        if not os.path.isdir(util_dir) or not any(
+            f.endswith((".c", ".h")) for f in os.listdir(util_dir)
+        ):
+            continue
+        build_custom_lib(
+            os.path.join(utils_dir, util),
+            {
+                "name": "Util-%s" % util,
+                "dependencies": [{"name": "FrameworkVariantBSP"}],
+                "build": {
+                    "flags": ["-I $PROJECT_SRC_DIR", "-I $PROJECT_INCLUDE_DIR"],
+                    "libLDFMode": "deep",
+                },
+            },
+        )
 
 #
 # USB libraries from ST

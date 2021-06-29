@@ -40,7 +40,7 @@
   ],
   "name": "ST B-L475E-IOT01A Discovery kit",
   "upload": {
-    "maximum_ram_size": 131072,
+    "maximum_ram_size": 98304,
     "maximum_size": 1048576,
     "protocol": "stlink",
     "protocols": [

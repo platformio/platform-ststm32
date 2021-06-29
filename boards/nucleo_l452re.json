@@ -31,8 +31,8 @@
   ],
   "name": "ST Nucleo L452RE",
   "upload": {
-    "maximum_ram_size": 65536,
-    "maximum_size": 262144,
+    "maximum_ram_size": 163840,
+    "maximum_size": 524288,
     "protocol": "stlink",
     "protocols": [
       "jlink",

@@ -62,15 +62,16 @@ def get_linker_script(mcu):
     with open(template_file) as fp:
         data = Template(fp.read())
         content = data.substitute(
-            stack=hex(0x20000000 + ram), # 0x20000000 - start address for RAM
-            ram=str(int(ram/1024)) + "K",
-            flash=str(int(flash/1024)) + "K"
+            stack=hex(0x20000000 + ram),  # 0x20000000 - start address for RAM
+            ram=str(int(ram / 1024)) + "K",
+            flash=str(int(flash / 1024)) + "K"
         )
 
     with open(default_ldscript, "w") as fp:
         fp.write(content)
 
     return default_ldscript
+
 
 env.Append(
     CPPPATH=[
@@ -82,6 +83,9 @@ env.Append(
              "variants", board.get("build.mcu")[0:7], "inc"),
         join(FRAMEWORK_DIR, board.get("build.core"), "spl",
              "variants", board.get("build.mcu")[0:7], "src")
+    ],
+    LINKFLAGS=[
+        "-nostartfiles"
     ]
 )
 
