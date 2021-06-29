@@ -305,7 +305,7 @@ elif upload_protocol in debug_tools:
     ]
     openocd_args.extend(
         debug_tools.get(upload_protocol).get("server").get("arguments", []))
-    if env.GetProjectOption("debug_speed"):
+    if env.GetProjectOption("debug_speed", ""):
         openocd_args.extend(
             ["-c", "adapter speed %s" % env.GetProjectOption("debug_speed")]
         )
