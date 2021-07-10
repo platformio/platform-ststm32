@@ -27,6 +27,7 @@
     "libopencm3",
     "zephyr"
   ],
+  "platforms": ["ststm32"],
   "name": "ST Nucleo WL55JC",
   "upload": {
     "maximum_ram_size": 65536,
