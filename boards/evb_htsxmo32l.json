@@ -1,0 +1,38 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32L0xx -DSTM32L052xx",
+    "f_cpu": "32000000L",
+    "mcu": "stm32l052c8t6",
+    "product_line": "STM32L052xx"
+  },
+  "connectivity": [
+    "sigfox"
+  ],
+  "debug": {
+    "jlink_device": "STM32L052C8",
+    "openocd_target": "stm32l0",
+    "svd_path": "STM32L052x.svd"
+  },
+  "frameworks": [
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "HT Micron iMCP HTSXMO32L-22 Evaluation Board",
+  "upload": {
+    "maximum_ram_size": 8192,
+    "maximum_size": 65536,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "dfu",
+      "serial"
+    ]
+  },
+  "url": "http://www.htmicron.com.br/en/products.html",
+  "vendor": "HT Micron"
+}
