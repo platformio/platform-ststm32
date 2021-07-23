@@ -1,0 +1,45 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32G0xx -DSTM32G071xx",
+    "f_cpu": "64000000L",
+    "mcu": "stm32g071rbt6",
+    "product_line": "STM32G071xx",
+    "zephyr": {
+       "variant": "stm32g071b_disco"
+    }
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32G071RB",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32g0x",
+    "svd_path": "STM32G071.svd"
+  },
+  "frameworks": [
+    "cmsis",
+    "libopencm3",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "ST STM32G071B Discovery",
+  "upload": {
+    "maximum_ram_size": 36864,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "jlink",
+      "cmsis-dap",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/stm32g071b-disco.html",
+  "vendor": "ST"
+}

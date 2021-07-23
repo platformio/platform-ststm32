@@ -20,7 +20,8 @@
   },
   "frameworks": [
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "ST Nucleo L412RB-P",
   "upload": {
