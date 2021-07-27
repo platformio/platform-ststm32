@@ -5,8 +5,7 @@
     "extra_flags": "-DSTM32WL55JC1",
     "f_cpu": "48000000L",
     "mcu": "stm32wl55jc",
-    "product_line": "STM32WL55xx",
-    "variant": "STM32WL55JCx/WL55JC(1-2)"
+    "product_line": "STM32WL55xx"
   },
   "debug": {
     "default_tools": [
