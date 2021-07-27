@@ -20,7 +20,6 @@
     "svd_path": "STM32WL5x_CM4.svd"
   },
   "frameworks": [
-    "mbed",
     "zephyr"
   ],
   "name": "ST Nucleo WL55JC",
