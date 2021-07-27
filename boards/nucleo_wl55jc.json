@@ -20,14 +20,9 @@
     "svd_path": "STM32WL5x_CM4.svd"
   },
   "frameworks": [
-    "arduino",
-    "cmsis",
     "mbed",
-    "stm32cube",
-    "libopencm3",
     "zephyr"
   ],
-  "platforms": ["ststm32"],
   "name": "ST Nucleo WL55JC",
   "upload": {
     "maximum_ram_size": 65536,
@@ -37,7 +32,6 @@
       "jlink",
       "cmsis-dap",
       "stlink",
-      "blackmagic",
       "mbed"
     ]
   },
