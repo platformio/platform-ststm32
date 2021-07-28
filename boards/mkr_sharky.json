@@ -20,7 +20,7 @@
   ],
   "name": "MKR Sharky",
   "upload": {
-    "maximum_ram_size": 196604,
+    "maximum_ram_size": 196608,
     "maximum_size": 524288,
     "protocol": "mbed",
     "protocols": [

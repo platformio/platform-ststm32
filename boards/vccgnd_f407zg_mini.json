@@ -24,7 +24,7 @@
   ],
   "name": "VCCGND F407ZGT6 Mini",
   "upload": {
-    "maximum_ram_size": 65536,
+    "maximum_ram_size": 131072,
     "maximum_size": 524288,
     "protocol": "stlink",
     "protocols": [
