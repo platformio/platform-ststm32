@@ -33,7 +33,7 @@
   "upload": {
     "boot_version": 1,
     "disable_flushing": false,
-    "maximum_ram_size": 17000,
+    "maximum_ram_size": 20480,
     "maximum_size": 108000,
     "protocol": "dfu",
     "protocols": [

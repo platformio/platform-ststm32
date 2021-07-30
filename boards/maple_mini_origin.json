@@ -35,7 +35,7 @@
   "name": "Maple Mini Original",
   "upload": {
     "boot_version": 1,
-    "maximum_ram_size": 17408,
+    "maximum_ram_size": 20480,
     "maximum_size": 110592,
     "protocol": "dfu",
     "protocols": [
