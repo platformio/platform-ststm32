@@ -105,7 +105,8 @@ if not env.get("PIOFRAMEWORK"):
 # Target: Build executable and linkable firmware
 #
 
-if "zephyr" in env.get("PIOFRAMEWORK", []):
+frameworks = env.get("PIOFRAMEWORK", [])
+if "zephyr" in frameworks:
     env.SConscript(
         join(platform.get_package_dir(
             "framework-zephyr"), "scripts", "platformio", "platformio-build-pre.py"),
@@ -219,7 +220,7 @@ elif upload_protocol == "dfu":
 
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
-    if "arduino" in env.get("PIOFRAMEWORK"):
+    if "arduino" in frameworks:
         if env.subst("$BOARD").startswith("portenta"):
             upload_actions.insert(
                 0,
