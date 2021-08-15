@@ -1,11 +1,18 @@
 {
   "build": {
+    "arduino": {
+        "variant_h": "variant_NUCLEO_WL55JC1.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32WL55JC1",
+    "framework_extra_flags": {
+        "arduino": "-DSTM32WL55xx -DUSE_CM4_STARTUP_FILE -DARDUINO_NUCLEO_WL55JC1"
+    },
     "f_cpu": "48000000L",
     "mcu": "stm32wl55jc",
-    "product_line": "STM32WL55xx"
+    "product_line": "STM32WL55xx",
+    "variant": "STM32WLxx/WL54JCI_WL55JCI_WLE4J(8-B-C)I_WLE5J(8-B-C)I"
   },
   "debug": {
     "default_tools": [
@@ -19,6 +26,11 @@
     "svd_path": "STM32WL5x_CM4.svd"
   },
   "frameworks": [
+    "arduino",
+    "cmsis",
+    "mbed",
+    "stm32cube",
+    "libopencm3",
     "zephyr"
   ],
   "name": "ST Nucleo WL55JC",
