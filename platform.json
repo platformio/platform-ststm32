@@ -246,7 +246,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.25.0"
+      "version": "~1.26.0"
     },
     "framework-stm32cubef7": {
       "type": "framework",
@@ -258,25 +258,25 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.3.0"
+      "version": "~1.5.0"
     },
     "framework-stm32cubeg4": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.3.0"
+      "version": "~1.4.0"
     },
     "framework-stm32cubeh7": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.8.0"
+      "version": "~1.9.0"
     },
     "framework-stm32cubel0": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.11.0"
+      "version": "~1.12.0"
     },
     "framework-stm32cubel1": {
       "type": "framework",
@@ -288,13 +288,13 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.16.0"
+      "version": "~1.17.0"
     },
     "framework-stm32cubel5": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.3.0"
+      "version": "~1.4.0"
     },
     "framework-zephyr": {
       "type": "framework",
