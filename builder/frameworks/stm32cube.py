@@ -46,6 +46,9 @@ FRAMEWORK_DIR = platform.get_package_dir("framework-stm32cube%s" % MCU[5:7])
 LDSCRIPTS_DIR = platform.get_package_dir("tool-ldscripts-ststm32")
 assert all(os.path.isdir(d) for d in (FRAMEWORK_DIR, LDSCRIPTS_DIR))
 
+if 'Core' in os.listdir(os.path.join(env['PROJECT_DIR'])):
+    env['PROJECT_SRC_DIR'] = os.path.join(env['PROJECT_DIR'], 'Core/Src')
+    env['PROJECT_INCLUDE_DIR'] = os.path.join(env['PROJECT_DIR'], 'Core/Inc')
 
 class CustomLibBuilder(PlatformIOLibBuilder):
 
