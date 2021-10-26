@@ -276,7 +276,7 @@ elif upload_protocol == "serial":
             "stm32flash", "stm32flash"),
         UPLOADERFLAGS=[
             "-g", board.get("upload.offset_address", "0x08000000"),
-            "-b", "115200", "-w"
+            "-b", env.subst("$UPLOAD_SPEED") or "115200", "-w"
         ],
         UPLOADCMD='$UPLOADER $UPLOADERFLAGS "$SOURCE" "${__configure_upload_port(__env__)}"'
     )
