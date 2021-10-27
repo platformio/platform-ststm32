@@ -175,6 +175,21 @@ def build_usb_libs(usb_libs_root):
             build_custom_lib(os.path.join(usb_class_dir, device_class), manifest)
 
 
+def process_dsp_lib():
+    dsp_lib_path = os.path.join(FRAMEWORK_DIR, "Drivers", "CMSIS", "DSP", "Lib", "GCC")
+    if not os.path.isdir(dsp_lib_path):
+        dsp_lib_path = os.path.join(FRAMEWORK_DIR, "Drivers", "CMSIS", "Lib", "GCC")
+
+    env.Append(
+        CPPPATH=[
+            os.path.join(FRAMEWORK_DIR, "Drivers", "CMSIS", "DSP", "Include"),
+        ],
+        LIBPATH=[
+            dsp_lib_path,
+        ]
+    )
+
+
 env.Replace(AS="$CC", ASCOM="$ASPPCOM")
 
 env.Append(
@@ -198,7 +213,6 @@ env.Append(
     CPPPATH=[
         "$PROJECT_SRC_DIR",
         "$PROJECT_INCLUDE_DIR",
-        os.path.join(FRAMEWORK_DIR, "Drivers", "CMSIS", "DSP", "Include"),
         os.path.join(FRAMEWORK_DIR, "Drivers", "CMSIS", "Include"),
         os.path.join(
             FRAMEWORK_DIR,
@@ -238,7 +252,6 @@ env.Append(
     ],
 
     LIBPATH=[
-        os.path.join(FRAMEWORK_DIR, "Drivers", "CMSIS", "Lib", "GCC"),
         os.path.join(FRAMEWORK_DIR, "platformio", "ldscripts"),
     ],
 
@@ -313,6 +326,13 @@ if "build.stm32cube.variant" in board:
     )
     if os.path.isdir(bsp_variant_dir):
         build_custom_lib(os.path.join(bsp_variant_dir), {"name": "FrameworkVariantBSP"})
+
+#
+# DSP Library processing
+#
+
+if board.get("build.stm32cube.custom_dsp_library", "no") == "no":
+    process_dsp_lib()
 
 #
 # HAL libraries
