@@ -1,0 +1,45 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m33",
+    "extra_flags": "-DSTM32U5xx -DSTM32U575xx",
+    "f_cpu": "160000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
+    "mcu": "stm32u575zit6q",
+    "product_line": "STM32U575xx",
+    "variant": "STM32U5xx/U575Z(G-I)TxQ_U585ZETxQ"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32U575ZI",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32u5x"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "ST Nucleo U575ZI-Q",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 2097152,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "jlink",
+      "cmsis-dap",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-u575zi-q.html",
+  "vendor": "ST"
+}

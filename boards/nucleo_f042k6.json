@@ -4,7 +4,8 @@
     "extra_flags": "-DSTM32F042x6",
     "f_cpu": "48000000L",
     "mcu": "stm32f042k6t6",
-    "product_line": "STM32F042x6"
+    "product_line": "STM32F042x6",
+    "variant": "STM32F0xx/F042K(4-6)T"
   },
   "connectivity": [
     "can"
@@ -22,6 +23,7 @@
     "svd_path": "STM32F042x.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "mbed",
     "stm32cube",

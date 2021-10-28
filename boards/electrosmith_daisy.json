@@ -12,14 +12,15 @@
     },
     "mcu": "stm32h750ibk6",
     "product_line": "STM32H750xx",
-    "variant": "STM32H7xx/H743I(G-I)(K-T)_H750IBK_H753II(K-T)"
+    "variant": "STM32H7xx/H742I(G-I)(K-T)_H743I(G-I)(K-T)_H750IB(K-T)_H753II(K-T)"
   },
   "connectivity": [
     "can"
   ],
   "debug": {
     "jlink_device": "STM32H750IB",
-    "openocd_target": "stm32h7x"
+    "openocd_target": "stm32h7x",
+    "svd_path": "STM32H750x.svd"
   },
   "frameworks": [
     "arduino",
