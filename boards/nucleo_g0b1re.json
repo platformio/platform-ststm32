@@ -1,0 +1,46 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32G0xx -DSTM32G0B1xx",
+    "f_cpu": "64000000L",
+    "framework_extra_flags": {
+      "arduino": "-D__CORTEX_SC=0"
+    },
+    "mcu": "stm32g0b1ret6",
+    "product_line": "STM32G0B1xx",
+    "variant": "STM32G0xx/G0B1RBT_G0B1R(C-E)(I-T)_G0C1R(C-E)(I-T)"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32G0B1RE",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32g0x",
+    "svd_path": "STM32G0B1.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "ST Nucleo G0B1RE",
+  "upload": {
+    "maximum_ram_size": 147456,
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "blackmagic",
+      "cmsis-dap",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-g0b1re.html",
+  "vendor": "ST"
+}

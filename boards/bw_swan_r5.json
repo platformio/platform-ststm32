@@ -2,47 +2,42 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32L4R5xx",
+    "extra_flags": "-DSTM32L4xx -DSTM32L4R5xx",
     "f_cpu": "120000000L",
-    "mcu": "stm32l4r5zit6",
+     "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
+    "mcu": "stm32l4r5ziy6",
     "product_line": "STM32L4R5xx",
-    "variant": "STM32L4xx/L4R5Z(G-I)T_L4R7ZIT_L4S5ZIT_L4S7ZIT"
+    "variant": "STM32L4xx/L4R5Z(G-I)Y_L4R9Z(G-I)Y_L4S5ZIY_L4S9ZIY"
   },
   "connectivity": [
     "can"
   ],
   "debug": {
-    "default_tools": [
-      "stlink"
-    ],
     "jlink_device": "STM32L4R5ZI",
-    "onboard_tools": [
-      "stlink"
-    ],
-    "openocd_board": "st_nucleo_l4",
     "openocd_target": "stm32l4x",
     "svd_path": "STM32L4R5.svd"
   },
   "frameworks": [
     "arduino",
-    "cmsis",
-    "mbed",
-    "stm32cube",
-    "zephyr"
+    "stm32cube"
   ],
-  "name": "ST Nucleo L4R5ZI",
+  "name": "BluesWireless Swan R5",
   "upload": {
     "maximum_ram_size": 655360,
     "maximum_size": 2097152,
     "protocol": "stlink",
     "protocols": [
-      "jlink",
-      "cmsis-dap",
-      "stlink",
+      "dfu",
       "blackmagic",
+      "cmsis-dap",
+      "jlink",
+      "serial",
+      "stlink",
       "mbed"
     ]
   },
-  "url": "https://www.st.com/en/evaluation-tools/nucleo-l4r5zi.html",
-  "vendor": "ST"
+  "url": "https://blues.io/products/swan",
+  "vendor": "BluesWireless"
 }

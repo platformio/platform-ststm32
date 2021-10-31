@@ -1,0 +1,42 @@
+{
+  "build": {
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32L010xB",
+    "f_cpu": "32000000L",
+    "framework_extra_flags": {
+      "arduino": "-D__CORTEX_SC=0"
+    },
+    "mcu": "stm32l010rbt6",
+    "product_line": "STM32L010xB",
+    "variant": "STM32L0xx/L010RBT"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32L010RB",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32l0",
+    "svd_path": "STM32L0x0.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "ST Nucleo L010RB",
+  "upload": {
+    "maximum_ram_size": 20480,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-l010rb.html",
+  "vendor": "ST"
+}

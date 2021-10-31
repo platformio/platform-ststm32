@@ -1,0 +1,45 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m33",
+    "extra_flags": "-DSTM32U5xx -DSTM32U585xx",
+    "f_cpu": "160000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
+    "mcu": "stm32u585aii6q",
+    "product_line": "STM32U585xx",
+    "variant": "STM32U5xx/U575A(G-I)IxQ_U585AIIxQ"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32U585AI",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32u5x"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "ST B-U585I-IOT02A Discovery",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 2097152,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "jlink",
+      "cmsis-dap",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/b-u585i-iot02a.html",
+  "vendor": "ST"
+}
