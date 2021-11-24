@@ -349,7 +349,7 @@
     "tool-ldscripts-ststm32": {
       "optional": true,
       "owner": "platformio",
-      "version": "~0.1.0"
+      "version": "~0.2.0"
     }
   }
 }
