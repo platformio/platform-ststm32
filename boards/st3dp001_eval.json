@@ -7,7 +7,7 @@
     "framework_extra_flags": {
       "arduino": "-DCUSTOM_PERIPHERAL_PINS"
     },
-    "mcu": "stm32f401vgt6",
+    "mcu": "stm32f401vet6",
     "product_line": "STM32F401xE",
     "variant": "STM32F4xx/F401V(B-C-D-E)T"
   },
