@@ -22,13 +22,13 @@ The Low-Layer (LL) APIs, a light-weight, optimized, expert oriented set of APIs 
 http://www.st.com/en/embedded-software/stm32cube-embedded-software.html?querycriteria=productId=LN1897
 """
 
-import glob
 import os
 import shutil
 import string
 import sys
+import re
 
-from SCons.Script import DefaultEnvironment
+from SCons.Script import ARGUMENTS, DefaultEnvironment
 
 from platformio.builder.tools.piolib import PlatformIOLibBuilder
 
@@ -72,23 +72,48 @@ def generate_ldscript(default_ldscript_path):
         fp.write(content)
 
 
-def get_linker_script(board_mcu):
-    ldscript_match = glob.glob(
-        os.path.join(
-            LDSCRIPTS_DIR, board_mcu[0:7], board_mcu[0:11].upper() + "*_FLASH.ld"
-        )
+def get_linker_script(board_mcu, board_cpu):
+    def _glob_re(pattern, ldscripts):
+        re_c = re.compile(pattern)
+        return list(filter(re_c.match, ldscripts))
+
+    if len(board_mcu) > 12:
+        board_mcu = board_mcu[:12] + "X" + board_mcu[13:]
+
+    family_ldscripts_dir = os.path.join(LDSCRIPTS_DIR, board_mcu[0:7])
+
+    ldscript_matches = _glob_re(
+        "^%s.*_FLASH\\.ld$" % board_mcu.upper(),
+        os.listdir(family_ldscripts_dir),
     )
 
-    if ldscript_match and os.path.isfile(ldscript_match[0]):
-        return ldscript_match[0]
+    if ldscript_matches:
+        ldscript_file = ldscript_matches[0]
+        if len(ldscript_matches) > 1:
+            # Precise match with the CPU in filename has the highest priority
+            board_cpu = board_cpu.replace("cortex-", "").upper()
+            for match in ldscript_matches:
+                if board_cpu in match:
+                    ldscript_file = match
+                    break
 
-    default_ldscript = os.path.join(
-        LDSCRIPTS_DIR, board_mcu[0:7], board_mcu[0:11].upper() + "_DEFAULT.ld"
-    )
+            if int(ARGUMENTS.get("PIOVERBOSE", 0)):
+                print(
+                    "Found suitable linker scripts: ["
+                    + ", ".join(ldscript_matches)
+                    + "], %s will be used!" % ldscript_file
+                )
 
+        return os.path.join(family_ldscripts_dir, ldscript_file)
+
+    # Fall back to an auto-generated linker script
     print(
         "Warning! Cannot find a linker script for the required board! "
         "An auto-generated script will be used to link firmware!"
+    )
+
+    default_ldscript = os.path.join(
+        LDSCRIPTS_DIR, board_mcu[0:7], board_mcu[0:11].upper() + "_DEFAULT.ld"
     )
 
     if not os.path.isfile(default_ldscript):
@@ -252,7 +277,7 @@ env.Append(
     ],
 
     LIBPATH=[
-        os.path.join(FRAMEWORK_DIR, "platformio", "ldscripts"),
+        os.path.join(LDSCRIPTS_DIR, MCU_FAMILY),
     ],
 
     LIBS=["c", "gcc", "m", "stdc++", "nosys"],
@@ -262,7 +287,8 @@ env.Append(
 env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 if not board.get("build.ldscript", ""):
-    env.Replace(LDSCRIPT_PATH=get_linker_script(board.get("build.mcu", "")))
+    env.Replace(LDSCRIPT_PATH=get_linker_script(
+        board.get("build.mcu", ""), board.get("build.cpu", "")))
 
 #
 # Process BSP components

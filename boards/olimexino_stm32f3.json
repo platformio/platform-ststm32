@@ -4,7 +4,7 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F303xC",
     "f_cpu": "72000000L",
-    "mcu": "stm32f303rct6tr",
+    "mcu": "stm32f303rct6",
     "variant": "STM32F3xx/F303R(B-C)T",
     "product_line": "STM32F303xC"
   },

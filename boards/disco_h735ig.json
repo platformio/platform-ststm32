@@ -3,7 +3,7 @@
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32H7xx -DSTM32H735xx",
     "f_cpu": "550000000L",
-    "mcu": "stm32h735igk6u",
+    "mcu": "stm32h735igk6",
     "product_line": "STM32H735xx",
     "zephyr": {
        "variant": "stm32h735g_disco"

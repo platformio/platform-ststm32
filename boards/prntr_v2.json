@@ -7,7 +7,7 @@
     "framework_extra_flags": {
       "arduino": "-DVECT_TAB_OFFSET=0x8000 -DCUSTOM_PERIPHERAL_PINS"
     },
-    "mcu": "stm32f407re",
+    "mcu": "stm32f407vet6",
     "product_line": "STM32F407xx",
     "variant": "STM32F4xx/F407V(E-G)T_F417V(E-G)T"
   },
