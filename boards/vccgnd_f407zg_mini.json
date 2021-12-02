@@ -1,9 +1,9 @@
 {
   "build": {
     "core": "stm32",
-    "cpu": "cortex-m3",
+    "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F407xx -DSTM32F4",
-    "f_cpu": "72000000L",
+    "f_cpu": "168000000L",
     "framework_extra_flags": {
       "arduino": "-DCUSTOM_PERIPHERAL_PINS"
     },
@@ -25,7 +25,7 @@
   "name": "VCCGND F407ZGT6 Mini",
   "upload": {
     "maximum_ram_size": 131072,
-    "maximum_size": 524288,
+    "maximum_size": 1048576,
     "protocol": "stlink",
     "protocols": [
       "blackmagic",
