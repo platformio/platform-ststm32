@@ -300,7 +300,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.20700.0"
+      "version": "~2.20701.0"
     },
     "tool-stm32duino": {
       "type": "uploader",
