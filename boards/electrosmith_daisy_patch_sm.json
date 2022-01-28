@@ -1,0 +1,46 @@
+{
+  "build": {
+    "arduino": {
+      "ldscript": "DAISY_SEED.ld",
+      "variant_h": "variant_DAISY_PATCH_SM.h"
+    },
+    "core": "stm32",
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32H7xx -DSTM32H750xx",
+    "f_cpu": "400000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
+    "mcu": "stm32h750ibk6",
+    "product_line": "STM32H750xx",
+    "variant": "STM32H7xx/H742I(G-I)(K-T)_H743I(G-I)(K-T)_H750IB(K-T)_H753II(K-T)"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32H750IB",
+    "openocd_target": "stm32h7x",
+    "svd_path": "STM32H750x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "Electrosmith Daisy Patch SM",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.electro-smith.com/daisy",
+  "vendor": "Electrosmith"
+}
