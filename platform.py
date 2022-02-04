@@ -38,6 +38,11 @@ class Ststm32Platform(PlatformBase):
                     "script"
                 ] = "builder/frameworks/arduino/mbed-core/arduino-core-mbed.py"
                 self.packages["framework-arduinoststm32"]["optional"] = True
+            elif build_core == "opencr":
+                self.frameworks["arduino"]["package"] = "framework-arduinoststm32-opencr"
+                self.packages["framework-arduinoststm32-opencr"]["optional"] = False
+                self.packages["framework-arduinoststm32"]["optional"] = True
+                self.packages["framework-cmsis"]["optional"] = False
             elif build_core == "maple":
                 self.frameworks["arduino"]["package"] = "framework-arduinoststm32-maple"
                 self.packages["framework-arduinoststm32-maple"]["optional"] = False

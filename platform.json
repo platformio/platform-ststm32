@@ -194,6 +194,12 @@
       "owner": "platformio",
       "version": "~4.20200.0"
     },
+    "framework-arduinoststm32-opencr": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.4.18"
+    },
     "framework-arduinoststm32-maple": {
       "type": "framework",
       "optional": true,
