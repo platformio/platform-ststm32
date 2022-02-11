@@ -23,6 +23,8 @@
     "svd_path": "STM32WLE5_CM4.svd"
   },
   "frameworks": [
+	"cmsis",
+    "stm32cube",
     "zephyr"
   ],
   "name": "LoRa E5 Dev Board",

@@ -24,6 +24,8 @@
   },
   "frameworks": [
     "arduino",
+    "cmsis",
+    "stm32cube",
     "zephyr"
   ],
   "name": "ST Nucleo WL55JC",
