@@ -16,9 +16,6 @@
       "stlink"
     ],
     "jlink_device": "STM32WLE5JC",
-    "onboard_tools": [
-      "stlink"
-    ],
     "openocd_target": "stm32wlx",
     "svd_path": "STM32WLE5_CM4.svd"
   },
