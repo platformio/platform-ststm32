@@ -1,0 +1,39 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F3 -DSTM32F302x8",
+    "f_cpu": "72000000L",
+    "mcu": "stm32f302c8t6",
+    "product_line": "STM32F302x8",
+	"variant": "STM32F3xx/F302C6T_F302C8(T-Y)"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32F302C8",
+    "openocd_target": "stm32f3x",
+    "svd_path": "STM32F302x.svd"
+  },
+  "frameworks": [
+	"arduino",
+    "cmsis",
+    "stm32cube",
+    "libopencm3"
+  ],
+  "name": "STM32F302C8 (16k RAM. 64k Flash)",
+  "upload": {
+    "maximum_ram_size": 16384,
+    "maximum_size": 65536,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f302c8.html",
+  "vendor": "Generic"
+}
