@@ -12,7 +12,7 @@
 How to build PlatformIO based project
 =====================================
 
-1. [Install PlatformIO Core](http://docs.platformio.org/page/core.html)
+1. [Install PlatformIO Core](https://docs.platformio.org/page/core.html)
 2. Download [development platform with examples](https://github.com/platformio/platform-ststm32/archive/develop.zip)
 3. Extract ZIP archive
 4. Change IP configuration in platform-ststm32/examples/zephyr-net-civetweb/zephyr/prj.conf file. Default server IPv4 address: `10.0.0.111`

@@ -1,0 +1,45 @@
+{
+  "build": {
+    "arduino": {
+      "variant_h": "variant_DevEBoxH7xx.h"
+    },
+    "core": "stm32",
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32H7xx -DSTM32H750xx",
+    "f_cpu": "480000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
+    "mcu": "stm32h750vbt6",
+    "product_line": "STM32H750xx",
+    "variant": "STM32H7xx/H742V(G-I)(H-T)_H743V(G-I)(H-T)_H750VBT_H753VI(H-T)"
+  },
+  "connectivity": [
+    "can",
+    "ethernet"
+  ],
+  "debug": {
+    "jlink_device": "STM32H750VB",
+    "openocd_target": "stm32h7x",
+    "svd_path": "STM32H750.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "DevEBox H750VBTX",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://github.com/mcauser/MCUDEV_DEVEBOX_H7XX_M",
+  "vendor": "DevEBox"
+}
