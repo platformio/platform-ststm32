@@ -23,7 +23,7 @@
     "libopencm3",
     "stm32cube"
   ],
-  "name": "STM32G030C8 (8k RAM. 32k Flash)",
+  "name": "STM32G030F6 (8k RAM. 32k Flash)",
   "upload": {
     "maximum_ram_size": 8192,
     "maximum_size": 32768,
@@ -34,10 +34,9 @@
       "stlink",
       "blackmagic",
       "serial",
-      "dfu",
+      "dfu"
     ]
   },
   "url": "https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32g0-series/stm32g0x0-value-line/stm32g030f6.html",
   "vendor": "Generic"
 }
-
