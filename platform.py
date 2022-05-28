@@ -14,12 +14,12 @@
 
 import json
 import os
-
-from platform import system
+import sys
 
 from platformio.managers.platform import PlatformBase
-from platformio.util import get_systype
 
+
+IS_WINDOWS = sys.platform.startswith("win")
 
 class Ststm32Platform(PlatformBase):
 
@@ -90,7 +90,7 @@ class Ststm32Platform(PlatformBase):
                 if p in ("tool-cmake", "tool-dtc", "tool-ninja"):
                     self.packages[p]["optional"] = False
             self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.80201.0"
-            if "windows" not in get_systype():
+            if not IS_WINDOWS:
                 self.packages["tool-gperf"]["optional"] = False
 
         # configure J-LINK tool
@@ -151,7 +151,7 @@ class Ststm32Platform(PlatformBase):
                             "-port", "2331"
                         ],
                         "executable": ("JLinkGDBServerCL.exe"
-                                       if system() == "Windows" else
+                                       if IS_WINDOWS else
                                        "JLinkGDBServer")
                     }
                 }
