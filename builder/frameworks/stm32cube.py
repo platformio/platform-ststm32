@@ -215,18 +215,22 @@ def process_dsp_lib():
     )
 
 
-env.Replace(AS="$CC", ASCOM="$ASPPCOM")
+machine_flags = [
+    "-mthumb",
+    "-mcpu=%s" % board.get("build.cpu"),
+]
 
 env.Append(
-    ASFLAGS=["-x", "assembler-with-cpp"],
+    ASFLAGS=machine_flags,
+    ASPPFLAGS=[
+        "-x", "assembler-with-cpp",
+    ],
 
-    CCFLAGS=[
+    CCFLAGS=machine_flags + [
         "-Os",  # optimize for size
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
         "-Wall",
-        "-mthumb",
-        "-mcpu=%s" % board.get("build.cpu"),
         "-nostdlib",
     ],
 
@@ -267,11 +271,9 @@ env.Append(
         "-fno-exceptions"
     ],
 
-    LINKFLAGS=[
+    LINKFLAGS=machine_flags + [
         "-Os",
         "-Wl,--gc-sections,--relax",
-        "-mthumb",
-        "-mcpu=%s" % board.get("build.cpu"),
         "--specs=nano.specs",
         "--specs=nosys.specs",
     ],
@@ -282,9 +284,6 @@ env.Append(
 
     LIBS=["c", "gcc", "m", "stdc++", "nosys"],
 )
-
-# copy CCFLAGS to ASFLAGS (-x assembler-with-cpp mode)
-env.Append(ASFLAGS=env.get("CCFLAGS", [])[:])
 
 if not board.get("build.ldscript", ""):
     env.Replace(LDSCRIPT_PATH=get_linker_script(
