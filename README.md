@@ -1,4 +1,4 @@
-# ST STM32: development platform for [PlatformIO](http://platformio.org)
+# ST STM32: development platform for [PlatformIO](https://platformio.org)
 
 [![Build Status](https://github.com/platformio/platform-ststm32/workflows/Examples/badge.svg)](https://github.com/platformio/platform-ststm32/actions)
 
@@ -9,7 +9,7 @@ The STM32 family of 32-bit Flash MCUs based on the ARM Cortex-M processor is des
 
 # Usage
 
-1. [Install PlatformIO](http://platformio.org)
+1. [Install PlatformIO](https://platformio.org)
 2. Create PlatformIO project and configure a platform option in [platformio.ini](https://docs.platformio.org/page/projectconf.html) file:
 
 ## Stable version
