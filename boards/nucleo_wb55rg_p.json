@@ -15,7 +15,7 @@
     "default_tools": [
       "stlink"
     ],
-    "openocd_target": "stm32w55xx",
+    "openocd_board": "st_nucleo_wb55",
     "jlink_device": "STM32WB55xx",
     "onboard_tools": [
       "stlink"
