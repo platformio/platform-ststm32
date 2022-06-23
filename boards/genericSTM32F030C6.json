@@ -1,0 +1,38 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0",
+    "extra_flags": "-DSTM32F030x6 -DSTM32F0",
+    "f_cpu": "48000000L",
+    "mcu": "stm32f030c6t6",
+    "product_line": "STM32F030x6",
+    "variant": "STM32F0xx/F030C6T"
+  },
+  "debug": {
+    "jlink_device": "STM32F030C6",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F030.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "mbed",
+    "libopencm3"
+    "stm32cube",
+  ],
+  "name": "STM32F030C6 (4k RAM. 32k Flash)",
+  "upload": {
+    "maximum_ram_size": 4096,
+    "maximum_size": 32768,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "serial"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f030c6.html",
+  "vendor": "Generic"
+}
