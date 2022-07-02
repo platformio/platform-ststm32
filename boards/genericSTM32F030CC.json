@@ -17,8 +17,8 @@
     "arduino",
     "cmsis",
     "mbed",
-    "libopencm3"
-    "stm32cube",
+    "libopencm3",
+    "stm32cube"
   ],
   "name": "STM32F030CC (32k RAM. 256k Flash)",
   "upload": {
