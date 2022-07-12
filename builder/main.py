@@ -274,7 +274,7 @@ elif upload_protocol == "serial":
             '"%s"' % platform.get_package_dir("tool-stm32duino") or "",
             "stm32flash", "stm32flash"),
         UPLOADERFLAGS=[
-            "-g", board.get("upload.offset_address", "0x08000000"),
+            "-S", board.get("upload.offset_address", "0x08000000"),
             "-b", env.subst("$UPLOAD_SPEED") or "115200", "-w"
         ],
         UPLOADCMD='$UPLOADER $UPLOADERFLAGS "$SOURCE" "${__configure_upload_port(__env__)}"'
