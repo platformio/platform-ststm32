@@ -73,7 +73,7 @@
     "toolchain-gccarmnoneeabi": {
       "type": "toolchain",
       "owner": "platformio",
-      "version": ">=1.60301.0,<1.80000.0",
+      "version": ">=1.60301.0,<1.90302.0",
       "optionalVersions": [
         "~1.60301.0",
         "~1.80201.0",
