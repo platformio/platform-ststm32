@@ -6,7 +6,7 @@
     "f_cpu": "80000000L",
     "mcu": "stm32l452ret6",
     "product_line": "STM32L452xx",
-    "variant": "STM32L4xx/Leafony"
+    "variant": "STM32L4xx/Leafony_STM32"
   },
   "connectivity": [
     "can"
