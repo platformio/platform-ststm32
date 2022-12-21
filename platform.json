@@ -350,6 +350,11 @@
       "optional": true,
       "owner": "platformio",
       "version": "~0.2.0"
+    },
+    "tool-stm32flash": {
+      "optional": false,
+      "owner": "platformio",
+      "version": "~0.7.0"
     }
   }
 }

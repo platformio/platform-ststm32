@@ -271,8 +271,8 @@ elif upload_protocol == "serial":
     env.Replace(
         __configure_upload_port=__configure_upload_port,
         UPLOADER=join(
-            '"%s"' % platform.get_package_dir("tool-stm32duino") or "",
-            "stm32flash", "stm32flash"),
+            '"%s"' % (platform.get_package_dir("tool-stm32flash") or ""),
+            "stm32flash"),
         UPLOADERFLAGS=[
             "-g", board.get("upload.offset_address", "0x08000000"),
             "-b", env.subst("$UPLOAD_SPEED") or "115200", "-w"
