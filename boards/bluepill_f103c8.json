@@ -42,7 +42,8 @@
     "cmsis",
     "libopencm3",
     "stm32cube",
-    "zephyr"
+    "zephyr",
+    "spl"
   ],
   "name": "BluePill F103C8",
   "upload": {
