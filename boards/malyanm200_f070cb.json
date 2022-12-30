@@ -11,7 +11,7 @@
       "arduino": "-DVECT_TAB_OFFSET=0x2000 -DCUSTOM_STARTUP_FILE"
     },
     "mcu": "stm32f070cbt6",
-    "product_line": "STM32F103xB",
+    "product_line": "STM32F070xB",
     "variant": "STM32F0xx/F070CBT"
   },
   "debug": {
@@ -23,8 +23,7 @@
     "arduino",
     "cmsis",
     "stm32cube",
-    "libopencm3",
-    "spl"
+    "libopencm3"
   ],
   "name": "M200 V2",
   "upload": {
