@@ -180,7 +180,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.10201.0"
+      "version": "https://github.com/maxgerhardt/pio-framework-spl-stm32.git"
     },
     "framework-libopencm3": {
       "type": "framework",
