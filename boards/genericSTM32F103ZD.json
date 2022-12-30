@@ -27,6 +27,7 @@
     "arduino",
     "cmsis",
     "libopencm3",
+    "spl",
     "stm32cube"
   ],
   "name": "STM32F103ZD (64k RAM. 384k Flash)",

@@ -17,7 +17,8 @@
     "arduino",
     "cmsis",
     "stm32cube",
-    "libopencm3"
+    "libopencm3",
+    "spl"
   ],
   "name": "STM32F103ZF (96k RAM. 768k Flash)",
   "upload": {

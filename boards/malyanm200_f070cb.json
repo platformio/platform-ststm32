@@ -23,7 +23,8 @@
     "arduino",
     "cmsis",
     "stm32cube",
-    "libopencm3"
+    "libopencm3",
+    "spl"
   ],
   "name": "M200 V2",
   "upload": {

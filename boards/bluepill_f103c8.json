@@ -41,6 +41,7 @@
     "mbed",
     "cmsis",
     "libopencm3",
+    "spl",
     "stm32cube",
     "zephyr",
     "spl"

@@ -27,7 +27,8 @@
     "arduino",
     "cmsis",
     "stm32cube",
-    "libopencm3"
+    "libopencm3",
+    "spl"
   ],
   "name": "Microduino Core STM32 to Flash",
   "upload": {

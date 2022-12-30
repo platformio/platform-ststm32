@@ -27,6 +27,7 @@
     "arduino",
     "cmsis",
     "libopencm3",
+    "spl",
     "stm32cube"
   ],
   "name": "STM32F103CB (20k RAM. 128k Flash)",
