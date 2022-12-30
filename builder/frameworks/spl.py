@@ -76,13 +76,13 @@ def get_linker_script(mcu):
 
 env.Append(
     CPPPATH=[
-        join(FRAMEWORK_DIR, board.get("build.core"),
-             "cmsis", "cores", board.get("build.core")),
-        join(FRAMEWORK_DIR, board.get("build.core"), "cmsis",
+        join(FRAMEWORK_DIR, board.get("build.mcu")[0:5],
+             "cmsis", "cores", board.get("build.mcu")[0:5]),
+        join(FRAMEWORK_DIR, board.get("build.mcu")[0:5], "cmsis",
              "variants", board.get("build.mcu")[0:7]),
-        join(FRAMEWORK_DIR, board.get("build.core"), "spl",
+        join(FRAMEWORK_DIR, board.get("build.mcu")[0:5], "spl",
              "variants", board.get("build.mcu")[0:7], "inc"),
-        join(FRAMEWORK_DIR, board.get("build.core"), "spl",
+        join(FRAMEWORK_DIR, board.get("build.mcu")[0:5], "spl",
              "variants", board.get("build.mcu")[0:7], "src")
     ],
     LINKFLAGS=[
@@ -158,7 +158,7 @@ libs = []
 libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkCMSISVariant"),
     join(
-        FRAMEWORK_DIR, board.get("build.core"), "cmsis",
+        FRAMEWORK_DIR, board.get("build.mcu")[0:5], "cmsis",
         "variants", board.get("build.mcu")[0:7]
     ),
     src_filter=cmsis_variant_filter_patterns
@@ -170,7 +170,7 @@ if board.get("build.cpu") == "cortex-m3":
     libs.append(env.BuildLibrary(
         join("$BUILD_DIR", "FrameworkCMSISCore"),
         join(
-            FRAMEWORK_DIR, board.get("build.core"), "cmsis",
+            FRAMEWORK_DIR, board.get("build.mcu")[0:5], "cmsis",
             "cores", "stm32"
         ),
         src_filter="+<core_cm3.c>"
@@ -179,7 +179,7 @@ if board.get("build.cpu") == "cortex-m3":
 
 libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkSPL"),
-    join(FRAMEWORK_DIR, board.get("build.core"),
+    join(FRAMEWORK_DIR, board.get("build.mcu")[0:5],
          "spl", "variants",
          board.get("build.mcu")[0:7], "src"),
     src_filter=" ".join(src_filter_patterns)
