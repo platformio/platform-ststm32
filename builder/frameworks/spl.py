@@ -145,7 +145,7 @@ if mcu.startswith("stm32f10"):
         elif family in ("stm32f105", "stm32f107"):
             startup_file, series_macro = ("startup_stm32f10x_cl.S", "STM32F10X_CD") # connectivity line
 
-    if startup_file is None:
+    if startup_file == "":
         sys.stderr.write("Failed to find startup file for board '%s'.\n" % board.id)
         env.Exit(-1)
     # exclude all startup files via wildcard, add back the one we want
