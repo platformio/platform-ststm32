@@ -139,15 +139,15 @@ if mcu.startswith("stm32f10"):
         elif family in ("stm32f101", "stm32f102", "stm32f103") and flash_mem >= 64 and flash_mem <= 128:
             startup_file, series_macro = ("startup_stm32f10x_md.S", "STM32F10X_MD") # medium density
         elif family in ("stm32f101", "stm32f103") and flash_mem >= 256 and flash_mem <= 512:
-                startup_file, series_macro = ("startup_stm32f10x_hd.S", "STM32F10X_HD") # high density
+            startup_file, series_macro = ("startup_stm32f10x_hd.S", "STM32F10X_HD") # high density
         elif family in ("stm32f101", "stm32f103") and flash_mem >= 768 and flash_mem <= 1024:
-                startup_file, series_macro = ("startup_stm32f10x_xl.S", "STM32F10X_XL") # xtra-large density
+            startup_file, series_macro = ("startup_stm32f10x_xl.S", "STM32F10X_XL") # xtra-large density
         elif family in ("stm32f105", "stm32f107"):
-                startup_file, series_macro = ( "startup_stm32f10x_cl.S", "STM32F10X_CD") # connectivity line
+            startup_file, series_macro = ("startup_stm32f10x_cl.S", "STM32F10X_CD") # connectivity line
 
     if startup_file is None:
-            sys.stderr.write("Failed to find startup file for board '%s'.\n" % board.id)
-            env.Exit(-1)
+        sys.stderr.write("Failed to find startup file for board '%s'.\n" % board.id)
+        env.Exit(-1)
     # exclude all startup files via wildcard, add back the one we want
     cmsis_variant_filter_patterns += ["-<startup_stm32f10x_*.S>", "+<%s>" % startup_file]
     if series_macro is not None:
