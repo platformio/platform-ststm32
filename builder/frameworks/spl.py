@@ -143,7 +143,7 @@ if mcu.startswith("stm32f10"):
         elif family in ("stm32f101", "stm32f103") and flash_mem >= 768 and flash_mem <= 1024:
             startup_file, series_macro = ("startup_stm32f10x_xl.S", "STM32F10X_XL") # xtra-large density
         elif family in ("stm32f105", "stm32f107"):
-            startup_file, series_macro = ("startup_stm32f10x_cl.S", "STM32F10X_CD") # connectivity line
+            startup_file, series_macro = ("startup_stm32f10x_cl.S", "STM32F10X_CL") # connectivity line
 
     if startup_file == "":
         sys.stderr.write("Failed to find startup file for board '%s'.\n" % board.id)
