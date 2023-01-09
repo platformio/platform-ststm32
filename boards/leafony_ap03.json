@@ -11,6 +11,15 @@
   "connectivity": [
     "can"
   ],
+  "debug": {
+    "jlink_device": "STM32L452RE",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_l4",
+    "openocd_target": "stm32l4x",
+    "svd_path": "STM32L4x2.svd"
+  },
   "frameworks": [
     "arduino",
     "cmsis",
