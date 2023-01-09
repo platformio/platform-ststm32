@@ -11,18 +11,6 @@
   "connectivity": [
     "can"
   ],
-  "debug": {
-    "default_tools": [
-      "stlink"
-    ],
-    "jlink_device": "STM32L452RE",
-    "onboard_tools": [
-      "stlink"
-    ],
-    "openocd_board": "st_nucleo_l4",
-    "openocd_target": "stm32l4x",
-    "svd_path": "STM32L4x2.svd"
-  },
   "frameworks": [
     "arduino",
     "cmsis",
@@ -33,8 +21,9 @@
   "upload": {
     "maximum_ram_size": 163840,
     "maximum_size": 524288,
-    "protocol": "stlink",
+    "protocol": "serial",
     "protocols": [
+      "serial"
       "jlink",
       "cmsis-dap",
       "stlink",
