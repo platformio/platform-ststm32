@@ -4,33 +4,24 @@
     "extra_flags": "-DSTM32L073xx",
     "f_cpu": "32000000L",
     "framework_extra_flags": {
-      "arduino": "-D__CORTEX_SC=0 -DARDUINO_NUCLEO_L073RZ"
+      "arduino": "-D__CORTEX_SC=0 -DCUSTOM_PERIPHERAL_PINS"
     },
     "mcu": "stm32l073rz",
     "product_line": "STM32L073xx",
     "variant": "STM32L0xx/L072R(B-Z)T_L073R(B-Z)T_L083R(B-Z)T"
   },
   "debug": {
-    "default_tools": [
-      "stlink"
-    ],
     "jlink_device": "STM32L073RZ",
-    "onboard_tools": [
-      "stlink"
-    ],
-    "openocd_board": "st_nucleo_l073rz",
     "openocd_target": "stm32l0",
     "svd_path": "STM32L07x.svd"
   },
   "frameworks": [
     "arduino",
     "cmsis",
-    "mbed",
     "stm32cube",
-    "libopencm3",
-    "zephyr"
+    "libopencm3"
   ],
-  "name": "ST Nucleo L073RZ",
+  "name": "ACSIP S76S",
   "upload": {
     "maximum_ram_size": 20480,
     "maximum_size": 196608,
@@ -43,6 +34,6 @@
       "mbed"
     ]
   },
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-L073RZ/",
-  "vendor": "ST"
+  "url": "https://www.acsip.com.tw/index.php?action=products-detail&fid1=19&fid2=&fid3=&id=79",
+  "vendor": "ACSIP"
 }

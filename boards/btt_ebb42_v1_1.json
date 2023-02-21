@@ -1,15 +1,18 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_EBB42_V1_1.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m0plus",
     "extra_flags": "-DSTM32G0xx -DSTM32G0B1xx",
     "f_cpu": "64000000L",
     "framework_extra_flags": {
-      "arduino": "-D__CORTEX_SC=0"
+      "arduino": "-D__CORTEX_SC=0 -DARDUINO_EBB42_V1_1"
     },
     "mcu": "stm32g0b1ret6",
     "product_line": "STM32G0B1xx",
-    "variant": "STM32G0xx/G0B1R(B-C-E)T_G0C1R(C-E)T"
+    "variant": "STM32G0xx/G0B1C(B-C-E)(T-U)_G0C1C(C-E)(T-U)"
   },
   "debug": {
     "default_tools": [
@@ -26,10 +29,10 @@
     "arduino",
     "stm32cube"
   ],
-  "name": "ST Nucleo G0B1RE",
+  "name": "Big Tree Tech EBB42 V1.1",
   "upload": {
     "maximum_ram_size": 147456,
-    "maximum_size": 262144,
+    "maximum_size": 131072,
     "protocol": "stlink",
     "protocols": [
       "blackmagic",
@@ -41,6 +44,6 @@
       "mbed"
     ]
   },
-  "url": "https://www.st.com/en/evaluation-tools/nucleo-g0b1re.html",
-  "vendor": "ST"
+  "url": "https://github.com/bigtreetech/EBB/tree/master/EBB%20CAN%20V1.1%20(STM32G0B1)/EBB42%20CAN%20V1.1",
+  "vendor": "Big Tree Tech"
 }

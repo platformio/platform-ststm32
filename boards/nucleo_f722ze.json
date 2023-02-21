@@ -4,7 +4,8 @@
     "extra_flags": "-DSTM32F722xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f722zet6",
-    "product_line": "STM32F722xx"
+    "product_line": "STM32F722xx",
+    "variant": "STM32F7xx/F722Z(C-E)T_F732ZET"
   },
   "connectivity": [
     "can"
@@ -22,13 +23,14 @@
     "svd_path": "STM32F722.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "stm32cube",
     "libopencm3"
   ],
   "name": "ST Nucleo F722ZE",
   "upload": {
-    "maximum_ram_size": 262144,
+    "maximum_ram_size": 196608,
     "maximum_size": 524288,
     "protocol": "stlink",
     "protocols": [
