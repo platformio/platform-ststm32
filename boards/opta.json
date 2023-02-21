@@ -1,6 +1,6 @@
 {
   "build": {
-    "arduino":{
+    "arduino": {
       "ldscript": "linker_script.ld",
       "flash_layout": "50_50"
     },
@@ -29,7 +29,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "Opta",
+  "name": "Arduino Opta",
   "upload": {
     "maximum_ram_size": 523624,
     "maximum_size": 786432,
