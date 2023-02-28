@@ -5,7 +5,8 @@
     "extra_flags": "-DSTM32H7xx -DSTM32H723xx",
     "f_cpu": "550000000L",
     "mcu": "stm32h723zgt6",
-    "product_line": "STM32H723xx"
+    "product_line": "STM32H723xx",
+    "variant": "STM32H7xx/H723Z(E-G)T_H730ZBT_H733ZGT"
   },
   "connectivity": [
     "can",
@@ -23,13 +24,14 @@
     "svd_path": "STM32H723.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "stm32cube",
     "zephyr"
   ],
   "name": "ST Nucleo H723ZG",
   "upload": {
-    "maximum_ram_size": 442368,
+    "maximum_ram_size": 327680,
     "maximum_size": 1048576,
     "protocol": "stlink",
     "protocols": [
