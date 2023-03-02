@@ -1,7 +1,7 @@
 {
   "build": {
     "arduino": {
-      "variant_h": "variant_BLACKPILL_F401Cx.h"
+      "variant_h": "variant_BLACKPILL_F411CE.h"
     },
     "core": "stm32",
     "cpu": "cortex-m4",
