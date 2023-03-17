@@ -6,7 +6,7 @@
       },
       "extra_flags": "-DARDUINO_NICLA_VISION",
       "core": "arduino",
-      "cpu": "cortex-m4",
+      "cpu": "cortex-m7",
       "f_cpu": "480000000L",
       "mcu": "stm32h747xih6",
       "variant": "NICLA_VISION",
