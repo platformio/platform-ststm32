@@ -32,7 +32,7 @@ class Ststm32Platform(PlatformBase):
 
         frameworks = variables.get("pioframework", [])
         if "arduino" in frameworks:
-            if board.startswith(("portenta", "opta")):
+            if board.startswith(("portenta", "opta", "nicla_vision")):
                 self.frameworks["arduino"]["package"] = "framework-arduino-mbed"
                 self.frameworks["arduino"][
                     "script"
