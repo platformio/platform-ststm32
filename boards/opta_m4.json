@@ -1,10 +1,10 @@
 {
   "build": {
-    "arduino":{
+    "arduino": {
       "ldscript": "linker_script.ld",
       "flash_layout": "50_50"
     },
-    "extra_flags": "-DARDUINO_PORTENTA_H7_M4 -DPORTENTA_H7_PINS",
+    "extra_flags": "-DARDUINO_OPTA -DOPTA_PINS",
     "core": "arduino",
     "cpu": "cortex-m4",
     "f_cpu": "480000000L",
@@ -14,7 +14,7 @@
     "hwids": [
       [
         "0x2341",
-        "0x035b"
+        "0x0364"
       ]
     ]
   },
@@ -29,7 +29,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "Arduino Portenta H7 (M4 core)",
+  "name": "Arduino Opta (M4 core)",
   "upload": {
     "maximum_ram_size": 294248,
     "maximum_size": 1048576,
@@ -46,6 +46,6 @@
     "wait_for_upload_port": true,
     "offset_address": "0x08100000"
   },
-  "url": "https://www.arduino.cc/pro/hardware/product/portenta-h7",
+  "url": "https://www.arduino.cc/pro/hardware-arduino-opta",
   "vendor": "Arduino"
 }

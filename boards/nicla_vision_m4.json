@@ -1,10 +1,10 @@
 {
   "build": {
-    "arduino":{
+    "arduino": {
       "ldscript": "linker_script.ld",
       "flash_layout": "50_50"
     },
-    "extra_flags": "-DARDUINO_PORTENTA_H7_M4 -DPORTENTA_H7_PINS",
+    "extra_flags": "-DARDUINO_PORTENTA_H7_M4 -DNVISION_PINS",
     "core": "arduino",
     "cpu": "cortex-m4",
     "f_cpu": "480000000L",
@@ -14,7 +14,19 @@
     "hwids": [
       [
         "0x2341",
-        "0x035b"
+        "0x035F"
+      ],
+      [
+        "0x2341",
+        "0x025F"
+      ],
+      [
+        "0x2341",
+        "0x045F"
+      ],
+      [
+        "0x2341",
+        "0x055F"
       ]
     ]
   },
@@ -29,7 +41,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "Arduino Portenta H7 (M4 core)",
+  "name": "Arduino Nicla Vision (M4 core)",
   "upload": {
     "maximum_ram_size": 294248,
     "maximum_size": 1048576,
@@ -46,6 +58,6 @@
     "wait_for_upload_port": true,
     "offset_address": "0x08100000"
   },
-  "url": "https://www.arduino.cc/pro/hardware/product/portenta-h7",
+  "url": "https://store.arduino.cc/products/nicla-vision",
   "vendor": "Arduino"
 }

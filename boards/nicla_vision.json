@@ -1,20 +1,32 @@
 {
   "build": {
-    "arduino":{
+    "arduino": {
       "ldscript": "linker_script.ld",
       "flash_layout": "50_50"
     },
-    "extra_flags": "-DARDUINO_PORTENTA_H7_M4 -DPORTENTA_H7_PINS",
+    "extra_flags": "-DARDUINO_NICLA_VISION",
     "core": "arduino",
-    "cpu": "cortex-m4",
+    "cpu": "cortex-m7",
     "f_cpu": "480000000L",
     "mcu": "stm32h747xih6",
-    "variant": "PORTENTA_H7_M4",
+    "variant": "NICLA_VISION",
     "product_line": "STM32H747xx",
     "hwids": [
       [
         "0x2341",
-        "0x035b"
+        "0x035F"
+      ],
+      [
+        "0x2341",
+        "0x025F"
+      ],
+      [
+        "0x2341",
+        "0x045F"
+      ],
+      [
+        "0x2341",
+        "0x055F"
       ]
     ]
   },
@@ -23,16 +35,16 @@
     "wifi"
   ],
   "debug": {
-    "jlink_device": "STM32H747XI_M4",
+    "jlink_device": "STM32H747XI_M7",
     "openocd_target": "stm32h7x_dual_bank"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "Arduino Portenta H7 (M4 core)",
+  "name": "Arduino Opta",
   "upload": {
-    "maximum_ram_size": 294248,
-    "maximum_size": 1048576,
+    "maximum_ram_size": 523624,
+    "maximum_size": 786432,
     "protocol": "dfu",
     "protocols": [
       "cmsis-dap",
@@ -44,8 +56,8 @@
     "require_upload_port": true,
     "use_1200bps_touch": true,
     "wait_for_upload_port": true,
-    "offset_address": "0x08100000"
+    "offset_address": "0x08040000"
   },
-  "url": "https://www.arduino.cc/pro/hardware/product/portenta-h7",
+  "url": "https://www.arduino.cc/pro/hardware-arduino-opta",
   "vendor": "Arduino"
 }
