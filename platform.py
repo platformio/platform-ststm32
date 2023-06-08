@@ -156,7 +156,7 @@ class Ststm32Platform(PlatformBase):
                     }
                 }
             else:
-                server_args = ["-s", "$PACKAGE_DIR/scripts"]
+                server_args = ["-s", "$PACKAGE_DIR/openocd/scripts"]
                 if debug.get("openocd_board"):
                     server_args.extend([
                         "-f", "board/%s.cfg" % debug.get("openocd_board")
