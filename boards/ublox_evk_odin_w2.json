@@ -16,7 +16,6 @@
     "svd_path": "STM32F439x.svd"
   },
   "frameworks": [
-    "mbed",
     "stm32cube"
   ],
   "name": "u-blox EVK-ODIN-W2",

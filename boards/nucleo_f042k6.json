@@ -25,7 +25,6 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "mbed",
     "stm32cube",
     "libopencm3"
   ],

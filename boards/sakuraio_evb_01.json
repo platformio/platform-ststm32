@@ -19,7 +19,6 @@
   },
   "frameworks": [
     "cmsis",
-    "mbed",
     "stm32cube",
     "libopencm3"
   ],
