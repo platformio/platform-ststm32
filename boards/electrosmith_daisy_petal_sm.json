@@ -30,8 +30,8 @@
   ],
   "name": "Electrosmith Daisy Petal SM",
   "upload": {
-    "maximum_ram_size": 131072,
-    "maximum_size": 524288,
+    "maximum_ram_size": 524288,
+    "maximum_size": 131072,
     "protocol": "stlink",
     "protocols": [
       "jlink",
