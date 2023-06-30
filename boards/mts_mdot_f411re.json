@@ -12,7 +12,6 @@
     "svd_path": "STM32F411xx.svd"
   },
   "frameworks": [
-    "mbed",
     "stm32cube",
     "libopencm3"
   ],

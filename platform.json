@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "15.6.0",
+  "version": "16.0.0",
   "frameworks": {
     "mbed": {
       "package": "framework-mbed",
@@ -77,17 +77,15 @@
       "optionalVersions": [
         "~1.60301.0",
         "~1.80201.0",
-        "~1.90201.0"
+        "~1.90201.0",
+        "~1.100301.0"
       ]
     },
     "framework-mbed": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~6.60900.0",
-      "optionalVersions": [
-        "~6.51506.0"
-      ]
+      "version": "~6.60900.0"
     },
     "framework-cmsis": {
       "type": "framework",
@@ -192,7 +190,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~4.20400.0"
+      "version": "~4.20500.0"
     },
     "framework-arduinoststm32-maple": {
       "type": "framework",
@@ -312,7 +310,7 @@
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.1100.0"
+      "version": "~3.1200.0"
     },
     "tool-jlink": {
       "type": "uploader",

@@ -36,7 +36,7 @@
   "name": "ST 32F413HDISCOVERY",
   "upload": {
     "maximum_ram_size": 327680,
-    "maximum_size": 524288,
+    "maximum_size": 1572864,
     "protocol": "stlink",
     "protocols": [
       "jlink",

@@ -19,7 +19,6 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "mbed",
     "libopencm3",
     "stm32cube",
     "zephyr"
