@@ -1,0 +1,218 @@
+# Copyright (c) 2017-2020 Linaro Limited
+# Copyright (c) 2020 Arm Limited
+# Copyright (c) 2017-2023 Nordic Semiconductor ASA
+#
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig MCUBOOT_SERIAL
+	bool "MCUboot serial recovery"
+	default n
+	select REBOOT
+	select SERIAL
+	select UART_INTERRUPT_DRIVEN
+	select BASE64
+	select CRC
+	select ZCBOR
+	help
+	  If y, enables a serial-port based update mode. This allows
+	  MCUboot itself to load update images into flash over a UART.
+	  If unsure, leave at the default value.
+
+if MCUBOOT_SERIAL
+
+choice BOOT_SERIAL_DEVICE
+	prompt "Serial device"
+	default BOOT_SERIAL_UART if !BOARD_NRF52840DONGLE_NRF52840
+	default BOOT_SERIAL_CDC_ACM if BOARD_NRF52840DONGLE_NRF52840
+
+config BOOT_SERIAL_UART
+	bool "UART"
+	# SERIAL and UART_INTERRUPT_DRIVEN already selected
+	help
+	  The serial device to use will be fist selected via chosen
+	  node "zephyr,uart-mcumgr", when such node does not exist
+	  the "zephyr,console" is used.  In case when
+	  the "zephyr,uart-mcumgr" points to the same device as
+	  the "zephyr,console" compilation error will be triggered.
+
+config BOOT_SERIAL_CDC_ACM
+	bool "CDC ACM"
+	select USB_DEVICE_STACK
+	help
+	  This setting will choose CDC ACM for serial recovery unless chosen
+	  "zephyr,uart-mcumgr" is present, in which case the chosen takes
+	  precedence and redirects serial recovery to uart pointed by
+	  the chosen, leaving console on CDC ACM.
+
+endchoice
+
+config MCUBOOT_SERIAL_DIRECT_IMAGE_UPLOAD
+	bool "Allow to select image number for DFU"
+	help
+	  With the option enabled, the mcuboot serial recovery will
+	  respect the "image" field in mcumgr image update frame
+	  header.
+	  The mapping of image number to partition is as follows:
+	    0 -> default behaviour, same as 1;
+	    1 -> image-0 (primary slot of the first image);
+	    2 -> image-1 (secondary slot of the first image);
+	    3 -> image-2;
+	    4 -> image-3.
+	  Note that 0 is default upload target when no explicit
+	  selection is done.
+
+config BOOT_SERIAL_UNALIGNED_BUFFER_SIZE
+	int "Stack buffer for unaligned memory writes"
+	default 64
+	range 0 128
+	help
+	  Specifies the stack usage for a buffer which is used for unaligned
+	  memory access when data is written to a device with memory alignment
+	  requirements. Set to 0 to disable.
+
+config BOOT_MAX_LINE_INPUT_LEN
+	int "Maximum input line length"
+	default 128
+	help
+	  Maximum length of input serial port buffer (SMP serial transport uses
+	  fragments of 128-bytes, this should not need to be changed unless a
+	  different value is used for the transport).
+
+config BOOT_LINE_BUFS
+	int "Number of receive buffers"
+	range 2 128
+	default 8
+	help
+	  Number of receive buffers for data received via the serial port.
+
+config BOOT_SERIAL_MAX_RECEIVE_SIZE
+	int "Maximum command line length"
+	default 1024
+	help
+	  Maximum length of received commands via the serial port (this should
+	  be equal to the maximum line length, BOOT_MAX_LINE_INPUT_LEN times
+	  by the number of receive buffers, BOOT_LINE_BUFS to allow for
+	  optimal data transfer speeds).
+
+config BOOT_ERASE_PROGRESSIVELY
+	bool "Erase flash progressively when receiving new firmware"
+	default y if SOC_FAMILY_NRF
+	help
+	 If enabled, flash is erased as necessary when receiving new firmware,
+	 instead of erasing the whole image slot at once. This is necessary
+	 on some hardware that has long erase times, to prevent long wait
+	 times at the beginning of the DFU process.
+
+config BOOT_MGMT_ECHO
+	bool "Enable echo command"
+	help
+	  if enabled, support for the mcumgr echo command is being added.
+
+menuconfig ENABLE_MGMT_PERUSER
+	bool "Enable system specific mcumgr commands"
+	help
+	  The option enables processing of system specific mcumgr commands;
+	  system specific commands are within group MGMT_GROUP_ID_PERUSER (64)
+	  and above, as defined within mcumgr library.
+	  These are system specific command and system specific implementation
+	  function is required to process these commands.
+
+if ENABLE_MGMT_PERUSER
+
+config BOOT_MGMT_CUSTOM_STORAGE_ERASE
+	bool "Enable storage erase command"
+	help
+	  The option enables mcumgr command that allows to erase storage
+	  partition.
+	  Note that the storage partition needs to be defined, in DTS, otherwise
+	  enabling the option will cause a compilation to fail.
+
+config BOOT_MGMT_CUSTOM_IMG_LIST
+	bool "Enable custom image list command"
+	help
+	  The option enables command which returns versions and installation
+	  statuses (custom property) for all images.
+
+endif # ENABLE_MGMT_PERUSER
+
+config BOOT_SERIAL_ENCRYPT_EC256
+	bool "Support for encrypted upgrade images using ECIES-P256 in serial recovery upload"
+	default n
+	help
+	  If y, uploaded images via serial recovery can be decrypted
+	  on the fly when upgrading to the primary slot. The
+	  encryption mechanism used in this case is ECIES using primitives
+	  described under "ECIES-P256 encryption" in docs/encrypted_images.md.
+
+menu "Entrance methods"
+
+menuconfig BOOT_SERIAL_ENTRANCE_GPIO
+	bool "GPIO"
+	default y
+	depends on GPIO
+	help
+	  Use a GPIO to enter serial recovery mode.
+
+config BOOT_SERIAL_DETECT_DELAY
+	int "Serial detect pin detection delay time [ms]"
+	default 0
+	depends on BOOT_SERIAL_ENTRANCE_GPIO
+	help
+	  Used to prevent the bootloader from loading on button press.
+	  Useful for powering on when using the same button as
+	  the one used to place the device in bootloader mode.
+
+menuconfig BOOT_SERIAL_WAIT_FOR_DFU
+	bool "Wait a prescribed duration to see if DFU is invoked by receiving a MCUmgr comand"
+	depends on BOOT_SERIAL_UART || BOOT_SERIAL_CDC_ACM
+	help
+	  If y, MCUboot waits for a prescribed duration of time to allow
+	  for DFU to be invoked. The serial recovery can be entered by receiving any
+	  mcumgr command.
+
+config BOOT_SERIAL_WAIT_FOR_DFU_TIMEOUT
+	int "Duration to wait for the serial DFU timeout in ms"
+	default 500
+	depends on BOOT_SERIAL_WAIT_FOR_DFU
+	help
+	  Timeout in ms for MCUboot to wait to allow for DFU to be invoked.
+
+config BOOT_SERIAL_BOOT_MODE
+	bool "Check boot mode via retention subsystem"
+	depends on RETENTION_BOOT_MODE
+	help
+	  Allows for entering serial recovery mode by using Zephyr's boot mode
+	  retention system (i.e. an application must set the boot mode to stay
+	  in serial recovery mode and reboot the module).
+
+config BOOT_SERIAL_NO_APPLICATION
+	bool "Stay in bootloader if no application"
+	help
+	  Allows for entering serial recovery mode if there is no bootable
+	  application that the bootloader can jump to.
+
+config BOOT_SERIAL_PIN_RESET
+	bool "Check for device reset by pin"
+	select HWINFO
+	help
+	  Checks if the module reset was caused by the reset pin and will
+	  remain in bootloader serial recovery mode if it was.
+
+endmenu
+
+config BOOT_SERIAL_IMG_GRP_HASH
+	bool "Image list hash support"
+	default y
+	help
+	  If y, image list responses will include the image hash (adds ~100
+	  bytes of flash).
+
+config BOOT_SERIAL_IMG_GRP_IMAGE_STATE
+	bool "Image state support"
+	depends on !SINGLE_APPLICATION_SLOT
+	select BOOT_SERIAL_IMG_GRP_HASH if UPDATEABLE_IMAGE_NUMBER > 1
+	help
+	  If y, image states will be included with image lists and the set
+	  state command can be used to mark an image as test/confirmed.
+
+endif # MCUBOOT_SERIAL

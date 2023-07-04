@@ -119,6 +119,11 @@ if "nobuild" in COMMAND_LINE_TARGETS:
 else:
     target_elf = env.BuildProgram()
     target_firm = env.ElfToBin(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
+
+    if "zephyr" in frameworks and "mcuboot-image" in COMMAND_LINE_TARGETS:
+        target_firm = env.MCUbootImage(
+            join("$BUILD_DIR", "${PROGNAME}.mcuboot.bin"), target_firm)
+
     env.Depends(target_firm, "checkprogsize")
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
@@ -301,23 +306,23 @@ elif upload_protocol == "hid":
 
 elif upload_protocol in debug_tools:
     openocd_args = [
-        "-d%d" % (2 if int(ARGUMENTS.get("PIOVERBOSE", 0)) else 1)
-    ]
+            "-d%d" % (2 if int(ARGUMENTS.get("PIOVERBOSE", 0)) else 1)
+        ]
     openocd_args.extend(
-        debug_tools.get(upload_protocol).get("server").get("arguments", []))
-    if env.GetProjectOption("debug_speed", ""):
+            debug_tools.get(upload_protocol).get("server").get("arguments", []))
+        if env.GetProjectOption("debug_speed", ""):
         openocd_args.extend(
-            ["-c", "adapter speed %s" % env.GetProjectOption("debug_speed")]
-        )
+                ["-c", "adapter speed %s" % env.GetProjectOption("debug_speed")]
+            )
     openocd_args.extend([
-        "-c", "program {$SOURCE} %s verify reset; shutdown;" %
-        board.get("upload.offset_address", "")
-    ])
+            "-c", "program {$SOURCE} %s verify reset; shutdown;" %
+            board.get("upload.offset_address", "")
+        ])
     openocd_args = [
-        f.replace("$PACKAGE_DIR",
-                  platform.get_package_dir("tool-openocd") or "")
+            f.replace("$PACKAGE_DIR",
+                      platform.get_package_dir("tool-openocd") or "")
         for f in openocd_args
-    ]
+        ]
     env.Replace(
         UPLOADER="openocd",
         UPLOADERFLAGS=openocd_args,
