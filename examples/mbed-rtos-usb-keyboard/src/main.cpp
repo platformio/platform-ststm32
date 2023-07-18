@@ -5,11 +5,6 @@
 #include "mbed.h"
 #include "USBMouseKeyboard.h"
 
-//LED1: NUM_LOCK
-//LED2: CAPS_LOCK
-//LED3: SCROLL_LOCK
-BusOut leds(LED1, LED2, LED3);
-
 //USBMouseKeyboard object
 USBMouseKeyboard key_mouse;
 
@@ -31,15 +26,12 @@ int main(void)
         key_mouse.move(x, y);
         //example of modifier key press
         key_mouse.key_code(KEY_CAPS_LOCK);
-        leds = key_mouse.lock_status();
         ThisThread::sleep_for(50);
         key_mouse.media_control(KEY_VOLUME_UP);
         key_mouse.key_code(KEY_NUM_LOCK);
-        leds = key_mouse.lock_status();
         ThisThread::sleep_for(50);
         angle += 10;
         key_mouse.key_code(KEY_SCROLL_LOCK);
-        leds = key_mouse.lock_status();
         ThisThread::sleep_for(50);
     }
 }

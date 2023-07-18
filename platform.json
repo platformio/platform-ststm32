@@ -85,7 +85,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~6.60900.0"
+      "version": "~6.61700.0"
     },
     "framework-cmsis": {
       "type": "framework",
