@@ -27,10 +27,10 @@
     "cmsis",
     "stm32cube"
   ],
-  "name": "GENERIC STM32G030K8T6",
+  "name": "GENERIC STM32G030K8Tx",
   "upload": {
     "maximum_ram_size": 8192,
-    "maximum_size": 32768,
+    "maximum_size": 65536,
     "protocol": "stlink",
     "protocols": [
       "jlink",
@@ -38,6 +38,6 @@
       "stlink"
     ]
   },
-  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32g030k6.html",
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32g030k8.html",
   "vendor": "ST"
 }
