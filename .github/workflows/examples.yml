@@ -30,7 +30,7 @@ jobs:
           - "examples/mbed-rtos-mesh-minimal"
           - "examples/mbed-rtos-serial"
           - "examples/mbed-rtos-usb-keyboard"
-          - "examples/mbed-rtos-wifi"
+          - "examples/mbed-rtos-sockets"
           - "examples/spl-blink"
           - "examples/stm32cube-hal-blink"
           - "examples/stm32cube-hal-eeprom-emulation"

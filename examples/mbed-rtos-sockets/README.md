@@ -8,7 +8,7 @@ How to build PlatformIO based project
 
 ```shell
 # Change directory to example
-$ cd platform-ststm32/examples/mbed-rtos-wifi
+$ cd platform-ststm32/examples/mbed-rtos-sockets
 
 # Build project
 $ pio run
