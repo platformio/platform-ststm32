@@ -25,7 +25,6 @@
   },
   "frameworks": [
     "arduino",
-    "cmsis",
     "stm32cube",
     "zephyr"
   ],
