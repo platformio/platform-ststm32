@@ -1,5 +1,8 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_BLACKPILL_F401Cx.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F4xx -DSTM32F401xC",
@@ -36,6 +39,6 @@
       "dfu"
     ]
   },
-  "url": "https://github.com/WeActTC/MiniSTM32F4x1",
+  "url": "https://www.weact-tc.cn/",
   "vendor": "WeAct Studio"
 }

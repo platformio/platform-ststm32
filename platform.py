@@ -32,7 +32,7 @@ class Ststm32Platform(PlatformBase):
 
         frameworks = variables.get("pioframework", [])
         if "arduino" in frameworks:
-            if board.startswith("portenta"):
+            if board.startswith(("portenta", "opta", "nicla_vision")):
                 self.frameworks["arduino"]["package"] = "framework-arduino-mbed"
                 self.frameworks["arduino"][
                     "script"
@@ -47,17 +47,11 @@ class Ststm32Platform(PlatformBase):
                 self.packages["framework-arduinoststm32l0"]["optional"] = False
                 self.packages["framework-arduinoststm32"]["optional"] = True
             else:
-                self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.90201.0"
+                self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.100301.0"
                 self.packages["framework-cmsis"]["version"] = "~2.50700.0"
                 self.packages["framework-cmsis"]["optional"] = False
 
         if "mbed" in frameworks:
-            deprecated_boards_file = os.path.join(
-                self.get_dir(), "misc", "mbed_deprecated_boards.json")
-            if os.path.isfile(deprecated_boards_file):
-                with open(deprecated_boards_file) as fp:
-                    if board in json.load(fp):
-                        self.packages["framework-mbed"]["version"] = "~6.51506.0"
             self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.90201.0"
 
         if "cmsis" in frameworks:
@@ -156,7 +150,7 @@ class Ststm32Platform(PlatformBase):
                     }
                 }
             else:
-                server_args = ["-s", "$PACKAGE_DIR/scripts"]
+                server_args = ["-s", "$PACKAGE_DIR/openocd/scripts"]
                 if debug.get("openocd_board"):
                     server_args.extend([
                         "-f", "board/%s.cfg" % debug.get("openocd_board")

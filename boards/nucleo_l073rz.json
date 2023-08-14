@@ -4,7 +4,7 @@
     "extra_flags": "-DSTM32L073xx",
     "f_cpu": "32000000L",
     "framework_extra_flags": {
-      "arduino": "-D__CORTEX_SC=0"
+      "arduino": "-D__CORTEX_SC=0 -DARDUINO_NUCLEO_L073RZ"
     },
     "mcu": "stm32l073rz",
     "product_line": "STM32L073xx",

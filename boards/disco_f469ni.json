@@ -34,7 +34,7 @@
   "name": "ST 32F469IDISCOVERY",
   "upload": {
     "maximum_ram_size": 393216,
-    "maximum_size": 1048576,
+    "maximum_size": 2097152,
     "protocol": "stlink",
     "protocols": [
       "jlink",

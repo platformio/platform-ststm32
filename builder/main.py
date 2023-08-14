@@ -220,7 +220,7 @@ elif upload_protocol == "dfu":
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
     if "arduino" in frameworks:
-        if env.subst("$BOARD").startswith("portenta"):
+        if env.subst("$BOARD").startswith(("portenta", "opta")):
             upload_actions.insert(
                 0,
                 env.VerboseAction(BeforeUpload, "Looking for upload port...")

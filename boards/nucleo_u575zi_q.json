@@ -9,7 +9,7 @@
     },
     "mcu": "stm32u575zit6q",
     "product_line": "STM32U575xx",
-    "variant": "STM32U5xx/U575Z(G-I)TxQ_U585ZETxQ"
+    "variant": "STM32U5xx/U575Z(G-I)TxQ_U585ZITxQ"
   },
   "connectivity": [
     "can"
