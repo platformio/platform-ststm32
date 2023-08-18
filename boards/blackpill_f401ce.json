@@ -43,6 +43,6 @@
       "dfu"
     ]
   },
-  "url": "https://github.com/WeActTC/MiniSTM32F4x1",
+  "url": "https://github.com/WeActStudio/WeActStudio.MiniSTM32F4x1",
   "vendor": "WeAct Studio"
 }
