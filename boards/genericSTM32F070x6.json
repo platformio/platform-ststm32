@@ -1,0 +1,36 @@
+{
+  "build": {
+    "cpu": "cortex-m0",
+    "extra_flags": "-DSTM32F070x6",
+    "f_cpu": "48000000L",
+    "mcu": "stm32f070f6p6",
+    "product_line": "STM32F070x6",
+    "variant": "STM32F0xx/F070F6P"
+  },
+  "debug": {
+    "jlink_device": "STM32F070F6",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F0x0.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube",
+    "libopencm3"
+  ],
+  "name": "STM32F070F6P6 (6K RAM 32K Flash)",
+  "upload": {
+    "maximum_ram_size": 6144,
+    "maximum_size": 32768,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "serial"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f070f6.html",
+  "vendor": "ST"
+}
