@@ -1,0 +1,42 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32G0xx -DSTM32G030xx",
+    "f_cpu": "64000000L",
+    "framework_extra_flags": {
+      "arduino": "-D__CORTEX_SC=0"
+    },
+    "mcu": "stm32g030f6p6",
+    "product_line": "STM32G030xx",
+    "variant": "STM32G0xx/G030F6P"
+  },
+  "debug": {
+    "jlink_device": "STM32G030F6",
+    "openocd_target": "stm32g0x",
+    "svd_path": "STM32G030.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "genericSTM32G030F6P6",
+  "upload": {
+    "maximum_ram_size": 8192,
+    "maximum_size": 32768,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "blackmagic",
+      "cmsis-dap",
+      "dfu",
+      "jlink",
+      "serial",
+      "mbed"
+    ]
+  },
+  "url": "https://github.com/WeActStudio/WeActStudio.STM32G0xxC0xxCoreBoard/",
+  "vendor": "WeActStudio"
+}
