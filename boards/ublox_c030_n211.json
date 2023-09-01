@@ -15,7 +15,6 @@
     "svd_path": "STM32F437x.svd"
   },
   "frameworks": [
-    "mbed",
     "stm32cube"
   ],
   "name": "u-blox C030-N211 IoT Starter Kit",

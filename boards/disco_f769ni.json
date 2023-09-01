@@ -35,7 +35,7 @@
   "name": "ST 32F769IDISCOVERY",
   "upload": {
     "maximum_ram_size": 524288,
-    "maximum_size": 1048576,
+    "maximum_size": 2097152,
     "protocol": "stlink",
     "protocols": [
       "jlink",
