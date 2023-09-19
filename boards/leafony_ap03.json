@@ -32,7 +32,7 @@
     "maximum_size": 524288,
     "protocol": "serial",
     "protocols": [
-      "serial"
+      "serial",
       "jlink",
       "cmsis-dap",
       "stlink",
