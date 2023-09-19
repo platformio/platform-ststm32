@@ -4,8 +4,9 @@
     "cpu": "cortex-m3",
     "extra_flags": "-DSTM32F103xB",
     "f_cpu": "72000000L",
+    "flash_offset": "0x2000",
     "framework_extra_flags": {
-      "arduino": "-DVECT_TAB_OFFSET=0x2000 -DCUSTOM_STARTUP_FILE -DCUSTOM_PERIPHERAL_PINS"
+      "arduino": "-DCUSTOM_STARTUP_FILE -DCUSTOM_PERIPHERAL_PINS"
     },
     "hwids": [
       [
