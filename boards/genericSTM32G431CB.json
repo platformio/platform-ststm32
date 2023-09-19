@@ -12,13 +12,7 @@
     "can"
   ],
   "debug": {
-    "default_tools": [
-      "stlink"
-    ],
     "jlink_device": "STM32G431CB",
-    "onboard_tools": [
-      "stlink"
-    ],
     "openocd_target": "stm32g4x",
     "svd_path": "STM32G431xx.svd"
   },
