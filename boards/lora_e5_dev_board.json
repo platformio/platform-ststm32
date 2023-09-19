@@ -1,5 +1,8 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_generic.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32WLxx -DSTM32WLE5xx",
@@ -9,30 +12,27 @@
     },
     "mcu": "stm32wle5jc",
     "product_line": "STM32WLE5xx",
-    "variant": "STM32WLxx/WL54JCI_WL55JCI_WLE5JC"
+    "variant": "STM32WLxx/WL54JCI_WL55JCI_WLE4J(8-B-C)I_WLE5J(8-B-C)I"
   },
   "debug": {
-    "default_tools": [
-      "stlink"
-    ],
     "jlink_device": "STM32WLE5JC",
     "openocd_target": "stm32wlx",
     "svd_path": "STM32WLE5_CM4.svd"
   },
   "frameworks": [
-	"cmsis",
-    "stm32cube",
+    "arduino",
     "zephyr"
   ],
-  "name": "LoRa E5 Dev Board",
+  "name": "SeeedStudio LoRa E5 Dev Board",
   "upload": {
     "maximum_ram_size": 65536,
     "maximum_size": 262144,
     "protocol": "stlink",
     "protocols": [
-      "stlink"
+      "stlink",
+      "jlink"
     ]
   },
   "url": "https://www.seeedstudio.com/LoRa-E5-Dev-Kit-p-4868.html",
-  "vendor": "Seeed"
+  "vendor": "SeeedStudio"
 }
