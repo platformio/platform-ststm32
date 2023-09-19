@@ -1,11 +1,14 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_MICROMOD_F405.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F405xx",
     "f_cpu": "168000000L",
     "framework_extra_flags": {
-      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS -DARDUINO_MICROMOD_F405"
     },
     "mcu": "stm32f405rgt6",
     "product_line": "STM32F405xx",
@@ -26,7 +29,7 @@
     "libopencm3",
     "zephyr"
   ],
-  "name": "SparkFun MicroMod STM32",
+  "name": "SparkFun MicroMod STM32F405",
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,
