@@ -41,7 +41,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "Arduino Opta",
+  "name": "Arduino Nicla Vision",
   "upload": {
     "maximum_ram_size": 523624,
     "maximum_size": 786432,
@@ -58,6 +58,6 @@
     "wait_for_upload_port": true,
     "offset_address": "0x08040000"
   },
-  "url": "https://www.arduino.cc/pro/hardware-arduino-opta",
+  "url": "https://store.arduino.cc/products/nicla-vision",
   "vendor": "Arduino"
 }
