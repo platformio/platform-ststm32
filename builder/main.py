@@ -208,9 +208,14 @@ elif upload_protocol == "dfu":
     vid = hwids[0][0]
     pid = hwids[0][1]
 
-    # default tool for all boards with embedded DFU bootloader over USB
-    _upload_tool = '"%s"' % join(platform.get_package_dir(
-        "tool-dfuutil") or "", "bin", "dfu-util")
+    if env.subst("$BOARD").startswith(("portenta", "opta", "nicla")):
+        _upload_tool = '"%s"' % join(platform.get_package_dir(
+            "tool-dfuutil-arduino") or "", "dfu-util")
+    else:
+        # default tool for all boards with embedded DFU bootloader over USB
+        _upload_tool = '"%s"' % join(platform.get_package_dir(
+            "tool-dfuutil") or "", "bin", "dfu-util")
+
     _upload_flags = [
         "-d", ",".join(["%s:%s" % (hwid[0], hwid[1]) for hwid in hwids]),
         "-a", "0", "-s",
@@ -220,7 +225,7 @@ elif upload_protocol == "dfu":
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
     if "arduino" in frameworks:
-        if env.subst("$BOARD").startswith(("portenta", "opta")):
+        if env.subst("$BOARD").startswith(("portenta", "opta", "nicla")):
             upload_actions.insert(
                 0,
                 env.VerboseAction(BeforeUpload, "Looking for upload port...")
@@ -245,17 +250,18 @@ elif upload_protocol == "dfu":
                                      "Looking for upload port..."))
 
     if "dfu-util" in _upload_tool:
-        # Add special DFU header to the binary image
-        env.AddPostAction(
-            join("$BUILD_DIR", "${PROGNAME}.bin"),
-            env.VerboseAction(
-                " ".join([
-                    '"%s"' % join(platform.get_package_dir("tool-dfuutil") or "",
-                         "bin", "dfu-suffix"),
-                    "-v %s" % vid,
-                    "-p %s" % pid,
-                    "-d 0xffff", "-a", "$TARGET"
-                ]), "Adding dfu suffix to ${PROGNAME}.bin"))
+        if not env.subst("$BOARD").startswith(("portenta", "opta", "nicla")):
+            # Add special DFU header to the binary image
+            env.AddPostAction(
+                join("$BUILD_DIR", "${PROGNAME}.bin"),
+                env.VerboseAction(
+                    " ".join([
+                        '"%s"' % join(platform.get_package_dir("tool-dfuutil") or "",
+                             "bin", "dfu-suffix"),
+                        "-v %s" % vid,
+                        "-p %s" % pid,
+                        "-d 0xffff", "-a", "$TARGET"
+                    ]), "Adding dfu suffix to ${PROGNAME}.bin"))
 
     env.Replace(
         UPLOADER=_upload_tool,

@@ -324,6 +324,12 @@
       "owner": "platformio",
       "version": "~1.11.0"
     },
+    "tool-dfuutil-arduino": {
+      "type": "uploader",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.11.0"
+    },
     "tool-cmake": {
       "optional": true,
       "owner": "platformio",

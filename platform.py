@@ -70,7 +70,13 @@ class Ststm32Platform(PlatformBase):
 
         default_protocol = board_config.get("upload.protocol") or ""
         if variables.get("upload_protocol", default_protocol) == "dfu":
-            self.packages["tool-dfuutil"]["optional"] = False
+            dfu_package = "tool-dfuutil"
+            if board.startswith(("portenta", "opta", "nicla")):
+                dfu_package = "tool-dfuutil-arduino"
+                self.packages.pop("tool-dfuutil")
+            else:
+                self.packages.pop("tool-dfuutil-arduino")
+            self.packages[dfu_package]["optional"] = False
 
         if board == "mxchip_az3166":
             self.frameworks["arduino"][
