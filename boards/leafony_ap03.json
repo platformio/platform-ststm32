@@ -26,7 +26,7 @@
     "stm32cube",
     "libopencm3"
   ],
-  "name": "LEAFONY_AP03",
+  "name": "Leafony Systems AP03",
   "upload": {
     "maximum_ram_size": 163840,
     "maximum_size": 524288,
@@ -41,5 +41,5 @@
     ]
   },
   "url": "https://shop.leafony.com/",
-  "vendor": "Leafony"
+  "vendor": "Leafony Systems"
 }
