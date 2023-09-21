@@ -22,7 +22,7 @@
     "libopencm3",
     "stm32cube"
   ],
-  "name": "STM32G431CB",
+  "name": "STM32G431CB (32k RAM. 128k Flash)",
   "upload": {
     "maximum_ram_size": 32768,
     "maximum_size": 131072,
