@@ -8,7 +8,7 @@
     "extra_flags": "-DSTM32H7xx -DSTM32H743xx",
     "f_cpu": "480000000L",
     "framework_extra_flags": {
-      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+      "arduino": "-DARDUINO_DevEBoxH743VITX -DCUSTOM_PERIPHERAL_PINS"
     },
     "mcu": "stm32h743vit6",
     "product_line": "STM32H743xx",

@@ -1,0 +1,47 @@
+{
+  "build": {
+    "arduino": {
+      "variant_h": "variant_MICROMOD_F405.h"
+    },
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F405xx",
+    "f_cpu": "168000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS -DARDUINO_MICROMOD_F405"
+    },
+    "mcu": "stm32f405rgt6",
+    "product_line": "STM32F405xx",
+    "variant": "STM32F4xx/F405RGT_F415RGT",
+    "zephyr": {
+      "variant": "sparkfun_micromod_stm32f405"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32F405RG",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F40x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube",
+    "libopencm3",
+    "zephyr"
+  ],
+  "name": "SparkFun MicroMod STM32F405",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 1048576,
+    "protocol": "stlink",
+    "protocols": [
+      "dfu",
+      "serial",
+      "jlink",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.sparkfun.com/products/17713",
+  "vendor": "SparkFun"
+}

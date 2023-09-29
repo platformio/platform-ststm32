@@ -1,0 +1,40 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32G4xx -DSTM32G431xx",
+    "f_cpu": "170000000L",
+    "mcu": "stm32g431cbu6",
+    "product_line": "STM32G431xx",
+    "variant": "STM32G4xx/G431C(6-8-B)U_G441CBU"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32G431CB",
+    "openocd_target": "stm32g4x",
+    "svd_path": "STM32G431xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "STM32G431CB (32k RAM. 128k Flash)",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "jlink",
+      "cmsis-dap",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32g431cb.html",
+  "vendor": "ST"
+}
