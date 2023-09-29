@@ -19,9 +19,9 @@
  */
 
 #include <stdio.h>
-#include <zephyr.h>
-#include <arch/cpu.h>
-#include <sys/printk.h>
+#include <zephyr/kernel.h>
+#include <zephyr/arch/cpu.h>
+#include <zephyr/sys/printk.h>
 
 /**
  * @class semaphore the basic pure virtual semaphore class
@@ -64,7 +64,7 @@ public:
 cpp_semaphore::cpp_semaphore()
 {
 	printk("Create semaphore %p\n", this);
-	k_sem_init(&_sema_internal, 0, UINT_MAX);
+	k_sem_init(&_sema_internal, 0, K_SEM_MAX_LIMIT);
 }
 
 /*
@@ -98,12 +98,9 @@ int cpp_semaphore::wait(int timeout)
 }
 
 /**
- *
  * @brief Signal a semaphore
  *
  * This routine signals the specified semaphore.
- *
- * @return N/A
  */
 void cpp_semaphore::give(void)
 {

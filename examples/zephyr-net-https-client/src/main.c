@@ -4,13 +4,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <logging/log.h>
+#include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(net_http_client_sample, LOG_LEVEL_DBG);
 
-#include <net/net_ip.h>
-#include <net/socket.h>
-#include <net/tls_credentials.h>
-#include <net/http_client.h>
+#include <zephyr/net/net_ip.h>
+#include <zephyr/net/socket.h>
+#include <zephyr/net/tls_credentials.h>
+#include <zephyr/net/http/client.h>
 
 #include "ca_certificate.h"
 
@@ -356,7 +356,7 @@ static int run_queries(void)
 	return ret;
 }
 
-void main(void)
+int main(void)
 {
 	int iterations = CONFIG_NET_SAMPLE_SEND_ITERATIONS;
 	int i = 0;
@@ -383,4 +383,5 @@ void main(void)
 	}
 
 	exit(0);
+	return 0;
 }

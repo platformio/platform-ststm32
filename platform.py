@@ -12,14 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import json
 import os
 import sys
+import subprocess
 
 from platformio.managers.platform import PlatformBase
 
 
 IS_WINDOWS = sys.platform.startswith("win")
+
 
 class Ststm32Platform(PlatformBase):
 
@@ -89,7 +90,7 @@ class Ststm32Platform(PlatformBase):
             for p in self.packages:
                 if p in ("tool-cmake", "tool-dtc", "tool-ninja"):
                     self.packages[p]["optional"] = False
-            self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.80201.0"
+            self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.120301.0"
             if not IS_WINDOWS:
                 self.packages["tool-gperf"]["optional"] = False
 
@@ -109,6 +110,24 @@ class Ststm32Platform(PlatformBase):
 
         return PlatformBase.configure_default_packages(self, variables,
                                                        targets)
+
+    def install_package(self, name, *args, **kwargs):
+        pkg = super().install_package(name, *args, **kwargs)
+        if name != "framework-zephyr":
+            return pkg
+
+        if not os.path.isfile(os.path.join(pkg.path, "_pio", "state.json")):
+            self.pm.log.info("Installing Zephyr project dependencies...")
+            try:
+                subprocess.run([
+                    os.path.normpath(sys.executable),
+                    os.path.join(pkg.path, "scripts", "platformio", "install-deps.py"),
+                    "--platform", self.name
+                ])
+            except subprocess.CalledProcessError:
+                self.pm.log.info("Failed to install Zephyr dependencies!")
+
+        return pkg
 
     def get_boards(self, id_=None):
         result = PlatformBase.get_boards(self, id_)
