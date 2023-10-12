@@ -33,7 +33,7 @@ class Ststm32Platform(PlatformBase):
 
         frameworks = variables.get("pioframework", [])
         if "arduino" in frameworks:
-            if board.startswith(("portenta", "opta", "nicla_vision")):
+            if board.startswith(("portenta", "opta", "nicla_vision", "giga")):
                 self.frameworks["arduino"]["package"] = "framework-arduino-mbed"
                 self.frameworks["arduino"][
                     "script"
@@ -72,7 +72,7 @@ class Ststm32Platform(PlatformBase):
         default_protocol = board_config.get("upload.protocol") or ""
         if variables.get("upload_protocol", default_protocol) == "dfu":
             dfu_package = "tool-dfuutil"
-            if board.startswith(("portenta", "opta", "nicla")):
+            if board.startswith(("portenta", "opta", "nicla", "giga")):
                 dfu_package = "tool-dfuutil-arduino"
                 self.packages.pop("tool-dfuutil")
             else:
