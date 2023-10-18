@@ -4,7 +4,7 @@
       "ldscript": "linker_script.ld",
       "flash_layout": "50_50"
     },
-    "extra_flags": "-DARDUINO_PORTENTA_H7_M4 -DARDUINO_GIGA_PINS -DGIGA_PINS",
+    "extra_flags": "-DARDUINO_PORTENTA_H7_M4 -DARDUINO_GIGA_PINS -DGIGA_PINS -DARDUINO_GIGA",
     "core": "arduino",
     "cpu": "cortex-m4",
     "f_cpu": "480000000L",
