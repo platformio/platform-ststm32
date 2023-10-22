@@ -4,12 +4,12 @@
       "ldscript": "linker_script.ld",
       "flash_layout": "50_50"
     },
-    "extra_flags": "-DARDUINO_PORTENTA_H7_M4 -DARDUINO_GIGA_PINS -DGIGA_PINS -DARDUINO_GIGA",
+    "extra_flags": "-DARDUINO_PORTENTA_H7_M4 -DARDUINO_GIGA_PINS -DGIGA_PINS -DGIGA -DARDUINO_GIGA",
     "core": "arduino",
     "cpu": "cortex-m4",
     "f_cpu": "480000000L",
     "mcu": "stm32h747xih6",
-    "variant": "PORTENTA_H7_M4",
+    "variant": "GIGA_M4",
     "product_line": "STM32H747xx",
     "hwids": [
       [
@@ -54,6 +54,6 @@
     "wait_for_upload_port": true,
     "offset_address": "0x08100000"
   },
-  "url": "https://www.arduino.cc/pro/hardware/product/portenta-h7",
+  "url": "https://docs.arduino.cc/hardware/giga-r1-wifi",
   "vendor": "Arduino"
 }
