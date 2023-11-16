@@ -26,6 +26,7 @@
   "frameworks": [
     "arduino",
     "stm32cube",
+    "mbed",
     "zephyr"
   ],
   "name": "ST Nucleo H723ZG",
