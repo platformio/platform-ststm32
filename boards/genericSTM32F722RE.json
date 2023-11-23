@@ -1,0 +1,37 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32F722xx",
+    "f_cpu": "216000000L",
+    "mcu": "stm32f722ret6",
+    "product_line": "STM32F722xx",
+    "variant": "STM32F7xx/F722R(C-E)T_F730R8T_F732RET"
+  },
+  "debug": {
+    "jlink_device": "STM32F722RE",
+    "openocd_target": "stm32f7x",
+    "svd_path": "STM32F722.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube",
+    "libopencm3"
+  ],
+  "name": "STM32F722RE (256k RAM. 512k Flash)",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f722re.html",
+  "vendor": "Generic"
+}
