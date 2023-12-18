@@ -49,7 +49,7 @@ class Ststm32Platform(PlatformBase):
                 self.packages["framework-arduinoststm32"]["optional"] = True
             else:
                 self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.120301.0"
-                self.packages["framework-cmsis"]["version"] = "~2.50700.0"
+                self.packages["framework-cmsis"]["version"] = "~2.50900.0"
                 self.packages["framework-cmsis"]["optional"] = False
 
         if "mbed" in frameworks:
