@@ -9,7 +9,7 @@
     "cpu": "cortex-m4",
     "f_cpu": "480000000L",
     "mcu": "stm32h747xih6",
-    "variant": "PORTENTA_H7_M4",
+    "variant": "GENERIC_STM32H747_M4",
     "product_line": "STM32H747xx",
     "hwids": [
       [
