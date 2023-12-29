@@ -4,7 +4,7 @@
       "ldscript": "linker_script.ld",
       "flash_layout": "50_50"
     },
-    "extra_flags": "-DARDUINO_GIGA_H7_M4 -DGIGA_H7_PINS",
+    "extra_flags": "-DARDUINO_GIGA -DARDUINO_GIGA_M4 -DGIGA_PINS",
     "core": "arduino",
     "cpu": "cortex-m4",
     "f_cpu": "480000000L",
@@ -37,7 +37,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "Arduino Giga H7 (M4 core)",
+  "name": "Arduino Giga R1 (M4 core)",
   "upload": {
     "maximum_ram_size": 294248,
     "maximum_size": 1048576,
