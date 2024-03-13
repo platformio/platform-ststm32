@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32L100xC",
+    "extra_flags": "-DSTM32L1 -DSTM32L100xC",
     "f_cpu": "32000000L",
     "mcu": "stm32l100rct6",
     "product_line": "STM32L100xC"

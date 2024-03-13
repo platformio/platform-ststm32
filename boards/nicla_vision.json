@@ -4,7 +4,7 @@
       "ldscript": "linker_script.ld",
       "flash_layout": "50_50"
     },
-    "extra_flags": "-DARDUINO_NICLA_VISION",
+    "extra_flags": "-DSTM32H7 -DARDUINO_NICLA_VISION",
     "core": "arduino",
     "cpu": "cortex-m7",
     "f_cpu": "480000000L",

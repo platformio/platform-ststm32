@@ -5,7 +5,7 @@
     },
     "core": "stm32",
     "cpu": "cortex-m7",
-    "extra_flags": "-DSTM32F756xx",
+    "extra_flags": "-DSTM32F7 -DSTM32F756xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f756zg",
     "product_line": "STM32F756xx",

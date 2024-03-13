@@ -1,7 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m7",
-    "extra_flags": "-DSTM32F769xx",
+    "extra_flags": "-DSTM32F7 -DSTM32F769xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f769nih6",
     "product_line": "STM32F769xx",
