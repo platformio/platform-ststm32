@@ -5,7 +5,7 @@
     },
     "core": "stm32",
     "cpu": "cortex-m7",
-    "extra_flags": "-DSTM32H7xx -DSTM32H750xx",
+    "extra_flags": "-DSTM32H7 -DSTM32H7xx -DSTM32H750xx",
     "f_cpu": "480000000L",
     "framework_extra_flags": {
       "arduino": "-DARDUINO_DevEBoxH750VBTX -DCUSTOM_PERIPHERAL_PINS"

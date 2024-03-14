@@ -1,7 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m7",
-    "extra_flags": "-DSTM32F765xx",
+    "extra_flags": "-DSTM32F7 -DSTM32F765xx",
     "f_cpu": "216000000L",
     "framework_extra_flags": {
       "arduino": "-DCUSTOM_PERIPHERAL_PINS"

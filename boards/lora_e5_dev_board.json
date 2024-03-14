@@ -5,7 +5,7 @@
     },
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32WLxx -DSTM32WLE5xx",
+    "extra_flags": "-DSTM32WL -DSTM32WLxx -DSTM32WLE5xx",
     "f_cpu": "48000000L",
     "framework_extra_flags": {
       "arduino": "-DUSE_CM4_STARTUP_FILE -DARDUINO_GENERIC_WLE5JCIX"
