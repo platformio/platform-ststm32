@@ -6,7 +6,8 @@
     "f_cpu": "550000000L",
     "mcu": "stm32h723zgt6",
     "product_line": "STM32H723xx",
-    "variant": "STM32H7xx/H723Z(E-G)T_H730ZBT_H733ZGT"
+    "variant": "STM32H7xx/H723Z(E-G)T_H730ZBT_H733ZGT",
+    "libopencm3": {"ldscript": "stm32h7xx.ld"}
   },
   "connectivity": [
     "can",
@@ -27,7 +28,8 @@
     "arduino",
     "stm32cube",
     "mbed",
-    "zephyr"
+    "zephyr",
+    "libopencm3"
   ],
   "name": "ST Nucleo H723ZG",
   "upload": {
