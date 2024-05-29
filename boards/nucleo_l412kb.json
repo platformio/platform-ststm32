@@ -1,7 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32L412xx",
+    "extra_flags": "-DSTM32L4 -DSTM32L412xx",
     "f_cpu": "80000000L",
     "mcu": "stm32l412kbu6",
     "product_line": "STM32L412xx",

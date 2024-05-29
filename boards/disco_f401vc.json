@@ -1,7 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F401xC",
+    "extra_flags": "-DSTM32F4 -DSTM32F401xC",
     "f_cpu": "84000000L",
     "mcu": "stm32f401vct6",
     "product_line": "STM32F401xC"

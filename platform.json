@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "17.3.0",
+  "version": "17.4.0",
   "frameworks": {
     "mbed": {
       "package": "framework-mbed",
@@ -214,7 +214,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~4.1.1"
+      "version": "~4.1.3"
     },
     "framework-stm32cubef0": {
       "type": "framework",

@@ -5,7 +5,7 @@
     },
     "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F1xx -DSTM32F103xB",
+    "extra_flags": "-DSTM32F1 -DSTM32F1xx -DSTM32F103xB",
     "f_cpu": "72000000L",
     "mcu": "stm32f103cbt6",
     "product_line": "STM32F103xB",

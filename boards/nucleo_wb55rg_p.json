@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32WB55xx",
+    "extra_flags": "-DSTM32WB -DSTM32WB55xx",
     "f_cpu": "64000000L",
     "mcu": "stm32wb55rg",
     "product_line": "STM32WB55xx",

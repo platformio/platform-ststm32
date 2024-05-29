@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m0plus",
-    "extra_flags": "-DSTM32G0xx -DSTM32G071xx",
+    "extra_flags": "-DSTM32G0 -DSTM32G0xx -DSTM32G071xx",
     "f_cpu": "64000000L",
     "mcu": "stm32g071rbt6",
     "product_line": "STM32G071xx",
