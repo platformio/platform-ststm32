@@ -213,7 +213,7 @@ elif upload_protocol == "dfu":
     vid = hwids[0][0]
     pid = hwids[0][1]
 
-    if env.subst("$BOARD").startswith(("portenta", "opta", "nicla")):
+    if env.subst("$BOARD").startswith(("portenta", "opta", "nicla", "giga")):
         _upload_tool = '"%s"' % join(platform.get_package_dir(
             "tool-dfuutil-arduino") or "", "dfu-util")
     else:
@@ -230,7 +230,7 @@ elif upload_protocol == "dfu":
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
     if "arduino" in frameworks:
-        if env.subst("$BOARD").startswith(("portenta", "opta", "nicla")):
+        if env.subst("$BOARD").startswith(("portenta", "opta", "nicla", "giga")):
             upload_actions.insert(
                 0,
                 env.VerboseAction(BeforeUpload, "Looking for upload port...")
@@ -255,7 +255,7 @@ elif upload_protocol == "dfu":
                                      "Looking for upload port..."))
 
     if "dfu-util" in _upload_tool:
-        if not env.subst("$BOARD").startswith(("portenta", "opta", "nicla")):
+        if not env.subst("$BOARD").startswith(("portenta", "opta", "nicla", "giga")):
             # Add special DFU header to the binary image
             env.AddPostAction(
                 join("$BUILD_DIR", "${PROGNAME}.bin"),
