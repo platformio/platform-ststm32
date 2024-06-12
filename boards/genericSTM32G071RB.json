@@ -11,13 +11,7 @@
     }
   },
   "debug": {
-    "default_tools": [
-      "stlink"
-    ],
     "jlink_device": "STM32G071RB",
-    "onboard_tools": [
-      "stlink"
-    ],
     "openocd_target": "stm32g0x",
     "svd_path": "STM32G071.svd"
   },
