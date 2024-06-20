@@ -39,6 +39,10 @@ elif core == "stm32l0":
     build_script = join(
         env.PioPlatform().get_package_dir("framework-arduinoststm32l0"),
         "tools", "platformio-build.py")
+elif core == "opencr":
+    build_script = join(
+        env.PioPlatform().get_package_dir("framework-arduinoststm32-opencr"),
+        "tools", "platformio", "platformio-build.py")
 else:
     build_script = join(env.PioPlatform().get_package_dir(
         "framework-arduinoststm32"), "tools", "platformio", "platformio-build.py")
