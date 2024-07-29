@@ -1,5 +1,8 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_NUCLEO_F4x9ZI.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F4 -DSTM32F429xx",
