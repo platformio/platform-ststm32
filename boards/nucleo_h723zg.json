@@ -27,6 +27,7 @@
     "arduino",
     "stm32cube",
     "mbed",
+    "libopencm3",
     "zephyr"
   ],
   "name": "ST Nucleo H723ZG",
