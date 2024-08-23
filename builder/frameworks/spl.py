@@ -121,7 +121,6 @@ if mcu.startswith("stm32f10"):
     # stm32f10x SPL has 8 possible startup files
     # depending on the series (connectivity, low/high/medium/extra-large density or 
     # "value-line").
-    # but, there are no value-line (STM32F100xx) chips in this platform yet.
     # we only want to assemble and link the correct one.
     # we automatically deduce the correct startup file and identifying macro based
     # on MCU name and flash size, which saves us from adapting tons of boards files.
@@ -136,10 +135,16 @@ if mcu.startswith("stm32f10"):
     if startup_file == "":
         if family in ("stm32f101", "stm32f102", "stm32f103") and flash_mem >= 16 and flash_mem <= 32:
             startup_file, series_macro = ("startup_stm32f10x_ld.S", "STM32F10X_LD") # low density
+        if family in ("stm32f100") and flash_mem >= 16 and flash_mem <= 32:
+            startup_file, series_macro = ("startup_stm32f10x_ld_vl.S", "STM32F10X_LD_VL") # low density value
         elif family in ("stm32f101", "stm32f102", "stm32f103") and flash_mem >= 64 and flash_mem <= 128:
             startup_file, series_macro = ("startup_stm32f10x_md.S", "STM32F10X_MD") # medium density
+        elif family in ("stm32f100") and flash_mem >= 64 and flash_mem <= 128:
+            startup_file, series_macro = ("startup_stm32f10x_md_vl.S", "STM32F10X_MD_VL") # medium density value
         elif family in ("stm32f101", "stm32f103") and flash_mem >= 256 and flash_mem <= 512:
             startup_file, series_macro = ("startup_stm32f10x_hd.S", "STM32F10X_HD") # high density
+        elif family in ("stm32f100") and flash_mem >= 256 and flash_mem <= 512:
+            startup_file, series_macro = ("startup_stm32f10x_hd_vl.S", "STM32F10X_HD_VL") # high density
         elif family in ("stm32f101", "stm32f103") and flash_mem >= 768 and flash_mem <= 1024:
             startup_file, series_macro = ("startup_stm32f10x_xl.S", "STM32F10X_XL") # xtra-large density
         elif family in ("stm32f105", "stm32f107"):
