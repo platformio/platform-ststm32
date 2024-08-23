@@ -1,10 +1,11 @@
 {
   "build": {
     "cpu": "cortex-m7",
-    "extra_flags": "-DSTM32F722xx",
+    "extra_flags": "-DSTM32F7 -DSTM32F722xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f722zet6",
-    "product_line": "STM32F722xx"
+    "product_line": "STM32F722xx",
+    "variant": "STM32F7xx/F722Z(C-E)T_F732ZET"
   },
   "connectivity": [
     "can"
@@ -22,6 +23,7 @@
     "svd_path": "STM32F722.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "stm32cube",
     "libopencm3"

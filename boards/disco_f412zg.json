@@ -1,7 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F412Zx",
+    "extra_flags": "-DSTM32F4 -DSTM32F412Zx",
     "f_cpu": "100000000L",
     "mcu": "stm32f412zgt6",
     "product_line": "STM32F412Zx",
@@ -23,7 +23,6 @@
   },
   "frameworks": [
     "cmsis",
-    "mbed",
     "stm32cube",
     "libopencm3",
     "zephyr"

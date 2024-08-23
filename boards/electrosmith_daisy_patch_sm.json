@@ -6,7 +6,7 @@
     },
     "core": "stm32",
     "cpu": "cortex-m7",
-    "extra_flags": "-DSTM32H7xx -DSTM32H750xx",
+    "extra_flags": "-DSTM32H7 -DSTM32H7xx -DSTM32H750xx",
     "f_cpu": "400000000L",
     "framework_extra_flags": {
       "arduino": "-DCUSTOM_PERIPHERAL_PINS"
@@ -30,8 +30,8 @@
   ],
   "name": "Electrosmith Daisy Patch SM",
   "upload": {
-    "maximum_ram_size": 131072,
-    "maximum_size": 524288,
+    "maximum_ram_size": 524288,
+    "maximum_size": 131072,
     "protocol": "stlink",
     "protocols": [
       "jlink",

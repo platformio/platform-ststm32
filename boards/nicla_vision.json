@@ -1,0 +1,63 @@
+{
+  "build": {
+    "arduino": {
+      "ldscript": "linker_script.ld",
+      "flash_layout": "50_50"
+    },
+    "extra_flags": "-DSTM32H7 -DARDUINO_NICLA_VISION",
+    "core": "arduino",
+    "cpu": "cortex-m7",
+    "f_cpu": "480000000L",
+    "mcu": "stm32h747xih6",
+    "variant": "NICLA_VISION",
+    "product_line": "STM32H747xx",
+    "hwids": [
+      [
+        "0x2341",
+        "0x035F"
+      ],
+      [
+        "0x2341",
+        "0x025F"
+      ],
+      [
+        "0x2341",
+        "0x045F"
+      ],
+      [
+        "0x2341",
+        "0x055F"
+      ]
+    ]
+  },
+  "connectivity": [
+    "bluetooth",
+    "wifi"
+  ],
+  "debug": {
+    "jlink_device": "STM32H747XI_M7",
+    "openocd_target": "stm32h7x_dual_bank"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Arduino Nicla Vision",
+  "upload": {
+    "maximum_ram_size": 523624,
+    "maximum_size": 786432,
+    "protocol": "dfu",
+    "protocols": [
+      "cmsis-dap",
+      "dfu",
+      "jlink",
+      "stlink",
+      "mbed"
+    ],
+    "require_upload_port": true,
+    "use_1200bps_touch": true,
+    "wait_for_upload_port": true,
+    "offset_address": "0x08040000"
+  },
+  "url": "https://store.arduino.cc/products/nicla-vision",
+  "vendor": "Arduino"
+}

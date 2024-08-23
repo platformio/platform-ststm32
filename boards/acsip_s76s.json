@@ -1,0 +1,39 @@
+{
+  "build": {
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32L0 -DSTM32L073xx",
+    "f_cpu": "32000000L",
+    "framework_extra_flags": {
+      "arduino": "-D__CORTEX_SC=0 -DCUSTOM_PERIPHERAL_PINS"
+    },
+    "mcu": "stm32l073rz",
+    "product_line": "STM32L073xx",
+    "variant": "STM32L0xx/L072R(B-Z)T_L073R(B-Z)T_L083R(B-Z)T"
+  },
+  "debug": {
+    "jlink_device": "STM32L073RZ",
+    "openocd_target": "stm32l0",
+    "svd_path": "STM32L07x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube",
+    "libopencm3"
+  ],
+  "name": "ACSIP S76S",
+  "upload": {
+    "maximum_ram_size": 20480,
+    "maximum_size": 196608,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.acsip.com.tw/index.php?action=products-detail&fid1=19&fid2=&fid3=&id=79",
+  "vendor": "ACSIP"
+}

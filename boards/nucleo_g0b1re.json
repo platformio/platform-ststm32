@@ -2,14 +2,14 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m0plus",
-    "extra_flags": "-DSTM32G0xx -DSTM32G0B1xx",
+    "extra_flags": "-DSTM32G0 -DSTM32G0xx -DSTM32G0B1xx",
     "f_cpu": "64000000L",
     "framework_extra_flags": {
       "arduino": "-D__CORTEX_SC=0"
     },
     "mcu": "stm32g0b1ret6",
     "product_line": "STM32G0B1xx",
-    "variant": "STM32G0xx/G0B1RBT_G0B1R(C-E)(I-T)_G0C1R(C-E)(I-T)"
+    "variant": "STM32G0xx/G0B1R(B-C-E)T_G0C1R(C-E)T"
   },
   "debug": {
     "default_tools": [
@@ -29,7 +29,7 @@
   "name": "ST Nucleo G0B1RE",
   "upload": {
     "maximum_ram_size": 147456,
-    "maximum_size": 262144,
+    "maximum_size": 524288,
     "protocol": "stlink",
     "protocols": [
       "blackmagic",

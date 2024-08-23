@@ -2,10 +2,11 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F446xx",
+    "extra_flags": "-DSTM32F4 -DSTM32F446xx",
     "f_cpu": "168000000L",
+    "flash_offset": "0x10000",
     "framework_extra_flags": {
-      "arduino": "-DVECT_TAB_OFFSET=0x10000 -DCUSTOM_PERIPHERAL_PINS"
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
     },
     "mcu": "stm32f446vet6",
     "product_line": "STM32F446xx",

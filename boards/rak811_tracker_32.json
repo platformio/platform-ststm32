@@ -4,7 +4,7 @@
       "variant_h": "variant_RAK811_TRACKER.h"
     },
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32L151xB",
+    "extra_flags": "-DSTM32L1 -DSTM32L151xB",
     "f_cpu": "32000000L",
     "framework_extra_flags": {
       "arduino": "-DCUSTOM_PERIPHERAL_PINS"

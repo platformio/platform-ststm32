@@ -1,7 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m0plus",
-    "extra_flags": "-DSTM32L072xx -DARDUINO_THUNDERPACK_L072",
+    "extra_flags": "-DSTM32L0 -DSTM32L072xx -DARDUINO_THUNDERPACK_L072",
     "f_cpu": "32000000L",
     "framework_extra_flags": {
       "arduino": "-D__CORTEX_SC=0 -DCUSTOM_PERIPHERAL_PINS"

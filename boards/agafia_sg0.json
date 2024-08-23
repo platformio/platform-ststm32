@@ -1,0 +1,43 @@
+{
+  "build": {
+    "arduino": {
+      "variant_h": "variant_AGAFIA_SG0.h"
+    },
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32G0 -DSTM32G0xx -DSTM32G071xx",
+    "f_cpu": "64000000L",
+    "framework_extra_flags": {
+      "arduino": "-D__CORTEX_SC=0"
+    },
+    "mcu": "stm32g071rbt6",
+    "product_line": "STM32G071xx",
+    "variant": "STM32G0xx/G071C(6-8-B)(T-U)_G081CB(T-U)"
+  },
+  "debug": {
+    "jlink_device": "STM32G071RB",
+    "openocd_target": "stm32g0x",
+    "svd_path": "STM32G071.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "Sigma IC AGAFIA SG0",
+  "upload": {
+    "maximum_ram_size": 36864,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "blackmagic",
+      "cmsis-dap",
+      "jlink",
+      "stlink",
+      "mbed"
+    ]
+  },
+  "url": "https://www.sigmaic.com/store/p7/agafia-sgo.html",
+  "vendor": "Sigma IC"
+}

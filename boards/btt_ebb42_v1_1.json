@@ -1,0 +1,49 @@
+{
+  "build": {
+    "arduino": {
+      "variant_h": "variant_EBB42_V1_1.h"
+    },
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32G0 -DSTM32G0xx -DSTM32G0B1xx",
+    "f_cpu": "64000000L",
+    "framework_extra_flags": {
+      "arduino": "-D__CORTEX_SC=0 -DARDUINO_EBB42_V1_1"
+    },
+    "mcu": "stm32g0b1ret6",
+    "product_line": "STM32G0B1xx",
+    "variant": "STM32G0xx/G0B1C(B-C-E)(T-U)_G0C1C(C-E)(T-U)"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32G0B1RE",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32g0x",
+    "svd_path": "STM32G0B1.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "Big Tree Tech EBB42 V1.1",
+  "upload": {
+    "maximum_ram_size": 147456,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "blackmagic",
+      "cmsis-dap",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink",
+      "mbed"
+    ]
+  },
+  "url": "https://github.com/bigtreetech/EBB/tree/master/EBB%20CAN%20V1.1%20(STM32G0B1)/EBB42%20CAN%20V1.1",
+  "vendor": "Big Tree Tech"
+}

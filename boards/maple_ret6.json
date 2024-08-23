@@ -2,7 +2,7 @@
   "build": {
     "core": "maple",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F103xE",
+    "extra_flags": "-DSTM32F1 -DSTM32F103xE",
     "f_cpu": "72000000L",
     "hwids": [
       [

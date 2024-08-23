@@ -27,6 +27,7 @@
     "protocol": "serial",
     "protocols": [
       "blackmagic",
+      "cmsis-dap",
       "dfu",
       "jlink",
       "serial",

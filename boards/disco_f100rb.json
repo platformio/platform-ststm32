@@ -1,7 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F100xB",
+    "extra_flags": "-DSTM32F1 -DSTM32F100xB",
     "f_cpu": "24000000L",
     "mcu": "stm32f100rbt6",
     "product_line": "STM32F100xB",
@@ -21,7 +21,6 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "mbed",
     "libopencm3",
     "spl",
     "stm32cube"

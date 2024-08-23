@@ -1,0 +1,33 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32WL -DSTM32WLxx -DSTM32WLE5xx",
+    "f_cpu": "48000000L",
+    "mcu": "stm32wle5jc",
+    "product_line": "STM32WLE5xx",
+    "variant": "STM32WLxx/WL54JCI_WL55JCI_WLE4J(8-B-C)I_WLE5J(8-B-C)I"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32WLE5JC",
+    "openocd_target": "stm32wlx",
+    "svd_path": "STM32WLE5_CM4.svd"
+  },
+  "frameworks": [
+	"arduino"
+  ],
+  "name": "SeeedStudio LoRa-E5 mini",
+  "upload": {
+    "maximum_ram_size": 65536,
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink"
+    ]
+  },
+  "url": "https://www.seeedstudio.com/LoRa-E5-mini-STM32WLE5JC-p-4869.html",
+  "vendor": "SeeedStudio"
+}

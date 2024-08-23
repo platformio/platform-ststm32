@@ -1,336 +1,191 @@
 /*
  * Copyright (c) 2018 qianfan Zhao
- * Copyright (c) 2018 Nordic Semiconductor ASA
+ * Copyright (c) 2018, 2023 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-#include <zephyr.h>
-#include <device.h>
-#include <drivers/gpio.h>
 
-#include <usb/usb_device.h>
-#include <usb/class/usb_hid.h>
+#include <sample_usbd.h>
 
-#define LOG_LEVEL LOG_LEVEL_DBG
-LOG_MODULE_REGISTER(main);
+#include <string.h>
 
-#define SW0_NODE DT_ALIAS(sw0)
+#include <zephyr/kernel.h>
+#include <zephyr/device.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/input/input.h>
+#include <zephyr/sys/util.h>
 
-#if DT_NODE_HAS_STATUS(SW0_NODE, okay)
-#define PORT0		DT_GPIO_LABEL(SW0_NODE, gpios)
-#define PIN0		DT_GPIO_PIN(SW0_NODE, gpios)
-#define PIN0_FLAGS	DT_GPIO_FLAGS(SW0_NODE, gpios)
-#else
-#error "Unsupported board: sw0 devicetree alias is not defined"
-#define PORT0		""
-#define PIN0		0
-#define PIN0_FLAGS	0
-#endif
+#include <zephyr/usb/usb_device.h>
+#include <zephyr/usb/usbd.h>
+#include <zephyr/usb/class/usb_hid.h>
 
-#define SW1_NODE DT_ALIAS(sw1)
+#include <zephyr/logging/log.h>
+LOG_MODULE_REGISTER(main, LOG_LEVEL_INF);
 
-#if DT_NODE_HAS_STATUS(SW1_NODE, okay)
-#define PORT1		DT_GPIO_LABEL(SW1_NODE, gpios)
-#define PIN1		DT_GPIO_PIN(SW1_NODE, gpios)
-#define PIN1_FLAGS	DT_GPIO_FLAGS(SW1_NODE, gpios)
-#endif
-
-#define SW2_NODE DT_ALIAS(sw2)
-
-#if DT_NODE_HAS_STATUS(SW2_NODE, okay)
-#define PORT2		DT_GPIO_LABEL(SW2_NODE, gpios)
-#define PIN2		DT_GPIO_PIN(SW2_NODE, gpios)
-#define PIN2_FLAGS	DT_GPIO_FLAGS(SW2_NODE, gpios)
-#endif
-
-#define SW3_NODE DT_ALIAS(sw3)
-
-#if DT_NODE_HAS_STATUS(SW3_NODE, okay)
-#define PORT3		DT_GPIO_LABEL(SW3_NODE, gpios)
-#define PIN3		DT_GPIO_PIN(SW3_NODE, gpios)
-#define PIN3_FLAGS	DT_GPIO_FLAGS(SW3_NODE, gpios)
-#endif
-
-#define LED0_NODE DT_ALIAS(led0)
-
-#if DT_NODE_HAS_STATUS(LED0_NODE, okay)
-#define LED_PORT	DT_GPIO_LABEL(LED0_NODE, gpios)
-#define LED		DT_GPIO_PIN(LED0_NODE, gpios)
-#define LED_FLAGS	DT_GPIO_FLAGS(LED0_NODE, gpios)
-#else
-#error "Unsupported board: led0 devicetree alias is not defined"
-#define LED_PORT	""
-#define LED		0
-#define LED_FLAGS	0
-#endif
-
+static const struct gpio_dt_spec led0 = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
 static const uint8_t hid_report_desc[] = HID_MOUSE_REPORT_DESC(2);
-
-static uint8_t def_val[4];
-static volatile uint8_t status[4];
-static K_SEM_DEFINE(sem, 0, 1);	/* starts off "not available" */
-static struct gpio_callback callback[4];
 static enum usb_dc_status_code usb_status;
 
-#define MOUSE_BTN_REPORT_POS	0
-#define MOUSE_X_REPORT_POS	1
-#define MOUSE_Y_REPORT_POS	2
+#define MOUSE_BTN_LEFT		0
+#define MOUSE_BTN_RIGHT		1
 
-#define MOUSE_BTN_LEFT		BIT(0)
-#define MOUSE_BTN_RIGHT		BIT(1)
-#define MOUSE_BTN_MIDDLE	BIT(2)
+enum mouse_report_idx {
+	MOUSE_BTN_REPORT_IDX = 0,
+	MOUSE_X_REPORT_IDX = 1,
+	MOUSE_Y_REPORT_IDX = 2,
+	MOUSE_WHEEL_REPORT_IDX = 3,
+	MOUSE_REPORT_COUNT = 4,
+};
 
+K_MSGQ_DEFINE(mouse_msgq, MOUSE_REPORT_COUNT, 2, 1);
+static K_SEM_DEFINE(ep_write_sem, 0, 1);
 
-
-static void status_cb(enum usb_dc_status_code status, const uint8_t *param)
+static inline void status_cb(enum usb_dc_status_code status, const uint8_t *param)
 {
 	usb_status = status;
 }
 
-static void left_button(const struct device *gpio, struct gpio_callback *cb,
-			uint32_t pins)
+static ALWAYS_INLINE void rwup_if_suspended(void)
 {
-	int ret;
-	uint8_t state = status[MOUSE_BTN_REPORT_POS];
-
 	if (IS_ENABLED(CONFIG_USB_DEVICE_REMOTE_WAKEUP)) {
 		if (usb_status == USB_DC_SUSPEND) {
 			usb_wakeup_request();
 			return;
 		}
 	}
-
-	ret = gpio_pin_get(gpio, PIN0);
-	if (ret < 0) {
-		LOG_ERR("Failed to get the state of pin %u, error: %d",
-			PIN0, ret);
-		return;
-	}
-
-	if (def_val[0] != (uint8_t)ret) {
-		state |= MOUSE_BTN_LEFT;
-	} else {
-		state &= ~MOUSE_BTN_LEFT;
-	}
-
-	if (status[MOUSE_BTN_REPORT_POS] != state) {
-		status[MOUSE_BTN_REPORT_POS] = state;
-		k_sem_give(&sem);
-	}
 }
 
-#if DT_NODE_HAS_STATUS(SW1_NODE, okay)
-static void right_button(const struct device *gpio, struct gpio_callback *cb,
-			 uint32_t pins)
+static void input_cb(struct input_event *evt)
 {
-	int ret;
-	uint8_t state = status[MOUSE_BTN_REPORT_POS];
+	static uint8_t tmp[MOUSE_REPORT_COUNT];
 
-	if (IS_ENABLED(CONFIG_USB_DEVICE_REMOTE_WAKEUP)) {
-		if (usb_status == USB_DC_SUSPEND) {
-			usb_wakeup_request();
-			return;
+	switch (evt->code) {
+	case INPUT_KEY_0:
+		rwup_if_suspended();
+		WRITE_BIT(tmp[MOUSE_BTN_REPORT_IDX], MOUSE_BTN_LEFT, evt->value);
+		break;
+	case INPUT_KEY_1:
+		rwup_if_suspended();
+		WRITE_BIT(tmp[MOUSE_BTN_REPORT_IDX], MOUSE_BTN_RIGHT, evt->value);
+		break;
+	case INPUT_KEY_2:
+		if (evt->value) {
+			tmp[MOUSE_X_REPORT_IDX] += 10U;
 		}
-	}
 
-	ret = gpio_pin_get(gpio, PIN1);
-	if (ret < 0) {
-		LOG_ERR("Failed to get the state of pin %u, error: %d",
-			PIN1, ret);
+		break;
+	case INPUT_KEY_3:
+		if (evt->value) {
+			tmp[MOUSE_Y_REPORT_IDX] += 10U;
+		}
+
+		break;
+	default:
+		LOG_INF("Unrecognized input code %u value %d",
+			evt->code, evt->value);
 		return;
 	}
 
-	if (def_val[1] != (uint8_t)ret) {
-		state |= MOUSE_BTN_RIGHT;
-	} else {
-		state &= ~MOUSE_BTN_RIGHT;
+	if (k_msgq_put(&mouse_msgq, tmp, K_NO_WAIT) != 0) {
+		LOG_ERR("Failed to put new input event");
 	}
 
-	if (status[MOUSE_BTN_REPORT_POS] != state) {
-		status[MOUSE_BTN_REPORT_POS] = state;
-		k_sem_give(&sem);
-	}
+	tmp[MOUSE_X_REPORT_IDX] = 0U;
+	tmp[MOUSE_Y_REPORT_IDX] = 0U;
+
 }
-#endif
 
-#if DT_NODE_HAS_STATUS(SW2_NODE, okay)
-static void x_move(const struct device *gpio, struct gpio_callback *cb,
-		   uint32_t pins)
+INPUT_CALLBACK_DEFINE(NULL, input_cb);
+
+#if defined(CONFIG_USB_DEVICE_STACK_NEXT)
+static int enable_usb_device_next(void)
 {
-	int ret;
-	uint8_t state = status[MOUSE_X_REPORT_POS];
+	struct usbd_context *sample_usbd;
+	int err;
 
-	ret = gpio_pin_get(gpio, PIN2);
-	if (ret < 0) {
-		LOG_ERR("Failed to get the state of pin %u, error: %d",
-			PIN2, ret);
-		return;
+	sample_usbd = sample_usbd_init_device(NULL);
+	if (sample_usbd == NULL) {
+		LOG_ERR("Failed to initialize USB device");
+		return -ENODEV;
 	}
 
-	if (def_val[2] != (uint8_t)ret) {
-		state += 10U;
+	err = usbd_enable(sample_usbd);
+	if (err) {
+		LOG_ERR("Failed to enable device support");
+		return err;
 	}
 
-	if (status[MOUSE_X_REPORT_POS] != state) {
-		status[MOUSE_X_REPORT_POS] = state;
-		k_sem_give(&sem);
-	}
-}
-#endif
-
-#if DT_NODE_HAS_STATUS(SW3_NODE, okay)
-static void y_move(const struct device *gpio, struct gpio_callback *cb,
-		   uint32_t pins)
-{
-	int ret;
-	uint8_t state = status[MOUSE_Y_REPORT_POS];
-
-	ret = gpio_pin_get(gpio, PIN3);
-	if (ret < 0) {
-		LOG_ERR("Failed to get the state of pin %u, error: %d",
-			PIN3, ret);
-		return;
-	}
-
-	if (def_val[3] != (uint8_t)ret) {
-		state += 10U;
-	}
-
-	if (status[MOUSE_Y_REPORT_POS] != state) {
-		status[MOUSE_Y_REPORT_POS] = state;
-		k_sem_give(&sem);
-	}
-}
-#endif
-
-int callbacks_configure(const struct device *gpio, uint32_t pin, int flags,
-			gpio_callback_handler_t handler,
-			struct gpio_callback *callback, uint8_t *val)
-{
-	int ret;
-
-	if (!gpio) {
-		LOG_ERR("Could not find PORT");
-		return -ENXIO;
-	}
-
-	ret = gpio_pin_configure(gpio, pin, GPIO_INPUT | flags);
-	if (ret < 0) {
-		LOG_ERR("Failed to configure pin %u, error: %d",
-			pin, ret);
-		return ret;
-	}
-
-	ret = gpio_pin_get(gpio, pin);
-	if (ret < 0) {
-		LOG_ERR("Failed to get the state of pin %u, error: %d",
-			pin, ret);
-		return ret;
-	}
-
-	*val = (uint8_t)ret;
-
-	gpio_init_callback(callback, handler, BIT(pin));
-	ret = gpio_add_callback(gpio, callback);
-	if (ret < 0) {
-		LOG_ERR("Failed to add the callback for pin %u, error: %d",
-			pin, ret);
-		return ret;
-	}
-
-	ret = gpio_pin_interrupt_configure(gpio, pin, GPIO_INT_EDGE_BOTH);
-	if (ret < 0) {
-		LOG_ERR("Failed to configure interrupt for pin %u, error: %d",
-			pin, ret);
-		return ret;
-	}
+	LOG_DBG("USB device support enabled");
 
 	return 0;
 }
+#endif /* defined(CONFIG_USB_DEVICE_STACK_NEXT) */
 
-void main(void)
+static void int_in_ready_cb(const struct device *dev)
 {
-	int ret;
-	uint8_t report[4] = { 0x00 };
-	const struct device *led_dev, *hid_dev;
+	ARG_UNUSED(dev);
+	k_sem_give(&ep_write_sem);
+}
 
-	led_dev = device_get_binding(LED_PORT);
-	if (led_dev == NULL) {
-		LOG_ERR("Cannot get LED");
-		return;
+static const struct hid_ops ops = {
+	.int_in_ready = int_in_ready_cb,
+};
+
+int main(void)
+{
+	const struct device *hid_dev;
+	int ret;
+
+	if (!gpio_is_ready_dt(&led0)) {
+		LOG_ERR("LED device %s is not ready", led0.port->name);
+		return 0;
 	}
 
+#if defined(CONFIG_USB_DEVICE_STACK_NEXT)
+	hid_dev = DEVICE_DT_GET_ONE(zephyr_hid_device);
+#else
 	hid_dev = device_get_binding("HID_0");
+#endif
 	if (hid_dev == NULL) {
 		LOG_ERR("Cannot get USB HID Device");
-		return;
+		return 0;
 	}
 
-	ret = gpio_pin_configure(led_dev, LED, GPIO_OUTPUT | LED_FLAGS);
+	ret = gpio_pin_configure_dt(&led0, GPIO_OUTPUT);
 	if (ret < 0) {
 		LOG_ERR("Failed to configure the LED pin, error: %d", ret);
-		return;
+		return 0;
 	}
-
-	if (callbacks_configure(device_get_binding(PORT0), PIN0, PIN0_FLAGS,
-				&left_button, &callback[0], &def_val[0])) {
-		LOG_ERR("Failed configuring left button callback.");
-		return;
-	}
-
-#if DT_NODE_HAS_STATUS(SW1_NODE, okay)
-	if (callbacks_configure(device_get_binding(PORT1), PIN1, PIN1_FLAGS,
-				&right_button, &callback[1], &def_val[1])) {
-		LOG_ERR("Failed configuring right button callback.");
-		return;
-	}
-#endif
-
-#if DT_NODE_HAS_STATUS(SW2_NODE, okay)
-	if (callbacks_configure(device_get_binding(PORT2), PIN2, PIN2_FLAGS,
-				&x_move, &callback[2], &def_val[2])) {
-		LOG_ERR("Failed configuring X axis movement callback.");
-		return;
-	}
-#endif
-
-#if DT_NODE_HAS_STATUS(SW3_NODE, okay)
-	if (callbacks_configure(device_get_binding(PORT3), PIN3, PIN3_FLAGS,
-				&y_move, &callback[3], &def_val[3])) {
-		LOG_ERR("Failed configuring Y axis movement callback.");
-		return;
-	}
-#endif
 
 	usb_hid_register_device(hid_dev,
 				hid_report_desc, sizeof(hid_report_desc),
-				NULL);
+				&ops);
 
 	usb_hid_init(hid_dev);
 
+#if defined(CONFIG_USB_DEVICE_STACK_NEXT)
+	ret = enable_usb_device_next();
+#else
 	ret = usb_enable(status_cb);
+#endif
 	if (ret != 0) {
 		LOG_ERR("Failed to enable USB");
-		return;
+		return 0;
 	}
 
 	while (true) {
-		k_sem_take(&sem, K_FOREVER);
+		uint8_t __aligned(sizeof(void *)) report[MOUSE_REPORT_COUNT];
 
-		report[MOUSE_BTN_REPORT_POS] = status[MOUSE_BTN_REPORT_POS];
-		report[MOUSE_X_REPORT_POS] = status[MOUSE_X_REPORT_POS];
-		status[MOUSE_X_REPORT_POS] = 0U;
-		report[MOUSE_Y_REPORT_POS] = status[MOUSE_Y_REPORT_POS];
-		status[MOUSE_Y_REPORT_POS] = 0U;
+		k_msgq_get(&mouse_msgq, &report, K_FOREVER);
+
 		ret = hid_int_ep_write(hid_dev, report, sizeof(report), NULL);
 		if (ret) {
 			LOG_ERR("HID write error, %d", ret);
-		}
-
-		/* Toggle LED on sent report */
-		ret = gpio_pin_toggle(led_dev, LED);
-		if (ret < 0) {
-			LOG_ERR("Failed to toggle the LED pin, error: %d", ret);
+		} else {
+			k_sem_take(&ep_write_sem, K_FOREVER);
+			/* Toggle LED on sent report */
+			(void)gpio_pin_toggle(led0.port, led0.pin);
 		}
 	}
+	return 0;
 }

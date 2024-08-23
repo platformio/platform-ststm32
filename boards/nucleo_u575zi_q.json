@@ -2,14 +2,14 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m33",
-    "extra_flags": "-DSTM32U5xx -DSTM32U575xx",
+    "extra_flags": "-DSTM32U5 -DSTM32U5xx -DSTM32U575xx",
     "f_cpu": "160000000L",
     "framework_extra_flags": {
       "arduino": "-DCUSTOM_PERIPHERAL_PINS"
     },
     "mcu": "stm32u575zit6q",
     "product_line": "STM32U575xx",
-    "variant": "STM32U5xx/U575Z(G-I)TxQ_U585ZETxQ"
+    "variant": "STM32U5xx/U575Z(G-I)TxQ_U585ZITxQ"
   },
   "connectivity": [
     "can"

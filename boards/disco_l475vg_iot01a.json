@@ -1,7 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32L475xx",
+    "extra_flags": "-DSTM32L4 -DSTM32L475xx",
     "f_cpu": "80000000L",
     "framework_extra_flags": {
       "arduino": "-DCUSTOM_PERIPHERAL_PINS"

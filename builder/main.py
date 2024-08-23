@@ -119,6 +119,11 @@ if "nobuild" in COMMAND_LINE_TARGETS:
 else:
     target_elf = env.BuildProgram()
     target_firm = env.ElfToBin(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
+
+    if "zephyr" in frameworks and "mcuboot-image" in COMMAND_LINE_TARGETS:
+        target_firm = env.MCUbootImage(
+            join("$BUILD_DIR", "${PROGNAME}.mcuboot.bin"), target_firm)
+
     env.Depends(target_firm, "checkprogsize")
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
@@ -208,9 +213,14 @@ elif upload_protocol == "dfu":
     vid = hwids[0][0]
     pid = hwids[0][1]
 
-    # default tool for all boards with embedded DFU bootloader over USB
-    _upload_tool = '"%s"' % join(platform.get_package_dir(
-        "tool-dfuutil") or "", "bin", "dfu-util")
+    if env.subst("$BOARD").startswith(("portenta", "opta", "nicla", "giga")):
+        _upload_tool = '"%s"' % join(platform.get_package_dir(
+            "tool-dfuutil-arduino") or "", "dfu-util")
+    else:
+        # default tool for all boards with embedded DFU bootloader over USB
+        _upload_tool = '"%s"' % join(platform.get_package_dir(
+            "tool-dfuutil") or "", "bin", "dfu-util")
+
     _upload_flags = [
         "-d", ",".join(["%s:%s" % (hwid[0], hwid[1]) for hwid in hwids]),
         "-a", "0", "-s",
@@ -220,7 +230,7 @@ elif upload_protocol == "dfu":
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 
     if "arduino" in frameworks:
-        if env.subst("$BOARD").startswith("portenta"):
+        if env.subst("$BOARD").startswith(("portenta", "opta", "nicla", "giga")):
             upload_actions.insert(
                 0,
                 env.VerboseAction(BeforeUpload, "Looking for upload port...")
@@ -245,17 +255,18 @@ elif upload_protocol == "dfu":
                                      "Looking for upload port..."))
 
     if "dfu-util" in _upload_tool:
-        # Add special DFU header to the binary image
-        env.AddPostAction(
-            join("$BUILD_DIR", "${PROGNAME}.bin"),
-            env.VerboseAction(
-                " ".join([
-                    '"%s"' % join(platform.get_package_dir("tool-dfuutil") or "",
-                         "bin", "dfu-suffix"),
-                    "-v %s" % vid,
-                    "-p %s" % pid,
-                    "-d 0xffff", "-a", "$TARGET"
-                ]), "Adding dfu suffix to ${PROGNAME}.bin"))
+        if not env.subst("$BOARD").startswith(("portenta", "opta", "nicla", "giga")):
+            # Add special DFU header to the binary image
+            env.AddPostAction(
+                join("$BUILD_DIR", "${PROGNAME}.bin"),
+                env.VerboseAction(
+                    " ".join([
+                        '"%s"' % join(platform.get_package_dir("tool-dfuutil") or "",
+                             "bin", "dfu-suffix"),
+                        "-v %s" % vid,
+                        "-p %s" % pid,
+                        "-d 0xffff", "-a", "$TARGET"
+                    ]), "Adding dfu suffix to ${PROGNAME}.bin"))
 
     env.Replace(
         UPLOADER=_upload_tool,
@@ -335,14 +346,6 @@ else:
     sys.stderr.write("Warning! Unknown upload protocol %s\n" % upload_protocol)
 
 AlwaysBuild(env.Alias("upload", upload_source, upload_actions))
-
-#
-# Information about obsolete method of specifying linker scripts
-#
-
-if any("-Wl,-T" in f for f in env.get("LINKFLAGS", [])):
-    print("Warning! '-Wl,-T' option for specifying linker scripts is deprecated. "
-          "Please use 'board_build.ldscript' option in your 'platformio.ini' file.")
 
 #
 # Default targets

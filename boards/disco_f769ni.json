@@ -1,7 +1,7 @@
 {
   "build": {
     "cpu": "cortex-m7",
-    "extra_flags": "-DSTM32F769xx",
+    "extra_flags": "-DSTM32F7 -DSTM32F769xx",
     "f_cpu": "216000000L",
     "mcu": "stm32f769nih6",
     "product_line": "STM32F769xx",
@@ -35,7 +35,7 @@
   "name": "ST 32F769IDISCOVERY",
   "upload": {
     "maximum_ram_size": 524288,
-    "maximum_size": 1048576,
+    "maximum_size": 2097152,
     "protocol": "stlink",
     "protocols": [
       "jlink",
