@@ -2,7 +2,7 @@
   "build": {
     "cpu": "cortex-m0plus",
     "core": "stm32l0",
-    "extra_flags": "-DARDUINO_STM32L0_GRASSHOPPER",
+    "extra_flags": "-DSTM32L0 -DARDUINO_STM32L0_GRASSHOPPER",
     "f_cpu": "32000000L",
     "hwids": [
       [

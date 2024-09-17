@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m0plus",
-    "extra_flags": "-DSTM32G0xx -DSTM32G031xx",
+    "extra_flags": "-DSTM32G0 -DSTM32G0xx -DSTM32G031xx",
     "f_cpu": "64000000L",
     "framework_extra_flags": {
       "arduino": "-D__CORTEX_SC=0"
@@ -25,7 +25,7 @@
   "name": "ST STM32G0316-DISCO",
   "upload": {
     "maximum_ram_size": 8192,
-    "maximum_size": 131072,
+    "maximum_size": 32768,
     "protocol": "mbed",
     "protocols": [
       "blackmagic",

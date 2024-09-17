@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m33",
-    "extra_flags": "-DSTM32U5xx -DSTM32U575xx",
+    "extra_flags": "-DSTM32U5 -DSTM32U5xx -DSTM32U575xx",
     "f_cpu": "160000000L",
     "framework_extra_flags": {
       "arduino": "-DCUSTOM_PERIPHERAL_PINS"

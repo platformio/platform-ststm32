@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32F405xx -DSTM32F4xx",
+    "extra_flags": "-DSTM32F4 -DSTM32F405xx -DSTM32F4xx",
     "f_cpu": "168000000L",
     "mcu": "stm32f405rgt6",
     "product_line": "STM32F405xx",

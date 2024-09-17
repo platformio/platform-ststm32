@@ -4,7 +4,7 @@
       "ldscript": "linker_script.ld",
       "flash_layout": "50_50"
     },
-    "extra_flags": "-DARDUINO_OPTA",
+    "extra_flags": "-DSTM32H7 -DARDUINO_OPTA",
     "core": "arduino",
     "cpu": "cortex-m7",
     "f_cpu": "480000000L",

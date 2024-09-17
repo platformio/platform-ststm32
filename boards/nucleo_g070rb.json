@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m0plus",
-    "extra_flags": "-DSTM32G0xx -DSTM32G070xx",
+    "extra_flags": "-DSTM32G0 -DSTM32G0xx -DSTM32G070xx",
     "f_cpu": "64000000L",
     "framework_extra_flags": {
       "arduino": "-D__CORTEX_SC=0"

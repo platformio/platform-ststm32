@@ -2,10 +2,11 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m7",
-    "extra_flags": "-DSTM32H7xx -DSTM32H753xx",
+    "extra_flags": "-DSTM32H7 -DSTM32H7xx -DSTM32H753xx",
     "f_cpu": "400000000L",
     "mcu": "stm32h753zit6",
-    "product_line": "STM32H753xx"
+    "product_line": "STM32H753xx",
+    "variant": "STM32H7xx/H742Z(G-I)T_H743Z(G-I)T_H747A(G-I)I_H747I(G-I)T_H750ZBT_H753ZIT_H757AII_H757IIT"
   },
   "connectivity": [
     "can",
@@ -23,13 +24,14 @@
     "svd_path": "STM32H753.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "stm32cube",
     "zephyr"
   ],
   "name": "ST Nucleo H753ZI",
   "upload": {
-    "maximum_ram_size": 884736,
+    "maximum_ram_size": 524288,
     "maximum_size": 2097152,
     "protocol": "stlink",
     "protocols": [
