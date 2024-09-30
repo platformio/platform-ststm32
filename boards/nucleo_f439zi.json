@@ -1,10 +1,14 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_NUCLEO_F4x9ZI.h"
+    },
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F4 -DSTM32F439xx",
     "f_cpu": "180000000L",
     "mcu": "stm32f439zit6",
-    "product_line": "STM32F439xx"
+    "product_line": "STM32F439xx",
+    "variant": "STM32F4xx/F427Z(G-I)T_F429ZET_F429Z(G-I)(T-Y)_F437Z(G-I)T_F439Z(G-I)(T-Y)"
   },
   "connectivity": [
     "can",
@@ -23,6 +27,7 @@
     "svd_path": "STM32F439x.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "mbed",
     "stm32cube",
@@ -30,7 +35,7 @@
   ],
   "name": "ST Nucleo F439ZI",
   "upload": {
-    "maximum_ram_size": 262144,
+    "maximum_ram_size": 196608,
     "maximum_size": 2097152,
     "protocol": "stlink",
     "protocols": [
@@ -41,6 +46,6 @@
       "mbed"
     ]
   },
-  "url": "https://developer.mbed.org/platforms/ST-Nucleo-F439ZI/",
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-f439zi.html",
   "vendor": "ST"
 }
