@@ -25,7 +25,8 @@
     "openocd_target": "stm32u5x"
   },
   "frameworks": [
-    "arduino"
+    "arduino",
+    "mbed"
   ],
   "name": "ST Nucleo U575ZI-Q",
   "upload": {
