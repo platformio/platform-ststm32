@@ -1,8 +1,11 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_generic.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m3",
-    "extra_flags": "-DSTM32F103xE -DSTM32F1",
+    "extra_flags": "-DSTM32F103xE -DSTM32F1 -DARDUINO_GENERIC_F103VETX",
     "f_cpu": "72000000L",
     "hwids": [
       [
@@ -29,7 +32,7 @@
     "libopencm3",
     "stm32cube"
   ],
-  "name": "RYMCU nebula-pi_F103VE(64k RAM. 512k Flash)",
+  "name": "RYMCU Nebula Pi F103VE (64k RAM. 512k Flash)",
   "upload": {
     "disable_flushing": false,
     "maximum_ram_size": 65536,
