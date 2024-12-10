@@ -1,0 +1,43 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32L4 -DSTM32L4xx -DSTM32L4R5xx",
+    "f_cpu": "120000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
+    "mcu": "stm32l4r5ziy6",
+    "product_line": "STM32L4R5xx",
+    "variant": "STM32L4xx/L4R5Z(G-I)Y_L4R9Z(G-I)Y_L4S5ZIY_L4S9ZIY"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32L4R5ZI",
+    "openocd_target": "stm32l4x",
+    "svd_path": "STM32L4R5.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "Swan R5",
+  "upload": {
+    "maximum_ram_size": 655360,
+    "maximum_size": 2097152,
+    "protocol": "stlink",
+    "protocols": [
+      "dfu",
+      "blackmagic",
+      "cmsis-dap",
+      "jlink",
+      "serial",
+      "stlink",
+      "mbed"
+    ]
+  },
+  "url": "https://blues.io/products/swan",
+  "vendor": "Blues"
+}
