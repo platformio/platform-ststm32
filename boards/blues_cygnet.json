@@ -1,10 +1,14 @@
 {
     "build": {
+      "arduino": {
+        "variant_h": "variant_CYGNET.h"
+      },
+      "core": "stm32",
       "cpu": "cortex-m4",
-      "extra_flags": "-DSTM32L4 -DSTM32L433xx",
+      "extra_flags": "-DARDUINO_CYGNET -DSTM32L4 -DSTM32L4xx -DSTM32L433xx",
       "f_cpu": "80000000L",
       "framework_extra_flags": {
-        "arduino": "-DCUSTOM_PERIPHERAL_PINS -DARDUINO_CYGNET -DPIO_FRAMEWORK_ARDUINO_ENABLE_CDC"
+        "arduino": "-DCUSTOM_PERIPHERAL_PINS -DPIO_FRAMEWORK_ARDUINO_ENABLE_CDC"
       },
       "mcu": "stm32l433cct6",
       "product_line": "STM32L433xx",
@@ -31,13 +35,13 @@
     "upload": {
       "maximum_ram_size": 65536,
       "maximum_size": 262144,
-      "protocol": "dfu",
+      "protocol": "stlink",
       "protocols": [
         "dfu",
-        "jlink",
-        "cmsis-dap",
-        "stlink",
         "blackmagic",
+        "cmsis-dap",
+        "jlink",
+        "stlink",
         "mbed"
       ]
     },
