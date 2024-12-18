@@ -27,7 +27,7 @@
       "stm32cube",
       "libopencm3"
     ],
-    "name": "Cygnet",
+    "name": "Blues Cygnet",
     "upload": {
       "maximum_ram_size": 65536,
       "maximum_size": 262144,
