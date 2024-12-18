@@ -1,0 +1,46 @@
+{
+    "build": {
+      "cpu": "cortex-m4",
+      "extra_flags": "-DSTM32L4 -DSTM32L433xx",
+      "f_cpu": "80000000L",
+      "framework_extra_flags": {
+        "arduino": "-DCUSTOM_PERIPHERAL_PINS -DARDUINO_CYGNET -DPIO_FRAMEWORK_ARDUINO_ENABLE_CDC"
+      },
+      "mcu": "stm32l433cct6",
+      "product_line": "STM32L433xx",
+      "variant": "STM32L4xx/L433C(B-C)(T-U)_L443CC(T-U)"
+    },
+    "connectivity": [
+      "can"
+    ],
+    "debug": {
+      "default_tools": [
+        "stlink"
+      ],
+      "jlink_device": "STM32L433CC",
+      "openocd_target": "stm32l4x",
+      "svd_path": "STM32L4x3.svd"
+    },
+    "frameworks": [
+      "arduino",
+      "cmsis",
+      "stm32cube",
+      "libopencm3"
+    ],
+    "name": "Blues Cygnet",
+    "upload": {
+      "maximum_ram_size": 65536,
+      "maximum_size": 262144,
+      "protocol": "dfu",
+      "protocols": [
+        "dfu",
+        "jlink",
+        "cmsis-dap",
+        "stlink",
+        "blackmagic",
+        "mbed"
+      ]
+    },
+    "url": "https://blues.com/feather-mcu/",
+    "vendor": "Blues"
+  }
