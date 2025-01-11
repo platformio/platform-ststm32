@@ -5,10 +5,10 @@
       },
       "core": "stm32",
       "cpu": "cortex-m4",
-      "extra_flags": "-DARDUINO_CYGNET -DSTM32L4 -DSTM32L4xx -DSTM32L433xx",
+      "extra_flags": "-DSTM32L4 -DSTM32L4xx -DSTM32L433xx",
       "f_cpu": "80000000L",
       "framework_extra_flags": {
-        "arduino": "-DCUSTOM_PERIPHERAL_PINS -DPIO_FRAMEWORK_ARDUINO_ENABLE_CDC"
+        "arduino": "-DARDUINO_CYGNET -DCUSTOM_PERIPHERAL_PINS"
       },
       "mcu": "stm32l433cct6",
       "product_line": "STM32L433xx",
