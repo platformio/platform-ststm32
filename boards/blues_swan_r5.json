@@ -5,10 +5,10 @@
     },
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DARDUINO_SWAN_R5 -DSTM32L4 -DSTM32L4xx -DSTM32L4R5xx",
+    "extra_flags": "-DSTM32L4 -DSTM32L4xx -DSTM32L4R5xx",
     "f_cpu": "120000000L",
     "framework_extra_flags": {
-      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+      "arduino": "-DARDUINO_SWAN_R5 -DCUSTOM_PERIPHERAL_PINS"
     },
     "mcu": "stm32l4r5ziy6",
     "product_line": "STM32L4R5xx",
@@ -18,13 +18,18 @@
     "can"
   ],
   "debug": {
+    "default_tools": [
+      "stlink"
+    ],
     "jlink_device": "STM32L4R5ZI",
     "openocd_target": "stm32l4x",
     "svd_path": "STM32L4R5.svd"
   },
   "frameworks": [
     "arduino",
-    "stm32cube"
+    "cmsis",
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "Blues Swan R5",
   "upload": {
@@ -41,6 +46,6 @@
       "mbed"
     ]
   },
-  "url": "https://blues.io/products/swan",
+  "url": "https://blues.com/products/swan/",
   "vendor": "Blues"
 }
