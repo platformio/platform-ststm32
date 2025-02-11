@@ -4,6 +4,9 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32WL -DSTM32WLxx -DSTM32WLE5xx",
     "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32wle5jc",
     "product_line": "STM32WLE5xx",
     "variant": "STM32WLxx/WL54JCI_WL55JCI_WLE4J(8-B-C)I_WLE5J(8-B-C)I"
