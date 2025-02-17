@@ -13,13 +13,7 @@
     "ethernet"
   ],
   "debug": {
-    "default_tools": [
-      "stlink"
-    ],
     "jlink_device": "STM32H563ZI",
-    "onboard_tools": [
-      "stlink"
-    ],
     "openocd_board": "st_nucleo_h5",
     "svd_path": "STM32H563.svd"
   },
@@ -31,12 +25,9 @@
   "upload": {
     "maximum_ram_size": 655360,
     "maximum_size": 2097152,
-    "protocol": "stlink",
+    "protocol": "mbed",
     "protocols": [
-      "blackmagic",
-      "cmsis-dap",
       "jlink",
-      "stlink",
       "mbed"
     ]
   },
