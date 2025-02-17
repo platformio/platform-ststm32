@@ -14,7 +14,6 @@
   ],
   "debug": {
     "jlink_device": "STM32H563ZI",
-    "openocd_board": "st_nucleo_h5",
     "svd_path": "STM32H563.svd"
   },
   "frameworks": [
