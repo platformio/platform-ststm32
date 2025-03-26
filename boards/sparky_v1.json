@@ -4,6 +4,9 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F3 -DSTM32F303xC -DBLACKPILL_F303CC",
     "f_cpu": "72000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32f303cct6",
     "product_line": "STM32F303xC",
     "variant": "STM32F3xx/F303C(B-C)T"
