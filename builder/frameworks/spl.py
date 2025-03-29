@@ -22,7 +22,7 @@ directly with the registers.
 
 http://www.st.com/web/en/catalog/tools/FM147/CL1794/SC961/SS1743?sc=stm32embeddedsoftware
 """
-
+import sys
 from os.path import isdir, isfile, join
 from string import Template
 
@@ -37,6 +37,7 @@ env.SConscript("_bare.py")
 FRAMEWORK_DIR = platform.get_package_dir("framework-spl")
 assert isdir(FRAMEWORK_DIR)
 
+mcu = board.get("build.mcu").lower()
 
 def get_linker_script(mcu):
     ldscript = join(FRAMEWORK_DIR, "platformio",
@@ -75,13 +76,13 @@ def get_linker_script(mcu):
 
 env.Append(
     CPPPATH=[
-        join(FRAMEWORK_DIR, board.get("build.core"),
-             "cmsis", "cores", board.get("build.core")),
-        join(FRAMEWORK_DIR, board.get("build.core"), "cmsis",
+        join(FRAMEWORK_DIR, board.get("build.mcu")[0:5],
+             "cmsis", "cores", board.get("build.mcu")[0:5]),
+        join(FRAMEWORK_DIR, board.get("build.mcu")[0:5], "cmsis",
              "variants", board.get("build.mcu")[0:7]),
-        join(FRAMEWORK_DIR, board.get("build.core"), "spl",
+        join(FRAMEWORK_DIR, board.get("build.mcu")[0:5], "spl",
              "variants", board.get("build.mcu")[0:7], "inc"),
-        join(FRAMEWORK_DIR, board.get("build.core"), "spl",
+        join(FRAMEWORK_DIR, board.get("build.mcu")[0:5], "spl",
              "variants", board.get("build.mcu")[0:7], "src")
     ],
     LINKFLAGS=[
@@ -105,6 +106,7 @@ if not board.get("build.ldscript", ""):
 
 extra_flags = board.get("build.extra_flags", "")
 src_filter_patterns = ["+<*>"]
+cmsis_variant_filter_patterns = ["+<*>"]
 if "STM32F40_41xxx" in extra_flags:
     src_filter_patterns += ["-<stm32f4xx_fmc.c>"]
 if "STM32F427_437xx" in extra_flags:
@@ -114,19 +116,75 @@ elif "STM32F303xC" in extra_flags:
 elif "STM32L1XX_MD" in extra_flags:
     src_filter_patterns += ["-<stm32l1xx_flash_ramfunc.c>"]
 
+# generate filer expression for F10x startup file
+if mcu.startswith("stm32f10"):
+    # stm32f10x SPL has 8 possible startup files
+    # depending on the series (connectivity, low/high/medium/extra-large density or 
+    # "value-line").
+    # we only want to assemble and link the correct one.
+    # we automatically deduce the correct startup file and identifying macro based
+    # on MCU name and flash size, which saves us from adapting tons of boards files.
+    # for details see page 90 of reference manual and stm32f10x.h.
+    # https://www.st.com/resource/en/reference_manual/cd00171190-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf
+    flash_mem = board.get("upload.maximum_size") // 1024
+    family = mcu[0:9] # only get the chip family as e.g. stm32f103
+    startup_file, series_macro = (None, None)
+    # give user the possibility to give the startup file themselves as a fallback
+    # then the identifying macro is also expected to be given.
+    startup_file = board.get("build.spl_startup_file", "")
+    if startup_file == "":
+        if family in ("stm32f101", "stm32f102", "stm32f103") and flash_mem >= 16 and flash_mem <= 32:
+            startup_file, series_macro = ("startup_stm32f10x_ld.S", "STM32F10X_LD") # low density
+        if family in ("stm32f100") and flash_mem >= 16 and flash_mem <= 32:
+            startup_file, series_macro = ("startup_stm32f10x_ld_vl.S", "STM32F10X_LD_VL") # low density value
+        elif family in ("stm32f101", "stm32f102", "stm32f103") and flash_mem >= 64 and flash_mem <= 128:
+            startup_file, series_macro = ("startup_stm32f10x_md.S", "STM32F10X_MD") # medium density
+        elif family in ("stm32f100") and flash_mem >= 64 and flash_mem <= 128:
+            startup_file, series_macro = ("startup_stm32f10x_md_vl.S", "STM32F10X_MD_VL") # medium density value
+        elif family in ("stm32f101", "stm32f103") and flash_mem >= 256 and flash_mem <= 512:
+            startup_file, series_macro = ("startup_stm32f10x_hd.S", "STM32F10X_HD") # high density
+        elif family in ("stm32f100") and flash_mem >= 256 and flash_mem <= 512:
+            startup_file, series_macro = ("startup_stm32f10x_hd_vl.S", "STM32F10X_HD_VL") # high density
+        elif family in ("stm32f101", "stm32f103") and flash_mem >= 768 and flash_mem <= 1024:
+            startup_file, series_macro = ("startup_stm32f10x_xl.S", "STM32F10X_XL") # xtra-large density
+        elif family in ("stm32f105", "stm32f107"):
+            startup_file, series_macro = ("startup_stm32f10x_cl.S", "STM32F10X_CL") # connectivity line
+
+    if startup_file == "":
+        sys.stderr.write("Failed to find startup file for board '%s'.\n" % board.id)
+        env.Exit(-1)
+    # exclude all startup files via wildcard, add back the one we want
+    cmsis_variant_filter_patterns += ["-<startup_stm32f10x_*.S>", "+<%s>" % startup_file]
+    if series_macro is not None:
+        env.Append(CPPDEFINES=[series_macro])
+
 libs = []
 
 libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkCMSISVariant"),
     join(
-        FRAMEWORK_DIR, board.get("build.core"), "cmsis",
+        FRAMEWORK_DIR, board.get("build.mcu")[0:5], "cmsis",
         "variants", board.get("build.mcu")[0:7]
-    )
+    ),
+    src_filter=cmsis_variant_filter_patterns
 ))
+
+# STM32F1 SPL introduced updated core_cm3.c that needs
+# to be compiled for Cortex-M3 cores.
+if board.get("build.cpu") == "cortex-m3":
+    libs.append(env.BuildLibrary(
+        join("$BUILD_DIR", "FrameworkCMSISCore"),
+        join(
+            FRAMEWORK_DIR, board.get("build.mcu")[0:5], "cmsis",
+            "cores", "stm32"
+        ),
+        src_filter="+<core_cm3.c>"
+    ))
+
 
 libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkSPL"),
-    join(FRAMEWORK_DIR, board.get("build.core"),
+    join(FRAMEWORK_DIR, board.get("build.mcu")[0:5],
          "spl", "variants",
          board.get("build.mcu")[0:7], "src"),
     src_filter=" ".join(src_filter_patterns)
