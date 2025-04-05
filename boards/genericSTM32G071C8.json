@@ -1,0 +1,40 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32G0 -DSTM32G0xx -DSTM32G071xx",
+    "f_cpu": "64000000L",
+    "mcu": "stm32g071c8u3",
+    "product_line": "STM32G071xx",
+    "zephyr": {
+       "variant": "G071C(6-8-B)(T-U)_G081CB(T-U)"
+    }
+  },
+  "debug": {
+    "jlink_device": "STM32G071C8",
+    "openocd_target": "stm32g0x",
+    "svd_path": "STM32G071.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "libopencm3",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "STM32G071C8 (36k RAM, 64k Flash)",
+  "upload": {
+    "maximum_ram_size": 36864,
+    "maximum_size": 65536,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "jlink",
+      "cmsis-dap",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32g071c8.html",
+  "vendor": "ST"
+}
