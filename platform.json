@@ -300,11 +300,11 @@
       "owner": "platformio",
       "version": "~3.40100.0"
     },
-    "tool-stm32duino": {
+    "tool-stm32flash": {
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.0.1"
+      "version": "~0.7.0"
     },
     "tool-openocd": {
       "type": "uploader",
