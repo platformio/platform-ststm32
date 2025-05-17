@@ -6,7 +6,7 @@
     "f_cpu": "170000000L",
     "mcu": "stm32g491ret6",
     "product_line": "STM32G491xx",
-    "variant": "G491RC(I-T)_G491RE(I-T-Y)x(Z)_G4A1RE(I-T-Y)"
+    "variant": "STM32G491RE"
   },
   "connectivity": [
     "can"
@@ -23,9 +23,7 @@
     "svd_path": "STM32G491xx.svd"
   },
   "frameworks": [
-    "arduino",
-    "stm32cube",
-    "libopencm3"
+    "stm32cube"
   ],
   "name": "Nucleo G491RE",
   "upload": {
