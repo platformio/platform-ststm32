@@ -26,7 +26,8 @@
     "arduino",
     "cmsis",
     "libopencm3",
-    "stm32cube"
+    "stm32cube",
+    "zephyr"
   ],
   "name": "Nucleo G070RB",
   "upload": {
