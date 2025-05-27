@@ -21,7 +21,7 @@
   ],
   "name": "STM32H750VBT6 (1024k RAM. 128k Flash)",
   "upload": {
-    "maximum_ram_size": 1048576,
+    "maximum_ram_size": 524288,
     "maximum_size": 131072,
     "protocol": "serial",
     "protocols": [
