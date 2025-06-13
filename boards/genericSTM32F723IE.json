@@ -1,0 +1,39 @@
+{
+  "build": {
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32F723xx",
+    "f_cpu": "216000000L",
+    "mcu": "stm32f723iek6",
+    "product_line": "STM32F723xx",
+    "variant": "STM32F7xx/F723I(C-E)(K-T)_F730I8K_F733IE(K-T)"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32F723IE",
+    "openocd_target": "stm32f7x",
+    "svd_path": "STM32F723.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube",
+    "libopencm3"
+  ],
+  "name": "STM32F723IEK6 (192k RAM. 512k Flash)",
+  "upload": {
+    "maximum_ram_size": 196608,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "dfu",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f723ie.html",
+  "vendor": "Generic"
+}
