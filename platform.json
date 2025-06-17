@@ -306,6 +306,11 @@
       "owner": "platformio",
       "version": "~0.7.0"
     },
+    "tool-stm32duino": {
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.0.1"
+    },
     "tool-openocd": {
       "type": "uploader",
       "optional": true,
