@@ -76,9 +76,11 @@ class Ststm32Platform(PlatformBase):
             if board.startswith(("portenta", "opta", "nicla", "giga")):
                 dfu_package = "tool-dfuutil-arduino"
                 self.packages.pop("tool-dfuutil")
+                self.packages.pop("tool-stm32duino")
             elif build_mcu.startswith("stm32f103"):
                 dfu_package = "tool-stm32duino"
             else:
+                self.packages.pop("tool-stm32duino")
                 self.packages.pop("tool-dfuutil-arduino")
             self.packages[dfu_package]["optional"] = False
 
