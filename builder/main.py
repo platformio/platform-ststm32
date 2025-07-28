@@ -278,12 +278,12 @@ elif upload_protocol == "dfu":
 elif upload_protocol == "serial":
     def __configure_upload_port(env):
         return env.subst("$UPLOAD_PORT")
-
     env.Replace(
         __configure_upload_port=__configure_upload_port,
         UPLOADER='"%s"' % join(
             platform.get_package_dir("tool-stm32flash") or "", "stm32flash"),
         UPLOADERFLAGS=[
+            "-i%s" % board.get("upload.gpiostring") if board.get("upload.gpiostring", False) else "",
             "-g", board.get("upload.offset_address", "0x08000000"),
             "-b", env.subst("$UPLOAD_SPEED") or "115200", "-w"
         ],
