@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "19.2.0",
+  "version": "19.3.0",
   "frameworks": {
     "mbed": {
       "package": "framework-mbed",
@@ -298,13 +298,19 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~3.40100.0"
+      "version": "~3.40200.0"
     },
     "tool-stm32flash": {
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
       "version": "~0.7.0"
+    },
+    "tool-stm32duino": {
+      "type": "uploader",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.0.1"
     },
     "tool-openocd": {
       "type": "uploader",
