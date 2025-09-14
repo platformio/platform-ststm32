@@ -53,8 +53,13 @@ class Ststm32Platform(PlatformBase):
                 self.packages["framework-cmsis"]["version"] = "~2.50900.0"
                 self.packages["framework-cmsis"]["optional"] = False
 
-        if "mbed" in frameworks:
+        if "mbed" in frameworks or "mbed-ce" in frameworks:
             self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.90201.0"
+        
+        if "mbed-ce" in frameworks:
+            for p in self.packages:
+                if p in ("tool-cmake", "tool-ninja"):
+                    self.packages[p]["optional"] = False
 
         if "cmsis" in frameworks:
             assert build_mcu, ("Missing MCU field for %s" % board)

@@ -18,7 +18,8 @@
   },
   "frameworks": [
     "arduino",
-    "zephyr"
+    "zephyr",
+    "mbed-ce"
   ],
   "name": "ST Nucleo H563ZI",
   "upload": {
