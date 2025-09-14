@@ -97,7 +97,7 @@
     "framework-mbed-ce": {
       "type": "framework",
       "optional": true,
-      "owner": "mbed-ce",
+      "owner": "mbed-ce-project",
       "version": ">=6.99"
     },
     "framework-cmsis": {
