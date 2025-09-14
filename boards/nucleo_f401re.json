@@ -23,6 +23,7 @@
   "frameworks": [
     "arduino",
     "mbed",
+    "mbed-ce",
     "cmsis",
     "spl",
     "stm32cube",

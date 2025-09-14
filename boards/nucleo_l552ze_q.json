@@ -27,7 +27,8 @@
     "arduino",
     "cmsis",
     "stm32cube", 
-    "zephyr"
+    "zephyr",
+    "mbed-ce"
   ],
   "name": "ST Nucleo L552ZE-Q",
   "upload": {

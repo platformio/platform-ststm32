@@ -31,7 +31,8 @@
     "cmsis",
     "stm32cube",
     "libopencm3",
-    "mbed"
+    "mbed",
+    "mbed-ce"
   ],
   "name": "ST 32F413HDISCOVERY",
   "upload": {

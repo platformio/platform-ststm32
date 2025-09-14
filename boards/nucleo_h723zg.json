@@ -27,6 +27,7 @@
     "arduino",
     "stm32cube",
     "mbed",
+    "mbed-ce",
     "libopencm3",
     "zephyr"
   ],

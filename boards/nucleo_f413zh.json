@@ -26,6 +26,7 @@
     "stm32cube",
     "libopencm3",
     "mbed",
+    "mbed-ce",
     "zephyr"
   ],
   "name": "ST Nucleo F413ZH",

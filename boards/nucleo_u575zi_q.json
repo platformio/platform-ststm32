@@ -26,7 +26,8 @@
   },
   "frameworks": [
     "arduino",
-    "mbed"
+    "mbed",
+    "mbed-ce"
   ],
   "name": "ST Nucleo U575ZI-Q",
   "upload": {

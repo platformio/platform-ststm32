@@ -15,6 +15,7 @@
   },
   "frameworks": [
     "mbed",
+    "mbed-ce",
     "stm32cube",
     "libopencm3"
   ],

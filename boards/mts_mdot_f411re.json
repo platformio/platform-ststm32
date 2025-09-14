@@ -13,7 +13,8 @@
   },
   "frameworks": [
     "stm32cube",
-    "libopencm3"
+    "libopencm3",
+    "mbed-ce"
   ],
   "name": "MultiTech mDot F411",
   "upload": {
