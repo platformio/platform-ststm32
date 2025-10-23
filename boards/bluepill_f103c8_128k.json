@@ -21,7 +21,7 @@
     "product_line": "STM32F103xB",
     "variant": "STM32F1xx/F103C8T_F103CB(T-U)",
     "zephyr": {
-       "variant": "stm32_min_dev_blue"
+       "variant": "stm32_min_dev"
     }
   },
   "debug": {
