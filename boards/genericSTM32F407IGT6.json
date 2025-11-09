@@ -15,7 +15,8 @@
       ]
     ],
     "mcu": "stm32f407igt6",
-    "product_line": "STM32F407xx"
+    "product_line": "STM32F407xx",
+    "variant": "STM32F4xx/F407I(E-G)(H-T)_F417I(E-G)(H-T)"
   },
   "debug": {
     "default_tools": [
@@ -30,6 +31,7 @@
     "svd_path": "STM32F40x.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "stm32cube",
     "libopencm3"
@@ -37,7 +39,7 @@
   "name": "STM32F407IG (192k RAM. 1024k Flash)",
   "upload": {
     "disable_flushing": false,
-    "maximum_ram_size": 196608,
+    "maximum_ram_size": 131072,
     "maximum_size": 1048576,
     "protocol": "stlink",
     "protocols": [

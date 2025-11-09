@@ -10,12 +10,22 @@
 #include "stm32f4xx_hal.h"
 #elif F7
 #include "stm32f7xx_hal.h"
+#elif H7
+#include "stm32h7xx_hal.h"
+#elif G0
+#include "stm32g0xx_hal.h"
+#elif G4
+#include "stm32g4xx_hal.h"
+#elif H7
+#include "stm32f7xx_hal.h"
 #elif L0
 #include "stm32l0xx_hal.h"
 #elif L1
 #include "stm32l1xx_hal.h"
 #elif L4
 #include "stm32l4xx_hal.h"
+#elif L5
+#include "stm32l5xx_hal.h"
 #else
 #error "Unsupported STM32 Family"
 #endif

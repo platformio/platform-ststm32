@@ -17,6 +17,7 @@ import sys
 import subprocess
 
 from platformio.managers.platform import PlatformBase
+from platformio.project.helpers import get_project_dir
 
 
 IS_WINDOWS = sys.platform.startswith("win")
@@ -75,7 +76,11 @@ class Ststm32Platform(PlatformBase):
             if board.startswith(("portenta", "opta", "nicla", "giga")):
                 dfu_package = "tool-dfuutil-arduino"
                 self.packages.pop("tool-dfuutil")
+                self.packages.pop("tool-stm32duino")
+            elif build_mcu.startswith("stm32f103"):
+                dfu_package = "tool-stm32duino"
             else:
+                self.packages.pop("tool-stm32duino")
                 self.packages.pop("tool-dfuutil-arduino")
             self.packages[dfu_package]["optional"] = False
 
@@ -116,16 +121,26 @@ class Ststm32Platform(PlatformBase):
         if name != "framework-zephyr":
             return pkg
 
-        if not os.path.isfile(os.path.join(pkg.path, "_pio", "state.json")):
-            self.pm.log.info("Installing Zephyr project dependencies...")
-            try:
-                subprocess.run([
-                    os.path.normpath(sys.executable),
-                    os.path.join(pkg.path, "scripts", "platformio", "install-deps.py"),
-                    "--platform", self.name
-                ])
-            except subprocess.CalledProcessError:
-                self.pm.log.info("Failed to install Zephyr dependencies!")
+        prj_west_manifest = os.path.join(get_project_dir(), "west.yml")
+        try:
+            (
+                subprocess.run(
+                    [
+                        os.path.normpath(sys.executable),
+                        os.path.join(
+                            pkg.path, "scripts", "platformio", "install-deps.py"
+                        ),
+                        "--platform",
+                        self.name,
+                    ] + (
+                        ["--manifest", prj_west_manifest]
+                        if os.path.isfile(prj_west_manifest)
+                        else []
+                    )
+                )
+            )
+        except subprocess.CalledProcessError:
+            self.pm.log.info("Failed to install Zephyr dependencies!")
 
         return pkg
 

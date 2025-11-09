@@ -9,7 +9,7 @@
     "extra_flags": "-DSTM32H7 -DSTM32H7xx -DSTM32H750xx",
     "f_cpu": "400000000L",
     "framework_extra_flags": {
-      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS -DARDUINO_DAISY_PATCH_SM"
     },
     "mcu": "stm32h750ibk6",
     "product_line": "STM32H750xx",

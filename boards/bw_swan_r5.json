@@ -1,8 +1,11 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_SWAN_R5.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32L4 -DSTM32L4xx -DSTM32L4R5xx",
+    "extra_flags": "-DARDUINO_SWAN_R5 -DSTM32L4 -DSTM32L4xx -DSTM32L4R5xx",
     "f_cpu": "120000000L",
     "framework_extra_flags": {
       "arduino": "-DCUSTOM_PERIPHERAL_PINS"

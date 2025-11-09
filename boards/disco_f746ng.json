@@ -3,6 +3,9 @@
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32F7 -DSTM32F746xx",
     "f_cpu": "216000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
     "mcu": "stm32f746ngh6",
     "product_line": "STM32F746xx",
     "variant": "STM32F7xx/F746B(E-G)T_F746N(E-G)H_F750N8H_F756BGT_F756NGH",

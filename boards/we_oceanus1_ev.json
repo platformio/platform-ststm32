@@ -1,0 +1,38 @@
+{
+  "build": {
+    "arduino": {
+      "variant_h": "variant_WE_OCEANUS1.h"
+    },
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32WL -DSTM32WLxx -DSTM32WLE5xx",
+    "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS"
+    },
+    "mcu": "stm32wle5ccu6 ",
+    "product_line": "STM32WLE5xx",
+    "variant": "STM32WLxx/WL54CCU_WL55CCU_WLE4C(8-B-C)U_WLE5C(8-B-C)U"
+  },
+  "debug": {
+    "jlink_device": "STM32WLE5CC",
+    "openocd_target": "stm32wlx",
+    "svd_path": "STM32WLE5_CM4.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "zephyr"
+  ],
+  "name": "WE Oceanus-I EV",
+  "upload": {
+    "maximum_ram_size": 65536,
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "jlink"
+    ]
+  },
+  "url": "https://www.we-online.com/en/components/products/OCEANUS-I",
+  "vendor": "WE"
+}
