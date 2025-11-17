@@ -30,7 +30,7 @@
   ],
   "name": "ST Nucleo U575ZI-Q",
   "upload": {
-    "maximum_ram_size": 804864,
+    "maximum_ram_size": 786432,
     "maximum_size": 2097152,
     "protocol": "stlink",
     "protocols": [
