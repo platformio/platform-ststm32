@@ -187,7 +187,7 @@ elif upload_protocol.startswith("jlink"):
             "loadbin \"%s\", %s" % (source, board.get(
                 "upload.offset_address", "0x08000000")),
             "r",
-            "q"
+            "exit",
         ]
 
         upload_options = {}
@@ -209,7 +209,9 @@ elif upload_protocol.startswith("jlink"):
             post_pwr_cmds = [
                 f"Sleep {depower_target_post}",
                 "Power off",
+                "exit",
             ]
+            commands.remove("exit")
             commands = commands + post_pwr_cmds
         except:
             pass
