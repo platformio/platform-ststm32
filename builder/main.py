@@ -195,7 +195,7 @@ elif upload_protocol.startswith("jlink"):
             upload_options = env.BoardConfig().get("upload", {})
 
         try:
-            power_target_pre = int(upload_options.get("power_target_pre", None)))
+            power_target_pre = int(upload_options.get("power_target_pre", None))
             pre_pwr_cmds = [
                 "Power on",
                 f"Sleep {power_target_pre}",
@@ -205,12 +205,12 @@ elif upload_protocol.startswith("jlink"):
             pass
 
         try:
-            depower_target_post = int(upload_options.get("depower_target_post", None)))
-            pre_pwr_cmds = [
+            depower_target_post = int(upload_options.get("depower_target_post", None))
+            post_pwr_cmds = [
                 f"Sleep {depower_target_post}",
                 "Power off",
             ]
-            commands = commands + depower_target_post
+            commands = commands + post_pwr_cmds
         except:
             pass
 
