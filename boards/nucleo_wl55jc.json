@@ -24,7 +24,8 @@
   },
   "frameworks": [
     "arduino",
-    "zephyr"
+    "zephyr",
+    "stm32cube"
   ],
   "name": "ST Nucleo WL55JC",
   "upload": {
