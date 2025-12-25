@@ -27,7 +27,7 @@
   ],
   "name": "Armstrap Eagle 512",
   "upload": {
-    "maximum_ram_size": 196608,
+    "maximum_ram_size": 131072,
     "maximum_size": 524288,
     "protocol": "blackmagic",
     "protocols": [
