@@ -1,0 +1,39 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32U0 -DSTM32U083xx -DSTM32U083xC -DARDUINO_GENERIC_U083CCTX",
+    "f_cpu": "56000000L",
+    "mcu": "stm32u083cct",
+    "product_line": "STM32U083xx",
+    "variant": "STM32U0xx/U073C(8-B-C)(T-U)_U083CC(T-U)"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32U083CC",
+    "openocd_target": "stm32u0x",
+    "svd_path": "STM32U083.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32U083CCT (40k RAM. 256k Flash)",
+  "upload": {
+    "maximum_ram_size": 40960,
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32u083cc.html",
+  "vendor": "Generic"
+}
