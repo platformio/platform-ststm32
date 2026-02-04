@@ -93,8 +93,14 @@
       "owner": "platformio",
       "version": "~2.50501.0",
       "optionalVersions": [
-        "~2.50900.0"
+        "~2.60300.0"
       ]
+    },
+    "framework-cmsis-dsp": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.16.2"
     },
     "framework-cmsis-stm32f0": {
       "type": "framework",
