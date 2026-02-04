@@ -1,11 +1,18 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_NUCLEO_H745ZI_Q.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m7",
     "extra_flags": "-DSTM32H7 -DSTM32H7xx -DSTM32H745xx",
     "f_cpu": "480000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCORE_CM7"
+    },
     "mcu": "stm32h745zit6",
     "product_line": "STM32H745xx",
+    "variant": "STM32H7xx/H745Z(G-I)T_H755ZIT",
     "zephyr": {
       "variant": "nucleo_h745zi_q_m7"
     }
@@ -27,6 +34,7 @@
     "svd_path": "STM32H745_CM7.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "stm32cube",
     "zephyr"

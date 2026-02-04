@@ -1,12 +1,16 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_DISCO_F411VE.h"
+    },
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32F4 -DSTM32F411xE",
     "f_cpu": "100000000L",
     "mcu": "stm32f411vet6",
     "product_line": "STM32F411xE",
+    "variant": "STM32F4xx/F411V(C-E)T",
     "zephyr": {
-       "variant": "stm32f411e_disco"
+      "variant": "stm32f411e_disco"
     }
   },
   "debug": {
@@ -22,6 +26,7 @@
     "svd_path": "STM32F411xx.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
     "stm32cube",
     "libopencm3",
