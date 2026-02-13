@@ -28,6 +28,7 @@ http://www.arm.com/products/processors/cortex-m/cortex-microcontroller-software-
 
 import glob
 import os
+import shutil
 import string
 
 from SCons.Script import DefaultEnvironment
@@ -84,9 +85,12 @@ def get_linker_script():
 
 def prepare_startup_file(src_path):
     startup_file = os.path.join(src_path, "gcc", "startup_%s.S" % product_line.lower())
-    # Change file extension to uppercase:
-    if not os.path.isfile(startup_file) and os.path.isfile(startup_file[:-2] + ".s"):
-        os.rename(startup_file[:-2] + ".s", startup_file)
+
+    # Change file extension to uppercase by copying to avoid race condition
+    lowercase_file = startup_file[:-2] + ".s"
+    if not os.path.isfile(startup_file) and os.path.isfile(lowercasae_file):
+        shutil.copy2(lowercase_file, startup_file)
+
     if not os.path.isfile(startup_file):
         print("Warning! Cannot find the default startup file for %s. "
               "Ignore this warning if the startup code is part of your project." % mcu)
