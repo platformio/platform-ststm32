@@ -328,7 +328,7 @@
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
-      "version": "^1.63208.0"
+      "version": "^1.92000.0"
     },
     "tool-dfuutil": {
       "type": "uploader",
