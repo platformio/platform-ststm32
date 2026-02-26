@@ -187,8 +187,35 @@ elif upload_protocol.startswith("jlink"):
             "loadbin \"%s\", %s" % (source, board.get(
                 "upload.offset_address", "0x08000000")),
             "r",
-            "q"
+            "exit",
         ]
+
+        upload_options = {}
+        if "BOARD" in env:
+            upload_options = env.BoardConfig().get("upload", {})
+
+        try:
+            power_target_pre = int(upload_options.get("power_target_pre", None))
+            pre_pwr_cmds = [
+                "Power on",
+                f"Sleep {power_target_pre}",
+            ]
+            commands = pre_pwr_cmds + commands
+        except:
+            pass
+
+        try:
+            depower_target_post = int(upload_options.get("depower_target_post", None))
+            post_pwr_cmds = [
+                f"Sleep {depower_target_post}",
+                "Power off",
+                "exit",
+            ]
+            commands.remove("exit")
+            commands = commands + post_pwr_cmds
+        except:
+            pass
+
         with open(script_path, "w") as fp:
             fp.write("\n".join(commands))
         return script_path
