@@ -1,0 +1,40 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32G0xx -DSTM32G030xx",
+    "f_cpu": "64000000L",
+    "mcu": "stm32g030c8t6",
+    "product_line": "STM32G030xx",
+    "variant": "STM32G0xx/G030C(6-8)T"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32G030C8",
+    "openocd_target": "stm32g0x",
+    "svd_path": "STM32G030.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "STM32G030C8 (8k RAM. 64k Flash)",
+  "upload": {
+    "maximum_ram_size": 8192,
+    "maximum_size": 65536,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32g030c8.html",
+  "vendor": "Generic"
+}
