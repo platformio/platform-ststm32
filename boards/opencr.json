@@ -1,0 +1,28 @@
+{
+  "build": {
+    "extra_flags": "-mthumb  -DSTM32F746xx -D__OPENCR__",
+    "core": "opencr",
+    "cpu": "cortex-m7",
+    "f_cpu": "216000000L",
+    "mcu": "stm32f746zgt6",
+    "product_line": "STM32F746xx",
+    "variant": "OpenCR"
+  },
+  "connectivity": [
+    "can",
+    "ethernet"
+  ],
+  "frameworks": ["arduino"],
+  "platforms": ["ststm32"],
+  "name": "OpenCR 1.0",
+  "url": "https://emanual.robotis.com/docs/en/parts/controller/opencr10/",
+  "vendor": "ROBOTIS",
+  "upload": {
+    "maximum_ram_size": 256788,
+    "maximum_size": 786432,
+    "protocol": "custom",
+    "protocols": [
+      "custom"
+    ]
+  }
+}
