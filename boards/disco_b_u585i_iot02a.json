@@ -25,7 +25,8 @@
     "openocd_target": "stm32u5x"
   },
   "frameworks": [
-    "arduino"
+    "arduino",
+    "mbed-ce"
   ],
   "name": "ST B-U585I-IOT02A Discovery",
   "upload": {

@@ -27,7 +27,8 @@
     "openocd_target": "stm32h7x_dual_bank"
   },
   "frameworks": [
-    "arduino"
+    "arduino",
+    "mbed-ce"
   ],
   "name": "Arduino Portenta H7 (M4 core)",
   "upload": {

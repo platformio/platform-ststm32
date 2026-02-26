@@ -33,6 +33,7 @@
     "stm32cube",
     "libopencm3",
     "mbed",
+    "mbed-ce",
     "zephyr"
   ],
   "name": "STM32H747I-DISCO",

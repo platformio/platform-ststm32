@@ -27,6 +27,13 @@
       "homepage": "https://os.mbed.com/",
       "title": "Mbed"
     },
+    "mbed-ce": {
+      "package": "framework-mbed-ce",
+      "script": "builder/frameworks/mbed-ce.py",
+      "description": "Community edition of Mbed OS, an open-source operating system designed for the Internet of Things.",
+      "homepage": "https://mbed-ce.dev",
+      "title": "Mbed CE"
+    },
     "cmsis": {
       "package": "framework-cmsis",
       "script": "builder/frameworks/cmsis.py",
@@ -86,6 +93,12 @@
       "optional": true,
       "owner": "platformio",
       "version": "~6.61700.0"
+    },
+    "framework-mbed-ce": {
+      "type": "framework",
+      "optional": true,
+      "owner": "mbed-ce-project",
+      "version": ">=6.99"
     },
     "framework-cmsis": {
       "type": "framework",

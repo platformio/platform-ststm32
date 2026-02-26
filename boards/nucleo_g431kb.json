@@ -26,7 +26,8 @@
     "arduino",
     "cmsis",
     "libopencm3",
-    "stm32cube"
+    "stm32cube",
+    "mbed-ce"
   ],
   "name": "Nucleo G431KB",
   "upload": {

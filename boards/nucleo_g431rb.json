@@ -27,7 +27,8 @@
     "cmsis",
     "libopencm3",
     "stm32cube",
-    "zephyr"
+    "zephyr",
+    "mbed-ce"
   ],
   "name": "Nucleo G431RB",
   "upload": {

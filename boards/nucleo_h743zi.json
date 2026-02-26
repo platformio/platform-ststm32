@@ -29,6 +29,7 @@
     "cmsis",
     "stm32cube",
     "mbed",
+    "mbed-ce",
     "zephyr"
   ],
   "name": "ST Nucleo H743ZI",

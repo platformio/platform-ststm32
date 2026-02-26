@@ -25,7 +25,8 @@
   "frameworks": [
     "arduino",
     "cmsis",
-    "stm32cube"
+    "stm32cube",
+    "mbed-ce"
   ],
   "name": "ST NUCLEO-G031K8",
   "upload": {
