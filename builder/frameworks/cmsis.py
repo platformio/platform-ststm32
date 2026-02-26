@@ -86,7 +86,10 @@ def prepare_startup_file(src_path):
     startup_file = os.path.join(src_path, "gcc", "startup_%s.S" % product_line.lower())
     # Change file extension to uppercase:
     if not os.path.isfile(startup_file) and os.path.isfile(startup_file[:-2] + ".s"):
-        os.rename(startup_file[:-2] + ".s", startup_file)
+        try:
+            os.replace(startup_file[:-2] + ".s", startup_file)
+        except (FileNotFoundError, FileExistsError):
+            print("Startup file was already renamed by another process.")
     if not os.path.isfile(startup_file):
         print("Warning! Cannot find the default startup file for %s. "
               "Ignore this warning if the startup code is part of your project." % mcu)

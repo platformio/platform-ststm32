@@ -1,0 +1,37 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32G4 -DSTM32G4xx -DSTM32G474xx",
+    "f_cpu": "170000000L",
+    "mcu": "stm32g474ceu6",
+    "product_line": "STM32G474xx",
+    "variant": "STM32G4xx/G473R(B-C)T_G473RETx(Z)_G474R(B-C-E)T_G483RET_G484RET"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32G474CE",
+    "openocd_target": "stm32g4x",
+    "svd_path": "STM32G474xx.svd"
+  },
+  "frameworks": [
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "WeAct Studio STM32G474 CoreBoard",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "jlink",
+      "cmsis-dap",
+      "blackmagic"
+    ]
+  },
+  "url": "https://github.com/WeActStudio/WeActStudio.STM32G474CoreBoard",
+  "vendor": "WeAct Studio"
+}
