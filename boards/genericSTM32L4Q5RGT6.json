@@ -1,0 +1,44 @@
+{
+    "build": {
+        "core": "stm32",
+        "cpu": "cortex-m4",
+        "extra_flags": "-DSTM32L4 -DSTM32L4Q5xx",
+        "f_cpu": "120000000L",
+        "mcu": "stm32l4q5rgt6",
+        "product_line": "STM32L4Q5xx",
+        "variant": "STM32L4xx/L4Q5RGT6"
+    },
+    "debug": {
+        "default_tools": [
+            "stlink"
+        ],
+        "jlink_device": "STM32L4Q5RG",
+        "onboard_tools": [
+            "stlink"
+        ],
+        "openocd_board": "st_nucleo_l4",
+        "openocd_target": "stm32l4x",
+        "svd_path": "STM32L4Q5.svd"
+    },
+    "frameworks": [
+        "arduino",
+        "cmsis",
+        "stm32cube",
+        "libopencm3"
+    ],
+    "name": "STM32L4Q5RGT6",
+    "upload": {
+        "maximum_ram_size": 327680,
+        "maximum_size": 1048576,
+        "protocol": "stlink",
+        "protocols": [
+            "jlink",
+            "cmsis-dap",
+            "stlink",
+            "blackmagic",
+            "mbed"
+        ]
+    },
+    "url": "https://www.st.com/en/evaluation-tools/stm32l4q5rg.html",
+    "vendor": "ST"
+}
