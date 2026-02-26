@@ -17,7 +17,8 @@
     "arduino",
     "cmsis",
     "stm32cube",
-    "libopencm3"
+    "libopencm3",
+    "spl"
   ],
   "name": "VCCGND F103ZET6 Mini",
   "upload": {

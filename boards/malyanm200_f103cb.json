@@ -31,7 +31,8 @@
     "arduino",
     "cmsis",
     "stm32cube",
-    "libopencm3"
+    "libopencm3",
+    "spl"
   ],
   "name": "Malyan M200 V1",
   "upload": {
