@@ -6,7 +6,10 @@
     "f_cpu": "170000000L",
     "mcu": "stm32g474ceu6",
     "product_line": "STM32G474xx",
-    "variant": "STM32G4xx/G473R(B-C)T_G473RETx(Z)_G474R(B-C-E)T_G483RET_G484RET"
+    "variant": "STM32G4xx/G473C(B-C-E)U_G474C(B-C-E)U_G483CEU_G484CEU",
+    "arduino": {
+      "board": "WEACT_G474CE"
+    }
   },
   "connectivity": [
     "can"
@@ -17,7 +20,9 @@
     "svd_path": "STM32G474xx.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
+    "libopencm3",
     "stm32cube"
   ],
   "name": "WeAct Studio STM32G474 CoreBoard",
@@ -27,6 +32,7 @@
     "protocol": "stlink",
     "protocols": [
       "stlink",
+      "dfu",
       "jlink",
       "cmsis-dap",
       "blackmagic"
