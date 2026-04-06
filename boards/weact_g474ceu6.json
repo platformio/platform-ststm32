@@ -1,12 +1,18 @@
 {
   "build": {
+    "arduino": {
+      "variant_h": "variant_WEACT_G474CE.h"
+    },
     "core": "stm32",
     "cpu": "cortex-m4",
     "extra_flags": "-DSTM32G4 -DSTM32G4xx -DSTM32G474xx",
     "f_cpu": "170000000L",
+    "framework_extra_flags": {
+      "arduino": "-DARDUINO_WEACT_G474CE"
+    },
     "mcu": "stm32g474ceu6",
     "product_line": "STM32G474xx",
-    "variant": "STM32G4xx/G473R(B-C)T_G473RETx(Z)_G474R(B-C-E)T_G483RET_G484RET"
+    "variant": "STM32G4xx/G473C(B-C-E)U_G474C(B-C-E)U_G483CEU_G484CEU"
   },
   "connectivity": [
     "can"
@@ -17,7 +23,9 @@
     "svd_path": "STM32G474xx.svd"
   },
   "frameworks": [
+    "arduino",
     "cmsis",
+    "libopencm3",
     "stm32cube"
   ],
   "name": "WeAct Studio STM32G474 CoreBoard",
@@ -26,10 +34,11 @@
     "maximum_size": 524288,
     "protocol": "stlink",
     "protocols": [
-      "stlink",
-      "jlink",
+      "blackmagic",
       "cmsis-dap",
-      "blackmagic"
+      "dfu",
+      "jlink",
+      "stlink"
     ]
   },
   "url": "https://github.com/WeActStudio/WeActStudio.STM32G474CoreBoard",
