@@ -26,6 +26,8 @@
 #include "stm32l4xx_hal.h"
 #elif L5
 #include "stm32l5xx_hal.h"
+#elif WL
+#include "stm32wlxx_hal.h"
 #else
 #error "Unsupported STM32 Family"
 #endif
