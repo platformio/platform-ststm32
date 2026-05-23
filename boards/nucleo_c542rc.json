@@ -1,0 +1,44 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m33",
+    "extra_flags": "-DSTM32C5 -DSTM32C5xx -DSTM32C542xx",
+    "f_cpu": "160000000L",
+    "mcu": "stm32c542rc",
+    "product_line": "STM32C542xx",
+    "variant": "STM32C5xx/C542R(C-E)(T-U)"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32C542RC",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32c5x",
+    "svd_path": "STM32C542.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "ST NUCLEO-C542RC",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "blackmagic",
+      "cmsis-dap",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-c542rc.html",
+  "vendor": "ST"
+}
