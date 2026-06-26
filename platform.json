@@ -190,7 +190,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.10000.240622"
+      "version": "~1.10000.260625"
     },
     "framework-arduinoststm32": {
       "type": "framework",
