@@ -24,7 +24,8 @@
   },
   "frameworks": [
     "arduino",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "ST Nucleo G0B1RE",
   "upload": {

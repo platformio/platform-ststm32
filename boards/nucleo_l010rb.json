@@ -23,7 +23,8 @@
   },
   "frameworks": [
     "arduino",
-    "stm32cube"
+    "stm32cube",
+    "libopencm3"
   ],
   "name": "ST Nucleo L010RB",
   "upload": {
