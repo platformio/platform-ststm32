@@ -322,7 +322,7 @@
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
-      "version": "~3.1200.0"
+      "version": "~3.1200.5"
     },
     "tool-jlink": {
       "type": "uploader",

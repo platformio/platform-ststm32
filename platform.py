@@ -201,8 +201,7 @@ class Ststm32Platform(PlatformBase):
                         "Missed target configuration for %s" % board.id)
                     server_args.extend([
                         "-f", "interface/%s.cfg" % link,
-                        "-c", "transport select %s" % (
-                            "hla_swd" if link == "stlink" else "swd"),
+                        "-c", "transport select swd",
                         "-f", "target/%s.cfg" % debug.get("openocd_target")
                     ])
                     server_args.extend(debug.get("openocd_extra_args", []))
