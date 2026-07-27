@@ -198,7 +198,7 @@ class Ststm32Platform(PlatformBase):
                     ])
                 else:
                     assert debug.get("openocd_target"), (
-                        "Missed target configuration for %s" % board.id)
+                        "Missing target configuration for %s" % board.id)
                     server_args.extend([
                         "-f", "interface/%s.cfg" % link,
                         "-c", "transport select %s" % (
