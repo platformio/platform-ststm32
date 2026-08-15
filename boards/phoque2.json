@@ -1,0 +1,45 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32G4 -DSTM32G4xx -DSTM32G431xx -DARDUINO_PHOQUE -DARDUINO_PHOQUE2 -DARDUINO_GENERIC_G431CBUX",
+    "f_cpu": "170000000L",
+    "mcu": "stm32g431cbu6",
+    "product_line": "STM32G431xx",
+    "variant": "PHOQUE2"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32G431CB",
+    "openocd_target": "stm32g4x",
+    "svd_path": "STM32G431xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "PHOQUE2 Brushless Driver",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 131072,
+    "protocol": "dfu",
+    "protocols": [
+      "stlink",
+      "jlink",
+      "cmsis-dap",
+      "blackmagic",
+      "mbed",
+      "dfu",
+      "serial"
+    ]
+  },
+  "url": "",
+  "vendor": "Robonomicon"
+}
