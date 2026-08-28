@@ -222,6 +222,12 @@
       "owner": "platformio",
       "version": "~4.6.0"
     },
+    "framework-stm32cubec0": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.4.1"
+    },
     "framework-stm32cubef0": {
       "type": "framework",
       "optional": true,
@@ -365,7 +371,7 @@
     "tool-ldscripts-ststm32": {
       "optional": true,
       "owner": "platformio",
-      "version": "~0.2.0"
+      "version": "~0.3.0"
     }
   }
 }

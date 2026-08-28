@@ -1,0 +1,46 @@
+{
+  "build": {
+    "arduino": {
+      "variant_h": "variant_STM32C0316_DK.h"
+    },
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32C0 -DSTM32C031xx",
+    "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-DARDUINO_STM32C0316_DK -D__CORTEX_SC=0"
+    },
+    "mcu": "stm32c031c6t6",
+    "product_line": "STM32C031xx",
+    "variant": "STM32C0xx/C031C(4-6)(T-U)"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32C031C6",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_c0",
+    "openocd_target": "stm32c0x",
+    "svd_path": "STM32C031.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "ST STM32C0316-DK Discovery Kit",
+  "upload": {
+    "maximum_ram_size": 12288,
+    "maximum_size": 32768,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/stm32c0316-dk.html",
+  "vendor": "ST"
+}
