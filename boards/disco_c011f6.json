@@ -1,0 +1,50 @@
+{
+  "build": {
+    "arduino": {
+      "variant_h": "variant_STM32C0116_DK.h"
+    },
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32C0 -DSTM32C011xx",
+    "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-DARDUINO_STM32C0116_DK -D__CORTEX_SC=0"
+    },
+    "mcu": "stm32c011f6u6",
+    "product_line": "STM32C011xx",
+    "variant": "STM32C0xx/C011D6Y_C011F(4-6)(P-U)",
+    "zephyr": {
+       "variant": "stm32c0116_dk"
+    }
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32C011F6",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_c0",
+    "openocd_target": "stm32c0x",
+    "svd_path": "STM32C011.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "ST STM32C0116-DK Discovery Kit",
+  "upload": {
+    "maximum_ram_size": 6144,
+    "maximum_size": 32768,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/stm32c0116-dk.html",
+  "vendor": "ST"
+}

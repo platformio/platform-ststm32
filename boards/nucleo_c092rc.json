@@ -1,0 +1,45 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32C0 -DSTM32C092xx",
+    "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-D__CORTEX_SC=0"
+    },
+    "mcu": "stm32c092rct6",
+    "product_line": "STM32C092xx",
+    "variant": "STM32C0xx/C092RBT_C092RC(I-T)"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32C092RC",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_c0",
+    "openocd_target": "stm32c0x",
+    "svd_path": "STM32C092.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "ST Nucleo C092RC",
+  "upload": {
+    "maximum_ram_size": 30720,
+    "maximum_size": 262144,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-c092rc.html",
+  "vendor": "ST"
+}

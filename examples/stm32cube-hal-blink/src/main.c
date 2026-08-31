@@ -1,4 +1,6 @@
-#if F0
+#if C0
+#include "stm32c0xx_hal.h"
+#elif F0
 #include "stm32f0xx_hal.h"
 #elif F1
 #include "stm32f1xx_hal.h"

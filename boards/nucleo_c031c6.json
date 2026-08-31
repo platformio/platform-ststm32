@@ -1,0 +1,42 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32C0 -DSTM32C031xx",
+    "f_cpu": "48000000L",
+    "mcu": "stm32c031c6t6",
+    "product_line": "STM32C031xx",
+    "variant": "STM32C0xx/C031C(4-6)(T-U)"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32C031C6",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_c0",
+    "openocd_target": "stm32c0x",
+    "svd_path": "STM32C031.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "ST Nucleo C031C6",
+  "upload": {
+    "maximum_ram_size": 12288,
+    "maximum_size": 32768,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-c031c6.html",
+  "vendor": "ST"
+}

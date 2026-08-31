@@ -1,0 +1,45 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-DSTM32C0 -DSTM32C071xx",
+    "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-DCUSTOM_PERIPHERAL_PINS -D__CORTEX_SC=0"
+    },
+    "mcu": "stm32c071rbt6",
+    "product_line": "STM32C071xx",
+    "variant": "STM32C0xx/C071R(8-B)T"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32C071RB",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_board": "st_nucleo_c0",
+    "openocd_target": "stm32c0x",
+    "svd_path": "STM32C071.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "ST Nucleo C071RB",
+  "upload": {
+    "maximum_ram_size": 24576,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-c071rb.html",
+  "vendor": "ST"
+}

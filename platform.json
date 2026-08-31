@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm32.git"
   },
-  "version": "19.7.1",
+  "version": "20.0.0",
   "frameworks": {
     "mbed": {
       "package": "framework-mbed",
@@ -196,7 +196,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~4.21200.0"
+      "version": "~4.30000.0"
     },
     "framework-arduinoststm32-maple": {
       "type": "framework",
@@ -222,89 +222,95 @@
       "owner": "platformio",
       "version": "~4.6.0"
     },
+    "framework-stm32cubec0": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.4.1"
+    },
     "framework-stm32cubef0": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.11.5"
+      "version": "~1.11.6"
     },
     "framework-stm32cubef1": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.8.6"
+      "version": "~1.8.7"
     },
     "framework-stm32cubef2": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.9.5"
+      "version": "~1.9.6"
     },
     "framework-stm32cubef3": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.11.5"
+      "version": "~1.11.6"
     },
     "framework-stm32cubef4": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.28.1"
+      "version": "~1.28.3"
     },
     "framework-stm32cubef7": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.17.2"
+      "version": "~1.17.4"
     },
     "framework-stm32cubeg0": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.6.2"
+      "version": "~1.6.3"
     },
     "framework-stm32cubeg4": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.6.1"
+      "version": "~1.6.3"
     },
     "framework-stm32cubeh7": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.12.1"
+      "version": "~1.13.0"
     },
     "framework-stm32cubel0": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.12.2"
+      "version": "~1.12.4"
     },
     "framework-stm32cubel1": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.10.4"
+      "version": "~1.10.6"
     },
     "framework-stm32cubel4": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.18.1"
+      "version": "~1.18.2"
     },
     "framework-stm32cubel5": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.5.1"
+      "version": "~1.6.0"
     },
     "framework-zephyr": {
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~3.40401.0"
+      "version": "~3.40402.0"
     },
     "tool-stm32flash": {
       "type": "uploader",
@@ -365,7 +371,7 @@
     "tool-ldscripts-ststm32": {
       "optional": true,
       "owner": "platformio",
-      "version": "~0.2.0"
+      "version": "~0.3.0"
     }
   }
 }
