@@ -7,27 +7,27 @@
     "framework_extra_flags": {
       "arduino": "-DUSE_CM4_STARTUP_FILE"
     },
-    "mcu": "stm32wl55jc",
-    "product_line": "STM32WL55xx",
-    "variant": "STM32WLxx/WL54JCI_WL55JCI_WLE4J(8-B-C)I_WLE5J(8-B-C)I"
+    "mcu": "stm32wle5jc",
+    "product_line": "STM32WLE5xx",
+    "variant": "STM32WLxx"
   },
   "debug": {
     "default_tools": [
       "stlink"
     ],
-    "jlink_device": "STM32WL55JC",
+    "jlink_device": "STM32WLE5JC",
     "onboard_tools": [
       "stlink"
     ],
     "openocd_target": "stm32wlx",
-    "svd_path": "STM32WL5x_CM4.svd"
+    "svd_path": "STM32WL5E_CM4.svd"
   },
   "frameworks": [
     "arduino",
     "zephyr",
     "stm32cube"
   ],
-  "name": "ST Nucleo WL55JC",
+  "name": "STM32WLE5JC (73pins, 64k RAM, 256k Flash)",
   "upload": {
     "maximum_ram_size": 65536,
     "maximum_size": 262144,
@@ -39,6 +39,6 @@
       "mbed"
     ]
   },
-  "url": "https://www.st.com/en/evaluation-tools/nucleo-wl55jc.html",
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32wl5x-ex.html",
   "vendor": "ST"
 }
