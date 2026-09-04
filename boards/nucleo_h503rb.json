@@ -1,0 +1,44 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32H7 -DSTM32H5xx -DSTM32H503xx",
+    "f_cpu": "250000000L",
+    "mcu": "stm32h503rbt6",
+    "product_line": "STM32H503xx",
+    "variant": "STM32H503RBT"
+  },
+  "connectivity": [
+    "usb",
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32H503RB",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32h5x",
+    "svd_path": "STM32H503.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "stm32cube"
+  ],
+  "name": "ST Nucleo H503RB",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "blackmagic",
+      "cmsis-dap",
+      "jlink",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/evaluation-tools/nucleo-h503rb.html",
+  "vendor": "ST"
+}
