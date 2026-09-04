@@ -1,0 +1,38 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F437xx -DSTM32F4xx",
+    "f_cpu": "180000000L",
+    "mcu": "stm32f437vit6",
+    "product_line": "STM32F437xx",
+    "variant": "STM32F4xx/F437VI"
+  },
+  "debug": {
+    "jlink_device": "STM32F437VI",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F437x.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube",
+    "libopencm3",
+    "zephyr"
+  ],
+  "name": "STM32F437VI (Custom Board)",
+  "upload": {
+    "maximum_ram_size": 262144,  // STM32F437VI has 256 KB of RAM
+    "maximum_size": 2097152,     // STM32F437VI has 2 MB of Flash
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f437vi.html",
+  "vendor": "Generic"
+}
