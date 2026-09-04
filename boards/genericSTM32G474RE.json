@@ -1,0 +1,48 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32G4xx -DSTM32G474xx",
+    "f_cpu": "170000000L",
+    "mcu": "stm32g474ret6",
+    "product_line": "STM32G474xx",
+    "variant": "STM32G4xx/G473R(B-C-E)T_G474R(B-C-E)T_G483RET_G484RET"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32G474RE",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32g4x",
+    "svd_path": "STM32G474xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "mbed",
+    "libopencm3",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "STM32G474RE (128k RAM. 512k Flash)",
+  "upload": {
+    "maximum_ram_size": 131072,
+    "maximum_size": 524288,
+    "protocol": "stlink",
+    "protocols": [
+      "stlink",
+      "jlink",
+      "cmsis-dap",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32g474re.html",
+  "vendor": "ST"
+}
