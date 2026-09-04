@@ -319,6 +319,10 @@ elif upload_protocol in debug_tools:
         openocd_args.extend(
             ["-c", "adapter speed %s" % env.GetProjectOption("debug_speed")]
         )
+    if env.GetProjectOption("upload_resetmethod", ""):
+        openocd_args.extend(
+            ["-c", "reset_config %s" % env.GetProjectOption("upload_resetmethod")]
+        )
     openocd_args.extend([
         "-c", "program {$SOURCE} %s verify reset; shutdown;" %
         board.get("upload.offset_address", "")
