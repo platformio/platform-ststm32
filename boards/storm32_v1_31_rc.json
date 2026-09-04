@@ -20,6 +20,7 @@
     "arduino",
     "cmsis",
     "libopencm3",
+    "spl",
     "stm32cube"
   ],
   "name": "STorM32 BGC v1.31 RC",

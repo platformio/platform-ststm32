@@ -18,6 +18,7 @@
     "cmsis",
     "stm32cube",
     "libopencm3",
+    "spl",
     "zephyr"
   ],
   "name": "STM3210C-EVAL",

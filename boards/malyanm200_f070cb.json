@@ -12,7 +12,7 @@
       "arduino": "-DCUSTOM_STARTUP_FILE"
     },
     "mcu": "stm32f070cbt6",
-    "product_line": "STM32F103xB",
+    "product_line": "STM32F070xB",
     "variant": "STM32F0xx/F070CBT"
   },
   "debug": {
