@@ -1,0 +1,44 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32G4xx -DSTM32G431xx -DARDUINO_PHOQUE -DARDUINO_PHOQUE1 -DHAL_OPAMP_MODULE_ENABLED -DARDUINO_GENERIC_G431VBTX=\"ARDUINO_GENERIC_G431VBTX is for the stspin32 driver\"", 
+    "f_cpu": "170000000L",
+    "mcu": "stm32g431vbt6",
+    "product_line": "STM32G431xx",
+    "variant": "PHOQUE1"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32G431VB",
+    "openocd_target": "stm32g4x",
+    "svd_path": "STM32G431xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "PHOQUE1 Brushless Driver",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 129024,
+    "protocol": "dfu",
+    "protocols": [
+      "stlink",
+      "jlink",
+      "cmsis-dap",
+      "blackmagic",
+      "mbed",
+      "dfu"
+    ]
+  },
+  "url": "",
+  "vendor": "Robonomicon"
+}
