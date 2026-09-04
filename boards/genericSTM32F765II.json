@@ -1,0 +1,34 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m7",
+    "extra_flags": "-DSTM32F765xx -DSTM32F7xx",
+    "f_cpu": "216000000L",
+    "mcu": "stm32f765iik6",
+    "product_line": "STM32F765xx",
+    "variant": "STM32F7xx/F765I(G-I)(K-T)_F767I(G-I)(K-T)_F777II(K-T)"
+  },
+  "debug": {
+    "jlink_device": "STM32F765II",
+    "openocd_target": "stm32f7x",
+    "svd_path": "STM32F765x.svd"
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "STM32F765II (512k RAM. 2048k Flash)",
+  "upload": {
+    "maximum_ram_size": 524288,
+    "maximum_size": 2097152,
+    "protocol": "serial",
+    "protocols": [
+      "blackmagic",
+      "dfu",
+      "jlink",
+      "serial",
+      "stlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f765ii.html",
+  "vendor": "Generic"
+}
