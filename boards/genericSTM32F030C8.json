@@ -1,0 +1,38 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0",
+    "extra_flags": "-DSTM32F030x8 -DSTM32F0",
+    "f_cpu": "48000000L",
+    "mcu": "stm32f030c8t6",
+    "product_line": "STM32F030x8",
+    "variant": "STM32F0xx/F030C8T"
+  },
+  "debug": {
+    "jlink_device": "STM32F030C8",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F030.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "mbed",
+    "libopencm3",
+    "stm32cube"
+  ],
+  "name": "STM32F030C8 (8k RAM. 64k Flash)",
+  "upload": {
+    "maximum_ram_size": 8192,
+    "maximum_size": 65536,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "serial"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f030c8.html",
+  "vendor": "Generic"
+}
