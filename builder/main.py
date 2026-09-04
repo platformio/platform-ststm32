@@ -186,7 +186,7 @@ elif upload_protocol.startswith("jlink"):
             "h",
             "loadbin \"%s\", %s" % (source, board.get(
                 "upload.offset_address", "0x08000000")),
-            "r",
+            "rx 500",
             "q"
         ]
         with open(script_path, "w") as fp:
