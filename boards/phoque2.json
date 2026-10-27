@@ -2,7 +2,7 @@
   "build": {
     "core": "stm32",
     "cpu": "cortex-m4",
-    "extra_flags": "-DSTM32G4 -DSTM32G4xx -DSTM32G431xx -DARDUINO_PHOQUE -DARDUINO_PHOQUE2 -DARDUINO_GENERIC_G431CBUX",
+    "extra_flags": "-DSTM32G4 -DSTM32G4xx -DSTM32G431xx -DARDUINO_PHOQUE -DARDUINO_PHOQUE2",
     "f_cpu": "170000000L",
     "mcu": "stm32g431cbu6",
     "product_line": "STM32G431xx",
@@ -40,6 +40,6 @@
       "serial"
     ]
   },
-  "url": "",
+  "url": "https://robonomicon.eu/phoque2",
   "vendor": "Robonomicon"
 }
