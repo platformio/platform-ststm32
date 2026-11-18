@@ -78,7 +78,7 @@
         "~1.60301.0",
         "~1.80201.0",
         "~1.90201.0",
-        "~1.120301.0"
+        "~1.140201.0"
       ]
     },
     "framework-mbed": {
@@ -310,7 +310,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~3.40402.0"
+      "version": "~3.40500.0"
     },
     "tool-stm32flash": {
       "type": "uploader",
@@ -351,7 +351,7 @@
     "tool-cmake": {
       "optional": true,
       "owner": "platformio",
-      "version": "~3.21.0"
+      "version": "~3.30.0"
     },
     "tool-dtc": {
       "optional": true,
