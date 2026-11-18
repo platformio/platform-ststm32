@@ -306,6 +306,12 @@
       "owner": "platformio",
       "version": "~1.6.0"
     },
+    "framework-stm32cubewl": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.4.0"
+    },
     "framework-zephyr": {
       "type": "framework",
       "optional": true,

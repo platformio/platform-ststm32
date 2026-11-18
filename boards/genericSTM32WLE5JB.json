@@ -1,0 +1,44 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32WL -DSTM32WLxx -DSTM32WLE5xx",
+    "f_cpu": "48000000L",
+    "framework_extra_flags": {
+      "arduino": "-DUSE_CM4_STARTUP_FILE"
+    },
+    "mcu": "stm32wle5jb",
+    "product_line": "STM32WLE5xx",
+    "variant": "STM32WLxx"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32WLE5JB",
+    "onboard_tools": [
+      "stlink"
+    ],
+    "openocd_target": "stm32wlx",
+    "svd_path": "STM32WL5E_CM4.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "zephyr",
+    "stm32cube"
+  ],
+  "name": "STM32WLE5JB (73pins, 48k RAM, 128k Flash)",
+  "upload": {
+    "maximum_ram_size": 49152,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "mbed"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32wl5x-ex.html",
+  "vendor": "ST"
+}
